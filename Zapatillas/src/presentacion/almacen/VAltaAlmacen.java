@@ -18,7 +18,7 @@ public class VAltaAlmacen extends JFrame{
 	
 	public VAltaAlmacen() {
 		super("Foot World");
-		this.setBounds(100, 100, 330, 300);
+		this.setBounds(100, 100, 330, 350);
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,5 +60,19 @@ public class VAltaAlmacen extends JFrame{
 		};
 		
 		atrasButton.addActionListener(lAtras);
+		
+		JButton aceptarButton = ComponentsBuilder.createButton("Aceptar", 115, 250, 100, 30, new Font("Serif", Font.PLAIN, 14));
+		this.add(aceptarButton);
+		
+		ActionListener lAceptar = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		};
+		
+		atrasButton.addActionListener(lAceptar);
 	}
 }
