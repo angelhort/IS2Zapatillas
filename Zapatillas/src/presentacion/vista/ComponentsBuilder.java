@@ -23,7 +23,6 @@ public class ComponentsBuilder {
 		JButton button = new JButton(text);
 		button.setBounds(x, y, width, height);
 		button.setFont(font);
-		
 		return button;
 	}
 }

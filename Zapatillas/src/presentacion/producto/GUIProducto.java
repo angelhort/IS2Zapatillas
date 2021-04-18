@@ -71,7 +71,7 @@ public class GUIProducto extends JFrame implements IGUI{
 		
 		buttonModificar.addActionListener(lModificar);
 		
-		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Producto", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Producto", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 15));
 		this.add(buttonMostrarUno);
 		
 		ActionListener lMostrarUno = new ActionListener() {
@@ -85,7 +85,7 @@ public class GUIProducto extends JFrame implements IGUI{
 		
 		buttonMostrarUno.addActionListener(lMostrarUno);
 		
-		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Productos", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
+		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Productos", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 12));
 		this.add(buttonMostrarTodos);
 		
 		ActionListener lMostrarTodos = new ActionListener() {

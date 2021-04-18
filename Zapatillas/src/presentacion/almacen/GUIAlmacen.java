@@ -85,7 +85,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 		
 		buttonMostrarUno.addActionListener(lMostrarUno);
 		
-		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Almacenes", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
+		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Almacenes", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 12));
 		this.add(buttonMostrarTodos);
 		
 		ActionListener lMostrarTodos = new ActionListener() {
