@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUIProducto extends JFrame implements IGUI{
@@ -21,10 +22,11 @@ public class GUIProducto extends JFrame implements IGUI{
 		this.setBounds(100, 100, 1010, 500);
 		this.setVisible(true);
 		this.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 
-	public void initGUI() {
+	public void initGUI(GUIPrincipal instance) {
 		JLabel label = ComponentsBuilder.createLabel("Producto", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		
 		this.add(label);
@@ -71,7 +73,7 @@ public class GUIProducto extends JFrame implements IGUI{
 		
 		buttonModificar.addActionListener(lModificar);
 		
-		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Producto", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Producto", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 15));
 		this.add(buttonMostrarUno);
 		
 		ActionListener lMostrarUno = new ActionListener() {
@@ -85,7 +87,7 @@ public class GUIProducto extends JFrame implements IGUI{
 		
 		buttonMostrarUno.addActionListener(lMostrarUno);
 		
-		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Productos", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
+		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Productos", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 12));
 		this.add(buttonMostrarTodos);
 		
 		ActionListener lMostrarTodos = new ActionListener() {
@@ -98,6 +100,21 @@ public class GUIProducto extends JFrame implements IGUI{
 		};
 		
 		buttonMostrarTodos.addActionListener(lMostrarTodos);
+		
+		JButton atrasButton = ComponentsBuilder.createBackButton();
+		this.add(atrasButton);
+		
+		ActionListener lAtras = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				instance.setVisible(true);
+				GUIProducto.this.dispose();
+			}
+			
+		};
+		
+		atrasButton.addActionListener(lAtras);
 	}
 
 	@Override

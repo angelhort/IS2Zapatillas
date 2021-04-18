@@ -24,8 +24,8 @@ public class GUIPrincipal extends JFrame{
 	public GUIPrincipal() {		
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
-		this.setVisible(true);
 		this.setLayout(null);
+		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
 	}
@@ -60,7 +60,7 @@ public class GUIPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
 				GUITrabajador guiTrabajador = new GUITrabajador();
-				guiTrabajador.initGUI();
+				guiTrabajador.initGUI(GUIPrincipal.this);
 			}
 			
 		};
@@ -90,7 +90,7 @@ public class GUIPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
 				GUIAlmacen guiAlmacen = new GUIAlmacen();
-				guiAlmacen.initGUI();
+				guiAlmacen.initGUI(GUIPrincipal.this);
 			}
 			
 		};
@@ -106,7 +106,7 @@ public class GUIPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
 				GUIProducto guiProducto= new GUIProducto();
-				guiProducto.initGUI();
+				guiProducto.initGUI(GUIPrincipal.this);
 			}
 			
 		};
@@ -122,7 +122,7 @@ public class GUIPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
 				GUIProveedor guiProveedor = new GUIProveedor();
-				guiProveedor.initGUI();
+				guiProveedor.initGUI(GUIPrincipal.this);
 			}
 			
 		};
@@ -138,7 +138,7 @@ public class GUIPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
 				GUIMarca guiMarca = new GUIMarca();
-				guiMarca.initGUI();
+				guiMarca.initGUI(GUIPrincipal.this);
 			}
 			
 		};
