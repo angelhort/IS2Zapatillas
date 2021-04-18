@@ -9,7 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import presentacion.almacen.GUIAlmacen;
 import presentacion.cliente.GUICliente;
+import presentacion.marca.GUIMarca;
+import presentacion.producto.GUIProducto;
+import presentacion.proveedor.GUIProveedor;
+import presentacion.trabajador.GUITrabajador;
 
 public class GUIPrincipal extends JFrame{
 
@@ -37,8 +42,9 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				GUIPrincipal.this.setVisible(false);
 				GUICliente guiCliente = new GUICliente();
-				guiCliente.initGUI();
+				guiCliente.initGUI(GUIPrincipal.this);
 			}
 			
 		};
@@ -52,12 +58,14 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
+				GUITrabajador guiTrabajador = new GUITrabajador();
+				guiTrabajador.initGUI();
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lTrabajador);
+		buttonTrabajador.addActionListener(lTrabajador);
 		
 		JButton buttonVenta = ComponentsBuilder.createButton("Venta", 526, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonVenta);
@@ -66,12 +74,12 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lVenta);
+		buttonVenta.addActionListener(lVenta);
 		
 		JButton buttonAlmacen = ComponentsBuilder.createButton("Almacen", 764, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonAlmacen);
@@ -80,12 +88,14 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
+				GUIAlmacen guiAlmacen = new GUIAlmacen();
+				guiAlmacen.initGUI();
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lAlmacen);
+		buttonAlmacen.addActionListener(lAlmacen);
 		
 		JButton buttonProducto = ComponentsBuilder.createButton("Producto", 50, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonProducto);
@@ -94,12 +104,14 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
+				GUIProducto guiProducto= new GUIProducto();
+				guiProducto.initGUI();
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lProducto);
+		buttonProducto.addActionListener(lProducto);
 		
 		JButton buttonProveedor = ComponentsBuilder.createButton("Proveedor", 288, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonProveedor);
@@ -108,12 +120,14 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
+				GUIProveedor guiProveedor = new GUIProveedor();
+				guiProveedor.initGUI();
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lProveedor);
+		buttonProveedor.addActionListener(lProveedor);
 		
 		JButton buttonMarca = ComponentsBuilder.createButton("Marca", 526, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonMarca);
@@ -122,12 +136,14 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
+				GUIMarca guiMarca = new GUIMarca();
+				guiMarca.initGUI();
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lMarca);
+		buttonMarca.addActionListener(lMarca);
 		
 		JButton buttonProdProv = ComponentsBuilder.createButton("Productos - Proveedores", 764, 290, 185, 100, new Font("Serif", Font.PLAIN, 13));
 		this.add(buttonProdProv);
@@ -136,12 +152,12 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUIPrincipal.this.setVisible(false);
 			}
 			
 		};
 		
-		buttonCliente.addActionListener(lProdProv);
+		buttonProdProv.addActionListener(lProdProv);
 	}
 	
 }

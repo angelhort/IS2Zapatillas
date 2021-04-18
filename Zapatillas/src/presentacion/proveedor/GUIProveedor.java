@@ -1,4 +1,4 @@
-package presentacion.cliente;
+package presentacion.proveedor;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,13 +11,12 @@ import javax.swing.JLabel;
 
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
-import presentacion.vista.GUIPrincipal;
 
-public class GUICliente extends JFrame implements IGUI{
+public class GUIProveedor extends JFrame implements IGUI{
 	
 	private static final long serialVersionUID = 1L;
 
-	public GUICliente() {		
+	public GUIProveedor() {		
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
 		this.setVisible(true);
@@ -25,12 +24,12 @@ public class GUICliente extends JFrame implements IGUI{
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
-		JLabel label = ComponentsBuilder.createLabel("Cliente", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+	public void initGUI() {
+		JLabel label = ComponentsBuilder.createLabel("Proveedor", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		
 		this.add(label);
 		
-		JButton buttonAlta = ComponentsBuilder.createButton("Alta Cliente", 100, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonAlta = ComponentsBuilder.createButton("Alta Proveedor", 100, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonAlta);
 		
 		ActionListener lAlta = new ActionListener() {
@@ -44,7 +43,7 @@ public class GUICliente extends JFrame implements IGUI{
 		
 		buttonAlta.addActionListener(lAlta);
 		
-		JButton buttonBaja = ComponentsBuilder.createButton("Baja Cliente", 407, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonBaja = ComponentsBuilder.createButton("Baja Proveedor", 407, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonBaja);
 		
 		ActionListener lBaja = new ActionListener() {
@@ -58,7 +57,7 @@ public class GUICliente extends JFrame implements IGUI{
 		
 		buttonBaja.addActionListener(lBaja);
 		
-		JButton buttonModificar = ComponentsBuilder.createButton("Modificar Cliente", 715, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonModificar = ComponentsBuilder.createButton("Modificar Proveedor", 715, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonModificar);
 		
 		ActionListener lModificar = new ActionListener() {
@@ -72,7 +71,7 @@ public class GUICliente extends JFrame implements IGUI{
 		
 		buttonModificar.addActionListener(lModificar);
 		
-		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Cliente", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonMostrarUno = ComponentsBuilder.createButton("Mostrar un Proveedor", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonMostrarUno);
 		
 		ActionListener lMostrarUno = new ActionListener() {
@@ -86,15 +85,14 @@ public class GUICliente extends JFrame implements IGUI{
 		
 		buttonMostrarUno.addActionListener(lMostrarUno);
 		
-		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Clientes", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
+		JButton buttonMostrarTodos = ComponentsBuilder.createButton("Mostrar todos los Proveedores", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
 		this.add(buttonMostrarTodos);
 		
 		ActionListener lMostrarTodos = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
-				GUICliente.this.dispose();
+				
 			}
 			
 		};
