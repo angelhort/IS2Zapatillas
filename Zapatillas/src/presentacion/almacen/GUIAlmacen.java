@@ -27,8 +27,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 	
 
 	public void initGUI(GUIPrincipal instance) {
-		JLabel label = ComponentsBuilder.createLabel("Almacen", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
-		
+		JLabel label = ComponentsBuilder.createLabel("Almacen", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
 		JButton buttonAlta = ComponentsBuilder.createButton("Alta Almacen", 100, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
