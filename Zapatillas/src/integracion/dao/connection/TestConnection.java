@@ -67,6 +67,5 @@ public class TestConnection {
          se.printStackTrace();
       }//end finally try
    }//end try
-   System.out.println("Goodbye!");
-}//end main
-}//end FirstExample
+}
+}
