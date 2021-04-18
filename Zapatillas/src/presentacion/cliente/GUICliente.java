@@ -37,7 +37,9 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VAltaCliente frameAlta = new VAltaCliente();
+				frameAlta.initGUI(GUICliente.this);
+				GUICliente.this.setVisible(false);
 			}
 			
 		};

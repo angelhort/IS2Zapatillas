@@ -37,7 +37,9 @@ public class GUIAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VAltaAlmacen frameAlta = new VAltaAlmacen();
+				frameAlta.initGUI(GUIAlmacen.this);
+				GUIAlmacen.this.setVisible(false);
 			}
 			
 		};

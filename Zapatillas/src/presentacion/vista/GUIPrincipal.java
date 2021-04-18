@@ -24,8 +24,8 @@ public class GUIPrincipal extends JFrame{
 	public GUIPrincipal() {		
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
-		this.setLayout(null);
 		this.setVisible(true);
+		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
 	}

@@ -5,7 +5,9 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class ComponentsBuilder {
 	
@@ -36,5 +38,28 @@ public class ComponentsBuilder {
         button.setFocusPainted(false); 
         button.setOpaque(false);
 		return button;
+	}
+	
+	public static JButton createBackButtonSmall() {
+		JButton button = new JButton();
+		button.setBounds(20, 32, 30, 30);
+		button.setIcon(new ImageIcon("resources/arrow-left-solid_small.png"));
+		button.setBorderPainted(false); 
+        button.setContentAreaFilled(false); 
+        button.setFocusPainted(false); 
+        button.setOpaque(false);
+		return button;
+	}
+
+	public static JTextField createTextField(int x, int y, int width, int height) {
+		JTextField textField = new JTextField();
+		textField.setBounds(x, y, width, height);
+		return textField;
+	}
+
+	public static JCheckBox createCheckBox(int x, int y, int width, int height) {
+		JCheckBox checkBox = new JCheckBox();
+		checkBox.setBounds(x, y, width, height);
+		return checkBox;
 	}
 }
