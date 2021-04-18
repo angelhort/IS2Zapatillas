@@ -1,7 +1,6 @@
 package integracion.dao.connection;
 
 import java.sql.*;
-import java.sql.DriverManager;
 
 public class ConnectionImpl extends ConnectionAbstract {
 	
@@ -12,9 +11,7 @@ public class ConnectionImpl extends ConnectionAbstract {
 	public ConnectionImpl() {
 		super.URL = DB_URL;
 		super.USER = USERNAME;
-		super.PASS = PASSWORD;
-		
-		createConn();
+		super.PASS = PASSWORD;		
 	}
 
 	@Override
