@@ -4,11 +4,9 @@ import java.sql.*;
 
 public class TestConn2 {
 
-   public static void main(String[] args) {
-	   ConnectionAbstract c = ConnectionAbstract.getInstance();
-	   
+   public static void main(String[] args) {	   
 	   try {
-		   Connection conn = c.createConn();
+		   Connection conn = DatabaseConnection.getConnection();
 		   Statement st = conn.createStatement();
 		   
 		   String sql = "SELECT * FROM Clientes";
