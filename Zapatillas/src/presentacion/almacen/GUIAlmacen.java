@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUIAlmacen extends JFrame implements IGUI{
@@ -21,10 +22,11 @@ public class GUIAlmacen extends JFrame implements IGUI{
 		this.setBounds(100, 100, 1010, 500);
 		this.setVisible(true);
 		this.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 
-	public void initGUI() {
+	public void initGUI(GUIPrincipal instance) {
 		JLabel label = ComponentsBuilder.createLabel("Almacen", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		
 		this.add(label);
@@ -98,6 +100,21 @@ public class GUIAlmacen extends JFrame implements IGUI{
 		};
 		
 		buttonMostrarTodos.addActionListener(lMostrarTodos);
+		
+		JButton atrasButton = ComponentsBuilder.createBackButton();
+		this.add(atrasButton);
+		
+		ActionListener lAtras = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				instance.setVisible(true);
+				GUIAlmacen.this.dispose();
+			}
+			
+		};
+		
+		atrasButton.addActionListener(lAtras);
 	}
 
 	@Override

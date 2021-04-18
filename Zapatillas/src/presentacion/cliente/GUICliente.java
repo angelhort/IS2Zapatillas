@@ -22,12 +22,12 @@ public class GUICliente extends JFrame implements IGUI{
 		this.setBounds(100, 100, 1010, 500);
 		this.setVisible(true);
 		this.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 
 	public void initGUI(GUIPrincipal instance) {
-		JLabel label = ComponentsBuilder.createLabel("Cliente", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
-		
+		JLabel label = ComponentsBuilder.createLabel("Cliente", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
 		JButton buttonAlta = ComponentsBuilder.createButton("Alta Cliente", 100, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
@@ -93,13 +93,26 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			}
+			
+		};
+		
+		buttonMostrarTodos.addActionListener(lMostrarTodos);
+		
+		JButton atrasButton = ComponentsBuilder.createBackButton();
+		this.add(atrasButton);
+		
+		ActionListener lAtras = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				instance.setVisible(true);
 				GUICliente.this.dispose();
 			}
 			
 		};
 		
-		buttonMostrarTodos.addActionListener(lMostrarTodos);
+		atrasButton.addActionListener(lAtras);
 	}
 
 	@Override
