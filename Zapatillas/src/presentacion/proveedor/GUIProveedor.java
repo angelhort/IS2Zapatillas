@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import presentacion.mostrar.VMostrarUno;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
@@ -81,7 +82,9 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VMostrarUno frameMostrarUno = new VMostrarUno("Proveedor");
+				frameMostrarUno.initGUI(GUIProveedor.this);
+				GUIProveedor.this.setVisible(false);
 			}
 			
 		};

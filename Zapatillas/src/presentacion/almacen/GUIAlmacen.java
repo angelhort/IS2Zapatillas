@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import presentacion.mostrar.VMostrarUno;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
@@ -83,7 +84,9 @@ public class GUIAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VMostrarUno frameMostrarUno = new VMostrarUno("Almacen");
+				frameMostrarUno.initGUI(GUIAlmacen.this);
+				GUIAlmacen.this.setVisible(false);
 			}
 			
 		};
