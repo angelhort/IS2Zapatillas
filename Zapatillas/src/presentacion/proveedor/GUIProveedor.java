@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +23,7 @@ public class GUIProveedor extends JFrame implements IGUI{
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
 		this.setVisible(true);
+		this.setContentPane(new JLabel(new ImageIcon("resources/Logo1.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
