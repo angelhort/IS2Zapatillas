@@ -15,6 +15,7 @@ import presentacion.cliente.GUICliente;
 import presentacion.marca.GUIMarca;
 import presentacion.producto.GUIProducto;
 import presentacion.proveedor.GUIProveedor;
+import presentacion.proveedor_producto.GUIProveedorProducto;
 import presentacion.trabajador.GUITrabajador;
 
 public class GUIPrincipal extends JFrame{
@@ -25,10 +26,10 @@ public class GUIPrincipal extends JFrame{
 	public GUIPrincipal() {		
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
-		this.setVisible(true);
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
 		initGUI();
 	}
 	
@@ -155,6 +156,8 @@ public class GUIPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
+				GUIProveedorProducto guiProveedorProducto = new GUIProveedorProducto();
+				guiProveedorProducto.initGUI(GUIPrincipal.this);
 			}
 			
 		};

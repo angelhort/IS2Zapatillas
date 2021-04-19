@@ -1,4 +1,4 @@
-package presentacion.trabajador;
+package presentacion.proveedor_producto;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,34 +13,28 @@ import javax.swing.JTextField;
 
 import presentacion.vista.ComponentsBuilder;
 
-public class VAltaTrabajador extends JFrame{
+public class VEliminarProveedores extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	public VAltaTrabajador() {
+	public VEliminarProveedores() {
 		super("Foot World");
-		this.setBounds(100, 100, 330, 350);
+		this.setBounds(100, 100, 330, 230);
 		this.setVisible(true);
-		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
+		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void initGUI(JFrame instance) {
-		JLabel labelTrabajador = ComponentsBuilder.createLabel("Alta Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+		JLabel labelTrabajador = ComponentsBuilder.createLabel("<html>Eliminar proveedores<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 22));
 		this.add(labelTrabajador);
 		
-		JLabel labelNombre = ComponentsBuilder.createLabel("Nombre:", 10, 120, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelNombre);
+		JLabel labelIDProducto = ComponentsBuilder.createLabel("ID Producto:", 10, 100, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelIDProducto);
 		
-		JTextField fieldNombre = ComponentsBuilder.createTextField(80, 120, 220, 20);
-		this.add(fieldNombre);
-		
-		JLabel labelTelef = ComponentsBuilder.createLabel("Telefono:", 10, 180, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelTelef);
-		
-		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 180, 220, 20);
-		this.add(fieldTelef);
+		JTextField fieldIDProducto = ComponentsBuilder.createTextField(100, 102, 200, 20);
+		this.add(fieldIDProducto);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
 		this.add(atrasButton);
@@ -50,14 +44,14 @@ public class VAltaTrabajador extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				instance.setVisible(true);
-				VAltaTrabajador.this.dispose();
+				VEliminarProveedores.this.dispose();
 			}
 			
 		};
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JButton aceptarButton = ComponentsBuilder.createButton("Aceptar", 115, 250, 100, 30, new Font("Serif", Font.PLAIN, 14));
+		JButton aceptarButton = ComponentsBuilder.createButton("Aceptar", 115, 140, 100, 30, new Font("Serif", Font.PLAIN, 14));
 		this.add(aceptarButton);
 		
 		ActionListener lAceptar = new ActionListener() {

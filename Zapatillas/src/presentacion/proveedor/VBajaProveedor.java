@@ -63,6 +63,6 @@ public class VBajaProveedor extends JFrame{
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 }

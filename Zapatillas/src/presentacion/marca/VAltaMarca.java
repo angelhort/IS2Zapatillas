@@ -63,6 +63,6 @@ public class VAltaMarca extends JFrame{
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 }

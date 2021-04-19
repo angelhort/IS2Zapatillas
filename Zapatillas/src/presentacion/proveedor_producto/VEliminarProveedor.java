@@ -1,4 +1,4 @@
-package presentacion.trabajador;
+package presentacion.proveedor_producto;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,11 +13,11 @@ import javax.swing.JTextField;
 
 import presentacion.vista.ComponentsBuilder;
 
-public class VAltaTrabajador extends JFrame{
+public class VEliminarProveedor extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	public VAltaTrabajador() {
+	public VEliminarProveedor() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
 		this.setVisible(true);
@@ -27,20 +27,20 @@ public class VAltaTrabajador extends JFrame{
 	}
 	
 	public void initGUI(JFrame instance) {
-		JLabel labelTrabajador = ComponentsBuilder.createLabel("Alta Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+		JLabel labelTrabajador = ComponentsBuilder.createLabel("<html>Eliminar proveedor<br>de producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 24));
 		this.add(labelTrabajador);
 		
-		JLabel labelNombre = ComponentsBuilder.createLabel("Nombre:", 10, 120, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelNombre);
+		JLabel labelIDProducto = ComponentsBuilder.createLabel("ID Producto:", 10, 120, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelIDProducto);
 		
-		JTextField fieldNombre = ComponentsBuilder.createTextField(80, 120, 220, 20);
-		this.add(fieldNombre);
+		JTextField fieldIDProducto = ComponentsBuilder.createTextField(100, 122, 200, 20);
+		this.add(fieldIDProducto);
 		
-		JLabel labelTelef = ComponentsBuilder.createLabel("Telefono:", 10, 180, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelTelef);
+		JLabel labelIDProveedor = ComponentsBuilder.createLabel("ID Proveedor:", 10, 180, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelIDProveedor);
 		
-		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 180, 220, 20);
-		this.add(fieldTelef);
+		JTextField fieldIDProveedor = ComponentsBuilder.createTextField(100, 182, 200, 20);
+		this.add(fieldIDProveedor);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
 		this.add(atrasButton);
@@ -50,7 +50,7 @@ public class VAltaTrabajador extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				instance.setVisible(true);
-				VAltaTrabajador.this.dispose();
+				VEliminarProveedor.this.dispose();
 			}
 			
 		};

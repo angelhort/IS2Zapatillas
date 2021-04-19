@@ -63,6 +63,6 @@ public class VBajaProducto extends JFrame{
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 }

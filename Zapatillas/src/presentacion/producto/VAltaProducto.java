@@ -91,6 +91,6 @@ public class VAltaProducto extends JFrame{
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 }

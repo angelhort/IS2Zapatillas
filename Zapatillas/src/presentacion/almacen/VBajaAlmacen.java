@@ -63,6 +63,6 @@ public class VBajaAlmacen extends JFrame{
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 }
