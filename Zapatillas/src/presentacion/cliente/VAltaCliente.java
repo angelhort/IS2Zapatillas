@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ public class VAltaCliente extends JFrame{
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
 		this.setVisible(true);
+		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
