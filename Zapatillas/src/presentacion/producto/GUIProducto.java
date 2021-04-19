@@ -38,7 +38,9 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VAltaProducto frameAlta = new VAltaProducto();
+				frameAlta.initGUI(GUIProducto.this);
+				GUIProducto.this.setVisible(false);
 			}
 			
 		};

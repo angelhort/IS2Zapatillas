@@ -38,7 +38,9 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VAltaProveedor frameAlta = new VAltaProveedor();
+				frameAlta.initGUI(GUIProveedor.this);
+				GUIProveedor.this.setVisible(false);
 			}
 			
 		};

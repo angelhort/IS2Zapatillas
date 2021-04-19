@@ -2,10 +2,12 @@ package presentacion.vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -61,5 +63,15 @@ public class ComponentsBuilder {
 		JCheckBox checkBox = new JCheckBox();
 		checkBox.setBounds(x, y, width, height);
 		return checkBox;
+	}
+	
+	public static JComboBox<String> createComboBox(ArrayList<String> list, int x, int y, int width, int height){
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		for(String l: list)comboBox.addItem(l);
+		
+		comboBox.setBounds(x, y, width, height);
+		
+		return comboBox;
 	}
 }

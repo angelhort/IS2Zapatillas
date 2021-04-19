@@ -38,7 +38,9 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VAltaTrabajador frameAlta = new VAltaTrabajador();
+				frameAlta.initGUI(GUITrabajador.this);
+				GUITrabajador.this.setVisible(false);
 			}
 			
 		};
