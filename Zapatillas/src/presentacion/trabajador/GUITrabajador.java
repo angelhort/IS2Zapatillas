@@ -65,7 +65,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 		
 		buttonBaja.addActionListener(lBaja);
 		
-		JButton buttonModificar = ComponentsBuilder.createButton("Modificar Trabajador", 715, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonModificar = ComponentsBuilder.createButton("Modificar Trabajador", 715, 120, 185, 100, new Font("Serif", Font.PLAIN, 15));
 		this.add(buttonModificar);
 		
 		ActionListener lModificar = new ActionListener() {

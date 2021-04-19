@@ -29,6 +29,9 @@ public class VAltaProducto extends JFrame{
 	}
 	
 	public void initGUI(JFrame instance) {
+		
+		//initSelectGUI(instance);
+		
 		JLabel labelProducto = ComponentsBuilder.createLabel("Alta Producto", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProducto);
 		
@@ -92,5 +95,50 @@ public class VAltaProducto extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+	
+	private void initSelectGUI(JFrame instance) {
+		
+		JFrame frameEleccion = new JFrame("Foot World");
+		frameEleccion.setBounds(100, 100, 330, 230);
+		frameEleccion.setVisible(true);
+		frameEleccion.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
+		frameEleccion.setLayout(null);
+		frameEleccion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel labelEleccion = ComponentsBuilder.createLabel("¿Que prodcuto desea añadir?", 65, 20, 230, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
+		frameEleccion.add(labelEleccion);
+		
+		JButton zapatillaButton = ComponentsBuilder.createButton("Zapatillas", 40, 110, 100, 30, new Font("Serif", Font.PLAIN, 14));
+		frameEleccion.add(zapatillaButton);
+		
+		ActionListener lZapatillas = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frameEleccion.dispose();
+			}
+			
+		};
+		
+		zapatillaButton.addActionListener(lZapatillas);
+		
+		JButton calcetinButton = ComponentsBuilder.createButton("Calcetines", 180, 110, 100, 30, new Font("Serif", Font.PLAIN, 14));
+		frameEleccion.add(calcetinButton);
+		
+		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
+		frameEleccion.add(atrasButton);
+		
+		ActionListener lAtras = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				instance.setVisible(true);
+				frameEleccion.dispose();
+			}
+			
+		};
+		
+		atrasButton.addActionListener(lAtras);
 	}
 }
