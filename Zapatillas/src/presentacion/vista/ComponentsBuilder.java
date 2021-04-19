@@ -18,7 +18,7 @@ public class ComponentsBuilder {
 		
 		label.setBounds(x, y, width, height);
 		label.setForeground(color);
-		label.setOpaque(true);
+		//label.setOpaque(true);
 		label.setHorizontalAlignment(JLabel.CENTER);
 		label.setFont(font);
 		return label;
@@ -62,6 +62,7 @@ public class ComponentsBuilder {
 	public static JCheckBox createCheckBox(int x, int y, int width, int height) {
 		JCheckBox checkBox = new JCheckBox();
 		checkBox.setBounds(x, y, width, height);
+		checkBox.setOpaque(false);
 		return checkBox;
 	}
 	
