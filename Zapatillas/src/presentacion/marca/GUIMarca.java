@@ -51,7 +51,9 @@ public class GUIMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VBajaMarca frameBaja = new VBajaMarca();
+				frameBaja.initGUI(GUIMarca.this);
+				GUIMarca.this.setVisible(false);
 			}
 			
 		};

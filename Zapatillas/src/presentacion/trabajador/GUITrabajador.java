@@ -51,7 +51,9 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VBajaTrabajador frameBaja = new VBajaTrabajador();
+				frameBaja.initGUI(GUITrabajador.this);
+				GUITrabajador.this.setVisible(false);
 			}
 			
 		};
