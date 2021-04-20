@@ -163,6 +163,8 @@ public class GUIPrincipal extends JFrame{
 		};
 		
 		buttonProdProv.addActionListener(lProdProv);
+		
+		this.pack();
 	}
 	
 }
