@@ -20,7 +20,6 @@ public class VAltaTrabajador extends JFrame{
 	public VAltaTrabajador() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
-		this.setVisible(true);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

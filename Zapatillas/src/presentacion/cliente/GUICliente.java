@@ -23,7 +23,6 @@ public class GUICliente extends JFrame implements IGUI{
 	public GUICliente() {		
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
-		this.setVisible(true);
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

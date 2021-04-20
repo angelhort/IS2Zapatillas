@@ -20,7 +20,6 @@ public class VAltaMarca extends JFrame{
 	public VAltaMarca() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 230);
-		this.setVisible(true);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
