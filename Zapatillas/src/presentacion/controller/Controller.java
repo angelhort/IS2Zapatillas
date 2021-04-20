@@ -8,5 +8,5 @@ public abstract class Controller {
 		return instance;
 	}
 	
-	public abstract void action();
+	public abstract void action(int evento, Object transfer);
 }
