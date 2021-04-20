@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
 public class VMostrarUno extends JFrame{
@@ -26,9 +28,11 @@ public class VMostrarUno extends JFrame{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
+		this.setVisible(true);
 	}
 	
-	public void initGUI(JFrame instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Mostrar un " + entidad, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
 		this.add(label);
 		
@@ -45,7 +49,24 @@ public class VMostrarUno extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				switch(entidad) {
+				case "Cliente": Controller.getInstance().action(Evento.MostrarGUICliente, null);
+				break;
+				case "Almacen": Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+				break;
+				case "Trabajador": Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
+				break;
+				case "Marca": Controller.getInstance().action(Evento.MostrarGUIMarca, null);
+				break;
+				case "Producto": Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				break;
+				case "Proveedor": Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
+				break;
+				
+				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
+				
+				}
+				
 				VMostrarUno.this.dispose();
 			}
 			

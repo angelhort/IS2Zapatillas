@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
 public class VAltaCliente extends JFrame{
@@ -24,9 +26,11 @@ public class VAltaCliente extends JFrame{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
+		this.setVisible(true);
 	}
 	
-	public void initGUI(JFrame instance) {
+	public void initGUI() {
 		JLabel labelCliente = ComponentsBuilder.createLabel("Alta Cliente", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelCliente);
 		
@@ -55,8 +59,8 @@ public class VAltaCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
 				VAltaCliente.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};

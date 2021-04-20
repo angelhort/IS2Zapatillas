@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import presentacion.mostrar.VMostrarUno;
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
-import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUIProducto extends JFrame implements IGUI{
@@ -25,10 +25,11 @@ public class GUIProducto extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Producto", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -39,8 +40,7 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaProducto frameAlta = new VAltaProducto();
-				frameAlta.initGUI(GUIProducto.this);
+				Controller.getInstance().action(Evento.GUIAltaProducto, null);
 				GUIProducto.this.setVisible(false);
 			}
 			
@@ -55,8 +55,7 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaProducto frameBaja = new VBajaProducto();
-				frameBaja.initGUI(GUIProducto.this);
+				Controller.getInstance().action(Evento.GUIBajaProducto, null);
 				GUIProducto.this.setVisible(false);
 			}
 			
@@ -85,8 +84,7 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VMostrarUno frameMostrarUno = new VMostrarUno("Producto");
-				frameMostrarUno.initGUI(GUIProducto.this);
+				Controller.getInstance().action(Evento.GUIMostrarUnProducto, null);
 				GUIProducto.this.setVisible(false);
 			}
 			
@@ -115,7 +113,7 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 				GUIProducto.this.dispose();
 			}
 			
@@ -126,6 +124,8 @@ public class GUIProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.MostrarGUIProducto: this.setVisible(true);
+		}
 	}
 }

@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
-import presentacion.mostrar.VMostrarUno;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
 
@@ -26,10 +25,12 @@ public class GUICliente extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
 	}
 	
 
 	public void initGUI() {
+
 		JLabel label = ComponentsBuilder.createLabel("Cliente", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -40,8 +41,7 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaCliente frameAlta = new VAltaCliente();
-				frameAlta.initGUI(GUICliente.this);
+				Controller.getInstance().action(Evento.GUIAltaCliente, null);
 				GUICliente.this.setVisible(false);
 			}
 			
@@ -56,8 +56,7 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaCliente frameBaja = new VBajaCliente();
-				frameBaja.initGUI(GUICliente.this);
+				Controller.getInstance().action(Evento.GUIBajaCliente, null);
 				GUICliente.this.setVisible(false);
 			}
 			
@@ -86,8 +85,7 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VMostrarUno frameMostrarUno = new VMostrarUno("Cliente");
-				frameMostrarUno.initGUI(GUICliente.this);
+				Controller.getInstance().action(Evento.GUIMostrarUnCliente, null);
 				GUICliente.this.setVisible(false);
 			}
 			
@@ -126,6 +124,10 @@ public class GUICliente extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
+		
+		switch(evento) {
+		case Evento.MostrarGUICliente: this.setVisible(true);
+		}
 		
 	}
 }

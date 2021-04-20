@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import presentacion.mostrar.VMostrarUno;
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
-import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUITrabajador extends JFrame implements IGUI{
@@ -25,10 +25,11 @@ public class GUITrabajador extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Trabajador", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -39,8 +40,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaTrabajador frameAlta = new VAltaTrabajador();
-				frameAlta.initGUI(GUITrabajador.this);
+				Controller.getInstance().action(Evento.GUIAltaTrabajador, null);
 				GUITrabajador.this.setVisible(false);
 			}
 			
@@ -55,8 +55,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaTrabajador frameBaja = new VBajaTrabajador();
-				frameBaja.initGUI(GUITrabajador.this);
+				Controller.getInstance().action(Evento.GUIBajaTrabajador, null);
 				GUITrabajador.this.setVisible(false);
 			}
 			
@@ -85,8 +84,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VMostrarUno frameMostrarUno = new VMostrarUno("Trabajador");
-				frameMostrarUno.initGUI(GUITrabajador.this);
+				Controller.getInstance().action(Evento.GUIMostrarUnTrabajador, null);
 				GUITrabajador.this.setVisible(false);
 			}
 			
@@ -115,7 +113,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 				GUITrabajador.this.dispose();
 			}
 			
@@ -126,6 +124,10 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
+		
+		switch(evento) {
+		case Evento.MostrarGUITrabajador: this.setVisible(true);
+		}
 		
 	}
 }

@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
 public class VAniadirProveedor extends JFrame{
@@ -23,9 +25,11 @@ public class VAniadirProveedor extends JFrame{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
+		this.setVisible(true);
 	}
 	
-	public void initGUI(JFrame instance) {
+	public void initGUI() {
 		JLabel labelTrabajador = ComponentsBuilder.createLabel("<html>Aniadir proveedor<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 25));
 		this.add(labelTrabajador);
 		
@@ -48,8 +52,8 @@ public class VAniadirProveedor extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
 				VAniadirProveedor.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
 		};

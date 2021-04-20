@@ -10,8 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
-import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUIProveedorProducto extends JFrame implements IGUI{
@@ -24,10 +25,11 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Productos - Proveedores", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -38,8 +40,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAniadirProveedor aniadirProveedor = new VAniadirProveedor();
-				aniadirProveedor.initGUI(GUIProveedorProducto.this);
+				Controller.getInstance().action(Evento.GUIAniadirProveedor, null);
 				GUIProveedorProducto.this.setVisible(false);
 			}
 			
@@ -54,8 +55,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VEliminarProveedor eliminarProveedor = new VEliminarProveedor();
-				eliminarProveedor.initGUI(GUIProveedorProducto.this);
+				Controller.getInstance().action(Evento.GUIEliminarProveedor, null);
 				GUIProveedorProducto.this.setVisible(false);
 			}
 			
@@ -66,18 +66,17 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 		JButton buttoneliminarTodos = ComponentsBuilder.createButton("<html>Eliminar proveedores<br>de producto</html>", 715, 200, 185, 100, new Font("Serif", Font.PLAIN, 17));
 		this.add(buttoneliminarTodos);
 		
-		ActionListener leliminarTodos = new ActionListener() {
+		ActionListener lEliminarTodos = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VEliminarProveedores eliminarProveedores = new VEliminarProveedores();
-				eliminarProveedores.initGUI(GUIProveedorProducto.this);
+				Controller.getInstance().action(Evento.GUIEliminarProveedores, null);
 				GUIProveedorProducto.this.setVisible(false);
 			}
 			
 		};
 		
-		buttoneliminarTodos.addActionListener(leliminarTodos);
+		buttoneliminarTodos.addActionListener(lEliminarTodos);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButton();
 		this.add(atrasButton);
@@ -86,7 +85,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 				GUIProveedorProducto.this.dispose();
 			}
 			
@@ -97,6 +96,8 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.MostrarGUIProveedorProducto: this.setVisible(true);
+		}
 	}
 }

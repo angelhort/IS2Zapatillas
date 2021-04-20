@@ -10,14 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import presentacion.almacen.GUIAlmacen;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
-import presentacion.marca.GUIMarca;
-import presentacion.producto.GUIProducto;
-import presentacion.proveedor.GUIProveedor;
-import presentacion.proveedor_producto.GUIProveedorProducto;
-import presentacion.trabajador.GUITrabajador;
 
 public class GUIPrincipal extends JFrame implements IGUI{
 
@@ -48,7 +42,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				Controller.getInstance().action(Evento.GUICliente, null);
+				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};
@@ -63,8 +57,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUITrabajador guiTrabajador = new GUITrabajador();
-				guiTrabajador.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			}
 			
 		};
@@ -93,8 +86,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUIAlmacen guiAlmacen = new GUIAlmacen();
-				guiAlmacen.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}
 			
 		};
@@ -109,8 +101,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUIProducto guiProducto= new GUIProducto();
-				guiProducto.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			}
 			
 		};
@@ -125,8 +116,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUIProveedor guiProveedor = new GUIProveedor();
-				guiProveedor.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 			}
 			
 		};
@@ -141,8 +131,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUIMarca guiMarca = new GUIMarca();
-				guiMarca.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
 		};
@@ -157,8 +146,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUIProveedorProducto guiProveedorProducto = new GUIProveedorProducto();
-				guiProveedorProducto.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
 		};

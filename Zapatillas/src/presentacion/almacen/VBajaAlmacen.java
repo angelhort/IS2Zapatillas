@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
 public class VBajaAlmacen extends JFrame{
@@ -23,9 +25,11 @@ public class VBajaAlmacen extends JFrame{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
+		this.setVisible(true);
 	}
 	
-	public void initGUI(JFrame instance) {
+	public void initGUI() {
 		JLabel labelAlmacen = ComponentsBuilder.createLabel("Baja Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelAlmacen);
 		
@@ -42,7 +46,7 @@ public class VBajaAlmacen extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				VBajaAlmacen.this.dispose();
 			}
 			

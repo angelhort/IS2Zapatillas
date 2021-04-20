@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
 public class VBajaProducto extends JFrame{
@@ -23,9 +25,11 @@ public class VBajaProducto extends JFrame{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
+		this.setVisible(true);
 	}
 	
-	public void initGUI(JFrame instance) {
+	public void initGUI() {
 		JLabel labelProducto = ComponentsBuilder.createLabel("Baja Producto", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProducto);
 		
@@ -42,8 +46,8 @@ public class VBajaProducto extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
 				VBajaProducto.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			}
 			
 		};

@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import presentacion.mostrar.VMostrarUno;
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
-import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class GUIProveedor extends JFrame implements IGUI{
@@ -25,10 +25,11 @@ public class GUIProveedor extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initGUI();
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Proveedor", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -39,8 +40,7 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaProveedor frameAlta = new VAltaProveedor();
-				frameAlta.initGUI(GUIProveedor.this);
+				Controller.getInstance().action(Evento.GUIAltaProveedor, null);
 				GUIProveedor.this.setVisible(false);
 			}
 			
@@ -55,8 +55,7 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaProveedor frameBaja = new VBajaProveedor();
-				frameBaja.initGUI(GUIProveedor.this);
+				Controller.getInstance().action(Evento.GUIBajaProveedor, null);
 				GUIProveedor.this.setVisible(false);
 			}
 			
@@ -85,8 +84,7 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VMostrarUno frameMostrarUno = new VMostrarUno("Proveedor");
-				frameMostrarUno.initGUI(GUIProveedor.this);
+				Controller.getInstance().action(Evento.GUIMostrarUnProveedor, null);
 				GUIProveedor.this.setVisible(false);
 			}
 			
@@ -115,7 +113,7 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 				GUIProveedor.this.dispose();
 			}
 			
@@ -126,6 +124,8 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.MostrarGUIProveedor: this.setVisible(true);
+		}
 	}
 }
