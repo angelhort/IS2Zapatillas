@@ -10,10 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.mostrar.VMostrarUno;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
-import presentacion.vista.GUIPrincipal;
 
 public class GUICliente extends JFrame implements IGUI{
 	
@@ -29,7 +30,7 @@ public class GUICliente extends JFrame implements IGUI{
 	}
 	
 
-	public void initGUI(GUIPrincipal instance) {
+	public void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Cliente", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
@@ -115,8 +116,8 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				instance.setVisible(true);
 				GUICliente.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 			}
 			
 		};
@@ -125,7 +126,7 @@ public class GUICliente extends JFrame implements IGUI{
 	}
 
 	@Override
-	public void actualizar() {
+	public void actualizar(int evento, Object datos) {
 		
 	}
 }

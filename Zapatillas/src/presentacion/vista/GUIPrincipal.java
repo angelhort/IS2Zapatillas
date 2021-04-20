@@ -11,16 +11,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import presentacion.almacen.GUIAlmacen;
-import presentacion.cliente.GUICliente;
+import presentacion.controller.Controller;
+import presentacion.controller.Evento;
 import presentacion.marca.GUIMarca;
 import presentacion.producto.GUIProducto;
 import presentacion.proveedor.GUIProveedor;
 import presentacion.proveedor_producto.GUIProveedorProducto;
 import presentacion.trabajador.GUITrabajador;
 
-public class GUIPrincipal extends JFrame{
+public class GUIPrincipal extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
+	
 	
 	
 	public GUIPrincipal() {		
@@ -32,7 +34,7 @@ public class GUIPrincipal extends JFrame{
 		this.setVisible(true);
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("Selecciona la entidad sobre la que trabajar", 50, 30, 900, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		
@@ -46,8 +48,7 @@ public class GUIPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GUIPrincipal.this.setVisible(false);
-				GUICliente guiCliente = new GUICliente();
-				guiCliente.initGUI(GUIPrincipal.this);
+				Controller.getInstance().action(Evento.GUICliente, null);
 			}
 			
 		};
@@ -165,6 +166,15 @@ public class GUIPrincipal extends JFrame{
 		buttonProdProv.addActionListener(lProdProv);
 		
 		this.pack();
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.MostrarGUIPrincipal:
+			this.setVisible(true);
+			break;
+		}
 	}
 	
 }

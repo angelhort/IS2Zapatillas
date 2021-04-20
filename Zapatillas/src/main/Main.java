@@ -1,11 +1,11 @@
 package main;
 
-import presentacion.vista.GUIPrincipal;
+import presentacion.controller.Controller;
 
 public class Main {
 
 	public static void main(String[] args) {
-		GUIPrincipal gui = new GUIPrincipal();
+		Controller.getInstance();
 	}
 
 }

@@ -97,7 +97,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 	}
 
 	@Override
-	public void actualizar() {
+	public void actualizar(int evento, Object datos) {
 		
 	}
 }
