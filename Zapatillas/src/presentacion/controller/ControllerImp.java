@@ -44,9 +44,15 @@ public class ControllerImp extends Controller{
 		gui = (IGUI) vistas.get(evento/100);
 		
 		switch(evento) {
+		
+			//GUIPRINCIPAL
+		
 			case Evento.MostrarGUIPrincipal:
 				gui.actualizar(Evento.MostrarGUIPrincipal, datos);
 				break;
+				
+				
+			//CLIENTE
 				
 			case Evento.MostrarGUICliente : 
 				gui.actualizar(Evento.MostrarGUICliente, null);
@@ -64,6 +70,17 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnCliente = new VMostrarUno("Cliente");
 				break;
 				
+			case Evento.AltaCliente: 
+				
+				break;
+				
+			case Evento.BajaCliente: 
+				
+				break;
+				
+				
+			//ALMACEN
+				
 			case Evento.MostrarGUIAlmacen : 
 				gui.actualizar(Evento.MostrarGUIAlmacen, null);
 				break;
@@ -79,6 +96,9 @@ public class ControllerImp extends Controller{
 			case Evento.GUIMostrarUnAlmacen:
 				VMostrarUno mostrarUnAlmacen = new VMostrarUno("Almacen");
 				break;
+				
+				
+			//MARCA
 				
 			case Evento.MostrarGUIMarca : 
 				gui.actualizar(Evento.MostrarGUIMarca, null);
@@ -96,6 +116,9 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnaMarca = new VMostrarUno("Marca");
 				break;
 				
+				
+			//PRODCUTO
+				
 			case Evento.MostrarGUIProducto : 
 				gui.actualizar(Evento.MostrarGUIProducto, null);
 				break;
@@ -111,6 +134,9 @@ public class ControllerImp extends Controller{
 			case Evento.GUIMostrarUnProducto:
 				VMostrarUno mostrarUnProducto = new VMostrarUno("Producto");
 				break;
+				
+				
+			//PROVEEDOR
 				
 			case Evento.MostrarGUIProveedor : 
 				gui.actualizar(Evento.MostrarGUIProveedor, null);
@@ -128,6 +154,10 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnProveedor = new VMostrarUno("Proveedor");
 				break;
 				
+				
+				
+			//TRABAJADOR
+				
 			case Evento.MostrarGUITrabajador : 
 				gui.actualizar(Evento.MostrarGUITrabajador, null);
 				break;
@@ -143,6 +173,9 @@ public class ControllerImp extends Controller{
 			case Evento.GUIMostrarUnTrabajador:
 				VMostrarUno mostrarUnTrabajador = new VMostrarUno("Trabajador");
 				break;
+				
+				
+			//PROVEEDOR - PRODUCTO
 				
 			case Evento.MostrarGUIProveedorProducto: 
 				gui.actualizar(Evento.MostrarGUIProveedorProducto, null);

@@ -14,6 +14,9 @@ public class Evento {
 	public static final int GUIMostrarUnCliente = 104;
 	public static final int GUIMostrarTodosLosClientes = 105;
 	
+	public static final int AltaCliente = 106;
+	public static final int BajaCliente = 107;
+	
 	// TRABAJADOR DE 200-299
 	
 	public static final int MostrarGUITrabajador = 200;

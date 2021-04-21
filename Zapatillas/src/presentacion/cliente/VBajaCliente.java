@@ -61,7 +61,9 @@ public class VBajaCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.BajaCliente, fieldID.getText());
+				VBajaCliente.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};

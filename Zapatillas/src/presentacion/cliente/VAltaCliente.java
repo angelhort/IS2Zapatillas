@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.cliente.TransferCliente;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -46,11 +47,11 @@ public class VAltaCliente extends JFrame{
 		JTextField fieldDNI = ComponentsBuilder.createTextField(80, 150, 220, 20);
 		this.add(fieldDNI);
 		
-		JLabel labelCapacidad = ComponentsBuilder.createLabel("Socio:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelCapacidad);
+		JLabel labelSocio = ComponentsBuilder.createLabel("Socio:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelSocio);
 		
-		JCheckBox checkCapacidad = ComponentsBuilder.createCheckBox(80, 197, 30, 30);
-		this.add(checkCapacidad);
+		JCheckBox checkSocio = ComponentsBuilder.createCheckBox(80, 197, 30, 30);
+		this.add(checkSocio);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
 		this.add(atrasButton);
@@ -74,7 +75,9 @@ public class VAltaCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.AltaCliente, new TransferCliente(fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText()));
+				VAltaCliente.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};
