@@ -9,6 +9,6 @@ public abstract class SAAbstractFactory {
 		return instance;
 	}
 	
-	public abstract void getSA(int evento);
+	public abstract Object getSA(int evento);
 
 }
