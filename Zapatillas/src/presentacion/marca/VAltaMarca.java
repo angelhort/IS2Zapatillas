@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VAltaMarca extends JFrame{
+public class VAltaMarca extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,6 @@ public class VAltaMarca extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -47,7 +47,7 @@ public class VAltaMarca extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
-				VAltaMarca.this.dispose();
+				VAltaMarca.this.setVisible(false);
 			}
 			
 		};
@@ -67,5 +67,13 @@ public class VAltaMarca extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+			case Evento.GUIAltaMarca: this.setVisible(true);
+			break;
+		}
 	}
 }

@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VAltaAlmacen extends JFrame{
+public class VAltaAlmacen extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,6 @@ public class VAltaAlmacen extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -59,7 +59,7 @@ public class VAltaAlmacen extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
-				VAltaAlmacen.this.dispose();
+				VAltaAlmacen.this.setVisible(false);
 			}
 			
 		};
@@ -79,5 +79,12 @@ public class VAltaAlmacen extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIAltaAlmacen : this.setVisible(true);
+		}
 	}
 }

@@ -16,8 +16,9 @@ import negocio.cliente.TransferCliente;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VAltaCliente extends JFrame{
+public class VAltaCliente extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +29,6 @@ public class VAltaCliente extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -60,7 +60,7 @@ public class VAltaCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaCliente.this.dispose();
+				VAltaCliente.this.setVisible(false);
 				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
@@ -76,12 +76,20 @@ public class VAltaCliente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.AltaCliente, new TransferCliente(fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText()));
-				VAltaCliente.this.dispose();
+				VAltaCliente.this.setVisible(false);
 				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIAltaCliente: this.setVisible(true);
+		break;
+		}
 	}
 }

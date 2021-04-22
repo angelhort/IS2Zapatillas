@@ -17,206 +17,107 @@ import presentacion.vista.IGUI;
 
 public class ControllerImp extends Controller{
 	
-	private IGUI gui;
 	private GUIPrincipal guiPrincipal;
 	
-	private List<IGUI> vistas;
+	private List<List<IGUI>> vistas;
 	
 	public ControllerImp() {
+		//SE INICIALIZAN TODAS LAS VISTAS Y SE INTRODUCEN EN LA MATRIZ VISTAS
+		// LOS EVENTOS TIENEN 3 NUMEROS: EL PRIMERO REPRESENTA LA ENTIDAD Y EL ULTIMO LA FUNCION
 		
 		guiPrincipal = new GUIPrincipal();
-		vistas = new ArrayList<>();
 		
-		vistas.add(guiPrincipal);
-		vistas.add(new GUICliente());
-		vistas.add(new GUITrabajador());
-		vistas.add(null); 				//TODO VENTA
-		vistas.add(new GUIAlmacen());
-		vistas.add(new GUIProducto());
-		vistas.add(new GUIProveedor());
-		vistas.add(new GUIMarca());
-		vistas.add(new GUIProveedorProducto());
+		initGUIs();
 	}
 
 	@Override
 	public void action(int evento, Object datos) {
-		
-		gui = (IGUI) vistas.get(evento/100);
+
+		IGUI gui = (vistas.get(evento/100)).get(evento%100);
 		
 		switch(evento) {
-		
-			//GUIPRINCIPAL
-		
-			case Evento.MostrarGUIPrincipal:
-				gui.actualizar(Evento.MostrarGUIPrincipal, datos);
-				break;
-				
-				
-			//CLIENTE
-				
-			case Evento.MostrarGUICliente : 
-				gui.actualizar(Evento.MostrarGUICliente, null);
-				break;
-					
-			case Evento.GUIAltaCliente:
-				VAltaCliente altaCliente = new VAltaCliente();
-				break;
-				
-			case Evento.GUIBajaCliente:
-				VBajaCliente bajaCliente = new VBajaCliente();
-				break;
-				
-			case Evento.GUIMostrarUnCliente:
-				VMostrarUno mostrarUnCliente = new VMostrarUno("Cliente");
-				break;
-				
-			case Evento.GUIModificarCliente:
-				VModificar modificarCliente = new VModificar("Cliente");
-				break;
-				
-			case Evento.AltaCliente: 
-				
-				break;
-				
-			case Evento.BajaCliente: 
-				
-				break;
-				
-				
-			//ALMACEN
-				
-			case Evento.MostrarGUIAlmacen : 
-				gui.actualizar(Evento.MostrarGUIAlmacen, null);
-				break;
-					
-			case Evento.GUIAltaAlmacen:
-				VAltaAlmacen altaAlmacen = new VAltaAlmacen();
-				break;
-				
-			case Evento.GUIBajaAlmacen:
-				VBajaAlmacen bajaAlmacen = new VBajaAlmacen();
-				break;
-				
-			case Evento.GUIMostrarUnAlmacen:
-				VMostrarUno mostrarUnAlmacen = new VMostrarUno("Almacen");
-				break;
-				
-			case Evento.GUIModificarAlmacen:
-				VModificar modificarAlmacen = new VModificar("Almacen");
-				break;
-				
-				
-			//MARCA
-				
-			case Evento.MostrarGUIMarca : 
-				gui.actualizar(Evento.MostrarGUIMarca, null);
-				break;
-					
-			case Evento.GUIAltaMarca:
-				VAltaMarca altaMarca = new VAltaMarca();
-				break;
-				
-			case Evento.GUIBajaMarca:
-				VBajaMarca bajaMarca = new VBajaMarca();
-				break;
-				
-			case Evento.GUIMostrarUnaMarca:
-				VMostrarUno mostrarUnaMarca = new VMostrarUno("Marca");
-				break;
-				
-			case Evento.GUIModificarMarca:
-				VModificar modificarMarca = new VModificar("Marca");
-				break;
-				
-				
-			//PRODCUTO
-				
-			case Evento.MostrarGUIProducto : 
-				gui.actualizar(Evento.MostrarGUIProducto, null);
-				break;
-					
-			case Evento.GUIAltaProducto:
-				VAltaProducto altaProducto = new VAltaProducto();
-				break;
-				
-			case Evento.GUIBajaProducto:
-				VBajaProducto bajaProducto = new VBajaProducto();
-				break;
-				
-			case Evento.GUIMostrarUnProducto:
-				VMostrarUno mostrarUnProducto = new VMostrarUno("Producto");
-				break;
-				
-			case Evento.GUIModificarProducto:
-				VModificar modificarProducto = new VModificar("Producto");
-				break;
-				
-				
-			//PROVEEDOR
-				
-			case Evento.MostrarGUIProveedor : 
-				gui.actualizar(Evento.MostrarGUIProveedor, null);
-				break;
-					
-			case Evento.GUIAltaProveedor:
-				VAltaProveedor altaProveedor = new VAltaProveedor();
-				break;
-				
-			case Evento.GUIBajaProveedor:
-				VBajaProveedor bajaProveedor = new VBajaProveedor();
-				break;
-				
-			case Evento.GUIMostrarUnProveedor:
-				VMostrarUno mostrarUnProveedor = new VMostrarUno("Proveedor");
-				break;
-				
-			case Evento.GUIModificarProveedor:
-				VModificar modificarProveedor = new VModificar("Proveedor");
-				break;
-				
-				
-				
-			//TRABAJADOR
-				
-			case Evento.MostrarGUITrabajador : 
-				gui.actualizar(Evento.MostrarGUITrabajador, null);
-				break;
-					
-			case Evento.GUIAltaTrabajador:
-				VAltaTrabajador altaTrabajador = new VAltaTrabajador();
-				break;
-				
-			case Evento.GUIBajaTrabajador:
-				VBajaTrabajador bajaTrabajador = new VBajaTrabajador();
-				break;
-				
-			case Evento.GUIMostrarUnTrabajador:
-				VMostrarUno mostrarUnTrabajador = new VMostrarUno("Trabajador");
-				break;
-				
-			case Evento.GUIModificarTrabajador:
-				VModificar modificarTrabajador = new VModificar("Trabajador");
-				break;
-				
-				
-			//PROVEEDOR - PRODUCTO
-				
-			case Evento.MostrarGUIProveedorProducto: 
-				gui.actualizar(Evento.MostrarGUIProveedorProducto, null);
-				break;
-				
-			case Evento.GUIAniadirProveedor: 
-				VAniadirProveedor aniadirProveedor = new VAniadirProveedor();
-				break;
-				
-			case Evento.GUIEliminarProveedor:
-				VEliminarProveedor eliminarProveedor = new VEliminarProveedor();
-				break;	
-				
-			case Evento.GUIEliminarProveedores:
-				VEliminarProveedores eliminarProveedores = new VEliminarProveedores();
-				break;
+			
+			default: gui.actualizar(evento, null);
 		}
+	}
+	
+	private void initGUIs() {
+		//HE HABLADO CON ANTONIO Y CON HECTOR Y HECTOR ME RECOMENDO HACERLO ASI
+		// Y ANTONIO ME LO PERMITIO, TENIENDO EN CUENTA QUE HABRA QUE CAMBIARLO EN 3º
+		
+		vistas = new ArrayList<>();
+		
+		List<IGUI> aux = new ArrayList<>();
+		
+		//GUI Principal
+		aux.add(guiPrincipal);
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs CLIENTE
+		aux.add(new GUICliente());
+		aux.add(new VAltaCliente());
+		aux.add(new VBajaCliente());
+		aux.add(new VModificar("Cliente"));
+		aux.add(new VMostrarUno("Cliente"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs TRABAJADOR
+		aux.add(new GUITrabajador());
+		aux.add(new VAltaTrabajador());
+		aux.add(new VBajaTrabajador());
+		aux.add(new VModificar("Trabajador"));
+		aux.add(new VMostrarUno("Trabajador"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//TODO GUIs VENTA
+		vistas.add(new ArrayList<>());
+		
+		//GUIs ALMACEN
+		aux.add(new GUIAlmacen());
+		aux.add(new VAltaAlmacen());
+		aux.add(new VBajaAlmacen());
+		aux.add(new VModificar("Almacen"));
+		aux.add(new VMostrarUno("Almacen"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs PRODUCTO
+		aux.add(new GUIProducto());
+		aux.add(new VAltaProducto());
+		aux.add(new VBajaProducto());
+		aux.add(new VModificar("Producto"));
+		aux.add(new VMostrarUno("Producto"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs PRODUCTO
+		aux.add(new GUIProveedor());
+		aux.add(new VAltaProveedor());
+		aux.add(new VBajaProveedor());
+		aux.add(new VModificar("Proveedor"));
+		aux.add(new VMostrarUno("Proveedor"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs MARCA
+		aux.add(new GUIMarca());
+		aux.add(new VAltaMarca());
+		aux.add(new VBajaMarca());
+		aux.add(new VModificar("Marca"));
+		aux.add(new VMostrarUno("Marca"));
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
+		
+		//GUIs PROVEEDOR-PRODUCTO
+		aux.add(new GUIProveedorProducto());
+		aux.add(new VAniadirProveedor());
+		aux.add(new VEliminarProveedor());
+		aux.add(new VEliminarProveedores());
+		vistas.add(new ArrayList<>(aux));
+		aux.clear();
 	}
 
 }

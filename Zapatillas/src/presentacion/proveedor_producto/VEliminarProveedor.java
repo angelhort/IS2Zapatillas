@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VEliminarProveedor extends JFrame{
+public class VEliminarProveedor extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,6 @@ public class VEliminarProveedor extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -53,7 +53,7 @@ public class VEliminarProveedor extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
-				VEliminarProveedor.this.dispose();
+				VEliminarProveedor.this.setVisible(false);
 			}
 			
 		};
@@ -73,5 +73,13 @@ public class VEliminarProveedor extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIEliminarProveedor : this.setVisible(true);
+		break;
+	}
 	}
 }

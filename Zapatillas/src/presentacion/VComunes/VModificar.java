@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VModificar extends JFrame{
+public class VModificar extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,11 +30,10 @@ public class VModificar extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
-		JLabel label = ComponentsBuilder.createLabel("Modificar un " + entidad, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
+		JLabel label = ComponentsBuilder.createLabel("Modificar un " + entidad, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 19));
 		this.add(label);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -66,8 +66,7 @@ public class VModificar extends JFrame{
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}
-				
-				VModificar.this.dispose();
+				VModificar.this.setVisible(false);
 			}
 			
 		};
@@ -87,5 +86,18 @@ public class VModificar extends JFrame{
 		};
 		
 		atrasButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIModificarMarca:
+		case Evento.GUIModificarProveedor:
+		case Evento.GUIModificarProducto:
+		case Evento.GUIModificarAlmacen:
+		case Evento.GUIModificarTrabajador: 
+		case Evento.GUIModificarCliente : this.setVisible(true);
+		break;
+	}
 	}
 }

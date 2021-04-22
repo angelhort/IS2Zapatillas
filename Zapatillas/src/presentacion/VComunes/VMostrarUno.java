@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VMostrarUno extends JFrame{
+public class VMostrarUno extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,7 +30,6 @@ public class VMostrarUno extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -66,8 +66,7 @@ public class VMostrarUno extends JFrame{
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}
-				
-				VMostrarUno.this.dispose();
+				VMostrarUno.this.setVisible(false);
 			}
 			
 		};
@@ -87,5 +86,18 @@ public class VMostrarUno extends JFrame{
 		};
 		
 		atrasButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIMostrarUnaMarca:
+		case Evento.GUIMostrarUnProveedor:
+		case Evento.GUIMostrarUnProducto:
+		case Evento.GUIMostrarUnAlmacen:
+		case Evento.GUIMostrarUnTrabajador: 
+		case Evento.GUIMostrarUnCliente: this.setVisible(true);
+		break;
+		}
 	}
 }

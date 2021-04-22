@@ -16,8 +16,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VAltaProducto extends JFrame{
+public class VAltaProducto extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +29,6 @@ public class VAltaProducto extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -77,8 +77,8 @@ public class VAltaProducto extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaProducto.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				VAltaProducto.this.setVisible(false);
 			}
 			
 		};
@@ -143,5 +143,13 @@ public class VAltaProducto extends JFrame{
 		};
 		
 		atrasButton.addActionListener(lAtras);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIAltaProducto: this.setVisible(true);
+		break;
+		}
 	}
 }

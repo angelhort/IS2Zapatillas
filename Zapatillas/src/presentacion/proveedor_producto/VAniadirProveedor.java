@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VAniadirProveedor extends JFrame{
+public class VAniadirProveedor extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,6 @@ public class VAniadirProveedor extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -52,7 +52,7 @@ public class VAniadirProveedor extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAniadirProveedor.this.dispose();
+				VAniadirProveedor.this.setVisible(false);
 				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
@@ -73,5 +73,12 @@ public class VAniadirProveedor extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIAniadirProveedor: this.setVisible(true);
+		}
 	}
 }

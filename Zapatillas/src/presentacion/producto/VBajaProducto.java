@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
+import presentacion.vista.IGUI;
 
-public class VBajaProducto extends JFrame{
+public class VBajaProducto extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,6 @@ public class VBajaProducto extends JFrame{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -46,7 +46,7 @@ public class VBajaProducto extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaProducto.this.dispose();
+				VBajaProducto.this.setVisible(false);
 				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			}
 			
@@ -67,5 +67,13 @@ public class VBajaProducto extends JFrame{
 		};
 		
 		aceptarButton.addActionListener(lAceptar);
+	}
+
+	@Override
+	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIBajaProducto: this.setVisible(true);
+		break;
+		}
 	}
 }
