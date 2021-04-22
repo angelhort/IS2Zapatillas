@@ -2,6 +2,10 @@ package presentacion.controller;
 
 import java.util.List;
 
+import negocio.cliente.SAClienteImp;
+import negocio.cliente.TransferCliente;
+import negocio.sa.SAAbstractFactory;
+
 import java.util.ArrayList;
 
 import presentacion.VComunes.*;
@@ -36,11 +40,14 @@ public class ControllerImp extends Controller{
 		IGUI gui = (vistas.get(evento/100)).get(evento%100);
 		
 		switch(evento) {
-		case Evento.AltaCliente:
-			
-			break;
-			
-			default: gui.actualizar(evento, datos);
+			case Evento.AltaCliente:
+				SAClienteImp t = (SAClienteImp) SAAbstractFactory.getInstance().getSA(evento);
+				
+				t.alta((TransferCliente) datos);
+				
+				break;
+				
+				default: gui.actualizar(evento, datos);
 		}
 	}
 	
