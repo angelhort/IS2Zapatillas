@@ -36,8 +36,11 @@ public class ControllerImp extends Controller{
 		IGUI gui = (vistas.get(evento/100)).get(evento%100);
 		
 		switch(evento) {
+		case Evento.AltaCliente:
 			
-			default: gui.actualizar(evento, null);
+			break;
+			
+			default: gui.actualizar(evento, datos);
 		}
 	}
 	
