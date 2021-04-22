@@ -70,7 +70,8 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.GUIModificarTrabajador, null);
+				GUITrabajador.this.setVisible(false);
 			}
 			
 		};

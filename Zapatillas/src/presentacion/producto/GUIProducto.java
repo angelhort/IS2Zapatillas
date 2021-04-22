@@ -70,7 +70,8 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.GUIModificarProducto, null);
+				GUIProducto.this.setVisible(false);
 			}
 			
 		};

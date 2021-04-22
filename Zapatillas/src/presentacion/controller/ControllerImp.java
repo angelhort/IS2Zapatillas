@@ -4,10 +4,10 @@ import java.util.List;
 
 import java.util.ArrayList;
 
+import presentacion.VComunes.*;
 import presentacion.almacen.*;
 import presentacion.cliente.*;
 import presentacion.marca.*;
-import presentacion.mostrar.*;
 import presentacion.producto.*;
 import presentacion.proveedor.*;
 import presentacion.proveedor_producto.*;
@@ -20,7 +20,7 @@ public class ControllerImp extends Controller{
 	private IGUI gui;
 	private GUIPrincipal guiPrincipal;
 	
-	private List<Object> vistas;
+	private List<IGUI> vistas;
 	
 	public ControllerImp() {
 		
@@ -70,6 +70,10 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnCliente = new VMostrarUno("Cliente");
 				break;
 				
+			case Evento.GUIModificarCliente:
+				VModificar modificarCliente = new VModificar("Cliente");
+				break;
+				
 			case Evento.AltaCliente: 
 				
 				break;
@@ -97,6 +101,10 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnAlmacen = new VMostrarUno("Almacen");
 				break;
 				
+			case Evento.GUIModificarAlmacen:
+				VModificar modificarAlmacen = new VModificar("Almacen");
+				break;
+				
 				
 			//MARCA
 				
@@ -114,6 +122,10 @@ public class ControllerImp extends Controller{
 				
 			case Evento.GUIMostrarUnaMarca:
 				VMostrarUno mostrarUnaMarca = new VMostrarUno("Marca");
+				break;
+				
+			case Evento.GUIModificarMarca:
+				VModificar modificarMarca = new VModificar("Marca");
 				break;
 				
 				
@@ -135,6 +147,10 @@ public class ControllerImp extends Controller{
 				VMostrarUno mostrarUnProducto = new VMostrarUno("Producto");
 				break;
 				
+			case Evento.GUIModificarProducto:
+				VModificar modificarProducto = new VModificar("Producto");
+				break;
+				
 				
 			//PROVEEDOR
 				
@@ -152,6 +168,10 @@ public class ControllerImp extends Controller{
 				
 			case Evento.GUIMostrarUnProveedor:
 				VMostrarUno mostrarUnProveedor = new VMostrarUno("Proveedor");
+				break;
+				
+			case Evento.GUIModificarProveedor:
+				VModificar modificarProveedor = new VModificar("Proveedor");
 				break;
 				
 				
@@ -172,6 +192,10 @@ public class ControllerImp extends Controller{
 				
 			case Evento.GUIMostrarUnTrabajador:
 				VMostrarUno mostrarUnTrabajador = new VMostrarUno("Trabajador");
+				break;
+				
+			case Evento.GUIModificarTrabajador:
+				VModificar modificarTrabajador = new VModificar("Trabajador");
 				break;
 				
 				

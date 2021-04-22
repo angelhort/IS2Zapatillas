@@ -70,7 +70,8 @@ public class GUIAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.GUIModificarAlmacen, null);
+				GUIAlmacen.this.setVisible(false);
 			}
 			
 		};

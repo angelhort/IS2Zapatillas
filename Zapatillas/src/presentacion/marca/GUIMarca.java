@@ -70,7 +70,8 @@ public class GUIMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.GUIModificarMarca, null);
+				GUIMarca.this.setVisible(false);
 			}
 			
 		};

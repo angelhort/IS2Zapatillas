@@ -71,7 +71,8 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.GUIModificarCliente, null);
+				GUICliente.this.setVisible(false);
 			}
 			
 		};

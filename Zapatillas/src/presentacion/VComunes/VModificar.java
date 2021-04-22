@@ -1,4 +1,4 @@
-package presentacion.mostrar;
+package presentacion.VComunes;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,13 +15,13 @@ import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 
-public class VMostrarUno extends JFrame{
+public class VModificar extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
 	private String entidad = null;
 	
-	public VMostrarUno(String entidad){
+	public VModificar(String entidad){
 		super("Foot World");
 		this.entidad = entidad;
 		this.setBounds(100, 100, 330, 230);
@@ -33,7 +33,7 @@ public class VMostrarUno extends JFrame{
 	}
 	
 	public void initGUI() {
-		JLabel label = ComponentsBuilder.createLabel("Mostrar un " + entidad, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
+		JLabel label = ComponentsBuilder.createLabel("Modificar un " + entidad, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
 		this.add(label);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -67,7 +67,7 @@ public class VMostrarUno extends JFrame{
 				
 				}
 				
-				VMostrarUno.this.dispose();
+				VModificar.this.dispose();
 			}
 			
 		};
