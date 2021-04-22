@@ -9,4 +9,6 @@ ii. Desde el desplegable de `File` elegir `Import project`
 iii. Navegar hasta la carpeta del proyecto y seleccionarla. Si reconoce la clase, darle a `Import`.
 
 ## Tareas
-- [ ] Añadir tareas
+- [ ] Vista venta
+- [ ] Mostrar resultados por pantalla
+- [ ] Vista mostrar todo
