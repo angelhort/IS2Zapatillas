@@ -30,10 +30,17 @@ public class ControllerImp extends Controller{
 		initGUIs();
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public void action(int evento, Object datos) {
 		
-		IGUI gui = (vistas.get(evento/100)).get(evento%100);			
+		IGUI gui;
+		
+		if(((evento/10) % 10) == 0)
+			gui = (vistas.get(evento/100)).get(evento%100);			
+		
+		else
+			gui = null;
 		
 		switch(evento) {
 			case Evento.AltaCliente:
@@ -42,8 +49,12 @@ public class ControllerImp extends Controller{
 				t.alta((TransferCliente) datos);
 				
 				break;
+			case Evento.ModificarCliente:
+				//TODO MANDAR EL ID A LA BD Y QUE DEVUELVA UN TRANSFER CON LOS DATOS DE LA ENTIDAD
+				vistas.get(1).get(0).actualizar(Evento.ModificarCliente, new TransferCliente("Angel Hortelano", true, "98765432P")); //PARA PROBAR QUE FUNCIONA
+				break;
 				
-				default: gui.actualizar(evento, datos);
+			default: gui.actualizar(evento, datos);
 		}
 	}
 	

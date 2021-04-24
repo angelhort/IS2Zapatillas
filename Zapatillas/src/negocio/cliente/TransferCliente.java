@@ -18,4 +18,20 @@ public class TransferCliente {
 		this.DNI = DNI;
 		this.ID = ID;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public boolean isSocio() {
+		return socio;
+	}
+
+	public String getDNI() {
+		return DNI;
+	}
+
+	public int getID() {
+		return ID;
+	}
 }
