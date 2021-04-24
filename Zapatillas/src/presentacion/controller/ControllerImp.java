@@ -21,23 +21,19 @@ import presentacion.vista.IGUI;
 
 public class ControllerImp extends Controller{
 	
-	private GUIPrincipal guiPrincipal;
-	
 	private List<List<IGUI>> vistas;
 	
 	public ControllerImp() {
 		//SE INICIALIZAN TODAS LAS VISTAS Y SE INTRODUCEN EN LA MATRIZ VISTAS
 		// LOS EVENTOS TIENEN 3 NUMEROS: EL PRIMERO REPRESENTA LA ENTIDAD Y EL ULTIMO LA FUNCION
 		
-		guiPrincipal = new GUIPrincipal();
-		
 		initGUIs();
 	}
 
 	@Override
 	public void action(int evento, Object datos) {
-
-		IGUI gui = (vistas.get(evento/100)).get(evento%100);
+		
+		IGUI gui = (vistas.get(evento/100)).get(evento%100);			
 		
 		switch(evento) {
 			case Evento.AltaCliente:
@@ -60,7 +56,7 @@ public class ControllerImp extends Controller{
 		List<IGUI> aux = new ArrayList<>();
 		
 		//GUI Principal
-		aux.add(guiPrincipal);
+		aux.add(new GUIPrincipal());
 		vistas.add(new ArrayList<>(aux));
 		aux.clear();
 		

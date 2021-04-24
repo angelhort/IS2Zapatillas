@@ -14,8 +14,10 @@ public class Evento {
 	public static final int GUIMostrarUnCliente = 104;
 	public static final int GUIMostrarTodosLosClientes = 105;
 	
-	public static final int AltaCliente = 106;
-	public static final int BajaCliente = 107;
+	public static final int AltaCliente = 110;
+	public static final int BajaCliente = 111;
+	public static final int ModificarCliente = 112;
+	
 	
 	// TRABAJADOR DE 200-299
 	
@@ -26,11 +28,17 @@ public class Evento {
 	public static final int GUIMostrarUnTrabajador = 204;
 	public static final int GUIMostrarTodosLosTrabajadores = 205;
 	
+	public static final int AltaTrabajador = 210;
+	public static final int BajaTrabajador = 211;
+	public static final int ModificarTrabajador = 212;
+	
+	
 	// VENTA DE 300-399
 	
 	public static final int MostrarGUIVenta = 300;
 	public static final int GUIAbrirVenta = 301;
 	public static final int GUICerrarVenta = 302;
+	
 	
 	// ALMACEN DE 400-499
 	
@@ -41,6 +49,11 @@ public class Evento {
 	public static final int GUIMostrarUnAlmacen = 404;
 	public static final int GUIMostrarTodosLosAlmacenes = 405;
 	
+	public static final int AltaAlmacen = 410;
+	public static final int BajaAlmacen = 411;
+	public static final int ModificarAlmacen = 412;
+	
+	
 	// PRODUCTO DE 500-599
 	
 	public static final int MostrarGUIProducto = 500;
@@ -49,6 +62,11 @@ public class Evento {
 	public static final int GUIModificarProducto = 503;
 	public static final int GUIMostrarUnProducto = 504;
 	public static final int GUIMostrarTodosLosProductos = 505;
+	
+	public static final int AltaProducto = 510;
+	public static final int BajaProducto = 511;
+	public static final int ModificarProducto = 512;
+	
 	
 	// PROVEEDOR DE 600-699
 	
@@ -59,6 +77,11 @@ public class Evento {
 	public static final int GUIMostrarUnProveedor = 604;
 	public static final int GUIMostrarTodosLosProveedor = 605;
 	
+	public static final int AltaProveedor = 610;
+	public static final int BajaProveedor = 611;
+	public static final int ModificarProveedor = 612;
+	
+	
 	// MARCA DE 700-799
 	
 	public static final int MostrarGUIMarca = 700;
@@ -67,6 +90,11 @@ public class Evento {
 	public static final int GUIModificarMarca = 703;
 	public static final int GUIMostrarUnaMarca = 704;
 	public static final int GUIMostrarTodasLasMarcas = 705;
+	
+	public static final int AltaMarca = 710;
+	public static final int BajaMarca = 711;
+	public static final int ModificarMarca = 712;
+	
 	
 	//PROVEEDOR-PRODUCTP DE 800-899
 	

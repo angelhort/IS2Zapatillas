@@ -80,12 +80,29 @@ public class VModificar extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				switch(entidad) {
+				case "Cliente": Controller.getInstance().action(Evento.ModificarCliente, null);
+				break;
+				case "Almacen": Controller.getInstance().action(Evento.ModificarAlmacen, null);
+				break;
+				case "Trabajador": Controller.getInstance().action(Evento.ModificarTrabajador, null);
+				break;
+				case "Marca": Controller.getInstance().action(Evento.ModificarMarca, null);
+				break;
+				case "Producto": Controller.getInstance().action(Evento.ModificarProducto, null);
+				break;
+				case "Proveedor": Controller.getInstance().action(Evento.ModificarProveedor, null);
+				break;
 				
+				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
+				
+				}
+				VModificar.this.setVisible(false);
 			}
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 
 	@Override
