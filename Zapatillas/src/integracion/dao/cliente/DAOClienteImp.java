@@ -2,6 +2,7 @@ package integracion.dao.cliente;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -15,15 +16,22 @@ public class DAOClienteImp implements DAOCliente {
 	@Override
 	public int alta(TransferCliente transfer) {
 		Connection conn = DatabaseConnection.getConnection();
-		String insert = String.format("INSERT INTO CLIENTES(nombre, socio, DNI) VALUES (%s, %d, %s)", 
-										transfer.getNombre(),
-										transfer.isSocio(),
-										transfer.getDNI());
+		String insert = "INSERT INTO Clientes(nombre, socio, DNI) VALUES (?, ?, ?)";
 		int result = -1;
 		
 		try {
-			Statement statment = conn.createStatement();
-			result = statment.executeUpdate(insert);
+			PreparedStatement statment = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			statment.setString(1, transfer.getNombre());
+			statment.setBoolean(2, transfer.isSocio());
+			statment.setString(3, transfer.getDNI());
+			
+			statment.executeUpdate();
+			
+			ResultSet resultSet = statment.getGeneratedKeys();
+			
+			if (resultSet.next())
+				result = resultSet.getInt(1);
 			
 			statment.close();
 			conn.close();
@@ -36,14 +44,36 @@ public class DAOClienteImp implements DAOCliente {
 
 	@Override
 	public int baja(int ID) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Clientes SET activo=? WHERE idCliente=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statment = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			statment.setBoolean(1, false);
+			statment.setInt(2, ID);
+			
+			statment.executeUpdate();
+			
+			ResultSet resultSet = statment.getGeneratedKeys();
+			
+			if (resultSet.next())
+				result = resultSet.getInt(1);
+			
+			statment.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
 	public TransferCliente getCliente(int ID) {
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Clientes WHERE ID = %d", ID);
+		String query = String.format("SELECT * FROM Clientes WHERE idCliente = %d", ID);
 		
 		TransferCliente cliente = null;
 
@@ -53,9 +83,10 @@ public class DAOClienteImp implements DAOCliente {
 			
 			if (resultSet.next()) {
 				cliente = new TransferCliente(resultSet.getInt("idCliente"),
-															  resultSet.getString("nombre"),
-															  resultSet.getBoolean("socio"),
-															  resultSet.getString("DNI"));
+											  resultSet.getString("nombre"),
+											  resultSet.getBoolean("socio"),
+											  resultSet.getString("DNI"),
+											  resultSet.getBoolean("activo"));
 			}
 			
 			resultSet.close();
@@ -84,7 +115,8 @@ public class DAOClienteImp implements DAOCliente {
 				TransferCliente cliente = new TransferCliente(resultSet.getInt("idCliente"),
 															  resultSet.getString("nombre"),
 															  resultSet.getBoolean("socio"),
-															  resultSet.getString("DNI"));
+															  resultSet.getString("DNI"),
+															  resultSet.getBoolean("activo"));
 				clientes.add(cliente);
 			}
 			

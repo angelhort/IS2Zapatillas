@@ -3,6 +3,7 @@ package negocio.cliente;
 public class TransferCliente {
 	private String nombre;
 	private boolean socio;
+	private boolean activo;
 	private String DNI;
 	private int ID;
 	
@@ -12,11 +13,12 @@ public class TransferCliente {
 		this.DNI = DNI;
 	}
 	
-	public TransferCliente(int ID, String nombre, boolean socio, String DNI) {
+	public TransferCliente(int ID, String nombre, boolean socio, String DNI, boolean activo) {
 		this.ID = ID;
 		this.nombre = nombre;
 		this.socio = socio;
 		this.DNI = DNI;
+		this.activo = activo;
 	}
 
 	public String getNombre() {
@@ -33,5 +35,9 @@ public class TransferCliente {
 
 	public int getID() {
 		return ID;
+	}
+	
+	public boolean getActivo() {
+		return activo;
 	}
 }
