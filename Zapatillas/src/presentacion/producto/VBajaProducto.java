@@ -27,6 +27,7 @@ public class VBajaProducto extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -46,7 +47,7 @@ public class VBajaProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VBajaProducto.this.setVisible(false);
+				VBajaProducto.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			}
 			
@@ -71,9 +72,6 @@ public class VBajaProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.GUIBajaProducto: this.setVisible(true);
-		break;
-		}
+	
 	}
 }

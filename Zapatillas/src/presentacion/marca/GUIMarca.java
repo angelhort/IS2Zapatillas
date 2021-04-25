@@ -26,6 +26,7 @@ public class GUIMarca extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -41,7 +42,7 @@ public class GUIMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAltaMarca, null);
-				GUIMarca.this.setVisible(false);
+				GUIMarca.this.dispose();
 			}
 			
 		};
@@ -56,7 +57,7 @@ public class GUIMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIBajaMarca, null);
-				GUIMarca.this.setVisible(false);
+				GUIMarca.this.dispose();
 			}
 			
 		};
@@ -71,7 +72,7 @@ public class GUIMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIModificarMarca, null);
-				GUIMarca.this.setVisible(false);
+				GUIMarca.this.dispose();
 			}
 			
 		};
@@ -86,7 +87,7 @@ public class GUIMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIMostrarUnaMarca, null);
-				GUIMarca.this.setVisible(false);
+				GUIMarca.this.dispose();
 			}
 			
 		};
@@ -125,8 +126,6 @@ public class GUIMarca extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.MostrarGUIMarca: this.setVisible(true);
-		}
+		
 	}
 }

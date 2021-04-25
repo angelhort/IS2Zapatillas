@@ -26,6 +26,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -41,7 +42,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAltaTrabajador, null);
-				GUITrabajador.this.setVisible(false);
+				GUITrabajador.this.dispose();
 			}
 			
 		};
@@ -56,7 +57,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIBajaTrabajador, null);
-				GUITrabajador.this.setVisible(false);
+				GUITrabajador.this.dispose();
 			}
 			
 		};
@@ -71,7 +72,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIModificarTrabajador, null);
-				GUITrabajador.this.setVisible(false);
+				GUITrabajador.this.dispose();
 			}
 			
 		};
@@ -86,7 +87,7 @@ public class GUITrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIMostrarUnTrabajador, null);
-				GUITrabajador.this.setVisible(false);
+				GUITrabajador.this.dispose();
 			}
 			
 		};
@@ -126,9 +127,6 @@ public class GUITrabajador extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		
-		switch(evento) {
-		case Evento.MostrarGUITrabajador: this.setVisible(true);
-		}
 		
 	}
 }

@@ -27,6 +27,7 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -53,7 +54,7 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
-				VAltaTrabajador.this.setVisible(false);
+				VAltaTrabajador.this.dispose();
 			}
 			
 		};
@@ -77,9 +78,6 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.GUIAltaTrabajador : this.setVisible(true);
-		break;
-		}
+		
 	}
 }

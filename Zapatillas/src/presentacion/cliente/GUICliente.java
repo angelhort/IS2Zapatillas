@@ -29,6 +29,7 @@ public class GUICliente extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -45,7 +46,7 @@ public class GUICliente extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAltaCliente, null);
-				GUICliente.this.setVisible(false);
+				GUICliente.this.dispose();
 			}
 			
 		};
@@ -60,7 +61,7 @@ public class GUICliente extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIBajaCliente, null);
-				GUICliente.this.setVisible(false);
+				GUICliente.this.dispose();
 			}
 			
 		};
@@ -75,7 +76,7 @@ public class GUICliente extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIModificarCliente, null);
-				GUICliente.this.setVisible(false);
+				GUICliente.this.dispose();
 			}
 			
 		};
@@ -90,7 +91,7 @@ public class GUICliente extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIMostrarUnCliente, null);
-				GUICliente.this.setVisible(false);
+				GUICliente.this.dispose();
 			}
 			
 		};
@@ -129,11 +130,9 @@ public class GUICliente extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		
-		switch(evento) {
-		case Evento.MostrarGUICliente: this.setVisible(true);
-		break;
-		
+		switch(evento) {		
 		case Evento.ModificarCliente:
+			this.setVisible(false);
 			initModificar((TransferCliente) datos);
 		break;	
 		}

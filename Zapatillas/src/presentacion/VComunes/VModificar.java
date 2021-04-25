@@ -30,6 +30,7 @@ public class VModificar extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -66,7 +67,7 @@ public class VModificar extends JFrame implements IGUI{
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}
-				VModificar.this.setVisible(false);
+				VModificar.this.dispose();
 			}
 			
 		};
@@ -97,7 +98,7 @@ public class VModificar extends JFrame implements IGUI{
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());			
 				
 				}
-				VModificar.this.setVisible(false);
+				VModificar.this.dispose();
 			}
 			
 		};
@@ -107,14 +108,6 @@ public class VModificar extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.GUIModificarMarca:
-		case Evento.GUIModificarProveedor:
-		case Evento.GUIModificarProducto:
-		case Evento.GUIModificarAlmacen:
-		case Evento.GUIModificarTrabajador: 
-		case Evento.GUIModificarCliente : this.setVisible(true);
-		break;
-	}
+		
 	}
 }

@@ -26,6 +26,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -41,7 +42,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAniadirProveedor, null);
-				GUIProveedorProducto.this.setVisible(false);
+				GUIProveedorProducto.this.dispose();
 			}
 			
 		};
@@ -56,7 +57,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIEliminarProveedor, null);
-				GUIProveedorProducto.this.setVisible(false);
+				GUIProveedorProducto.this.dispose();
 			}
 			
 		};
@@ -71,7 +72,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIEliminarProveedores, null);
-				GUIProveedorProducto.this.setVisible(false);
+				GUIProveedorProducto.this.dispose();
 			}
 			
 		};
@@ -85,7 +86,7 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 				GUIProveedorProducto.this.dispose();
 			}
 			
@@ -96,8 +97,6 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.MostrarGUIProveedorProducto: this.setVisible(true);
-		}
+		
 	}
 }
