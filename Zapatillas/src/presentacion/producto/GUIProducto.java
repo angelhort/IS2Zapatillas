@@ -26,6 +26,7 @@ public class GUIProducto extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -41,7 +42,7 @@ public class GUIProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAltaProducto, null);
-				GUIProducto.this.setVisible(false);
+				GUIProducto.this.dispose();
 			}
 			
 		};
@@ -56,7 +57,7 @@ public class GUIProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIBajaProducto, null);
-				GUIProducto.this.setVisible(false);
+				GUIProducto.this.dispose();
 			}
 			
 		};
@@ -71,7 +72,7 @@ public class GUIProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIModificarProducto, null);
-				GUIProducto.this.setVisible(false);
+				GUIProducto.this.dispose();
 			}
 			
 		};
@@ -86,7 +87,7 @@ public class GUIProducto extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIMostrarUnProducto, null);
-				GUIProducto.this.setVisible(false);
+				GUIProducto.this.dispose();
 			}
 			
 		};
@@ -125,8 +126,6 @@ public class GUIProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.MostrarGUIProducto: this.setVisible(true);
-		}
+	
 	}
 }

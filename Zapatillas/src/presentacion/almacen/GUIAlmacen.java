@@ -9,7 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
+import negocio.almacen.TransferAlmacen;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -26,6 +28,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 
@@ -41,7 +44,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIAltaAlmacen, null);
-				GUIAlmacen.this.setVisible(false);
+				GUIAlmacen.this.dispose();
 			}
 			
 		};
@@ -56,7 +59,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIBajaAlmacen, null);
-				GUIAlmacen.this.setVisible(false);
+				GUIAlmacen.this.dispose();
 			}
 			
 		};
@@ -71,7 +74,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIModificarAlmacen, null);
-				GUIAlmacen.this.setVisible(false);
+				GUIAlmacen.this.dispose();
 			}
 			
 		};
@@ -86,7 +89,7 @@ public class GUIAlmacen extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.GUIMostrarUnAlmacen, null);
-				GUIAlmacen.this.setVisible(false);
+				GUIAlmacen.this.dispose();
 			}
 			
 		};
@@ -125,8 +128,76 @@ public class GUIAlmacen extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.MostrarGUIAlmacen: this.setVisible(true);
+		switch(evento) {		
+		case Evento.ModificarAlmacen:
+			this.setVisible(false);
+			initModificar((TransferAlmacen) datos);
+		break;	
 		}
+	}
+
+
+	private void initModificar(TransferAlmacen datos) {
+		
+		JFrame modificar = new JFrame("Foot World");
+		
+		modificar.setBounds(100, 100, 330, 350);
+		modificar.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
+		modificar.setLayout(null);
+		modificar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		modificar.setVisible(true);
+		
+		JLabel labelAlmacen = ComponentsBuilder.createLabel("Alta Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+		modificar.add(labelAlmacen);
+		
+		JLabel labelDireccion = ComponentsBuilder.createLabel("Direccion:", 10, 100, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		modificar.add(labelDireccion);
+		
+		JTextField fieldDireccion = ComponentsBuilder.createTextField(80, 100, 220, 20);
+		fieldDireccion.setText(datos.getDireccion());
+		modificar.add(fieldDireccion);
+		
+		JLabel labelTelef = ComponentsBuilder.createLabel("Telefono:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		modificar.add(labelTelef);
+		
+		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 150, 220, 20);
+		fieldTelef.setText("" + datos.getTelefono());
+		modificar.add(fieldTelef);
+		
+		JLabel labelCapacidad = ComponentsBuilder.createLabel("Capacidad:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 12));
+		modificar.add(labelCapacidad);
+		
+		JTextField fieldCapacidad = ComponentsBuilder.createTextField(80, 200, 220, 20);
+		fieldCapacidad.setText("" + datos.getCapacidad());
+		modificar.add(fieldCapacidad);
+		
+		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
+		modificar.add(atrasButton);
+		
+		ActionListener lAtras = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modificar.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+			}
+			
+		};
+		
+		atrasButton.addActionListener(lAtras);
+		
+		JButton aceptarButton = ComponentsBuilder.createButton("Aceptar", 115, 250, 100, 30, new Font("Serif", Font.PLAIN, 14));
+		modificar.add(aceptarButton);
+		
+		ActionListener lAceptar = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		};
+		
+		aceptarButton.addActionListener(lAceptar);
 	}
 }

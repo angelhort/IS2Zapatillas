@@ -27,6 +27,7 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -47,7 +48,7 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
-				VBajaTrabajador.this.setVisible(false);
+				VBajaTrabajador.this.dispose();
 			}
 			
 		};
@@ -71,9 +72,6 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.GUIBajaTrabajador : this.setVisible(true);
-		break;
-		}
+		
 	}
 }

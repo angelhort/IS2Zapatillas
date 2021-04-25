@@ -30,6 +30,7 @@ public class VMostrarUno extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -66,7 +67,7 @@ public class VMostrarUno extends JFrame implements IGUI{
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}
-				VMostrarUno.this.setVisible(false);
+				VMostrarUno.this.dispose();
 			}
 			
 		};
@@ -90,14 +91,6 @@ public class VMostrarUno extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.GUIMostrarUnaMarca:
-		case Evento.GUIMostrarUnProveedor:
-		case Evento.GUIMostrarUnProducto:
-		case Evento.GUIMostrarUnAlmacen:
-		case Evento.GUIMostrarUnTrabajador: 
-		case Evento.GUIMostrarUnCliente: this.setVisible(true);
-		break;
-		}
+		
 	}
 }

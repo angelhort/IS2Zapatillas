@@ -27,6 +27,7 @@ public class VAltaMarca extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
+		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -47,7 +48,7 @@ public class VAltaMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
-				VAltaMarca.this.setVisible(false);
+				VAltaMarca.this.dispose();
 			}
 			
 		};
@@ -71,9 +72,6 @@ public class VAltaMarca extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-			case Evento.GUIAltaMarca: this.setVisible(true);
-			break;
-		}
+		
 	}
 }

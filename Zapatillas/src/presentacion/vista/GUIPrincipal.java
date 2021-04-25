@@ -25,8 +25,8 @@ public class GUIPrincipal extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
 		initGUI();
+		this.setVisible(true);
 	}
 
 	private void initGUI() {
