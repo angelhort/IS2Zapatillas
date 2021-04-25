@@ -12,11 +12,11 @@ public class TransferCliente {
 		this.DNI = DNI;
 	}
 	
-	public TransferCliente(String nombre, boolean socio, String DNI, int ID) {
+	public TransferCliente(int ID, String nombre, boolean socio, String DNI) {
+		this.ID = ID;
 		this.nombre = nombre;
 		this.socio = socio;
 		this.DNI = DNI;
-		this.ID = ID;
 	}
 
 	public String getNombre() {
