@@ -12,3 +12,4 @@ iii. Navegar hasta la carpeta del proyecto y seleccionarla. Si reconoce la clase
 - [ ] Vista venta
 - [ ] Mostrar resultados por pantalla
 - [ ] Vista mostrar todo
+- [ ] Cambiar stock de productos de bool a int
