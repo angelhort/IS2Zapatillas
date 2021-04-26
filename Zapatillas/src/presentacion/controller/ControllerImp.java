@@ -26,11 +26,15 @@ public class ControllerImp extends Controller{
 		
 		switch(evento) {
 			case Evento.AltaCliente:
+				// GUILLE TODO: Es necesario guardarlo en una variable ID?
 				int id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				break;
 			case Evento.ModificarCliente:
-				//TODO MANDAR EL ID A LA BD Y QUE DEVUELVA UN TRANSFER CON LOS DATOS DE LA ENTIDAD
-				gui.actualizar(Evento.ModificarCliente, new TransferCliente("Angel Hortelano", true, "98765432P")); //PARA PROBAR QUE FUNCIONA
+				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
+				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
+				
+				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno((int)datos);
+				gui.actualizar(Evento.ModificarCliente, cliente);
 				break;
 				
 			case Evento.ModificarAlmacen:
