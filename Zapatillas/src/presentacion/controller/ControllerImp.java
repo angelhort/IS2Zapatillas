@@ -32,8 +32,7 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarCliente:
 				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
 				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
-				
-				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno((int)datos);
+				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.ModificarCliente, cliente);
 				break;
 				

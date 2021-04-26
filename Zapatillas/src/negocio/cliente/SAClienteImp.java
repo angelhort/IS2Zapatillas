@@ -33,8 +33,7 @@ public class SAClienteImp implements SACliente {
 
 	@Override
 	public TransferCliente mostrarUno(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return DAOAbstractFactory.getInstance().getDAOCliente().getCliente(id);
 	}
 
 	@Override
