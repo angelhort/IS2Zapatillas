@@ -41,7 +41,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
@@ -56,7 +56,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			}
 			
@@ -71,7 +71,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 			}
 			
 		};
@@ -85,7 +85,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}
 			
@@ -100,7 +100,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			}
 			
@@ -115,7 +115,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 			}
 			
@@ -130,7 +130,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
@@ -145,7 +145,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIPrincipal.this.setVisible(false);
+				GUIPrincipal.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
@@ -158,11 +158,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		switch(evento) {
-		case Evento.MostrarGUIPrincipal:
-			this.setVisible(true);
-			break;
-		}
+		
 	}
 	
 }
