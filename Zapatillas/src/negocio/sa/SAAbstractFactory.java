@@ -1,5 +1,7 @@
 package negocio.sa;
 
+import negocio.cliente.SACliente;
+
 public abstract class SAAbstractFactory {
 	
 	private static SAAbstractFactory instance;
@@ -9,6 +11,5 @@ public abstract class SAAbstractFactory {
 		return instance;
 	}
 	
-	public abstract Object getSA(int evento);
-
+	public abstract SACliente getSACliente();
 }

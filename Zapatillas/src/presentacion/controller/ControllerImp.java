@@ -27,10 +27,7 @@ public class ControllerImp extends Controller{
 		
 		switch(evento) {
 			case Evento.AltaCliente:
-				SAClienteImp t = (SAClienteImp) SAAbstractFactory.getInstance().getSA(evento);
-				
-				t.alta((TransferCliente) datos);
-				
+				int id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				break;
 			case Evento.ModificarCliente:
 				//TODO MANDAR EL ID A LA BD Y QUE DEVUELVA UN TRANSFER CON LOS DATOS DE LA ENTIDAD

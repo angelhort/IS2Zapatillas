@@ -2,12 +2,21 @@ package negocio.cliente;
 
 import java.util.List;
 
+import integracion.dao.DAOAbstractFactory;
+
 public class SAClienteImp implements SACliente {
 
 	@Override
 	public int alta(TransferCliente t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int id = -1;
+		
+		if(t.getDNI().length() == 9) {
+			if(t.getNombre().length() < 30) { //TODO SUSTITUIR 30 POR EL LIMITE QUE HAYA EN LA BD
+				id = DAOAbstractFactory.getInstance().getDAOCliente().alta(t);
+			}
+		}
+		
+		return id;
 	}
 
 	@Override

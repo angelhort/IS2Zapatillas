@@ -1,19 +1,12 @@
 package negocio.sa;
 
+import negocio.cliente.SACliente;
 import negocio.cliente.SAClienteImp;
 
 public class SAFactoryImp  extends SAAbstractFactory {
 
 	@Override
-	public Object getSA(int evento) {
-		
-		int entity = evento / 100;
-		
-		switch (entity) {
-			case 1:
-				return new SAClienteImp();
-		}
-		
-		return null;
-	}
+	public SACliente getSACliente() {
+		return new SAClienteImp();
+	}	
 }
