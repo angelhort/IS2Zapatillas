@@ -20,20 +20,20 @@ public class DAOClienteImp implements DAOCliente {
 		int result = -1;
 		
 		try {
-			PreparedStatement statment = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			statment.setString(1, transfer.getNombre());
-			statment.setBoolean(2, transfer.isSocio());
-			statment.setString(3, transfer.getDNI());
+			statement.setString(1, transfer.getNombre());
+			statement.setBoolean(2, transfer.isSocio());
+			statement.setString(3, transfer.getDNI());
 			
-			statment.executeUpdate();
+			statement.executeUpdate();
 			
-			ResultSet resultSet = statment.getGeneratedKeys();
+			ResultSet resultSet = statement.getGeneratedKeys();
 			
 			if (resultSet.next())
 				result = resultSet.getInt(1);
 			
-			statment.close();
+			statement.close();
 			conn.close();
 		} catch(SQLException ex) {
 			ex.printStackTrace();
@@ -49,19 +49,19 @@ public class DAOClienteImp implements DAOCliente {
 		int result = -1;
 		
 		try {
-			PreparedStatement statment = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			statment.setBoolean(1, false);
-			statment.setInt(2, ID);
+			statement.setBoolean(1, false);
+			statement.setInt(2, ID);
 			
-			statment.executeUpdate();
+			statement.executeUpdate();
 			
-			ResultSet resultSet = statment.getGeneratedKeys();
+			ResultSet resultSet = statement.getGeneratedKeys();
 			
 			if (resultSet.next())
 				result = resultSet.getInt(1);
 			
-			statment.close();
+			statement.close();
 			conn.close();
 		} catch(SQLException ex) {
 			ex.printStackTrace();
@@ -78,8 +78,8 @@ public class DAOClienteImp implements DAOCliente {
 		TransferCliente cliente = null;
 
 		try {
-			Statement statment = conn.createStatement();
-			ResultSet resultSet = statment.executeQuery(query);
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 			
 			if (resultSet.next()) {
 				cliente = new TransferCliente(resultSet.getInt("idCliente"),
@@ -90,7 +90,36 @@ public class DAOClienteImp implements DAOCliente {
 			}
 			
 			resultSet.close();
-			statment.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return cliente;
+	}
+	
+	@Override
+	public TransferCliente getCliente(String DNI) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Clientes WHERE DNI = %d", DNI);
+		
+		TransferCliente cliente = null;
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next()) {
+				cliente = new TransferCliente(resultSet.getInt("idCliente"),
+											  resultSet.getString("nombre"),
+											  resultSet.getBoolean("socio"),
+											  resultSet.getString("DNI"),
+											  resultSet.getBoolean("activo"));
+			}
+			
+			resultSet.close();
+			statement.close();
 			conn.close();
 		} catch(SQLException ex) {
 			ex.printStackTrace();
@@ -107,8 +136,8 @@ public class DAOClienteImp implements DAOCliente {
 		List<TransferCliente> clientes = new ArrayList<>();
 
 		try {
-			Statement statment = conn.createStatement();
-			ResultSet resultSet = statment.executeQuery(query);
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 			
 			
 			while (resultSet.next()) {
@@ -121,7 +150,7 @@ public class DAOClienteImp implements DAOCliente {
 			}
 			
 			resultSet.close();
-			statment.close();
+			statement.close();
 			conn.close();
 		} catch(SQLException ex) {
 			ex.printStackTrace();
@@ -132,8 +161,32 @@ public class DAOClienteImp implements DAOCliente {
 
 	@Override
 	public int modificar(TransferCliente transfer) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Clientes SET nombre=?, socio=?, DNI=?, activo=? WHERE idCliente=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			statement.setString(1, transfer.getNombre());
+			statement.setBoolean(2, transfer.isSocio());
+			statement.setString(3, transfer.getDNI());
+			statement.setBoolean(4, transfer.getActivo());
+			
+			statement.executeUpdate();
+			
+			ResultSet resultSet = statement.getGeneratedKeys();
+			
+			if (resultSet.next())
+				result = resultSet.getInt(1);
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

@@ -9,5 +9,6 @@ public interface DAOCliente {
 	public int baja(int ID);
 	public int modificar(TransferCliente transfer);
 	public TransferCliente getCliente(int ID);
+	public TransferCliente getCliente(String DNI);
 	public List<TransferCliente> getAllClientes();
 }
