@@ -40,9 +40,8 @@ public class ControllerImp extends Controller{
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
 				break;
 				
-			case Evento.ModificarAlmacen:
-				//TODO MANDAR EL ID A LA BD Y QUE DEVUELVA UN TRANSFER CON LOS DATOS DE LA ENTIDAD
-				gui.actualizar(Evento.ModificarAlmacen, new TransferAlmacen(87654329, 5000, "Paseo de la Castellana Nº3")); //PARA PROBAR QUE FUNCIONA
+			case Evento.ModificarCliente:
+				SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);

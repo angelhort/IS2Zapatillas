@@ -22,7 +22,6 @@ public class GUIFactoryImp extends GUIFactory{
 		
 		//CLIENTE
 		case Evento.MostrarGUICliente:
-		case Evento.ModificarCliente:
 			return new GUICliente();
 		case Evento.GUIAltaCliente:
 			return new VAltaCliente();
@@ -53,7 +52,6 @@ public class GUIFactoryImp extends GUIFactory{
 		
 		//ALMACEN
 		case Evento.MostrarGUIAlmacen:
-		case Evento.ModificarAlmacen:
 			return new GUIAlmacen();
 		case Evento.GUIAltaAlmacen:
 			return new VAltaAlmacen();
