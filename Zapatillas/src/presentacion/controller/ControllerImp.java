@@ -30,11 +30,11 @@ public class ControllerImp extends Controller{
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				break;
-			case Evento.ModificarCliente:
+			case Evento.MostrarModificarCliente:
 				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
 				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.ModificarCliente, cliente);
+				gui.actualizar(Evento.MostrarModificarCliente, cliente);
 				break;
 			case Evento.BajaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
