@@ -45,8 +45,7 @@ public class SAClienteImp implements SACliente {
 
 	@Override
 	public List<TransferCliente> mostrarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return DAOAbstractFactory.getInstance().getDAOCliente().getAllClientes();
 	}
 
 }

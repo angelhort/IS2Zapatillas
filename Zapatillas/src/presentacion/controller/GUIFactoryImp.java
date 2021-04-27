@@ -33,6 +33,10 @@ public class GUIFactoryImp extends GUIFactory{
 			return new VModificar("Cliente");
 		case Evento.MostrarModificarCliente:
 			return new VModificarCliente();
+		case Evento.MostrarUnCliente:
+			return new VMostrarUnCliente();
+		case Evento.MostrarTodosLosClientes:
+			return new VMostrarTodosLosClientes();
 		
 		//TRABAJADOR
 		case Evento.MostrarGUITrabajador:

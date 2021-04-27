@@ -102,6 +102,8 @@ public class GUICliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				GUICliente.this.dispose();
+				Controller.getInstance().action(Evento.MostrarTodosLosClientes, null);
 			}
 			
 		};

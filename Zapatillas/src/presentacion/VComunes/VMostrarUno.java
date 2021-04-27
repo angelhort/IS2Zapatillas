@@ -81,12 +81,19 @@ public class VMostrarUno extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				switch(entidad) {
+				case "Cliente": Controller.getInstance().action(Evento.MostrarUnCliente, fieldID.getText());
+				break;
 				
+				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
+				
+				}
+				VMostrarUno.this.dispose();
 			}
 			
 		};
 		
-		atrasButton.addActionListener(lAceptar);
+		aceptarButton.addActionListener(lAceptar);
 	}
 
 	@Override

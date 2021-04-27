@@ -42,8 +42,11 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarCliente:
 				SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
 				break;
-			case Evento.MostarUnCliente: 
-				gui.actualizar(Evento.MostarUnCliente, SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos)));
+			case Evento.MostrarUnCliente: 
+				gui.actualizar(Evento.MostrarUnCliente, SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos)));
+				break;
+			case Evento.MostrarTodosLosClientes:
+				gui.actualizar(Evento.MostrarTodosLosClientes, SAAbstractFactory.getInstance().getSACliente().mostrarTodos());
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
