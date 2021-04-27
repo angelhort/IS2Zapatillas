@@ -20,7 +20,7 @@ public class TestCliente {
 		
 		//System.out.println(String.format("%d, %d, %d", r1, r2, r3));
 		
-		System.out.println(dao.baja(16));
+		System.out.println(dao.baja(32));
 		
 		List<TransferCliente> clientes = dao.getAllClientes();
 		
