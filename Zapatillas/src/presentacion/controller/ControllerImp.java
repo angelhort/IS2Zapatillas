@@ -1,7 +1,6 @@
 package presentacion.controller;
 
 import negocio.FactoriaSA.SAAbstractFactory;
-import negocio.almacen.TransferAlmacen;
 import negocio.cliente.TransferCliente;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
@@ -42,6 +41,9 @@ public class ControllerImp extends Controller{
 				
 			case Evento.ModificarCliente:
 				SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
+				break;
+			case Evento.MostarUnCliente: 
+				gui.actualizar(Evento.MostarUnCliente, SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos)));
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);

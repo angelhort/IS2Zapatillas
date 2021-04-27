@@ -18,6 +18,7 @@ public class Evento {
 	public static final int AltaCliente = 110;
 	public static final int BajaCliente = 111;
 	public static final int ModificarCliente = 112;
+	public static final int MostarUnCliente = 113;
 	
 	
 	// TRABAJADOR DE 200-299

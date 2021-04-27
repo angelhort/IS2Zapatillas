@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class ComponentsBuilder {
@@ -74,5 +75,11 @@ public class ComponentsBuilder {
 		comboBox.setBounds(x, y, width, height);
 		
 		return comboBox;
+	}
+	
+	public static JTable creteTable(int filas, int columnas) {
+		JTable table = new JTable(filas, columnas);
+		
+		return table;
 	}
 }
