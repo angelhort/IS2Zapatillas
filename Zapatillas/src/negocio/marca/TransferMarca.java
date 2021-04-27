@@ -4,14 +4,16 @@ public class TransferMarca {
 	
 	private int ID;
 	private String nombre;
+	private boolean activo;
 	
 	public TransferMarca(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	public TransferMarca(int ID, String nombre) {
+	public TransferMarca(int ID, String nombre, boolean activo) {
 		this.ID = ID;
 		this.nombre = nombre;
+		this.activo = activo;
 	}
 	
 	// GETTERS
@@ -23,4 +25,7 @@ public class TransferMarca {
 		return nombre;
 	}
  	
+	public boolean getActivo() {
+		return activo;
+	}
 }
