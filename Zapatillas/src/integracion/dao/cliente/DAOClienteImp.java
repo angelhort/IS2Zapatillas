@@ -167,6 +167,7 @@ public class DAOClienteImp implements DAOCliente {
 			statement.setBoolean(2, transfer.isSocio());
 			statement.setString(3, transfer.getDNI());
 			statement.setBoolean(4, transfer.getActivo());
+			statement.setInt(5, transfer.getID());
 			
 			statement.executeUpdate();
 			
