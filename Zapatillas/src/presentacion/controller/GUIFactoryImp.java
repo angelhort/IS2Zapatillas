@@ -22,7 +22,6 @@ public class GUIFactoryImp extends GUIFactory{
 		
 		//CLIENTE
 		case Evento.MostrarGUICliente:
-		case Evento.ModificarCliente:
 			return new GUICliente();
 		case Evento.GUIAltaCliente:
 			return new VAltaCliente();
@@ -32,6 +31,8 @@ public class GUIFactoryImp extends GUIFactory{
 			return new VMostrarUno("Cliente");
 		case Evento.GUIModificarCliente:
 			return new VModificar("Cliente");
+		case Evento.MostrarModificarCliente:
+			return new VModificarCliente();
 		
 		//TRABAJADOR
 		case Evento.MostrarGUITrabajador:
@@ -51,7 +52,6 @@ public class GUIFactoryImp extends GUIFactory{
 		
 		//ALMACEN
 		case Evento.MostrarGUIAlmacen:
-		case Evento.ModificarAlmacen:
 			return new GUIAlmacen();
 		case Evento.GUIAltaAlmacen:
 			return new VAltaAlmacen();
