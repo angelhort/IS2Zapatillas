@@ -54,12 +54,7 @@ public class DAOClienteImp implements DAOCliente {
 			statement.setBoolean(1, false);
 			statement.setInt(2, ID);
 			
-			statement.executeUpdate();
-			
-			ResultSet resultSet = statement.getGeneratedKeys();
-			
-			if (resultSet.next())
-				result = resultSet.getInt(1);
+			result = statement.executeUpdate(); // Number of updated rows
 			
 			statement.close();
 			conn.close();
