@@ -1,8 +1,8 @@
 package presentacion.controller;
 
+import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.almacen.TransferAlmacen;
 import negocio.cliente.TransferCliente;
-import negocio.sa.SAAbstractFactory;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 

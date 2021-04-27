@@ -1,4 +1,4 @@
-package negocio.sa;
+package negocio.FactoriaSA;
 
 import negocio.cliente.SACliente;
 import negocio.cliente.SAClienteImp;
