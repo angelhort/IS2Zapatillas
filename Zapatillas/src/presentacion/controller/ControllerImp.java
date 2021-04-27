@@ -17,6 +17,7 @@ public class ControllerImp extends Controller{
 	public void action(int evento, Object datos) {
 		
 		IGUI gui = GUIFactory.getInstance().getFrame(evento);
+		int id;
 		
 		/* if(((evento/10) % 10) == 0)
 			gui = (vistas.get(evento/100)).get(evento%100);			
@@ -26,14 +27,17 @@ public class ControllerImp extends Controller{
 		
 		switch(evento) {
 			case Evento.AltaCliente:
-				// GUILLE TODO: Es necesario guardarlo en una variable ID?
-				int id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
+				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
+				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				break;
 			case Evento.ModificarCliente:
 				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
 				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.ModificarCliente, cliente);
+				break;
+			case Evento.BajaCliente:
+				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
 				break;
 				
 			case Evento.ModificarAlmacen:
