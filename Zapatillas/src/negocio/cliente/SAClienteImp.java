@@ -21,8 +21,10 @@ public class SAClienteImp implements SACliente {
 
 	@Override
 	public int borrar(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(DAOAbstractFactory.getInstance().getDAOCliente().getCliente(id) != null) {
+			return (DAOAbstractFactory.getInstance().getDAOCliente().baja(id));
+		}
+		return -1;
 	}
 
 	@Override
