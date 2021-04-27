@@ -49,7 +49,7 @@ public class DAOClienteImp implements DAOCliente {
 		int result = -1;
 		
 		try {
-			PreparedStatement statement = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = conn.prepareStatement(insert);
 			
 			statement.setBoolean(1, false);
 			statement.setInt(2, ID);
@@ -161,7 +161,7 @@ public class DAOClienteImp implements DAOCliente {
 		int result = -1;
 		
 		try {
-			PreparedStatement statement = conn.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = conn.prepareStatement(insert);
 			
 			statement.setString(1, transfer.getNombre());
 			statement.setBoolean(2, transfer.isSocio());
@@ -169,12 +169,7 @@ public class DAOClienteImp implements DAOCliente {
 			statement.setBoolean(4, transfer.getActivo());
 			statement.setInt(5, transfer.getID());
 			
-			statement.executeUpdate();
-			
-			ResultSet resultSet = statement.getGeneratedKeys();
-			
-			if (resultSet.next())
-				result = resultSet.getInt(1);
+			result = statement.executeUpdate();
 			
 			statement.close();
 			conn.close();
