@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import presentacion.cliente.VBajaCliente;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -62,7 +63,9 @@ public class VBajaProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.BajaProveedor, fieldID.getText());
+				VBajaProveedor.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 			}
 			
 		};

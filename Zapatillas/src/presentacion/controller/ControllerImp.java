@@ -59,7 +59,9 @@ public class ControllerImp extends Controller{
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);
 				break;
-				
+			
+			case Evento.BajaProveedor:
+				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
 		}
