@@ -2,10 +2,10 @@ USE zapatillas;
 
 DROP TABLE IF EXISTS Proveedores;
 CREATE TABLE Proveedores (
+    codigoProveedor INT AUTO_INCREMENT PRIMARY KEY,
     telefono INT NOT NULL,
     direccion VARCHAR(30) NOT NULL,
-    codigoProveedor INT AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(30) NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
     activo BOOLEAN NOT NULL DEFAULT 1
 );
 
@@ -14,18 +14,18 @@ CREATE TABLE Facturas(
 	idFactura INT AUTO_INCREMENT PRIMARY KEY,
 	fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	precioTotal DECIMAL(8, 2),
-    idTrabajador INT,
+	idTrabajador INT,
 	idCliente INT,
-    activo BOOLEAN NOT NULL DEFAULT 1
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Trabajadores;
 create table Trabajadores(
-  DNI VARCHAR(9) NOT NULL,
-  idTrabajador INT Auto_Increment PRIMARY Key,
-  telefono INT NOT NULL,
-  nombre VARCHAR(35) NOT NULL,
-  activo BOOLEAN NOT NULL DEFAULT 1
+	idTrabajador INT Auto_Increment PRIMARY Key,
+	DNI VARCHAR(9) NOT NULL,
+	telefono INT NOT NULL,
+	nombre VARCHAR(35) NOT NULL,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Calcetines;
@@ -37,9 +37,9 @@ CREATE TABLE Calcetines(
 	nombre VARCHAR(35),
 	precio DECIMAL(8, 2),
 	tejido VARCHAR(20),
-  idAlmacen INT,
-  codigoMarca INT,
-  activo BOOLEAN NOT NULL DEFAULT 1
+	idAlmacen INT,
+	codigoMarca INT,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Zapatillas;
@@ -51,35 +51,35 @@ CREATE TABLE Zapatillas(
 	nombre VARCHAR(35),
 	precio DECIMAL(8, 2),
 	tipo VARCHAR(20),
-  idAlmacen INT,
-  codigoMarca INT,
-  activo BOOLEAN NOT NULL DEFAULT 1
+	idAlmacen INT,
+	codigoMarca INT,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 
 DROP TABLE IF EXISTS Clientes;
 CREATE TABLE Clientes(
-  idCliente INT Auto_Increment PRIMARY KEY,
-  nombre VARCHAR(35) NOT NULL,
-  socio BOOLEAN NOT NULL,
-  DNI VARCHAR(9),
-  activo BOOLEAN NOT NULL DEFAULT 1
+	idCliente INT Auto_Increment PRIMARY KEY,
+	nombre VARCHAR(35) NOT NULL,
+	socio BOOLEAN NOT NULL,
+	DNI VARCHAR(9),
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Almacen;
 create Table Almacen(
-  idAlmacen INT Auto_Increment PRIMARY Key,
-  telefono INT NOT NULL,
-  capacidad INT NOT NULL,
-  direccion VARCHAR(30) NOT NULL,
-  activo BOOLEAN NOT NULL DEFAULT 1
+	idAlmacen INT Auto_Increment PRIMARY Key,
+	telefono INT NOT NULL,
+	capacidad INT NOT NULL,
+	direccion VARCHAR(30) NOT NULL,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Marca;
 create table Marca(
-  codigoMarca INT Auto_Increment PRIMARY Key,
-  nombre VARCHAR(35) NOT NULL,
-  activo BOOLEAN NOT NULL DEFAULT 1
+	codigoMarca INT Auto_Increment PRIMARY Key,
+	nombre VARCHAR(35) NOT NULL,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Suministra;
