@@ -1,8 +1,24 @@
 USE zapatillas;
 
+DROP TABLE IF EXISTS Suministra;
+CREATE TABLE Suministra(
+	idProveedor INT, 
+	idZapatillas INT,
+	idCalcetines INT,
+	precioSuministro DECIMAL(8, 2)
+);
+
+DROP TABLE IF EXISTS Contiene;
+CREATE TABLE Contiene(
+	unidades INT,
+	precio DECIMAL(8, 2),
+	idZapatillas INT,
+	idCalcetines INT
+);
+
 DROP TABLE IF EXISTS Proveedores;
 CREATE TABLE Proveedores (
-	codigoProveedor INT AUTO_INCREMENT PRIMARY KEY,
+	idProveedor INT AUTO_INCREMENT PRIMARY KEY,
 	telefono INT NOT NULL,
 	direccion VARCHAR(30) NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
@@ -38,7 +54,7 @@ CREATE TABLE Calcetines(
 	precio DECIMAL(8, 2),
 	tejido VARCHAR(20),
 	idAlmacen INT,
-	codigoMarca INT,
+	idMarca INT,
 	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
@@ -52,7 +68,7 @@ CREATE TABLE Zapatillas(
 	precio DECIMAL(8, 2),
 	tipo VARCHAR(20),
 	idAlmacen INT,
-	codigoMarca INT,
+	idMarca INT,
 	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
@@ -77,25 +93,9 @@ create Table Almacen(
 
 DROP TABLE IF EXISTS Marca;
 create table Marca(
-	codigoMarca INT Auto_Increment PRIMARY Key,
+	idMarca INT Auto_Increment PRIMARY Key,
 	nombre VARCHAR(35) NOT NULL,
 	activo BOOLEAN NOT NULL DEFAULT 1
-);
-
-DROP TABLE IF EXISTS Suministra;
-CREATE TABLE Suministra(
-	codigoProveedor INT, 
-	idZapatillas INT,
-	idCalcetines INT,
-	precioSuministro DECIMAL(8, 2)
-);
-
-DROP TABLE IF EXISTS Contiene;
-CREATE TABLE Contiene(
-	unidades INT,
-	precio DECIMAL(8, 2),
-	idZapatillas INT,
-	idCalcetines INT
 );
 
 ALTER TABLE Facturas
@@ -113,14 +113,14 @@ ALTER TABLE Zapatillas
 
 
 ALTER TABLE Calcetines
-ADD CONSTRAINT FK1_Calcetines FOREIGN KEY(codigoMarca) REFERENCES Marca(CodigoMarca) ON DELETE CASCADE;
+ADD CONSTRAINT FK1_Calcetines FOREIGN KEY(idMarca) REFERENCES Marca(CodigoMarca) ON DELETE CASCADE;
 
 ALTER TABLE Zapatillas
-ADD CONSTRAINT FK2_Zapatillas FOREIGN KEY(codigoMarca) REFERENCES Marca(CodigoMarca) ON DELETE CASCADE;
+ADD CONSTRAINT FK2_Zapatillas FOREIGN KEY(idMarca) REFERENCES Marca(CodigoMarca) ON DELETE CASCADE;
 
 
 ALTER TABLE Suministra
-	ADD CONSTRAINT FK1_Suministra FOREIGN KEY(codigoProveedor) REFERENCES Proveedores(CodigoProveedor) ON DELETE CASCADE;
+	ADD CONSTRAINT FK1_Suministra FOREIGN KEY(idProveedor) REFERENCES Proveedores(CodigoProveedor) ON DELETE CASCADE;
 
 ALTER TABLE Suministra
 	ADD CONSTRAINT FK2_Suministra FOREIGN KEY(idZapatillas) REFERENCES Zapatillas(idZapatillas) ON DELETE CASCADE;
