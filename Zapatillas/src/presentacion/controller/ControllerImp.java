@@ -62,6 +62,7 @@ public class ControllerImp extends Controller{
 			
 			case Evento.BajaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
+				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
 		}
