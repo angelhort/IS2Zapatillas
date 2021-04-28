@@ -2,11 +2,11 @@ USE zapatillas;
 
 DROP TABLE IF EXISTS Proveedores;
 CREATE TABLE Proveedores (
-    codigoProveedor INT AUTO_INCREMENT PRIMARY KEY,
-    telefono INT NOT NULL,
-    direccion VARCHAR(30) NOT NULL,
-    nombre VARCHAR(30) NOT NULL,
-    activo BOOLEAN NOT NULL DEFAULT 1
+	codigoProveedor INT AUTO_INCREMENT PRIMARY KEY,
+	telefono INT NOT NULL,
+	direccion VARCHAR(30) NOT NULL,
+	nombre VARCHAR(30) NOT NULL,
+	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
 DROP TABLE IF EXISTS Facturas;
