@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import integracion.dao.connection.DatabaseConnection;
@@ -26,7 +27,7 @@ public class DAOMarcaImp implements DAOMarca {
 			ResultSet resultSet = statement.getGeneratedKeys();
 			
 			if(resultSet.next())
-				resultSet.getInt(1);
+				result = resultSet.getInt(1);
 			
 			statement.close();
 			conn.close();
@@ -38,16 +39,16 @@ public class DAOMarcaImp implements DAOMarca {
 	}
 
 	@Override
-	public int baja(int ID) {
+	public int baja(int idMarca) {
 		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Marca SET activo=? WHERE codigoMarca=?";
+		String insert = "UPDATE Marca SET activo=? WHERE idMarca=?";
 		int result = -1;
 	
 		try {
 			PreparedStatement statement = conn.prepareStatement(insert);
 			
 			statement.setBoolean(1, false);
-			statement.setInt(2, ID);
+			statement.setInt(2, idMarca);
 			
 			result = statement.executeUpdate();
 			
@@ -62,7 +63,7 @@ public class DAOMarcaImp implements DAOMarca {
 	@Override
 	public int modificar(TransferMarca transfer) {
 		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Marca SET nombre=?, activo=? WHERE codigoMarca=?";
+		String insert = "UPDATE Marca SET nombre=?, activo=? WHERE idMarca=?";
 		int result = -1;
 		
 		try {
@@ -84,15 +85,59 @@ public class DAOMarcaImp implements DAOMarca {
 	}
 
 	@Override
-	public TransferMarca getMarca(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public TransferMarca getMarca(int idMarca) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Marca WHERE idMarca = %d", idMarca);
+		
+		TransferMarca marca = null;
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next()) {
+				marca = new TransferMarca(resultSet.getInt("idMarca"),
+											  resultSet.getString("nombre"),
+											  resultSet.getBoolean("activo")
+											  );
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return marca;
 	}
 
 	@Override
 	public TransferMarca getMarca(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Marca WHERE nombre = %d", nombre);
+		
+		TransferMarca marca = null;
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next()) {
+				marca = new TransferMarca(resultSet.getInt("idMarca"),
+											  resultSet.getString("nombre"),
+											  resultSet.getBoolean("socio")
+											  );
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return marca;
 	}
 
 	@Override

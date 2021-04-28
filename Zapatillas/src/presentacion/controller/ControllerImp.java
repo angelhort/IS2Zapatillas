@@ -2,6 +2,7 @@ package presentacion.controller;
 
 import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.cliente.TransferCliente;
+import negocio.marca.TransferMarca;
 import negocio.proveedor.TransferProveedor;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
@@ -26,6 +27,7 @@ public class ControllerImp extends Controller{
 			gui = (vistas.get(evento/100).get(0));*/
 		
 		switch(evento) {
+		//CLIENTE
 			case Evento.AltaCliente:
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
@@ -51,8 +53,26 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarTodosLosClientes:
 				gui.actualizar(Evento.MostrarTodosLosClientes, SAAbstractFactory.getInstance().getSACliente().mostrarTodos());
 				break;
+		//MARCA
+			case Evento.AltaMarca:
+				id = SAAbstractFactory.getInstance().getSAMarca().alta((TransferMarca)datos);
+				System.out.println(id);
+				break;
+			case Evento.BajaMarca:
+				id = SAAbstractFactory.getInstance().getSAMarca().borrar(Integer.parseInt((String) datos));
+				break;
+			case Evento.MostrarModificarMarca:
+				TransferMarca marca = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar(Evento.MostrarModificarMarca, marca);
+				break;
+			case Evento.ModificarMarca:
+				SAAbstractFactory.getInstance().getSAMarca().modificar((TransferMarca) datos);
+				break;
+			case Evento.MostrarUnaMarca:
+				gui.actualizar(Evento.MostrarUnaMarca, SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos)));
+				break;
 			
-				
+		//PROVEEDOR
 			case Evento.AltaProveedor:
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);

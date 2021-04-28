@@ -95,10 +95,12 @@ public class Evento {
 	public static final int GUIModificarMarca = 703;
 	public static final int GUIMostrarUnaMarca = 704;
 	public static final int GUIMostrarTodasLasMarcas = 705;
+	public static final int MostrarModificarMarca = 706;
 	
 	public static final int AltaMarca = 710;
 	public static final int BajaMarca = 711;
 	public static final int ModificarMarca = 712;
+	public static final int MostrarUnaMarca = 713;
 	
 	
 	//PROVEEDOR-PRODUCTP DE 800-899

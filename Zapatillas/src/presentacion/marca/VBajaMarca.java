@@ -62,7 +62,9 @@ public class VBajaMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.BajaMarca, fieldID.getText());
+				VBajaMarca.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
 		};

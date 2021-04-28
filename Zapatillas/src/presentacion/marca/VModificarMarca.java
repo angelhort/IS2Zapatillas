@@ -17,28 +17,28 @@ import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
 
-public class VAltaMarca extends JFrame implements IGUI{
+public class VModificarMarca extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
-	public VAltaMarca() {
+	public VModificarMarca() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 230);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
-	public void initGUI() {
-		JLabel labelMarca = ComponentsBuilder.createLabel("Alta Marca", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+	public void initGUI(TransferMarca marca) {
+		this.setVisible(true);
+		JLabel labelMarca = ComponentsBuilder.createLabel("Modificar Marca", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelMarca);
 		
 		JLabel labelNombre = ComponentsBuilder.createLabel("Nombre:", 10, 100, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelNombre);
 		
 		JTextField fieldNombre = ComponentsBuilder.createTextField(80, 100, 220, 20);
+		fieldNombre.setText(marca.getNombre());
 		this.add(fieldNombre);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -49,7 +49,7 @@ public class VAltaMarca extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
-				VAltaMarca.this.dispose();
+				VModificarMarca.this.dispose();
 			}
 			
 		};
@@ -63,8 +63,8 @@ public class VAltaMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.AltaMarca, new TransferMarca(fieldNombre.getText()));
-				VAltaMarca.this.dispose();
+				VModificarMarca.this.dispose();
+				Controller.getInstance().action(Evento.ModificarMarca, new TransferMarca(marca.getID(), fieldNombre.getText(), marca.getActivo()));
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
@@ -75,6 +75,10 @@ public class VAltaMarca extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.MostrarModificarMarca:
+			initGUI((TransferMarca) datos);
+			break;
+		}
 	}
 }
