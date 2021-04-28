@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.cliente.TransferCliente;
+import negocio.proveedor.TransferProveedor;
+import presentacion.cliente.VAltaCliente;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -74,7 +77,12 @@ public class VAltaProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.AltaProveedor, new TransferProveedor(
+																		Integer.parseInt(fieldTelef.getText()),
+																		fieldDireccion.getText(), 
+																		fieldNombre.getText()));
+				VAltaProveedor.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 			}
 			
 		};

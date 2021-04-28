@@ -1,6 +1,7 @@
 package negocio.FactoriaSA;
 
 import negocio.cliente.SACliente;
+import negocio.proveedor.SAProveedor;
 
 public abstract class SAAbstractFactory {
 	
@@ -12,4 +13,5 @@ public abstract class SAAbstractFactory {
 	}
 	
 	public abstract SACliente getSACliente();
+	public abstract SAProveedor getSAProveedor();
 }

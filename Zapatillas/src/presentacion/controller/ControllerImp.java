@@ -2,6 +2,7 @@ package presentacion.controller;
 
 import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.cliente.TransferCliente;
+import negocio.proveedor.TransferProveedor;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
@@ -29,25 +30,36 @@ public class ControllerImp extends Controller{
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				break;
+				
 			case Evento.MostrarModificarCliente:
 				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
 				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.MostrarModificarCliente, cliente);
 				break;
+				
 			case Evento.BajaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
-				break;
+				break;	
 				
 			case Evento.ModificarCliente:
 				SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
 				break;
+				
 			case Evento.MostrarUnCliente: 
 				gui.actualizar(Evento.MostrarUnCliente, SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos)));
 				break;
+				
 			case Evento.MostrarTodosLosClientes:
 				gui.actualizar(Evento.MostrarTodosLosClientes, SAAbstractFactory.getInstance().getSACliente().mostrarTodos());
 				break;
+			
+				
+			case Evento.AltaProveedor:
+				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
+				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);
+				break;
+				
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
 		}

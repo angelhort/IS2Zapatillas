@@ -1,6 +1,7 @@
 package integracion.dao;
 
 import integracion.dao.cliente.DAOCliente;
+import integracion.dao.proveedor.DAOProveedor;
 
 public abstract class DAOAbstractFactory {
 	private static DAOAbstractFactory instance;
@@ -11,5 +12,6 @@ public abstract class DAOAbstractFactory {
 	}
 	
 	public abstract DAOCliente getDAOCliente();
+	public abstract DAOProveedor getDAOProveedor();
 
 }
