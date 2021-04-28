@@ -77,9 +77,9 @@ public class ComponentsBuilder {
 		return comboBox;
 	}
 	
-	public static JTable creteTable(int filas, int columnas) {
+	public static JTable creteTable(int filas, int columnas, int x, int y, int width, int height) {
 		JTable table = new JTable(filas, columnas);
-		
+		table.setBounds(x, y, width, height);
 		return table;
 	}
 }
