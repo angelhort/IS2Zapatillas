@@ -83,6 +83,8 @@ public class Evento {
 	public static final int AltaProveedor = 610;
 	public static final int BajaProveedor = 611;
 	public static final int ModificarProveedor = 612;
+	public static final int MostrarUnProveedor = 613;
+	public static final int MostrarTodosLosProveedores = 614;
 	
 	
 	// MARCA DE 700-799

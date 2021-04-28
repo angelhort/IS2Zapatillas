@@ -61,8 +61,8 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 			table.setValueAt(t.getID(), i, 0);
 			table.setValueAt(t.getNombre(), i, 1);
 			table.setValueAt(t.getDNI(), i, 2);
-			table.setValueAt(t.isSocio(), i, 3);
-			table.setValueAt(t.getActivo(), i, 4);
+			table.setValueAt(t.isSocio() ? "SI" : "NO", i, 3);
+			table.setValueAt(t.getActivo() ? "SI" : "NO", i, 4);
 			i++;
 		}
 	

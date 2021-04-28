@@ -85,6 +85,9 @@ public class VMostrarUno extends JFrame implements IGUI{
 				case "Cliente": Controller.getInstance().action(Evento.MostrarUnCliente, fieldID.getText());
 				break;
 				
+				case "Proveedor": Controller.getInstance().action(Evento.MostrarUnProveedor, fieldID.getText());
+				break;
+				
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}
@@ -98,6 +101,6 @@ public class VMostrarUno extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+
 	}
 }

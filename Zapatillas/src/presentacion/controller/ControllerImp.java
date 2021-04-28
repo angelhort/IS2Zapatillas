@@ -32,8 +32,6 @@ public class ControllerImp extends Controller{
 				break;
 				
 			case Evento.MostrarModificarCliente:
-				/* GUILLE TODO: Este evento debería de llamarse de otra manera, no modifica.
-				 * Debería ser algo como MostrarModificarCliente y este dejarlo para cuando se envie el form */
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.MostrarModificarCliente, cliente);
 				break;
@@ -62,6 +60,10 @@ public class ControllerImp extends Controller{
 			
 			case Evento.BajaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
+				break;
+				
+			case Evento.MostrarUnProveedor:
+				gui.actualizar(Evento.MostrarUnProveedor, SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos)));
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
