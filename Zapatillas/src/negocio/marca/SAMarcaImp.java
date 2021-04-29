@@ -2,7 +2,7 @@ package negocio.marca;
 
 import java.util.List;
 
-import integracion.dao.DAOAbstractFactory;
+import integracion.dao.DAOFactory.DAOAbstractFactory;
 
 public class SAMarcaImp implements SAMarca{
 

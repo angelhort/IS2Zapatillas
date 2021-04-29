@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import integracion.dao.connection.DatabaseConnection;
+import integracion.connection.DatabaseConnection;
 import negocio.marca.TransferMarca;
 
 public class DAOMarcaImp implements DAOMarca {

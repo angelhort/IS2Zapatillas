@@ -1,8 +1,9 @@
-package presentacion.controller;
+package presentacion.factoryGUI;
 
 import presentacion.VComunes.*;
 import presentacion.almacen.*;
 import presentacion.cliente.*;
+import presentacion.controller.Evento;
 import presentacion.marca.*;
 import presentacion.producto.*;
 import presentacion.proveedor.*;

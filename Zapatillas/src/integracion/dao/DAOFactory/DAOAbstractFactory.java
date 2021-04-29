@@ -1,4 +1,4 @@
-package integracion.dao;
+package integracion.dao.DAOFactory;
 
 import integracion.dao.cliente.DAOCliente;
 import integracion.dao.marca.DAOMarca;

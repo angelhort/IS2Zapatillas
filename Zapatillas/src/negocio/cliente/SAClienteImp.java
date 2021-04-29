@@ -2,7 +2,7 @@ package negocio.cliente;
 
 import java.util.List;
 
-import integracion.dao.DAOAbstractFactory;
+import integracion.dao.DAOFactory.DAOAbstractFactory;
 
 public class SAClienteImp implements SACliente {
 

@@ -4,6 +4,7 @@ import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.cliente.TransferCliente;
 import negocio.marca.TransferMarca;
 import negocio.proveedor.TransferProveedor;
+import presentacion.factoryGUI.GUIFactory;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 

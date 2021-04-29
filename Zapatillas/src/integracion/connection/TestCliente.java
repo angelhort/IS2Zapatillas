@@ -1,4 +1,4 @@
-package integracion.dao.connection;
+package integracion.connection;
 
 import java.util.List;
 

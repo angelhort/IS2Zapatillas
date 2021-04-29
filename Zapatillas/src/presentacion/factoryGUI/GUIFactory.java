@@ -1,4 +1,4 @@
-package presentacion.controller;
+package presentacion.factoryGUI;
 
 import presentacion.vista.IGUI;
 

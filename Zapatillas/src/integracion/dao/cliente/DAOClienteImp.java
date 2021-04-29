@@ -6,9 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+
+import integracion.connection.DatabaseConnection;
+
 import java.util.ArrayList;
 
-import integracion.dao.connection.DatabaseConnection;
 import negocio.cliente.TransferCliente;
 
 public class DAOClienteImp implements DAOCliente {
