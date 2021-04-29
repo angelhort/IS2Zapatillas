@@ -6,6 +6,7 @@ public class TransferTrabajador {
 	private int telefono;
 	private String DNI;
 	private String nombre;
+	private boolean activo;
 	
 	public TransferTrabajador(int telefono, String DNI, String nombre) {
 		this.telefono = telefono;
@@ -13,11 +14,12 @@ public class TransferTrabajador {
 		this.nombre = nombre;
 	}
 
-	public TransferTrabajador(int ID, int telefono, String DNI, String nombre) {
+	public TransferTrabajador(int ID, int telefono, String DNI, String nombre, boolean activo) {
 		this.ID = ID;
 		this.telefono = telefono;
 		this.DNI = DNI;
 		this.nombre = nombre;
+		this.activo = activo;
 	}
 	
 	// GETTERS
@@ -37,4 +39,7 @@ public class TransferTrabajador {
 		return nombre;
 	}
 	
+	public boolean getActivo() {
+		return activo;
+	}
 }
