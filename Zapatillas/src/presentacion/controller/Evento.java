@@ -30,10 +30,13 @@ public class Evento {
 	public static final int GUIModificarTrabajador = 203;
 	public static final int GUIMostrarUnTrabajador = 204;
 	public static final int GUIMostrarTodosLosTrabajadores = 205;
+	public static final int MostrarModificarTrabajador = 206;
 	
 	public static final int AltaTrabajador = 210;
 	public static final int BajaTrabajador = 211;
 	public static final int ModificarTrabajador = 212;
+	public static final int MostrarUnTrabajador = 213;
+	public static final int MostrarTodosLosTrabajadores = 214;
 	
 	
 	// VENTA DE 300-399

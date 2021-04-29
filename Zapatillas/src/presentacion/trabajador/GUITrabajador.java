@@ -101,7 +101,8 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				GUITrabajador.this.dispose();
+				Controller.getInstance().action(Evento.MostrarTodosLosTrabajadores, null);
 			}
 			
 		};

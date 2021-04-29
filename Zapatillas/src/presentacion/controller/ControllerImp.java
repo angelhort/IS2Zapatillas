@@ -4,6 +4,7 @@ import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.cliente.TransferCliente;
 import negocio.marca.TransferMarca;
 import negocio.proveedor.TransferProveedor;
+import negocio.trabajador.TransferTrabajador;
 import presentacion.factoryGUI.GUIFactory;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
@@ -57,7 +58,6 @@ public class ControllerImp extends Controller{
 		//MARCA
 			case Evento.AltaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().alta((TransferMarca)datos);
-				System.out.println(id);
 				break;
 			case Evento.BajaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().borrar(Integer.parseInt((String) datos));
@@ -71,6 +71,27 @@ public class ControllerImp extends Controller{
 				break;
 			case Evento.MostrarUnaMarca:
 				gui.actualizar(Evento.MostrarUnaMarca, SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos)));
+				break;
+				
+		//TRABAJADOR
+			case Evento.AltaTrabajador:
+				id = SAAbstractFactory.getInstance().getSATrabajador().alta((TransferTrabajador) datos);
+				break;
+			case Evento.BajaTrabajador:
+				id = SAAbstractFactory.getInstance().getSATrabajador().borrar(Integer.parseInt((String) datos));
+				break;
+			case Evento.MostrarTodosLosTrabajadores:
+				gui.actualizar(Evento.MostrarTodosLosTrabajadores, SAAbstractFactory.getInstance().getSATrabajador().mostrarTodos());
+				break;
+			case Evento.MostrarModificarTrabajador:
+				TransferTrabajador trabajador = SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar(Evento.MostrarModificarTrabajador, trabajador);
+				break;
+			case Evento.ModificarTrabajador:
+				SAAbstractFactory.getInstance().getSATrabajador().modificar((TransferTrabajador) datos);
+				break;
+			case Evento.MostrarUnTrabajador:
+				gui.actualizar(Evento.MostrarUnTrabajador, SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos)));
 				break;
 			
 		//PROVEEDOR

@@ -9,7 +9,6 @@ public class SAClienteImp implements SACliente {
 	@Override
 	public int alta(TransferCliente t) {
 		int id = -1;
-		
 		if(t.getDNI().length() == 9) {
 			if(t.getNombre().length() < 35) {
 				id = DAOAbstractFactory.getInstance().getDAOCliente().alta(t);

@@ -8,9 +8,8 @@ public class SAMarcaImp implements SAMarca{
 
 	@Override
 	public int alta(TransferMarca t) {
-		if( DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getNombre()) == null)
+		//TODO COMPROBACIONES
 		return DAOAbstractFactory.getInstance().getDAOMarca().alta(t);
-		else return -1;
 	}
 
 	@Override

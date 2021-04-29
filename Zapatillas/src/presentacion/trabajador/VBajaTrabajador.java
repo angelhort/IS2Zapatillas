@@ -62,7 +62,9 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VBajaTrabajador.this.dispose();
+				Controller.getInstance().action(Evento.BajaTrabajador, fieldID.getText());
+				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			}
 			
 		};

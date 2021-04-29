@@ -98,8 +98,9 @@ public class DAOClienteImp implements DAOCliente {
 	
 	@Override
 	public TransferCliente getCliente(String DNI) {
+		//TODO ESTE METODO NO FUNCIONA
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Clientes WHERE DNI = %d", DNI);
+		String query = String.format("SELECT * FROM Clientes WHERE DNI = %s", DNI);
 		
 		TransferCliente cliente = null;
 

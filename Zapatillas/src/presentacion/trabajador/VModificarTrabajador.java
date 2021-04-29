@@ -17,40 +17,43 @@ import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
 
-public class VAltaTrabajador extends JFrame implements IGUI{
+public class VModificarTrabajador extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
-	public VAltaTrabajador() {
+	public VModificarTrabajador() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
-	public void initGUI() {
-		JLabel labelTrabajador = ComponentsBuilder.createLabel("Alta Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
+	public void initGUI(TransferTrabajador trabajador) {
+		this.setVisible(true);
+
+		JLabel labelTrabajador = ComponentsBuilder.createLabel("Modificar Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelTrabajador);
 		
 		JLabel labelNombre = ComponentsBuilder.createLabel("Nombre:", 10, 100, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelNombre);
 		
 		JTextField fieldNombre = ComponentsBuilder.createTextField(80, 100, 220, 20);
+		fieldNombre.setText(trabajador.getNombre());
 		this.add(fieldNombre);
 		
 		JLabel labelTelef = ComponentsBuilder.createLabel("Telefono:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelTelef);
 		
 		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 150, 220, 20);
+		fieldTelef.setText(trabajador.getTelefono() + "");
 		this.add(fieldTelef);
 		
 		JLabel labelDNI = ComponentsBuilder.createLabel("DNI:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelDNI);
 		
 		JTextField fieldDNI = ComponentsBuilder.createTextField(80, 200, 220, 20);
+		fieldDNI.setText(trabajador.getDNI());
 		this.add(fieldDNI);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -61,7 +64,7 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
-				VAltaTrabajador.this.dispose();
+				VModificarTrabajador.this.dispose();
 			}
 			
 		};
@@ -75,9 +78,9 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VAltaTrabajador.this.dispose();
+				VModificarTrabajador.this.dispose();
+				Controller.getInstance().action(Evento.ModificarTrabajador, new TransferTrabajador(trabajador.getID(), Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText(), trabajador.getActivo()));
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
-				Controller.getInstance().action(Evento.AltaTrabajador, new TransferTrabajador(Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText()));
 			}
 			
 		};
@@ -87,6 +90,10 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento){
+		case Evento.MostrarModificarTrabajador:
+			initGUI((TransferTrabajador) datos);	
+			break;
+		}
 	}
 }

@@ -6,6 +6,8 @@ import negocio.marca.SAMarca;
 import negocio.marca.SAMarcaImp;
 import negocio.proveedor.SAProveedor;
 import negocio.proveedor.SAProveedorImp;
+import negocio.trabajador.SATrabajador;
+import negocio.trabajador.SATrabajadorImp;
 
 public class SAFactoryImp  extends SAAbstractFactory {
 
@@ -22,5 +24,10 @@ public class SAFactoryImp  extends SAAbstractFactory {
 	@Override
 	public SAMarca getSAMarca() {
 		return new SAMarcaImp();
+	}
+
+	@Override
+	public SATrabajador getSATrabajador() {
+		return new SATrabajadorImp();
 	}
 }

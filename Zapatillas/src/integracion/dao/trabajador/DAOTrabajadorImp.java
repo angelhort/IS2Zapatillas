@@ -68,7 +68,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 	@Override
 	public int modificar(TransferTrabajador transfer) {
 		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Trabajadores SET DNI=?, telfono=?, nombre=?, activo=? WHERE idTrabajador=?";
+		String insert = "UPDATE Trabajadores SET DNI=?, telefono=?, nombre=?, activo=? WHERE idTrabajador=?";
 		int result = -1;
 		
 		try {
@@ -121,9 +121,10 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 	}
 
 	@Override
-	public TransferTrabajador getTrabajador(String DNI) {
+	public TransferTrabajador getTrabajador(String dni) {
+		//TODO ESTE METODO NO FUNCIONA
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Trabajadores WHERE DNI = %d", DNI);
+		String query = String.format("SELECT * FROM Trabajadores WHERE DNI = %s", dni);
 		
 		TransferTrabajador trabajador = null;
 

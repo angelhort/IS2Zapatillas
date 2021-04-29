@@ -114,8 +114,9 @@ public class DAOMarcaImp implements DAOMarca {
 
 	@Override
 	public TransferMarca getMarca(String nombre) {
+		//TODO ESTE METODO NO FUNCIONA
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Marca WHERE nombre = %d", nombre);
+		String query = String.format("SELECT * FROM Marca WHERE nombre = %s", nombre);
 		
 		TransferMarca marca = null;
 		
