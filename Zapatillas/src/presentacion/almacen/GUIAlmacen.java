@@ -103,7 +103,8 @@ public class GUIAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.MostrarTodosLosAlmacenes, null);
+				GUIAlmacen.this.dispose();
 			}
 			
 		};

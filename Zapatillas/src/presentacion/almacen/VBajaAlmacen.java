@@ -62,7 +62,9 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.BajaAlmacen, fieldID.getText());
+				VBajaAlmacen.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}
 			
 		};

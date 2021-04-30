@@ -84,7 +84,7 @@ public class VModificar extends JFrame implements IGUI{
 				switch(entidad) {
 				case "Cliente": Controller.getInstance().action(Evento.MostrarModificarCliente, fieldID.getText());
 				break;
-				case "Almacen": Controller.getInstance().action(0, fieldID.getText());
+				case "Almacen": Controller.getInstance().action(Evento.MostrarModificarAlmacen, fieldID.getText());
 				break;
 				case "Trabajador": Controller.getInstance().action(Evento.MostrarModificarTrabajador, fieldID.getText());
 				break;

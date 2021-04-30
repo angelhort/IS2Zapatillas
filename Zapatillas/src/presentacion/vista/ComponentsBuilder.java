@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -81,5 +82,11 @@ public class ComponentsBuilder {
 		JTable table = new JTable(filas, columnas);
 		table.setBounds(x, y, width, height);
 		return table;
+	}
+	
+	public static JSpinner createSpinner(int x, int y, int width, int height) {
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(x, y, width, height);
+		return spinner;
 	}
 }

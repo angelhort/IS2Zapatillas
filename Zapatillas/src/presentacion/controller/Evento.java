@@ -54,10 +54,13 @@ public class Evento {
 	public static final int GUIModificarAlmacen = 403;
 	public static final int GUIMostrarUnAlmacen = 404;
 	public static final int GUIMostrarTodosLosAlmacenes = 405;
+	public static final int MostrarModificarAlmacen = 406;
 	
 	public static final int AltaAlmacen = 410;
 	public static final int BajaAlmacen = 411;
 	public static final int ModificarAlmacen = 412;
+	public static final int MostrarUnAlmacen = 413;
+	public static final int MostrarTodosLosAlmacenes = 414;
 	
 	
 	// PRODUCTO DE 500-599

@@ -1,5 +1,6 @@
 package integracion.dao.DAOFactory;
 
+import integracion.dao.almacen.DAOAlmacen;
 import integracion.dao.cliente.DAOCliente;
 import integracion.dao.marca.DAOMarca;
 import integracion.dao.proveedor.DAOProveedor;
@@ -17,4 +18,5 @@ public abstract class DAOAbstractFactory {
 	public abstract DAOProveedor getDAOProveedor();
 	public abstract DAOMarca getDAOMarca();
 	public abstract DAOTrabajador getDAOTrabajador();
+	public abstract DAOAlmacen getDAOAlmacen();
 }

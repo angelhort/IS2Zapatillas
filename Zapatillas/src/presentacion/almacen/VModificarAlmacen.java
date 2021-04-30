@@ -18,21 +18,20 @@ import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
 import presentacion.vista.IGUI;
 
-public class VAltaAlmacen extends JFrame implements IGUI{
+public class VModificarAlmacen extends JFrame implements IGUI{
 
 	private static final long serialVersionUID = 1L;
 	
-	public VAltaAlmacen() {
+	public VModificarAlmacen() {
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
-	public void initGUI() {
+	public void initGUI(TransferAlmacen almacen) {
+		this.setVisible(true);
 		JLabel labelAlmacen = ComponentsBuilder.createLabel("Alta Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelAlmacen);
 		
@@ -40,18 +39,21 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 		this.add(labelDireccion);
 		
 		JTextField fieldDireccion = ComponentsBuilder.createTextField(80, 100, 220, 20);
+		fieldDireccion.setText(almacen.getDireccion());
 		this.add(fieldDireccion);
 		
 		JLabel labelTelef = ComponentsBuilder.createLabel("Telefono:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelTelef);
 		
 		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 150, 220, 20);
+		fieldTelef.setText(almacen.getTelefono() + "");
 		this.add(fieldTelef);
 		
 		JLabel labelCapacidad = ComponentsBuilder.createLabel("Capacidad:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 12));
 		this.add(labelCapacidad);
 		
 		JSpinner spinnerCapacidad = ComponentsBuilder.createSpinner(80, 202, 50, 20);
+		spinnerCapacidad.setValue(almacen.getCapacidad());
 		this.add(spinnerCapacidad);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -62,7 +64,7 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
-				VAltaAlmacen.this.dispose();
+				VModificarAlmacen.this.dispose();
 			}
 			
 		};
@@ -76,8 +78,8 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.AltaAlmacen, new TransferAlmacen(Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText()));
-				VAltaAlmacen.this.dispose();
+				Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), true));
+				VModificarAlmacen.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}
 			
@@ -88,6 +90,10 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento){
+		case Evento.MostrarModificarAlmacen:
+			initGUI((TransferAlmacen) datos);	
+			break;
+		}
 	}
 }

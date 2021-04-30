@@ -1,5 +1,7 @@
 package negocio.FactoriaSA;
 
+import negocio.almacen.SAAlmacen;
+import negocio.almacen.SAAlmacenImp;
 import negocio.cliente.SACliente;
 import negocio.cliente.SAClienteImp;
 import negocio.marca.SAMarca;
@@ -29,5 +31,10 @@ public class SAFactoryImp  extends SAAbstractFactory {
 	@Override
 	public SATrabajador getSATrabajador() {
 		return new SATrabajadorImp();
+	}
+
+	@Override
+	public SAAlmacen getSAAlmacen() {
+		return new SAAlmacenImp();
 	}
 }

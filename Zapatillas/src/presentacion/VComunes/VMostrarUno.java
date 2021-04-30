@@ -94,6 +94,9 @@ public class VMostrarUno extends JFrame implements IGUI{
 				case "Trabajador": Controller.getInstance().action(Evento.MostrarUnTrabajador, fieldID.getText());
 				break;
 				
+				case "Almacen": Controller.getInstance().action(Evento.MostrarUnAlmacen, fieldID.getText());
+				break;
+				
 				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 				
 				}

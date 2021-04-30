@@ -1,6 +1,7 @@
 package presentacion.controller;
 
 import negocio.FactoriaSA.SAAbstractFactory;
+import negocio.almacen.TransferAlmacen;
 import negocio.cliente.TransferCliente;
 import negocio.marca.TransferMarca;
 import negocio.proveedor.TransferProveedor;
@@ -106,6 +107,27 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnProveedor:
 				gui.actualizar(Evento.MostrarUnProveedor, SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos)));
+				break;
+				
+		//ALMACEN
+			case Evento.AltaAlmacen:
+				id = SAAbstractFactory.getInstance().getSAAlmacen().alta((TransferAlmacen) datos);
+				break;
+			case Evento.MostrarTodosLosAlmacenes:
+				gui.actualizar(Evento.MostrarTodosLosAlmacenes, SAAbstractFactory.getInstance().getSAAlmacen().mostrarTodos());
+				break;
+			case Evento.BajaAlmacen:
+				id = SAAbstractFactory.getInstance().getSAAlmacen().borrar(Integer.parseInt((String) datos));
+				break;
+			case Evento.MostrarModificarAlmacen:
+				TransferAlmacen almacen = SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar(Evento.MostrarModificarAlmacen, almacen);
+				break;
+			case Evento.ModificarAlmacen:
+				SAAbstractFactory.getInstance().getSAAlmacen().modificar((TransferAlmacen) datos);
+				break;
+			case Evento.MostrarUnAlmacen:
+				gui.actualizar(Evento.MostrarUnAlmacen, SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos)));
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
