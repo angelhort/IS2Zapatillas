@@ -101,7 +101,8 @@ public class GUIMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.MostrarTodasLasMarcas, null);
+				GUIMarca.this.dispose();
 			}
 			
 		};

@@ -31,8 +31,7 @@ public class SAMarcaImp implements SAMarca{
 
 	@Override
 	public List<TransferMarca> mostrarTodos() {
-		
-		return null;
+		return DAOAbstractFactory.getInstance().getDAOMarca().getAllMarcas();
 	}
 
 }

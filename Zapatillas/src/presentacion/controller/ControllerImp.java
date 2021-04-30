@@ -73,7 +73,9 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarUnaMarca:
 				gui.actualizar(Evento.MostrarUnaMarca, SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos)));
 				break;
-				
+			case Evento.MostrarTodasLasMarcas:
+				gui.actualizar(Evento.MostrarTodasLasMarcas, SAAbstractFactory.getInstance().getSAMarca().mostrarTodos());
+				break;
 		//TRABAJADOR
 			case Evento.AltaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().alta((TransferTrabajador) datos);

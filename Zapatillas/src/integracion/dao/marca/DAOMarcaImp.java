@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import integracion.connection.DatabaseConnection;
@@ -143,7 +144,30 @@ public class DAOMarcaImp implements DAOMarca {
 
 	@Override
 	public List<TransferMarca> getAllMarcas() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = DatabaseConnection.getConnection();
+		String query = "SELECT * FROM Marca";
+		
+		List<TransferMarca> marcas = new ArrayList<>();
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			
+			while (resultSet.next()) {
+				TransferMarca marca = new TransferMarca(resultSet.getInt("idMarca"),
+															  resultSet.getString("nombre"),
+															  resultSet.getBoolean("activo"));
+				marcas.add(marca);
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+				
+		return marcas;
 	}
 }

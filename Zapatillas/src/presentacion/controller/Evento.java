@@ -12,8 +12,7 @@ public class Evento {
 	public static final int GUIBajaCliente = 102;
 	public static final int GUIModificarCliente = 103;
 	public static final int GUIMostrarUnCliente = 104;
-	public static final int GUIMostrarTodosLosClientes = 105;
-	public static final int MostrarModificarCliente = 106;
+	public static final int MostrarModificarCliente = 105;
 	
 	public static final int AltaCliente = 110;
 	public static final int BajaCliente = 111;
@@ -29,8 +28,7 @@ public class Evento {
 	public static final int GUIBajaTrabajador = 202;
 	public static final int GUIModificarTrabajador = 203;
 	public static final int GUIMostrarUnTrabajador = 204;
-	public static final int GUIMostrarTodosLosTrabajadores = 205;
-	public static final int MostrarModificarTrabajador = 206;
+	public static final int MostrarModificarTrabajador = 205;
 	
 	public static final int AltaTrabajador = 210;
 	public static final int BajaTrabajador = 211;
@@ -53,8 +51,7 @@ public class Evento {
 	public static final int GUIBajaAlmacen = 402;
 	public static final int GUIModificarAlmacen = 403;
 	public static final int GUIMostrarUnAlmacen = 404;
-	public static final int GUIMostrarTodosLosAlmacenes = 405;
-	public static final int MostrarModificarAlmacen = 406;
+	public static final int MostrarModificarAlmacen = 405;
 	
 	public static final int AltaAlmacen = 410;
 	public static final int BajaAlmacen = 411;
@@ -70,7 +67,6 @@ public class Evento {
 	public static final int GUIBajaProducto = 502;
 	public static final int GUIModificarProducto = 503;
 	public static final int GUIMostrarUnProducto = 504;
-	public static final int GUIMostrarTodosLosProductos = 505;
 	
 	public static final int AltaProducto = 510;
 	public static final int BajaProducto = 511;
@@ -84,7 +80,6 @@ public class Evento {
 	public static final int GUIBajaProveedor = 602;
 	public static final int GUIModificarProveedor = 603;
 	public static final int GUIMostrarUnProveedor = 604;
-	public static final int GUIMostrarTodosLosProveedor = 605;
 	
 	public static final int AltaProveedor = 610;
 	public static final int BajaProveedor = 611;
@@ -100,13 +95,13 @@ public class Evento {
 	public static final int GUIBajaMarca = 702;
 	public static final int GUIModificarMarca = 703;
 	public static final int GUIMostrarUnaMarca = 704;
-	public static final int GUIMostrarTodasLasMarcas = 705;
-	public static final int MostrarModificarMarca = 706;
+	public static final int MostrarModificarMarca = 705;
 	
 	public static final int AltaMarca = 710;
 	public static final int BajaMarca = 711;
 	public static final int ModificarMarca = 712;
 	public static final int MostrarUnaMarca = 713;
+	public static final int MostrarTodasLasMarcas = 714;
 	
 	
 	//PROVEEDOR-PRODUCTP DE 800-899
