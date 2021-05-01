@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.producto.TransferZapatillas;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -43,11 +44,11 @@ public class VAltaProducto extends JFrame implements IGUI{
 		JTextField fieldNombre = ComponentsBuilder.createTextField(80, 100, 220, 20);
 		this.add(fieldNombre);
 		
-		JLabel labelTelef = ComponentsBuilder.createLabel("Stock:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelTelef);
+		JLabel labelStock = ComponentsBuilder.createLabel("Stock:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelStock);
 		
-		JTextField fieldTelef = ComponentsBuilder.createTextField(80, 150, 55, 20);
-		this.add(fieldTelef);
+		JTextField fieldStock = ComponentsBuilder.createTextField(80, 150, 55, 20);
+		this.add(fieldStock);
 		
 		JLabel labelPrecio = ComponentsBuilder.createLabel("Precio:", 10, 200, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelPrecio);
@@ -77,20 +78,24 @@ public class VAltaProducto extends JFrame implements IGUI{
 		JTextField fieldMarca = ComponentsBuilder.createTextField(80, 250, 55, 20);
 		this.add(fieldMarca);
 		
+		
+		JLabel labelTipo = ComponentsBuilder.createLabel("Tipo:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelTipo);
+		@SuppressWarnings("serial")
+		ArrayList<String> tipo = new ArrayList<String>() {{add("Deportivas"); add("Casual"); add("Futbol");}};		
+		JComboBox<String> comboTipo = ComponentsBuilder.createComboBox(tipo, 200, 252, 100, 20);
+		
+		JLabel labelTejido = ComponentsBuilder.createLabel("Tejido:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelTejido);
+		@SuppressWarnings("serial")
+		ArrayList<String> tejido = new ArrayList<String>() {{add("Seda"); add("Algodon"); add("Lana");}};
+		JComboBox<String> comboTejido = ComponentsBuilder.createComboBox(tejido, 200, 252, 100, 20);
+		
 		if(tipoProducto == "Zapatillas") {
-			JLabel labelTipo = ComponentsBuilder.createLabel("Tipo:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-			this.add(labelTipo);
-			@SuppressWarnings("serial")
-			ArrayList<String> tipo = new ArrayList<String>() {{add("Deportivas"); add("Casual"); add("Futbol");}};
-			JComboBox<String> comboTipo = ComponentsBuilder.createComboBox(tipo, 200, 252, 100, 20);
 			this.add(comboTipo);
 		}
+		
 		else if(tipoProducto == "Calcetines") {
-			JLabel labelTejido = ComponentsBuilder.createLabel("Tejido:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-			this.add(labelTejido);
-			@SuppressWarnings("serial")
-			ArrayList<String> tejido = new ArrayList<String>() {{add("Seda"); add("Algodon"); add("Lana");}};
-			JComboBox<String> comboTejido = ComponentsBuilder.createComboBox(tejido, 200, 252, 100, 20);
 			this.add(comboTejido);
 		}
 		
@@ -124,7 +129,26 @@ public class VAltaProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(tipoProducto == "Zapatillas") {
+					
+					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas((int) comboTalla.getSelectedItem(),
+							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+							Integer.parseInt(fieldMarca.getText())));
+					
+					VAltaProducto.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				}
+				else if(tipoProducto == "Calcetines") {
+					
+					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas((int) comboTalla.getSelectedItem(),
+							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+							(String) comboTejido.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+							Integer.parseInt(fieldMarca.getText())));
+					
+					VAltaProducto.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				}
 			}
 			
 		};

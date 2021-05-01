@@ -14,12 +14,12 @@ public class TransferCalcetines {
 	private boolean activo;
 	
 	public TransferCalcetines(int talla, double precio, String nombre, String color, 
-								String tipo, int stock, int almacen, int marca) {
+								String tejido, int stock, int almacen, int marca) {
 		this.talla = talla;
 		this.precio = precio;
 		this.nombre = nombre;
 		this.color = color;
-		this.tejido = tipo;
+		this.tejido = tejido;
 		this.stock = stock;
 		this.almacen = almacen;
 		this.marca = marca;

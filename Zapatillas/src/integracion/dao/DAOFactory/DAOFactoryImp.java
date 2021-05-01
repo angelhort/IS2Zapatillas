@@ -6,6 +6,8 @@ import integracion.dao.cliente.DAOCliente;
 import integracion.dao.cliente.DAOClienteImp;
 import integracion.dao.marca.DAOMarca;
 import integracion.dao.marca.DAOMarcaImp;
+import integracion.dao.producto.DAOProducto;
+import integracion.dao.producto.DAOProductoImp;
 import integracion.dao.proveedor.DAOProveedor;
 import integracion.dao.proveedor.DAOProveedorImp;
 import integracion.dao.trabajador.DAOTrabajador;
@@ -35,6 +37,11 @@ public class DAOFactoryImp extends DAOAbstractFactory{
 	@Override
 	public DAOAlmacen getDAOAlmacen() {
 		return new DAOAlmacenImp();
+	}
+
+	@Override
+	public DAOProducto getDAOProducto() {
+		return new DAOProductoImp();
 	}
 
 }
