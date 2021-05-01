@@ -122,8 +122,31 @@ public class DAOAlmacenImp implements DAOAlmacen{
 
 	@Override
 	public TransferAlmacen getAlmacen(String direccion) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Almacen WHERE direccion = \"%s\"", direccion);
+		
+		TransferAlmacen almacen = null;
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next()) {
+				almacen = new TransferAlmacen(resultSet.getInt("idAlmacen"),
+						  resultSet.getInt("telefono"),
+						  resultSet.getInt("capacidad"),
+						  resultSet.getString("direccion"),
+						  resultSet.getBoolean("activo"));
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return almacen;			
 	}
 
 	@Override

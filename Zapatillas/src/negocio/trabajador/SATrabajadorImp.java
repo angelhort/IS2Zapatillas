@@ -8,10 +8,10 @@ public class SATrabajadorImp implements SATrabajador{
 
 	@Override
 	public int alta(TransferTrabajador t) {
-		//TODO COMPROBAR SI EL TRABAJADOR YA ESTA DADO DE ALTA
 		if(t.getDNI().length() == 9) 
 			if(t.getNombre().length() < 35)
-				return DAOAbstractFactory.getInstance().getDAOTrabajador().alta(t);
+				if(DAOAbstractFactory.getInstance().getDAOTrabajador().getTrabajador(t.getDNI()) == null)
+					return DAOAbstractFactory.getInstance().getDAOTrabajador().alta(t);
 		return -1;
 	}
 

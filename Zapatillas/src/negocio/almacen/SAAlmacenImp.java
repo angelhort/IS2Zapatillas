@@ -8,7 +8,10 @@ public class SAAlmacenImp implements SAAlmacen{
 
 	@Override
 	public int alta(TransferAlmacen t) {
-		return DAOAbstractFactory.getInstance().getDAOAlmacen().alta(t);
+		if(DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getDireccion()) == null)
+			return DAOAbstractFactory.getInstance().getDAOAlmacen().alta(t);
+		
+		return -1;
 	}
 
 	@Override

@@ -11,6 +11,7 @@ public class SAClienteImp implements SACliente {
 		int id = -1;
 		if(t.getDNI().length() == 9) {
 			if(t.getNombre().length() < 35) {
+				if(DAOAbstractFactory.getInstance().getDAOCliente().getCliente(t.getDNI()) == null)
 				id = DAOAbstractFactory.getInstance().getDAOCliente().alta(t);
 			}
 		}

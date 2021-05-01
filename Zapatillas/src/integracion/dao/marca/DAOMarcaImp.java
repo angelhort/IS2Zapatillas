@@ -127,7 +127,7 @@ public class DAOMarcaImp implements DAOMarca {
 			if (resultSet.next()) {
 				marca = new TransferMarca(resultSet.getInt("idMarca"),
 											  resultSet.getString("nombre"),
-											  resultSet.getBoolean("socio")
+											  resultSet.getBoolean("activo")
 											  );
 			}
 			
@@ -137,7 +137,6 @@ public class DAOMarcaImp implements DAOMarca {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
 		return marca;
 	}
 
