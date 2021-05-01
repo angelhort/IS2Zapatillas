@@ -65,6 +65,8 @@ public class VMostrarTodosLosTrabajadores extends JFrame implements IGUI{
 			table.setValueAt(t.getActivo() ? "SI" : "NO", i, 4);
 			i++;
 		}
+		
+		table.setDefaultEditor(Object.class, null);
 	
 		this.add(table);
 	}

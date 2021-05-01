@@ -63,6 +63,8 @@ public class VMostrarUnAlmacen extends JFrame implements IGUI{
 		
 		table.setValueAt("Activo", 0, 4);
 		table.setValueAt(almacen.getActivo() ? "SI" : "NO", 1, 4);
+		
+		table.setDefaultEditor(Object.class, null);
 	
 		this.add(table);
 	}

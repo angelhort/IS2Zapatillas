@@ -58,6 +58,8 @@ public class VMostrarUnaMarca extends JFrame implements IGUI{
 		table.setValueAt("Activo", 0, 2);
 		table.setValueAt(marca.getActivo() ? "SI" : "NO", 1, 2);
 		
+		table.setDefaultEditor(Object.class, null);
+		
 		this.add(table);
 		
 	}

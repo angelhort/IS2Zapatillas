@@ -66,6 +66,8 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 			i++;
 		}
 	
+		table.setDefaultEditor(Object.class, null);
+
 		this.add(table);
 	}
 

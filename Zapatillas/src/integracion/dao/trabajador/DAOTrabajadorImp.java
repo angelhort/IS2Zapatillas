@@ -122,9 +122,8 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 
 	@Override
 	public TransferTrabajador getTrabajador(String dni) {
-		//TODO ESTE METODO NO FUNCIONA
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Trabajadores WHERE DNI = %s", dni);
+		String query = String.format("SELECT * FROM Trabajadores WHERE DNI = \"%s\"", dni);
 		
 		TransferTrabajador trabajador = null;
 
@@ -134,10 +133,10 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			
 			if (resultSet.next()) {
 				trabajador = new TransferTrabajador(resultSet.getInt("idTrabajador"),
-											  resultSet.getInt("telefono"),
-											  resultSet.getString("DNI"),
-											  resultSet.getString("nombre"),
-											  resultSet.getBoolean("activo"));
+												  resultSet.getInt("telefono"),
+												  resultSet.getString("DNI"),
+												  resultSet.getString("nombre"),
+												  resultSet.getBoolean("activo"));
 			}
 			
 			resultSet.close();

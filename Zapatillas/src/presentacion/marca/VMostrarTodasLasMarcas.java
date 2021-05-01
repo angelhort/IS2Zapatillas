@@ -61,6 +61,8 @@ public class VMostrarTodasLasMarcas extends JFrame implements IGUI{
 			table.setValueAt(t.getActivo() ? "SI" : "NO", i, 2);
 			i++;
 		}
+		
+		table.setDefaultEditor(Object.class, null);
 	
 		this.add(table);
 
