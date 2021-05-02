@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.cliente.TransferCliente;
@@ -29,7 +30,6 @@ public class VAltaCliente extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -88,6 +88,17 @@ public class VAltaCliente extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
+		switch(evento) {
+		case Evento.GUIAltaCliente:
+		this.setVisible(true);
+		break;
 		
+		case Evento.ClienteOK:
+			JOptionPane.showMessageDialog(this,"El cliente se dio de alta con ID: " + datos, "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.ClienteKO:
+			JOptionPane.showMessageDialog(this,"El cliente ya existe o los datos fueron mal introducidos", "ERROR Alta Cliente", JOptionPane.ERROR_MESSAGE);
+			break;
+	}
 	}
 }

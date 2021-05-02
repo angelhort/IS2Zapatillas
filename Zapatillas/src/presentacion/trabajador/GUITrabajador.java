@@ -26,7 +26,6 @@ public class GUITrabajador extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
-		this.setVisible(true);
 	}
 	
 
@@ -127,7 +126,10 @@ public class GUITrabajador extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
-		
+		switch(evento) {
+		case Evento.MostrarGUITrabajador:
+		this.setVisible(true);
+		break;
+	}
 	}
 }

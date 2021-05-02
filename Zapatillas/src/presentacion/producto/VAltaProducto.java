@@ -30,7 +30,6 @@ public class VAltaProducto extends JFrame implements IGUI{
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initSelectGUI();
-		this.setVisible(false);
 	}
 	
 	public void initGUI(String tipoProducto) {

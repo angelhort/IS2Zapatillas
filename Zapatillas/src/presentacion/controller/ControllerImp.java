@@ -23,17 +23,13 @@ public class ControllerImp extends Controller{
 		IGUI gui = GUIFactory.getInstance().getFrame(evento);
 		int id;
 		
-		/* if(((evento/10) % 10) == 0)
-			gui = (vistas.get(evento/100)).get(evento%100);			
-		
-		else
-			gui = (vistas.get(evento/100).get(0));*/
-		
 		switch(evento) {
 		//CLIENTE
 			case Evento.AltaCliente:
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
+				if(id != -1)gui.actualizar(Evento.ClienteOK, id);
+				else gui.actualizar(Evento.ClienteKO, null);
 				break;
 				
 			case Evento.MostrarModificarCliente:
