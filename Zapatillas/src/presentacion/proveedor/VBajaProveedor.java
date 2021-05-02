@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import presentacion.cliente.VBajaCliente;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;

@@ -110,6 +110,16 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarUnProveedor:
 				gui.actualizar(Evento.MostrarUnProveedor, SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos)));
 				break;
+			case Evento.MostrarTodosLosProveedores:
+				gui.actualizar(Evento.MostrarTodosLosProveedores, SAAbstractFactory.getInstance().getSAProveedor().mostrarTodos());
+				break;
+			case Evento.MostrarModificarProveedor:
+				TransferProveedor proveedor = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar(Evento.MostrarModificarProveedor, proveedor);
+				break;
+			case Evento.ModificarProveedor:
+				SAAbstractFactory.getInstance().getSAProveedor().modificar((TransferProveedor) datos);
+				break;
 				
 		//ALMACEN
 			case Evento.AltaAlmacen:

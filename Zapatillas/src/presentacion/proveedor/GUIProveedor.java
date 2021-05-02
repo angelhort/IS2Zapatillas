@@ -101,7 +101,8 @@ public class GUIProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.MostrarTodosLosProveedores, null);
+				GUIProveedor.this.dispose();
 			}
 			
 		};
