@@ -44,34 +44,23 @@ create table Trabajadores(
 	activo BOOLEAN NOT NULL DEFAULT 1
 );
 
+DROP TABLE IF EXISTS Productos;
+DROP TABLE IF EXISTS Zapatillas;
 DROP TABLE IF EXISTS Calcetines;
-CREATE TABLE Calcetines(
-	idCalcetines INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Productoss(
+	idProductos INT AUTO_INCREMENT PRIMARY KEY,
 	color VARCHAR(9),
 	talla INT,
 	stock INT,
 	nombre VARCHAR(35),
 	precio DECIMAL(8, 2),
 	tejido VARCHAR(20),
-	idAlmacen INT,
-	idMarca INT,
-	activo BOOLEAN NOT NULL DEFAULT 1
-);
-
-DROP TABLE IF EXISTS Zapatillas;
-CREATE TABLE Zapatillas(
-	idZapatillas INT AUTO_INCREMENT PRIMARY KEY,
-	color VARCHAR(9),
-	talla INT,
-	stock INT,
-	nombre VARCHAR(35),
-	precio DECIMAL(8, 2),
 	tipo VARCHAR(20),
+	tipoProducto INT, ;0 zapatillas 1 calcetines
 	idAlmacen INT,
 	idMarca INT,
 	activo BOOLEAN NOT NULL DEFAULT 1
 );
-
 
 DROP TABLE IF EXISTS Clientes;
 CREATE TABLE Clientes(

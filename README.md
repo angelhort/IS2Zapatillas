@@ -9,7 +9,9 @@ ii. Desde el desplegable de `File` elegir `Import project`
 iii. Navegar hasta la carpeta del proyecto y seleccionarla. Si reconoce la clase, darle a `Import`.
 
 ## Tareas
-- [ ] Vista venta
-- [ ] Mostrar resultados por pantalla
-- [ ] Vista mostrar todo
-- [ ] Cambiar stock de productos de bool a int
+- [ ] Venta entero
+- [ ] Mostrar resultados por pantalla, solo hecho cliente
+- [ ] Producto, todos menos DAO
+- [ ] Scroll
+- [x] Vista mostrar todo
+- [x] Cambiar stock de productos de bool a int
