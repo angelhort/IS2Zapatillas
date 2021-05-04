@@ -31,6 +31,8 @@ public class Evento {
 	public static final int GUIModificarTrabajador = 203;
 	public static final int GUIMostrarUnTrabajador = 204;
 	public static final int MostrarModificarTrabajador = 205;
+	public static final int TrabajadorOK = 206;
+	public static final int TrabajadorKO = 207;
 	
 	public static final int AltaTrabajador = 210;
 	public static final int BajaTrabajador = 211;
@@ -54,6 +56,8 @@ public class Evento {
 	public static final int GUIModificarAlmacen = 403;
 	public static final int GUIMostrarUnAlmacen = 404;
 	public static final int MostrarModificarAlmacen = 405;
+	public static final int AlmacenOK = 406;
+	public static final int AlmacenKO = 407;
 	
 	public static final int AltaAlmacen = 410;
 	public static final int BajaAlmacen = 411;
@@ -69,6 +73,9 @@ public class Evento {
 	public static final int GUIBajaProducto = 502;
 	public static final int GUIModificarProducto = 503;
 	public static final int GUIMostrarUnProducto = 504;
+	public static final int MostrarModificarProducto = 505;
+	public static final int ProductoOK = 506;
+	public static final int ProductoKO = 507;
 	
 	public static final int AltaProducto = 510;
 	public static final int BajaProducto = 511;
@@ -83,6 +90,9 @@ public class Evento {
 	public static final int GUIModificarProveedor = 603;
 	public static final int GUIMostrarUnProveedor = 604;
 	public static final int MostrarModificarProveedor = 605;
+	public static final int ProveedorOK = 606;
+	public static final int ProveedorKO = 607;
+	
 	
 	public static final int AltaProveedor = 610;
 	public static final int BajaProveedor = 611;
@@ -99,6 +109,8 @@ public class Evento {
 	public static final int GUIModificarMarca = 703;
 	public static final int GUIMostrarUnaMarca = 704;
 	public static final int MostrarModificarMarca = 705;
+	public static final int MarcaOK = 706;
+	public static final int MarcaKO = 707;
 	
 	public static final int AltaMarca = 710;
 	public static final int BajaMarca = 711;
