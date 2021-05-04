@@ -49,6 +49,7 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarTodosLosClientes:
 				gui.actualizar(Evento.MostrarTodosLosClientes, SAAbstractFactory.getInstance().getSACliente().mostrarTodos());
 				break;
+				
 		//MARCA
 			case Evento.AltaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().alta((TransferMarca)datos);
