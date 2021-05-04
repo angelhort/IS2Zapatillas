@@ -64,8 +64,8 @@ public class VModificarMarca extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VModificarMarca.this.dispose();
 				Controller.getInstance().action(Evento.ModificarMarca, new TransferMarca(marca.getID(), fieldNombre.getText(), marca.getActivo()));
+				VModificarMarca.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
