@@ -26,24 +26,27 @@ public class ControllerImp extends Controller{
 			case Evento.AltaCliente:
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
-				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , datos);
+				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
 				break;
 				
 			case Evento.MostrarModificarCliente:
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.MostrarModificarCliente, cliente);
+				gui.actualizar((cliente != null) ? Evento.MostrarModificarCliente : Evento.ClienteKO, cliente);
 				break;
 				
 			case Evento.BajaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
+				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
 				break;	
 				
 			case Evento.ModificarCliente:
-				SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
+				id = SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
+				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
 				break;
 				
 			case Evento.MostrarUnCliente: 
-				gui.actualizar(Evento.MostrarUnCliente, SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos)));
+				TransferCliente clienteM = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((clienteM != null) ? Evento.MostrarModificarCliente : Evento.ClienteKO, clienteM);
 				break;
 				
 			case Evento.MostrarTodosLosClientes:
