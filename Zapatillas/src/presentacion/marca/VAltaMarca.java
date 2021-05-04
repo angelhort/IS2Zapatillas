@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.marca.TransferMarca;
@@ -75,9 +76,17 @@ public class VAltaMarca extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIAltaMarca:
-		this.setVisible(true);
-		break;
-	}
+			case Evento.GUIAltaMarca:
+				this.setVisible(true);
+				break;
+			
+			case Evento.ClienteOK:
+				JOptionPane.showMessageDialog(this,"La marca se dio de alta con ID: " + datos, "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.ClienteKO:
+				JOptionPane.showMessageDialog(this,"La marca ya existe o los datos fueron mal introducidos", "ERROR Alta Marca", JOptionPane.ERROR_MESSAGE);
+				break;
+		}
 	}
 }
