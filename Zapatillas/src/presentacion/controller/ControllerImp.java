@@ -7,7 +7,6 @@ import negocio.marca.TransferMarca;
 import negocio.proveedor.TransferProveedor;
 import negocio.trabajador.TransferTrabajador;
 import presentacion.factoryGUI.GUIFactory;
-import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
 public class ControllerImp extends Controller{
