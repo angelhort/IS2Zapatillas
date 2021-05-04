@@ -13,8 +13,7 @@ import presentacion.vista.IGUI;
 public class ControllerImp extends Controller{
 		
 	public ControllerImp() {
-		@SuppressWarnings("unused")
-		GUIPrincipal principal = new GUIPrincipal();
+		
 	}
 
 	@Override
