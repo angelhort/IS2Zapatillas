@@ -26,8 +26,7 @@ public class ControllerImp extends Controller{
 			case Evento.AltaCliente:
 				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
-				if(id != -1)gui.actualizar(Evento.ClienteOK, id);
-				else gui.actualizar(Evento.ClienteKO, null);
+				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , datos);
 				break;
 				
 			case Evento.MostrarModificarCliente:
