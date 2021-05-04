@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.marca.TransferMarca;
@@ -76,9 +77,22 @@ public class VModificarMarca extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.MostrarModificarMarca:
-			initGUI((TransferMarca) datos);
-			break;
+			case Evento.MostrarModificarMarca:
+				initGUI((TransferMarca) datos);	
+				break;
+				
+			case Evento.MarcaOK:
+				JOptionPane.showMessageDialog(this,"La marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.MarcaKO:
+				if(datos == null)
+					JOptionPane.showMessageDialog(this,"La marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				else 
+					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				
+				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
+				break;
 		}
 	}
 }

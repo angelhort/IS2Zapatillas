@@ -76,7 +76,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnaMarca:
 				TransferMarca marcaM = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((marcaM != null) ? Evento.MostrarModificarCliente : Evento.ClienteKO, marcaM);
+				gui.actualizar((marcaM != null) ? Evento.MostrarUnaMarca : Evento.ClienteKO, marcaM);
 				break;
 				
 			case Evento.MostrarTodasLasMarcas:

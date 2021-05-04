@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import negocio.marca.TransferMarca;
@@ -67,10 +68,16 @@ public class VMostrarUnaMarca extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.MostrarUnaMarca:
-			initGUI((TransferMarca) datos);
-			this.setVisible(true);
-			break;
+			case Evento.MostrarUnaMarca:
+				initGUI((TransferMarca) datos);
+				this.setVisible(true);
+				break;
+				
+			case Evento.MarcaKO:
+				JOptionPane.showMessageDialog(this,"La marca no existe", "ERROR Mostrar Una Marca", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
+				break;
 		}
 	}
 
