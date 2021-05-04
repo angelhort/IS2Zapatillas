@@ -20,7 +20,7 @@ public class Evento {
 	public static final int BajaCliente = 111;
 	public static final int ModificarCliente = 112;
 	public static final int MostrarUnCliente = 113;
-	public static final int MostrarTodosLosClientes = 114;
+	public static final int MostrarTodosLosClientes = 114; 
 	
 	
 	// TRABAJADOR DE 200-299
