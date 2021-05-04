@@ -34,6 +34,7 @@ public class GUIFactoryImp extends GUIFactory{
 			return new VMostrarUno("Cliente");
 		case Evento.GUIModificarCliente:
 			return new VModificar("Cliente");
+		case Evento.ModificarCliente:
 		case Evento.MostrarModificarCliente:
 			return new VModificarCliente();
 		case Evento.MostrarUnCliente:
@@ -115,13 +116,16 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUIMarca:
 			return new GUIMarca();
 		case Evento.GUIAltaMarca:
+		case Evento.AltaMarca:
 			return new VAltaMarca();
+		case Evento.BajaMarca:
 		case Evento.GUIBajaMarca:
 			return new VBajaMarca();
 		case Evento.GUIMostrarUnaMarca:
 			return new VMostrarUno("Marca");
 		case Evento.GUIModificarMarca:
 			return new VModificar("Marca");
+		case Evento.ModificarMarca:
 		case Evento.MostrarModificarMarca:
 			return new VModificarMarca();
 		case Evento.MostrarUnaMarca:
