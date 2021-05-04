@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import negocio.cliente.TransferCliente;
@@ -75,6 +76,11 @@ public class VMostrarUnCliente extends JFrame implements IGUI{
 		case Evento.MostrarUnCliente:
 			initGUI((TransferCliente) datos);
 			this.setVisible(true);
+			break;
+		case Evento.ClienteKO:
+			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Mostrar Un Cliente", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			break;
 		}
 	}

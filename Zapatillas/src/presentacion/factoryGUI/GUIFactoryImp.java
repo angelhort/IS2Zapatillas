@@ -27,6 +27,7 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.GUIAltaCliente:
 		case Evento.AltaCliente:
 			return new VAltaCliente();
+		case Evento.BajaCliente:
 		case Evento.GUIBajaCliente:
 			return new VBajaCliente();
 		case Evento.GUIMostrarUnCliente:

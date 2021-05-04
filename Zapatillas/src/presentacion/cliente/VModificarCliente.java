@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.cliente.TransferCliente;
@@ -93,6 +94,15 @@ public class VModificarCliente extends JFrame implements IGUI{
 		switch(evento){
 		case Evento.MostrarModificarCliente:
 			initGUI((TransferCliente) datos);	
+			break;
+		case Evento.ClienteOK:
+			JOptionPane.showMessageDialog(this,"El cliente se modifico con exito", "Modificar Cliente", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.ClienteKO:
+			if(datos == null)
+				JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			else JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			break;
 		}
 	}

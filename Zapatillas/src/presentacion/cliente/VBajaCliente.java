@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -77,6 +78,13 @@ public class VBajaCliente extends JFrame implements IGUI{
 		case Evento.GUIBajaCliente:
 		this.setVisible(true);
 		break;
+		
+		case Evento.ClienteOK:
+			JOptionPane.showMessageDialog(this,"El cliente se dio de baja", "Baja Cliente", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.ClienteKO:
+			JOptionPane.showMessageDialog(this,"El cliente no existe o ya esta dado de baja", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
+			break;
 	}
 	}
 }

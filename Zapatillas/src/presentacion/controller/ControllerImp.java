@@ -46,7 +46,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnCliente: 
 				TransferCliente clienteM = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((clienteM != null) ? Evento.MostrarModificarCliente : Evento.ClienteKO, clienteM);
+				gui.actualizar((clienteM != null) ? Evento.MostrarUnCliente : Evento.ClienteKO, clienteM);
 				break;
 				
 			case Evento.MostrarTodosLosClientes:
