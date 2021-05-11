@@ -9,6 +9,7 @@ import presentacion.producto.*;
 import presentacion.proveedor.*;
 import presentacion.proveedor_producto.*;
 import presentacion.trabajador.*;
+import presentacion.venta.*;
 import presentacion.vista.GUIPrincipal;
 import presentacion.vista.IGUI;
 
@@ -62,7 +63,7 @@ public class GUIFactoryImp extends GUIFactory{
 		
 		//VENTA
 		case Evento.MostrarGUIVenta: //TODO VENTA
-			break;
+			return new GUIVenta();
 		
 		//ALMACEN
 		case Evento.MostrarGUIAlmacen:
