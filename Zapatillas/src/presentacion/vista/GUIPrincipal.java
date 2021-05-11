@@ -71,6 +71,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
 				GUIPrincipal.this.dispose();
 			}
 			
