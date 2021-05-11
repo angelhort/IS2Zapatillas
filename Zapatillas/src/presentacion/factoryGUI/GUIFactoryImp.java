@@ -84,6 +84,7 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarTodosLosAlmacenes:
 			return new VMostrarTodosLosAlmacenes();
 		case Evento.MostrarModificarAlmacen:
+		case Evento.ModificarAlmacen:
 			return new VModificarAlmacen();
 		case Evento.MostrarUnAlmacen:
 			return new VMostrarUnAlmacen();
@@ -120,6 +121,7 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarTodosLosProveedores:
 			return new VMostrarTodosLosProveedores();
 		case Evento.MostrarModificarProveedor:
+		case Evento.ModificarProveedor:
 			return new VModificarProveedor();
 		
 		//MARCA

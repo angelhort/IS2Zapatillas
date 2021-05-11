@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -74,9 +75,17 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIBajaAlmacen:
-		this.setVisible(true);
-		break;
-	}
+			case Evento.GUIBajaAlmacen:
+				this.setVisible(true);
+				break;
+			
+			case Evento.AlmacenOK:
+				JOptionPane.showMessageDialog(this,"El almacén se dio de baja", "Baja Almacén", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.AlmacenKO:
+				JOptionPane.showMessageDialog(this,"El almacén no existe o ya esta dado de baja", "ERROR Baja Almacén", JOptionPane.ERROR_MESSAGE);
+				break;
+		}
 	}
 }

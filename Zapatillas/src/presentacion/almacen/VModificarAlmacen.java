@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -91,9 +92,22 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento){
-		case Evento.MostrarModificarAlmacen:
-			initGUI((TransferAlmacen) datos);	
-			break;
+			case Evento.MostrarModificarAlmacen:
+				initGUI((TransferAlmacen) datos);	
+				break;
+				
+			case Evento.AlmacenOK:
+				JOptionPane.showMessageDialog(this,"El almacén se modifico con exito", "Modificar Almacén", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.AlmacenKO:
+				if(datos == null)
+					JOptionPane.showMessageDialog(this,"El almacén no existe", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
+				else 
+					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
+				
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+				break;
 		}
 	}
 }

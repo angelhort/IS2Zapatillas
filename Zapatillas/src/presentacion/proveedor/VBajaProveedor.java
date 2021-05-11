@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -74,9 +75,17 @@ public class VBajaProveedor extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIBajaProveedor:
-		this.setVisible(true);
-		break;
-	}
+			case Evento.GUIBajaProveedor:
+				this.setVisible(true);
+				break;
+			
+			case Evento.ProveedorOK:
+				JOptionPane.showMessageDialog(this,"El proveedor se dio de baja", "Baja Proveedor", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.ProveedorKO:
+				JOptionPane.showMessageDialog(this,"El proveedor no existe o ya esta dado de baja", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
+				break;
+		}
 	}
 }

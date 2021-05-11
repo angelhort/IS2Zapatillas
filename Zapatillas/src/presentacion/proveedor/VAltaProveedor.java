@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.proveedor.TransferProveedor;
@@ -91,8 +92,16 @@ public class VAltaProveedor extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 		case Evento.GUIAltaProveedor:
-		this.setVisible(true);
-		break;
+			this.setVisible(true);
+			break;
+		
+		case Evento.ProveedorOK:
+			JOptionPane.showMessageDialog(this,"El proveedor se dio de alta con ID: " + datos, "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			break;
+			
+		case Evento.ProveedorKO:
+			JOptionPane.showMessageDialog(this,"El proveedor ya existe o los datos fueron mal introducidos", "ERROR Alta Proveedor", JOptionPane.ERROR_MESSAGE);
+			break;
 	}
 	}
 }

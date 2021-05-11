@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.proveedor.TransferProveedor;
@@ -93,9 +94,22 @@ public class VModificarProveedor extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento){
-		case Evento.MostrarModificarProveedor:
-			initGUI((TransferProveedor) datos);	
-			break;
+			case Evento.MostrarModificarProveedor:
+				initGUI((TransferProveedor) datos);	
+				break;
+				
+			case Evento.ProveedorOK:
+				JOptionPane.showMessageDialog(this,"El proveedor se modifico con exito", "Modificar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.ProveedorKO:
+				if(datos == null)
+					JOptionPane.showMessageDialog(this,"El proveedor no existe", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				else 
+					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+				break;
 		}
 	}
 }
