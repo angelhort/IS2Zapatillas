@@ -39,6 +39,7 @@ public class GUIVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Controller.getInstance().action(Evento.GUIAbrirVenta, null);
 				GUIVenta.this.dispose();
 			}
 			
