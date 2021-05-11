@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -88,9 +89,17 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIAltaAlmacen:
-		this.setVisible(true);
-		break;
-	}
+			case Evento.GUIAltaAlmacen:
+				this.setVisible(true);
+				break;
+			
+			case Evento.AlmacenOK:
+				JOptionPane.showMessageDialog(this,"El almacén se dio de alta con ID: " + datos, "Alta Almacén", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				
+			case Evento.AlmacenKO:
+				JOptionPane.showMessageDialog(this,"El almacén ya existe o los datos fueron mal introducidos", "ERROR Alta Almacén", JOptionPane.ERROR_MESSAGE);
+				break;
+		}
 	}
 }

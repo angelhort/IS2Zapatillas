@@ -46,8 +46,10 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUITrabajador:
 			return new GUITrabajador();
 		case Evento.GUIAltaTrabajador:
+		case Evento.AltaTrabajador:
 			return new VAltaTrabajador();
 		case Evento.GUIBajaTrabajador:
+		case Evento.BajaTrabajador:
 			return new VBajaTrabajador();
 		case Evento.GUIMostrarUnTrabajador:
 			return new VMostrarUno("Trabajador");
@@ -68,8 +70,10 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUIAlmacen:
 			return new GUIAlmacen();
 		case Evento.GUIAltaAlmacen:
+		case Evento.AltaAlmacen:
 			return new VAltaAlmacen();
 		case Evento.GUIBajaAlmacen:
+		case Evento.BajaAlmacen:
 			return new VBajaAlmacen();
 		case Evento.GUIMostrarUnAlmacen:
 			return new VMostrarUno("Almacen");
@@ -86,8 +90,10 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUIProducto:
 			return new GUIProducto();
 		case Evento.GUIAltaProducto:
+		case Evento.AltaProducto:
 			return new VAltaProducto();
 		case Evento.GUIBajaProducto:
+		case Evento.BajaProducto:
 			return new VBajaProducto();
 		case Evento.GUIMostrarUnProducto:
 			return new VMostrarUno("Producto");
@@ -98,8 +104,10 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUIProveedor:
 			return new GUIProveedor();
 		case Evento.GUIAltaProveedor:
+		case Evento.AltaProveedor:
 			return new VAltaProveedor();
 		case Evento.GUIBajaProveedor:
+		case Evento.BajaProveedor:
 			return new VBajaProveedor();
 		case Evento.GUIMostrarUnProveedor:
 			return new VMostrarUno("Proveedor");

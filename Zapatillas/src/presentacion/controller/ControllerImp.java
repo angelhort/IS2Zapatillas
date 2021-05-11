@@ -24,7 +24,6 @@ public class ControllerImp extends Controller{
 		switch(evento) {
 		//CLIENTE
 			case Evento.AltaCliente:
-				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
 				break;
@@ -86,65 +85,86 @@ public class ControllerImp extends Controller{
 		//TRABAJADOR
 			case Evento.AltaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().alta((TransferTrabajador) datos);
+				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
 				break;
+				
 			case Evento.BajaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().borrar(Integer.parseInt((String) datos));
+				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
 				break;
+				
 			case Evento.MostrarTodosLosTrabajadores:
 				gui.actualizar(Evento.MostrarTodosLosTrabajadores, SAAbstractFactory.getInstance().getSATrabajador().mostrarTodos());
 				break;
+				
 			case Evento.MostrarModificarTrabajador:
 				TransferTrabajador trabajador = SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.MostrarModificarTrabajador, trabajador);
 				break;
+				
 			case Evento.ModificarTrabajador:
-				SAAbstractFactory.getInstance().getSATrabajador().modificar((TransferTrabajador) datos);
+				id = SAAbstractFactory.getInstance().getSATrabajador().modificar((TransferTrabajador) datos);
+				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
 				break;
+				
 			case Evento.MostrarUnTrabajador:
 				gui.actualizar(Evento.MostrarUnTrabajador, SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos)));
 				break;
 			
 		//PROVEEDOR
 			case Evento.AltaProveedor:
-				// Angel TODO: SI ID = -1 ERROR, SINO EXITO
 				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);
+				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
 				break;
 			
 			case Evento.BajaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
+				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
 				break;
 				
 			case Evento.MostrarUnProveedor:
 				gui.actualizar(Evento.MostrarUnProveedor, SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos)));
 				break;
+				
 			case Evento.MostrarTodosLosProveedores:
 				gui.actualizar(Evento.MostrarTodosLosProveedores, SAAbstractFactory.getInstance().getSAProveedor().mostrarTodos());
 				break;
+				
 			case Evento.MostrarModificarProveedor:
 				TransferProveedor proveedor = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.MostrarModificarProveedor, proveedor);
 				break;
+				
 			case Evento.ModificarProveedor:
-				SAAbstractFactory.getInstance().getSAProveedor().modificar((TransferProveedor) datos);
+				id = SAAbstractFactory.getInstance().getSAProveedor().modificar((TransferProveedor) datos);
+				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
 				break;
 				
 		//ALMACEN
 			case Evento.AltaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().alta((TransferAlmacen) datos);
+				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
 				break;
+				
 			case Evento.MostrarTodosLosAlmacenes:
 				gui.actualizar(Evento.MostrarTodosLosAlmacenes, SAAbstractFactory.getInstance().getSAAlmacen().mostrarTodos());
 				break;
+				
 			case Evento.BajaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().borrar(Integer.parseInt((String) datos));
+				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
 				break;
+				
 			case Evento.MostrarModificarAlmacen:
 				TransferAlmacen almacen = SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar(Evento.MostrarModificarAlmacen, almacen);
 				break;
+				
 			case Evento.ModificarAlmacen:
-				SAAbstractFactory.getInstance().getSAAlmacen().modificar((TransferAlmacen) datos);
+				id = SAAbstractFactory.getInstance().getSAAlmacen().modificar((TransferAlmacen) datos);
+				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
 				break;
+				
 			case Evento.MostrarUnAlmacen:
 				gui.actualizar(Evento.MostrarUnAlmacen, SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos)));
 				break;
