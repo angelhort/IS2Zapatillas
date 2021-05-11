@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.trabajador.TransferTrabajador;
@@ -93,6 +94,15 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 		switch(evento){
 		case Evento.MostrarModificarTrabajador:
 			initGUI((TransferTrabajador) datos);	
+			break;
+		case Evento.TrabajadorOK:
+			JOptionPane.showMessageDialog(this,"El trabajador se modifico con exito", "Modificar Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.TrabajadorKO:
+			if(datos == null)
+				JOptionPane.showMessageDialog(this,"El trabajador no existe", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			else JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			break;
 		}
 	}

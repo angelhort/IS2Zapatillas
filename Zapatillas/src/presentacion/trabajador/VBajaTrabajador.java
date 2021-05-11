@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -77,6 +78,13 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 		case Evento.GUIBajaTrabajador:
 		this.setVisible(true);
 		break;
+		
+		case Evento.TrabajadorOK:
+			JOptionPane.showMessageDialog(this,"El trabajador se dio de baja", "Baja Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.TrabajadorKO:
+			JOptionPane.showMessageDialog(this,"El trabajador no existe o ya esta dado de baja", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
+			break;
 	}
 	}
 }

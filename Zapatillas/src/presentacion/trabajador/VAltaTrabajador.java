@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.trabajador.TransferTrabajador;
@@ -90,6 +91,13 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 		case Evento.GUIAltaTrabajador:
 		this.setVisible(true);
 		break;
+		
+		case Evento.TrabajadorOK:
+			JOptionPane.showMessageDialog(this,"El trabajador se dio de alta con ID: " + datos, "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.TrabajadorKO:
+			JOptionPane.showMessageDialog(this,"El trabajador ya existe o los datos fueron mal introducidos", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
+			break;
 	}
 	}
 }
