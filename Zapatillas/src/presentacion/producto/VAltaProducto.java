@@ -11,8 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import negocio.producto.TransferCalcetines;
 import negocio.producto.TransferZapatillas;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
@@ -29,7 +31,6 @@ public class VAltaProducto extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x450.png")));
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initSelectGUI();
 	}
 	
 	public void initGUI(String tipoProducto) {
@@ -140,10 +141,10 @@ public class VAltaProducto extends JFrame implements IGUI{
 				}
 				else if(tipoProducto == "Calcetines") {
 					
-					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas((int) comboTalla.getSelectedItem(),
-							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
-							(String) comboTejido.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
-							Integer.parseInt(fieldMarca.getText())));
+					Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines((int) comboTalla.getSelectedItem(),
+							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
+							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+							Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));
 					
 					VAltaProducto.this.dispose();
 					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
@@ -154,67 +155,19 @@ public class VAltaProducto extends JFrame implements IGUI{
 		
 		aceptarButton.addActionListener(lAceptar);
 	}
-	
-	private void initSelectGUI() {
-		
-		JFrame frameEleccion = new JFrame("Foot World");
-		frameEleccion.setBounds(100, 100, 330, 230);
-		frameEleccion.setVisible(true);
-		frameEleccion.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
-		frameEleccion.setLayout(null);
-		frameEleccion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JLabel labelEleccion = ComponentsBuilder.createLabel("¿Que prodcuto desea añadir?", 65, 20, 230, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 20));
-		frameEleccion.add(labelEleccion);
-		
-		JButton zapatillaButton = ComponentsBuilder.createButton("Zapatillas", 40, 110, 100, 30, new Font("Serif", Font.PLAIN, 14));
-		frameEleccion.add(zapatillaButton);
-		
-		ActionListener lZapatillas = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frameEleccion.dispose();
-				VAltaProducto.this.initGUI("Zapatillas");
-			}
-			
-		};
-		
-		zapatillaButton.addActionListener(lZapatillas);
-		
-		JButton calcetinButton = ComponentsBuilder.createButton("Calcetines", 180, 110, 100, 30, new Font("Serif", Font.PLAIN, 14));
-		frameEleccion.add(calcetinButton);
-		
-		ActionListener lCalcetines = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frameEleccion.dispose();
-				VAltaProducto.this.initGUI("Calcetines");
-			}
-			
-		};
-		
-		calcetinButton.addActionListener(lCalcetines);
-		
-		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
-		frameEleccion.add(atrasButton);
-		
-		ActionListener lAtras = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frameEleccion.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
-			}
-			
-		};
-		
-		atrasButton.addActionListener(lAtras);
-	}
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.GUIAltaProducto:
+			String[] options = {"Zapatillas","Calcetines"};
+			int n = JOptionPane.showOptionDialog(this, "¿Que producto desea añadir?", "Foot World", JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+			
+			if(n == JOptionPane.YES_OPTION) initGUI("Zapatillas");
+			else if(n == JOptionPane.NO_OPTION) initGUI("Calcetines");
+			else Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+			break;
+		}
 	}
 }
