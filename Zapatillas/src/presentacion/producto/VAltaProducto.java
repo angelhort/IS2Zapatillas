@@ -29,7 +29,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 		super("Foot World");
 		this.setBounds(100, 100, 330, 450);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x450.png")));
-		this.setLayout(null);
+		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	

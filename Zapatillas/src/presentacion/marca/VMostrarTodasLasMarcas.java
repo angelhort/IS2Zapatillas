@@ -26,7 +26,7 @@ public class VMostrarTodasLasMarcas extends JFrame implements IGUI{
 		super("Foot World");
 		this.setBounds(100, 100, 1010, 500);
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
-		this.setLayout(null);
+		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 

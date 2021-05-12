@@ -24,7 +24,7 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 		super("Foot World");
 		this.setBounds(100, 100, 330, 350);
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
-		this.setLayout(null);
+		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initGUI();
 		this.setVisible(true);
