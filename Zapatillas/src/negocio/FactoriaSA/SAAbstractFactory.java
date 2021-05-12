@@ -3,6 +3,7 @@ package negocio.FactoriaSA;
 import negocio.almacen.SAAlmacen;
 import negocio.cliente.SACliente;
 import negocio.marca.SAMarca;
+import negocio.producto.SAProducto;
 import negocio.proveedor.SAProveedor;
 import negocio.trabajador.SATrabajador;
 
@@ -20,4 +21,5 @@ public abstract class SAAbstractFactory {
 	public abstract SAMarca getSAMarca();
 	public abstract SATrabajador getSATrabajador();
 	public abstract SAAlmacen getSAAlmacen();
+	public abstract SAProducto getSAProducto();
 }

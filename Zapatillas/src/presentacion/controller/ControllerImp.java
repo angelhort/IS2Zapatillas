@@ -4,6 +4,7 @@ import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.almacen.TransferAlmacen;
 import negocio.cliente.TransferCliente;
 import negocio.marca.TransferMarca;
+import negocio.producto.TransferProducto;
 import negocio.proveedor.TransferProveedor;
 import negocio.trabajador.TransferTrabajador;
 import presentacion.factoryGUI.GUIFactory;
@@ -109,6 +110,15 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnTrabajador:
 				gui.actualizar(Evento.MostrarUnTrabajador, SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos)));
+				break;
+				
+		//PRODUCTO
+			case Evento.AltaProducto:
+				id = SAAbstractFactory.getInstance().getSAProducto().alta((TransferProducto) datos);
+				//TODO MENSAJE EXITO O ERROR
+				break;
+			case Evento.MostrarTodosLosProductos:
+				gui.actualizar(Evento.MostrarTodosLosProductos, SAAbstractFactory.getInstance().getSAProducto().mostrarTodos());
 				break;
 			
 		//PROVEEDOR

@@ -80,6 +80,8 @@ public class Evento {
 	public static final int AltaProducto = 510;
 	public static final int BajaProducto = 511;
 	public static final int ModificarProducto = 512;
+	public static final int MostrarUnProducto = 513;
+	public static final int MostrarTodosLosProductos = 514;
 	
 	
 	// PROVEEDOR DE 600-699
@@ -125,8 +127,5 @@ public class Evento {
 	public static final int GUIAniadirProveedor = 801;
 	public static final int GUIEliminarProveedor = 802;
 	public static final int GUIEliminarProveedores = 803;
-
-
-
 
 }

@@ -131,7 +131,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				if(tipoProducto == "Zapatillas") {
 					
-					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas((int) comboTalla.getSelectedItem(),
+					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas(Integer.parseInt((String) comboTalla.getSelectedItem()),
 							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
 							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
 							Integer.parseInt(fieldMarca.getText())));
@@ -141,7 +141,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 				}
 				else if(tipoProducto == "Calcetines") {
 					
-					Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines((int) comboTalla.getSelectedItem(),
+					Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines(Integer.parseInt((String) comboTalla.getSelectedItem()),
 							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
 							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
 							Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));

@@ -100,7 +100,8 @@ public class GUIProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.MostrarTodosLosProductos, null);
+				GUIProducto.this.dispose();
 			}
 			
 		};

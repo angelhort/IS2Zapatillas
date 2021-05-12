@@ -102,6 +102,8 @@ public class GUIFactoryImp extends GUIFactory{
 			return new VMostrarUno("Producto");
 		case Evento.GUIModificarProducto:
 			return new VModificar("Producto");
+		case Evento.MostrarTodosLosProductos:
+			return new VMostrarTodosLosProductos();
 		
 		//PROVEEDOR
 		case Evento.MostrarGUIProveedor:

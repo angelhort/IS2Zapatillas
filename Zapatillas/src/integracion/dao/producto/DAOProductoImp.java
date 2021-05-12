@@ -10,6 +10,7 @@ import java.util.List;
 
 import integracion.connection.DatabaseConnection;
 import negocio.producto.TransferCalcetines;
+import negocio.producto.TransferProducto;
 import negocio.producto.TransferZapatillas;
 
 // TODO: idAlmacen e idMarca no está bien 
@@ -235,7 +236,7 @@ public class DAOProductoImp implements DAOProducto{
 			
 			if (resultSet.next()) {
 				if (resultSet.getInt("tipoProducto") == 0) 
-					producto = new TransferZapatillas(resultSet.getInt("idZapatillas"),
+					producto = new TransferZapatillas(resultSet.getInt("idProducto"),
 														   resultSet.getInt("talla"),
 														   resultSet.getDouble("precio"),
 														   resultSet.getString("nombre"),
@@ -246,7 +247,7 @@ public class DAOProductoImp implements DAOProducto{
 														   resultSet.getInt("idMarca"),
 														   resultSet.getBoolean("activo"));
 				else
-					producto = new TransferCalcetines(resultSet.getInt("idZapatillas"),
+					producto = new TransferCalcetines(resultSet.getInt("idProducto"),
 														   resultSet.getInt("talla"),
 														   resultSet.getDouble("precio"),
 														   resultSet.getString("nombre"),
@@ -338,11 +339,11 @@ public class DAOProductoImp implements DAOProducto{
 	
 
 	@Override
-	public List<Object> getAllProductos() {
+	public List<TransferProducto> getAllProductos() {
 		Connection conn = DatabaseConnection.getConnection();
 		String query = "SELECT * FROM Productos";
 		
-		List<Object> productos = new ArrayList<>();
+		List<TransferProducto> productos = new ArrayList<>();
 
 		try {
 			Statement statement = conn.createStatement();
@@ -350,7 +351,7 @@ public class DAOProductoImp implements DAOProducto{
 			
 			while (resultSet.next()) {
 				if (resultSet.getInt("tipoProducto") == 0) 
-					productos.add(new TransferZapatillas(resultSet.getInt("idZapatillas"),
+					productos.add(new TransferZapatillas(resultSet.getInt("idProducto"),
 														   resultSet.getInt("talla"),
 														   resultSet.getDouble("precio"),
 														   resultSet.getString("nombre"),
@@ -361,7 +362,7 @@ public class DAOProductoImp implements DAOProducto{
 														   resultSet.getInt("idMarca"),
 														   resultSet.getBoolean("activo")));
 				else
-					productos.add(new TransferCalcetines(resultSet.getInt("idZapatillas"),
+					productos.add(new TransferCalcetines(resultSet.getInt("idProducto"),
 														   resultSet.getInt("talla"),
 														   resultSet.getDouble("precio"),
 														   resultSet.getString("nombre"),

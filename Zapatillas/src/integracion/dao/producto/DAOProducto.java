@@ -4,6 +4,7 @@ import java.util.List;
 
 import negocio.producto.TransferZapatillas;
 import negocio.producto.TransferCalcetines;
+import negocio.producto.TransferProducto;
 
 public interface DAOProducto {
 	public int alta(TransferZapatillas transfer);
@@ -15,7 +16,7 @@ public interface DAOProducto {
 	public Object getProducto(int ID);
 	//public TransferZapatillas getZapatillas(int ID);
 	//public TransferCalcetines getCalcetines(int ID);
-	public List<Object> getAllProductos();
+	public List<TransferProducto> getAllProductos();
 	//public List<TransferZapatillas> getAllZapatillas();
 	//public List<TransferCalcetines> getAllCalcetines();
 }

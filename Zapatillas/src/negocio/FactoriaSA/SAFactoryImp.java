@@ -6,6 +6,8 @@ import negocio.cliente.SACliente;
 import negocio.cliente.SAClienteImp;
 import negocio.marca.SAMarca;
 import negocio.marca.SAMarcaImp;
+import negocio.producto.SAProducto;
+import negocio.producto.SAProductoImp;
 import negocio.proveedor.SAProveedor;
 import negocio.proveedor.SAProveedorImp;
 import negocio.trabajador.SATrabajador;
@@ -36,5 +38,10 @@ public class SAFactoryImp  extends SAAbstractFactory {
 	@Override
 	public SAAlmacen getSAAlmacen() {
 		return new SAAlmacenImp();
+	}
+
+	@Override
+	public SAProducto getSAProducto() {
+		return new SAProductoImp();
 	}
 }
