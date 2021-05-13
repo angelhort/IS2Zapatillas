@@ -8,15 +8,24 @@ public class SAClienteImp implements SACliente {
 
 	@Override
 	public int alta(TransferCliente t) {
-		int id = -1;
+		boolean correctDNI = true;
+		
 		if(t.getDNI().length() == 9) {
-			if(t.getNombre().length() < 35) {
-				if(DAOAbstractFactory.getInstance().getDAOCliente().getCliente(t.getDNI()) == null)
-				id = DAOAbstractFactory.getInstance().getDAOCliente().alta(t);
+			for(int i = 0; i < 8; i++) {
+				if(!Character.isDigit(t.getDNI().charAt(i)))
+					correctDNI = false;
 			}
+			if(correctDNI && Character.isLetter(t.getDNI().charAt(8)))
+				if(t.getNombre().length() < 35) {
+					TransferCliente cliente = DAOAbstractFactory.getInstance().getDAOCliente().getCliente(t.getDNI());
+					if(cliente == null)
+						return DAOAbstractFactory.getInstance().getDAOCliente().alta(t);
+					else if(!cliente.getActivo())
+						return DAOAbstractFactory.getInstance().getDAOCliente().activarEntidad(cliente.getID());
+				}
 		}
 		
-		return id;
+		return -1;
 	}
 
 	@Override
@@ -31,7 +40,9 @@ public class SAClienteImp implements SACliente {
 	public int modificar(TransferCliente t) {
 		if(t.getDNI().length() == 9) {
 			if(t.getNombre().length() < 35) {
-				return (DAOAbstractFactory.getInstance().getDAOCliente().modificar(t));
+				TransferCliente cliente = DAOAbstractFactory.getInstance().getDAOCliente().getCliente(t.getDNI());
+				if(cliente.getID() == t.getID())
+					return (DAOAbstractFactory.getInstance().getDAOCliente().modificar(t));
 			}
 			
 		}

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 public class ComponentsBuilder {
 	
@@ -85,7 +86,7 @@ public class ComponentsBuilder {
 	}
 	
 	public static JSpinner createSpinner(int x, int y, int width, int height) {
-		JSpinner spinner = new JSpinner();
+		JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
 		spinner.setBounds(x, y, width, height);
 		return spinner;
 	}

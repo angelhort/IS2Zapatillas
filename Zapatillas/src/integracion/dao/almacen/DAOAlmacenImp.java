@@ -90,6 +90,27 @@ public class DAOAlmacenImp implements DAOAlmacen{
 		
 		return result;
 	}
+	
+	@Override
+	public int activarEntidad(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Almacen SET activo=? WHERE idAlmacen=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public TransferAlmacen getAlmacen(int ID) {

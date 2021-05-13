@@ -124,6 +124,27 @@ public class DAOClienteImp implements DAOCliente {
 		
 		return cliente;
 	}
+	
+	@Override
+	public int activarEntidad(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Clientes SET activo=? WHERE idCliente=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public List<TransferCliente> getAllClientes() {

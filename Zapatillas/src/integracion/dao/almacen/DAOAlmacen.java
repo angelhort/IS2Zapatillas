@@ -11,4 +11,5 @@ public interface DAOAlmacen {
 	public TransferAlmacen getAlmacen(int ID);
 	public TransferAlmacen getAlmacen(String direccion);
 	public List<TransferAlmacen> getAllAlmacenes();
+	public int activarEntidad(int id);
 }

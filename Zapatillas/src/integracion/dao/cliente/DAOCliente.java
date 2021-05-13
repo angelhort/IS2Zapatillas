@@ -11,4 +11,5 @@ public interface DAOCliente {
 	public TransferCliente getCliente(int ID);
 	public TransferCliente getCliente(String DNI);
 	public List<TransferCliente> getAllClientes();
+	int activarEntidad(int id);
 }
