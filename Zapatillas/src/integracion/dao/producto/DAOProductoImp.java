@@ -224,11 +224,11 @@ public class DAOProductoImp implements DAOProducto{
 	}
 
 	@Override
-	public Object getProducto(int ID) {
+	public TransferProducto getProducto(int ID) {
 		Connection conn = DatabaseConnection.getConnection();
 		String query = String.format("SELECT * FROM Productos WHERE idProducto = %d", ID);
 		
-		Object producto = null;
+		TransferProducto producto = null;
 
 		try {
 			Statement statement = conn.createStatement();

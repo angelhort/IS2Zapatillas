@@ -13,7 +13,7 @@ public interface DAOProducto {
 	//public int bajaCalcetines(int ID);
 	public int modificar(TransferZapatillas transfer);
 	public int modificar(TransferCalcetines transfer);
-	public Object getProducto(int ID);
+	public TransferProducto getProducto(int ID);
 	//public TransferZapatillas getZapatillas(int ID);
 	//public TransferCalcetines getCalcetines(int ID);
 	public List<TransferProducto> getAllProductos();

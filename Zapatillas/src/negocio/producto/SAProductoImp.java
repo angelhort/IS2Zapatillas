@@ -27,7 +27,7 @@ public class SAProductoImp implements SAProducto{
 
 	@Override
 	public TransferProducto mostrarUno(int id) {
-		return null;
+		return DAOAbstractFactory.getInstance().getDAOProducto().getProducto(id);
 	}
 
 	@Override

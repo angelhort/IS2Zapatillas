@@ -124,6 +124,9 @@ public class ControllerImp extends Controller{
 				id = SAAbstractFactory.getInstance().getSAProducto().borrar(Integer.parseInt((String)datos));
 				//TODO MENSAJE EXITO O ERROR
 				break;
+			case Evento.MostrarUnProducto:
+				gui.actualizar(Evento.MostrarUnProducto, SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos)));
+				break;
 			
 		//PROVEEDOR
 			case Evento.AltaProveedor:
