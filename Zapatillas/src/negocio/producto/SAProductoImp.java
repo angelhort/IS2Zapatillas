@@ -17,7 +17,7 @@ public class SAProductoImp implements SAProducto{
 
 	@Override
 	public int borrar(int id) {
-		return 0;
+		return DAOAbstractFactory.getInstance().getDAOProducto().bajaProducto(id);
 	}
 
 	@Override

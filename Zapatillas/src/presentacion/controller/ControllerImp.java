@@ -120,6 +120,10 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarTodosLosProductos:
 				gui.actualizar(Evento.MostrarTodosLosProductos, SAAbstractFactory.getInstance().getSAProducto().mostrarTodos());
 				break;
+			case Evento.BajaProducto:
+				id = SAAbstractFactory.getInstance().getSAProducto().borrar(Integer.parseInt((String)datos));
+				//TODO MENSAJE EXITO O ERROR
+				break;
 			
 		//PROVEEDOR
 			case Evento.AltaProveedor:
