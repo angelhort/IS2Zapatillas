@@ -13,7 +13,7 @@ public class SAAlmacenImp implements SAAlmacen{
 				TransferAlmacen almacen = DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getDireccion());
 				if(almacen == null)
 					return DAOAbstractFactory.getInstance().getDAOAlmacen().alta(t);
-				else if (!almacen.getActivo()) return DAOAbstractFactory.getInstance().getDAOAlmacen().activarEntidad(almacen.getID());
+				else if (!almacen.getActivo()) return DAOAbstractFactory.getInstance().getDAOAlmacen().activarAlmacen(almacen.getID());
 			}
 		
 		return -1;
@@ -31,8 +31,11 @@ public class SAAlmacenImp implements SAAlmacen{
 		if(String.valueOf(t.getTelefono()).length() == 9)
 			if(t.getDireccion().length() <= 30) {
 				TransferAlmacen almacen = DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getDireccion());
-				if(almacen.getID() == t.getID())
-				return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);
+				if(almacen != null) {
+					if(almacen.getID() == t.getID())
+						return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);				
+				}
+				else return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);
 			}
 		return -1;
 	}

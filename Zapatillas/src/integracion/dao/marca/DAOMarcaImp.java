@@ -139,6 +139,27 @@ public class DAOMarcaImp implements DAOMarca {
 		}
 		return marca;
 	}
+	
+	@Override
+	public int activarMarca(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Marca SET activo=? WHERE idMarca=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public List<TransferMarca> getAllMarcas() {

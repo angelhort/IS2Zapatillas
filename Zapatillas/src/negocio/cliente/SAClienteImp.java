@@ -21,7 +21,7 @@ public class SAClienteImp implements SACliente {
 					if(cliente == null)
 						return DAOAbstractFactory.getInstance().getDAOCliente().alta(t);
 					else if(!cliente.getActivo())
-						return DAOAbstractFactory.getInstance().getDAOCliente().activarEntidad(cliente.getID());
+						return DAOAbstractFactory.getInstance().getDAOCliente().activarCliente(cliente.getID());
 				}
 		}
 		
@@ -41,8 +41,11 @@ public class SAClienteImp implements SACliente {
 		if(t.getDNI().length() == 9) {
 			if(t.getNombre().length() < 35) {
 				TransferCliente cliente = DAOAbstractFactory.getInstance().getDAOCliente().getCliente(t.getDNI());
-				if(cliente.getID() == t.getID())
-					return (DAOAbstractFactory.getInstance().getDAOCliente().modificar(t));
+				if(cliente != null) {
+					if(cliente.getID() == t.getID())
+						return (DAOAbstractFactory.getInstance().getDAOCliente().modificar(t));					
+				}
+				else return (DAOAbstractFactory.getInstance().getDAOCliente().modificar(t));		
 			}
 			
 		}

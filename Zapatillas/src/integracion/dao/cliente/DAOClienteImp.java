@@ -126,7 +126,7 @@ public class DAOClienteImp implements DAOCliente {
 	}
 	
 	@Override
-	public int activarEntidad(int id) {
+	public int activarCliente(int id) {
 		Connection conn = DatabaseConnection.getConnection();
 		String insert = "UPDATE Clientes SET activo=? WHERE idCliente=?";
 		int result = -1;

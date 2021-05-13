@@ -8,8 +8,11 @@ public class SAMarcaImp implements SAMarca{
 
 	@Override
 	public int alta(TransferMarca t) {
-		if(DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getNombre()) == null)
-			return DAOAbstractFactory.getInstance().getDAOMarca().alta(t);
+		if(t.getNombre().length() <= 35) {
+			TransferMarca marca = DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getNombre());
+			if(marca == null) return DAOAbstractFactory.getInstance().getDAOMarca().alta(t);
+			else if (!marca.getActivo()) return DAOAbstractFactory.getInstance().getDAOMarca().activarMarca(marca.getID());
+		}		
 		return -1;
 	}
 
@@ -22,7 +25,15 @@ public class SAMarcaImp implements SAMarca{
 
 	@Override
 	public int modificar(TransferMarca t) {
-		return DAOAbstractFactory.getInstance().getDAOMarca().modificar(t);
+		if(t.getNombre().length() <= 35) {
+			TransferMarca marca = DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getNombre());
+			if(marca != null) {
+				if(marca.getID() == t.getID())
+					return DAOAbstractFactory.getInstance().getDAOMarca().modificar(t);				
+			}
+			else return DAOAbstractFactory.getInstance().getDAOMarca().modificar(t);
+		}
+		return -1;
 	}
 
 	@Override

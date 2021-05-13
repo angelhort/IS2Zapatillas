@@ -92,7 +92,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 	}
 	
 	@Override
-	public int activarEntidad(int id) {
+	public int activarAlmacen(int id) {
 		Connection conn = DatabaseConnection.getConnection();
 		String insert = "UPDATE Almacen SET activo=? WHERE idAlmacen=?";
 		int result = -1;

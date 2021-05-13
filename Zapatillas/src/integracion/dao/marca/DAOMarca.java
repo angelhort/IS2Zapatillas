@@ -10,4 +10,5 @@ public interface DAOMarca {
 	public TransferMarca getMarca(int ID);
 	public TransferMarca getMarca(String nombre);
 	public List<TransferMarca> getAllMarcas();
+	public int activarMarca(int id);
 }
