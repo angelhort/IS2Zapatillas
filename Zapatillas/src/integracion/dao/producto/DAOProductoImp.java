@@ -50,6 +50,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -86,6 +87,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 	
@@ -109,6 +111,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -188,6 +191,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -220,6 +224,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -266,6 +271,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return producto;
 	}
 	
@@ -381,6 +387,7 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return productos;
 	}
 	

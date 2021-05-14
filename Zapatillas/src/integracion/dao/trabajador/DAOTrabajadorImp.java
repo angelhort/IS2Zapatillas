@@ -39,6 +39,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -62,6 +63,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -88,6 +90,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -117,6 +120,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return trabajador;
 	}
 
@@ -146,6 +150,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return trabajador;
 	}
 
@@ -176,7 +181,8 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-				
+		
+		DatabaseConnection.killConnection(conn);
 		return trabajadores;
 	}
 

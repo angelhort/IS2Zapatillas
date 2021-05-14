@@ -36,6 +36,7 @@ public class DAOMarcaImp implements DAOMarca {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -58,6 +59,8 @@ public class DAOMarcaImp implements DAOMarca {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
+		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -81,7 +84,8 @@ public class DAOMarcaImp implements DAOMarca {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-			
+		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -110,6 +114,7 @@ public class DAOMarcaImp implements DAOMarca {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return marca;
 	}
 
@@ -137,6 +142,7 @@ public class DAOMarcaImp implements DAOMarca {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
+		DatabaseConnection.killConnection(conn);
 		return marca;
 	}
 	
@@ -158,6 +164,7 @@ public class DAOMarcaImp implements DAOMarca {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result != -1? 0 : result;
 	}
 
@@ -186,7 +193,8 @@ public class DAOMarcaImp implements DAOMarca {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-				
+		
+		DatabaseConnection.killConnection(conn);
 		return marcas;
 	}
 }

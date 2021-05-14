@@ -39,6 +39,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -61,7 +62,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -88,6 +89,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 	
@@ -109,6 +111,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result != -1? 0 : result;
 	}
 
@@ -137,7 +140,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
+		DatabaseConnection.killConnection(conn);
 		return almacen;
 	}
 
@@ -167,6 +170,7 @@ public class DAOAlmacenImp implements DAOAlmacen{
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return almacen;			
 	}
 
@@ -197,7 +201,8 @@ public class DAOAlmacenImp implements DAOAlmacen{
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-				
+			
+		DatabaseConnection.killConnection(conn);
 		return almacenes;
 	}
 

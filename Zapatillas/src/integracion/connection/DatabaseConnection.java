@@ -13,14 +13,23 @@ public class DatabaseConnection {
 	}
 
 	public static Connection getConnection() {
-		try {			
+		try {
 			Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-			
+			System.out.println(conn);
 			return (conn != null) ? conn : null;
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return null;
+	}
+	
+	public static void killConnection(Connection conn) {
+		try {
+			conn.abort(null);
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

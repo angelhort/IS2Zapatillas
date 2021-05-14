@@ -41,6 +41,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -64,6 +65,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -90,6 +92,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -119,6 +122,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return proveedor;
 	}
 	
@@ -148,6 +152,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return proveedor;			
 	}
 
@@ -177,6 +182,7 @@ public class DAOProveedorImp implements DAOProveedor {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return proveedores;
 	}
 

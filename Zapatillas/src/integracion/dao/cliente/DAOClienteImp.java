@@ -41,6 +41,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -64,6 +65,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
@@ -93,6 +95,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return cliente;
 	}
 	
@@ -122,6 +125,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return cliente;
 	}
 	
@@ -143,6 +147,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result != -1? 0 : result;
 	}
 
@@ -173,7 +178,8 @@ public class DAOClienteImp implements DAOCliente {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-				
+		
+		DatabaseConnection.killConnection(conn);
 		return clientes;
 	}
 
@@ -200,6 +206,7 @@ public class DAOClienteImp implements DAOCliente {
 			ex.printStackTrace();
 		}
 		
+		DatabaseConnection.killConnection(conn);
 		return result;
 	}
 
