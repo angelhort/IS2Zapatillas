@@ -102,7 +102,6 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 			if(datos == null)
 				JOptionPane.showMessageDialog(this,"El trabajador no existe", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
 			else JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
-			Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			break;
 		}
 	}

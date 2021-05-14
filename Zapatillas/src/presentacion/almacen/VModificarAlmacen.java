@@ -105,8 +105,6 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 					JOptionPane.showMessageDialog(this,"El almacén no existe", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
 				else 
 					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
-				
-				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				break;
 		}
 	}

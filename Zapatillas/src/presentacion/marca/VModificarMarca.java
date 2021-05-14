@@ -90,8 +90,6 @@ public class VModificarMarca extends JFrame implements IGUI{
 					JOptionPane.showMessageDialog(this,"La marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
 				else 
 					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
-				
-				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				break;
 		}
 	}
