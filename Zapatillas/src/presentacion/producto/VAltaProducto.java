@@ -79,23 +79,23 @@ public class VAltaProducto extends JFrame implements IGUI{
 		this.add(fieldMarca);
 		
 		
-		JLabel labelTipo = ComponentsBuilder.createLabel("Tipo:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelTipo);
 		@SuppressWarnings("serial")
 		ArrayList<String> tipo = new ArrayList<String>() {{add("Deportivas"); add("Casual"); add("Futbol");}};		
 		JComboBox<String> comboTipo = ComponentsBuilder.createComboBox(tipo, 200, 252, 100, 20);
 		
-		JLabel labelTejido = ComponentsBuilder.createLabel("Tejido:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
-		this.add(labelTejido);
 		@SuppressWarnings("serial")
 		ArrayList<String> tejido = new ArrayList<String>() {{add("Seda"); add("Algodon"); add("Lana");}};
 		JComboBox<String> comboTejido = ComponentsBuilder.createComboBox(tejido, 200, 252, 100, 20);
 		
 		if(tipoProducto == "Zapatillas") {
+			JLabel labelTipo = ComponentsBuilder.createLabel("Tipo:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+			this.add(labelTipo);
 			this.add(comboTipo);
 		}
 		
 		else if(tipoProducto == "Calcetines") {
+			JLabel labelTejido = ComponentsBuilder.createLabel("Tejido:", 145, 250, 50, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+			this.add(labelTejido);
 			this.add(comboTejido);
 		}
 		
@@ -132,7 +132,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 				if(tipoProducto == "Zapatillas") {
 					
 					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas(Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
 							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
 							Integer.parseInt(fieldMarca.getText())));
 					
@@ -142,7 +142,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 				else if(tipoProducto == "Calcetines") {
 					
 					Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines(Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Integer.parseInt(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
+							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
 							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
 							Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));
 					
