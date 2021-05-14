@@ -35,6 +35,7 @@ public class DAOClienteImp implements DAOCliente {
 			if (resultSet.next())
 				result = resultSet.getInt(1);
 			
+			resultSet.close();
 			statement.close();
 			conn.close();
 		} catch(SQLException ex) {

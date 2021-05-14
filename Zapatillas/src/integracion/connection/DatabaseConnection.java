@@ -26,7 +26,6 @@ public class DatabaseConnection {
 	
 	public static void killConnection(Connection conn) {
 		try {
-			conn.abort(null);
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
