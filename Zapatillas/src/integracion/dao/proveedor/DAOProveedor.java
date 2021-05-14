@@ -1,6 +1,7 @@
 package integracion.dao.proveedor;
 
 import java.util.List;
+
 import negocio.proveedor.TransferProveedor;
 
 public interface DAOProveedor {
@@ -9,5 +10,6 @@ public interface DAOProveedor {
 	public int baja(int ID);
 	public int modificar(TransferProveedor transfer);
 	public TransferProveedor getProveedor(int ID);
+	public TransferProveedor getProveedor(String direccion);
 	public List<TransferProveedor> getAllProveedores();
 }

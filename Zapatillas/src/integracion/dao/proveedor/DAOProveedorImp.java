@@ -121,6 +121,35 @@ public class DAOProveedorImp implements DAOProveedor {
 		
 		return proveedor;
 	}
+	
+	@Override
+	public TransferProveedor getProveedor(String direccion) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Proveedores WHERE direccion = \"%s\"", direccion);
+		
+		TransferProveedor proveedor = null;
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next()) {
+				proveedor = new TransferProveedor(resultSet.getInt("idProveedor"),
+						  resultSet.getInt("telefono"),
+						  resultSet.getString("direccion"),
+						  resultSet.getString("nombre"),
+						  resultSet.getBoolean("activo"));
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return proveedor;			
+	}
 
 	@Override
 	public List<TransferProveedor> getAllProveedores() {

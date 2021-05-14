@@ -10,11 +10,11 @@ public class SAProveedorImp implements SAProveedor {
 
 	@Override
 	public int alta(TransferProveedor t) {
-		int id = -1;
-		
-		id = DAOAbstractFactory.getInstance().getDAOProveedor().alta(t);
-		
-		return id;
+		if(t.getDireccion().length() <= 30) 
+			if(t.getNombre().length() <= 30)
+				if(String.valueOf(t.getTelefono()).length() == 9)
+					return DAOAbstractFactory.getInstance().getDAOProveedor().alta(t);		
+		return -1;
 	}
 
 	@Override
@@ -27,7 +27,18 @@ public class SAProveedorImp implements SAProveedor {
 
 	@Override
 	public int modificar(TransferProveedor t) {
-		return (DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t));
+		if(t.getDireccion().length() <= 30) 
+			if(t.getNombre().length() <= 30)
+				if(String.valueOf(t.getTelefono()).length() == 9) {
+					TransferProveedor proveedor = DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(t.getDireccion());
+					if(proveedor != null) {
+						if(proveedor.getID() == t.getID())
+							DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);
+					}
+					else DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);					
+				}
+					
+		return -1;
 	}
 
 	@Override
