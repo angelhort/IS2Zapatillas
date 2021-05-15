@@ -94,6 +94,28 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 		DatabaseConnection.killConnection(conn);
 		return result;
 	}
+	
+	@Override
+	public int activarTrabajador(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Trabajador SET activo=? WHERE idTrabajador=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public TransferTrabajador getTrabajador(int ID) {
