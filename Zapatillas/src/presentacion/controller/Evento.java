@@ -126,6 +126,9 @@ public class Evento {
 	public static final int MostrarGUIProveedorProducto = 800;
 	public static final int GUIAniadirProveedor = 801;
 	public static final int GUIEliminarProveedor = 802;
-	public static final int GUIEliminarProveedores = 803;
-
+	public static final int GUIMostrarProductosProveedor = 803;
+	
+	public static final int AniadirProveedor = 810;
+	public static final int EliminarProveedor = 811;
+	public static final int MostrarProductosProveedor = 812;
 }

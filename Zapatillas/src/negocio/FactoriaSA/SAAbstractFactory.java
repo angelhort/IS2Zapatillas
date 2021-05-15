@@ -5,6 +5,7 @@ import negocio.cliente.SACliente;
 import negocio.marca.SAMarca;
 import negocio.producto.SAProducto;
 import negocio.proveedor.SAProveedor;
+import negocio.proveedor_producto.SAProductoProveedor;
 import negocio.trabajador.SATrabajador;
 
 public abstract class SAAbstractFactory {
@@ -22,4 +23,5 @@ public abstract class SAAbstractFactory {
 	public abstract SATrabajador getSATrabajador();
 	public abstract SAAlmacen getSAAlmacen();
 	public abstract SAProducto getSAProducto();
+	public abstract SAProductoProveedor getSAProductoProveedor();
 }

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.proveedor_producto.TransferProveedor_producto;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -26,8 +27,6 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
@@ -68,7 +67,10 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.EliminarProveedor, new TransferProveedor_producto(
+						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText())));
+				VEliminarProveedor.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
 		};
@@ -78,6 +80,11 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.GUIEliminarProveedor:
+			initGUI();
+			this.setVisible(true);
+			break;
+		}
 	}
 }

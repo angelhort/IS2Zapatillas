@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.proveedor_producto.TransferProveedor_producto;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -26,14 +27,12 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
 	public void initGUI() {
-		JLabel labelTrabajador = ComponentsBuilder.createLabel("<html>Aniadir proveedor<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 25));
-		this.add(labelTrabajador);
-		
+		JLabel label = ComponentsBuilder.createLabel("<html>Aniadir proveedor<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 25));
+		this.add(label);
+
 		JLabel labelIDProducto = ComponentsBuilder.createLabel("ID Producto:", 10, 120, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelIDProducto);
 		
@@ -68,7 +67,10 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
+						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText())));
+				VAniadirProveedor.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
 			
 		};
@@ -78,6 +80,11 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.GUIAniadirProveedor:
+			initGUI();
+			this.setVisible(true);
+			break;
+		}
 	}
 }

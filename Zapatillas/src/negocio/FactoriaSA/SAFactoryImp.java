@@ -10,6 +10,8 @@ import negocio.producto.SAProducto;
 import negocio.producto.SAProductoImp;
 import negocio.proveedor.SAProveedor;
 import negocio.proveedor.SAProveedorImp;
+import negocio.proveedor_producto.SAProductoProveedor;
+import negocio.proveedor_producto.SAProductoProveedorImp;
 import negocio.trabajador.SATrabajador;
 import negocio.trabajador.SATrabajadorImp;
 
@@ -43,5 +45,10 @@ public class SAFactoryImp  extends SAAbstractFactory {
 	@Override
 	public SAProducto getSAProducto() {
 		return new SAProductoImp();
+	}
+
+	@Override
+	public SAProductoProveedor getSAProductoProveedor() {
+		return new SAProductoProveedorImp();
 	}
 }

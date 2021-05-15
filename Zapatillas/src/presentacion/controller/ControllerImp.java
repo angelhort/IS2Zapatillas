@@ -6,6 +6,7 @@ import negocio.cliente.TransferCliente;
 import negocio.marca.TransferMarca;
 import negocio.producto.TransferProducto;
 import negocio.proveedor.TransferProveedor;
+import negocio.proveedor_producto.TransferProveedor_producto;
 import negocio.trabajador.TransferTrabajador;
 import presentacion.factoryGUI.GUIFactory;
 import presentacion.vista.IGUI;
@@ -184,6 +185,14 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnAlmacen:
 				gui.actualizar(Evento.MostrarUnAlmacen, SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos)));
+				break;
+				
+			//PROVEEDOR-PRODUCTO
+			case Evento.AniadirProveedor:
+				SAAbstractFactory.getInstance().getSAProductoProveedor().aniadirProveedor((TransferProveedor_producto) datos);
+				break;
+			case Evento.EliminarProveedor:
+				SAAbstractFactory.getInstance().getSAProductoProveedor().eliminarProveedor((TransferProveedor_producto) datos);
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);

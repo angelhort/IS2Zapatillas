@@ -5,10 +5,16 @@ public class TransferProveedor_producto {
 	private int idProducto;
 	private double precioSuministro;
 	
-	public TransferProveedor_producto(int idProveedor, int idProducto, int precioSuministro){
+
+	public TransferProveedor_producto(int idProveedor, int idProducto, double precioSuministro){
 		this.idProveedor = idProveedor;
 		this.idProducto = idProducto;
 		this.precioSuministro = precioSuministro;
+	}
+	
+	public TransferProveedor_producto(int idProveedor, int idProducto) {
+		this.idProveedor = idProveedor;
+		this.idProducto = idProducto;
 	}
 
 	public int getIdProveedor() {
@@ -21,5 +27,9 @@ public class TransferProveedor_producto {
 	
 	public double getPrecioSuministro() {
 		return precioSuministro;
+	}
+	
+	public void setPrecioSuministro(double precioSuministro) {
+		this.precioSuministro = precioSuministro;
 	}
 }

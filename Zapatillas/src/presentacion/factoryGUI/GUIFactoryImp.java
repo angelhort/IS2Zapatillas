@@ -158,8 +158,6 @@ public class GUIFactoryImp extends GUIFactory{
 			return new VAniadirProveedor();
 		case Evento.GUIEliminarProveedor:
 			return new VEliminarProveedor();
-		case Evento.GUIEliminarProveedores:
-			return new VEliminarProveedores();
 		}
 		return null;
 	}

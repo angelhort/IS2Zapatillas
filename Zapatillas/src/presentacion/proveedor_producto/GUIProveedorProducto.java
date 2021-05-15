@@ -71,7 +71,6 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.GUIEliminarProveedores, null);
 				GUIProveedorProducto.this.dispose();
 			}
 			
