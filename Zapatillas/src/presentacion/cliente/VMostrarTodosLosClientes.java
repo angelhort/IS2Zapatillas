@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.cliente.TransferCliente;
@@ -49,6 +50,7 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 		
 		atrasButton.addActionListener(lAtras);
 		
+		
 		JTable table = ComponentsBuilder.creteTable(clientes.size() + 1, 5, 50, 115, 900, 288);
 		table.setValueAt("ID", 0, 0);	
 		table.setValueAt("Nombre", 0, 1);		
@@ -67,8 +69,11 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 		}
 	
 		table.setDefaultEditor(Object.class, null);
-
-		this.add(table);
+		
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 288);
+		this.add(scroll);
+		
 	}
 
 	
