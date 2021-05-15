@@ -33,7 +33,7 @@ public class GUIVenta extends JFrame implements IGUI{
 		JLabel label = ComponentsBuilder.createLabel("Venta", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
-		JButton buttonAniadir = ComponentsBuilder.createButton("<html>Añadir<br>producto</html>", 100, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttonAniadir = ComponentsBuilder.createButton("<html>Añadir producto<br>a venta</html>", 100, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonAniadir);
 		
 		ActionListener lAniadir = new ActionListener() {
