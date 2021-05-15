@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
@@ -32,25 +33,10 @@ public class GUIVenta extends JFrame implements IGUI{
 		JLabel label = ComponentsBuilder.createLabel("Venta", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
-		JButton buttonAbrir = ComponentsBuilder.createButton("Abrir Venta", 213, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
-		this.add(buttonAbrir);
+		JButton buttonAniadir = ComponentsBuilder.createButton("<html>Añadir<br>producto</html>", 100, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		this.add(buttonAniadir);
 		
-		ActionListener lAbrir = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.GUIAbrirVenta, null);
-				GUIVenta.this.dispose();
-			}
-			
-		};
-		
-		buttonAbrir.addActionListener(lAbrir);
-		
-		JButton buttonModificar = ComponentsBuilder.createButton("Modificar Venta", 602, 120, 185, 100, new Font("Serif", Font.PLAIN, 18));
-		this.add(buttonModificar);
-		
-		ActionListener lModificar = new ActionListener() {
+		ActionListener lAniadir = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -59,37 +45,35 @@ public class GUIVenta extends JFrame implements IGUI{
 			
 		};
 		
-		buttonModificar.addActionListener(lModificar);
+		buttonAniadir.addActionListener(lAniadir);
 		
-		JButton buttonCerrarVenta = ComponentsBuilder.createButton("Cerrar Venta", 213, 290, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		JButton buttoneliminar = ComponentsBuilder.createButton("<html>Eliminar producto<br>de venta</html>", 407, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
+		this.add(buttoneliminar);
+		
+		ActionListener leliminar = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GUIVenta.this.dispose();
+			}
+			
+		};
+		
+		buttoneliminar.addActionListener(leliminar);
+		
+		JButton buttonCerrarVenta = ComponentsBuilder.createButton("Cerrar venta", 715, 200, 185, 100, new Font("Serif", Font.PLAIN, 17));
 		this.add(buttonCerrarVenta);
 		
 		ActionListener lCerrarVenta = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				GUIVenta.this.dispose();
 			}
 			
 		};
 		
 		buttonCerrarVenta.addActionListener(lCerrarVenta);
-		
-		JButton buttonMostrarVenta = ComponentsBuilder.createButton("Mostrar una Venta", 602, 290, 185, 100, new Font("Serif", Font.PLAIN, 14));
-		this.add(buttonMostrarVenta);
-		
-		ActionListener lMostrarVenta = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GUIVenta.this.dispose();
-			}
-			
-		};
-		
-		buttonMostrarVenta.addActionListener(lMostrarVenta);
-		
 		JButton atrasButton = ComponentsBuilder.createBackButton();
 		this.add(atrasButton);
 		
@@ -97,8 +81,14 @@ public class GUIVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIVenta.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
+				String[] options = {"Salir","Cancelar"};
+				int n = JOptionPane.showOptionDialog(null,"¿Desea salir de la venta? Se perderan los datos", "Atrás",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+				
+				if (n==JOptionPane.YES_OPTION) {
+					GUIVenta.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);					
+				}
 			}
 			
 		};

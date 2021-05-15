@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
@@ -71,7 +72,12 @@ public class GUIPrincipal extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
+				String[] options = {"Abrir","Mostrar"};
+				int n = JOptionPane.showOptionDialog(null,"¿Desea abrir una venta o mostrar una venta?", "Abrir-Mostrar Venta",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+				
+				if (n==JOptionPane.YES_OPTION)
+					Controller.getInstance().action(Evento.GUIAbrirVenta, null);
 				GUIPrincipal.this.dispose();
 			}
 			
