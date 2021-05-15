@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.producto.TransferCalcetines;
@@ -50,34 +51,25 @@ public class VMostrarUnProducto extends JFrame implements IGUI{
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(2, 11, 50, 115, 900, 32);
-		table.setValueAt("ID", 0, 0);	
-		table.setValueAt("Nombre", 0, 1);		
-		table.setValueAt("Tipo", 0, 2);		
-		table.setValueAt("Stock", 0, 3);		
-		table.setValueAt("Precio", 0, 4);
-		table.setValueAt("Talla", 0, 5);
-		table.setValueAt("Color", 0, 6);
-		table.setValueAt("Tejido/Tipo", 0, 7);
-		table.setValueAt("Marca", 0, 8);
-		table.setValueAt("Almacen", 0, 9);
-		table.setValueAt("Activo", 0, 10);
+		String[] columnNames = {"ID", "Nombre", "Tipo", "Stock", "Precio", "Talla", "Color", "Tejido/Tipo", "Marca", "Almacen", "Activo"};
 		
-		table.setValueAt(producto.getID(), 1, 0);
-		table.setValueAt(producto.getNombre(), 1, 1);
-		table.setValueAt(producto.getClass() == TransferZapatillas.class ? "Zapatillas" : "Calcetines", 1, 2);
-		table.setValueAt(producto.getStock(), 1, 3);
-		table.setValueAt(producto.getPrecio(), 1, 4);
-		table.setValueAt(producto.getTalla(), 1, 5);
-		table.setValueAt(producto.getColor(), 1, 6);
-		table.setValueAt(producto.getClass() == TransferZapatillas.class ? ((TransferZapatillas) producto).getTipo() : ((TransferCalcetines) producto).getTejido(), 1, 7);
-		table.setValueAt(producto.getMarca(), 1, 8);
-		table.setValueAt(producto.getAlmacen(), 1, 9);
-		table.setValueAt(producto.getActivo() ? "SI" : "NO", 1, 10);
+		JTable table = ComponentsBuilder.creteTable(1, 11, columnNames);
 		
-		table.setDefaultEditor(Object.class, null);
+		table.setValueAt(producto.getID(), 0, 0);
+		table.setValueAt(producto.getNombre(), 0, 1);
+		table.setValueAt(producto.getClass() == TransferZapatillas.class ? "Zapatillas" : "Calcetines", 0, 2);
+		table.setValueAt(producto.getStock(), 0, 3);
+		table.setValueAt(producto.getPrecio(), 0, 4);
+		table.setValueAt(producto.getTalla(), 0, 5);
+		table.setValueAt(producto.getColor(), 0, 6);
+		table.setValueAt(producto.getClass() == TransferZapatillas.class ? ((TransferZapatillas) producto).getTipo() : ((TransferCalcetines) producto).getTejido(), 0, 7);
+		table.setValueAt(producto.getMarca(), 0, 8);
+		table.setValueAt(producto.getAlmacen(), 0, 9);
+		table.setValueAt(producto.getActivo() ? "SI" : "NO", 0, 10);
 		
-		this.add(table);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 39);
+		this.add(scroll);
 	}
 	
 	@Override

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.marca.TransferMarca;
@@ -49,22 +50,20 @@ public class VMostrarTodasLasMarcas extends JFrame implements IGUI{
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(marcas.size() + 1, 3, 50, 115, 900, 288);
-		table.setValueAt("ID", 0, 0);	
-		table.setValueAt("Nombre", 0, 1);		
-		table.setValueAt("Activo", 0, 2);
+		String[] columnNames = {"ID", "Nombre", "Activo"};
+		JTable table = ComponentsBuilder.creteTable(marcas.size(), 3, columnNames);
 
-		int i = 1;
+		int i = 0;
 		for(TransferMarca t: marcas) {
 			table.setValueAt(t.getID(), i, 0);
 			table.setValueAt(t.getNombre(), i, 1);
 			table.setValueAt(t.getActivo() ? "SI" : "NO", i, 2);
 			i++;
 		}
-		
-		table.setDefaultEditor(Object.class, null);
-	
-		this.add(table);
+			
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 288);
+		this.add(scroll);
 
 	}
 	

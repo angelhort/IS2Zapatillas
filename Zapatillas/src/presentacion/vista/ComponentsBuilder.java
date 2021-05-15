@@ -13,6 +13,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
 
 public class ComponentsBuilder {
 	
@@ -79,9 +80,29 @@ public class ComponentsBuilder {
 		return comboBox;
 	}
 	
-	public static JTable creteTable(int filas, int columnas, int x, int y, int width, int height) {
-		JTable table = new JTable(filas, columnas);
-		table.setBounds(x, y, width, height);
+	public static JTable creteTable(int filas, int columnas, String[] columns) {
+		JTable table = new JTable();
+		table.setModel(new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public boolean isCellEditable(int row, int col) {
+		         return false;
+		    }
+			@Override
+			 public String getColumnName(int index) {
+				return columns[index];
+			}
+			
+			@Override
+			public int getColumnCount() {
+		         return columnas;
+		    }
+			
+			 @Override
+			    public int getRowCount() {
+			         return filas;
+			    }
+		});
 		return table;
 	}
 	

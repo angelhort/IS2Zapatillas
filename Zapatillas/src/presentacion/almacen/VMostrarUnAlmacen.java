@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.almacen.TransferAlmacen;
@@ -48,25 +49,18 @@ public class VMostrarUnAlmacen extends JFrame implements IGUI{
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(2, 5, 50, 115, 900, 32);
-		table.setValueAt("ID", 0, 0);
-		table.setValueAt(almacen.getID(), 1, 0);
+		String[] columnNames = {"ID", "Direccion", "Telefono", "Capacidad", "Activo"};
+		JTable table = ComponentsBuilder.creteTable(1, 5, columnNames);
 		
-		table.setValueAt("Direccion", 0, 1);
-		table.setValueAt(almacen.getDireccion(), 1, 1);
+		table.setValueAt(almacen.getID(), 0, 0);
+		table.setValueAt(almacen.getDireccion(), 0, 1);
+		table.setValueAt(almacen.getTelefono(), 0, 2);
+		table.setValueAt(almacen.getCapacidad(), 0, 3);
+		table.setValueAt(almacen.getActivo() ? "SI" : "NO", 0, 4);
 		
-		table.setValueAt("Telefono", 0, 2);
-		table.setValueAt(almacen.getTelefono(), 1, 2);
-		
-		table.setValueAt("Capacidad", 0, 3);
-		table.setValueAt(almacen.getCapacidad(), 1, 3);
-		
-		table.setValueAt("Activo", 0, 4);
-		table.setValueAt(almacen.getActivo() ? "SI" : "NO", 1, 4);
-		
-		table.setDefaultEditor(Object.class, null);
-	
-		this.add(table);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 39);
+		this.add(scroll);
 	}
 
 	@Override

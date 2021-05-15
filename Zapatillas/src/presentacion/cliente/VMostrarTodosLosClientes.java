@@ -50,15 +50,10 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 		
 		atrasButton.addActionListener(lAtras);
 		
-		
-		JTable table = ComponentsBuilder.creteTable(clientes.size() + 1, 5, 50, 115, 900, 288);
-		table.setValueAt("ID", 0, 0);	
-		table.setValueAt("Nombre", 0, 1);		
-		table.setValueAt("DNI", 0, 2);		
-		table.setValueAt("Socio", 0, 3);		
-		table.setValueAt("Activo", 0, 4);
-
-		int i = 1;
+		String[] columnNames = {"ID", "Nombre", "DNI", "Socio", "Activo"};
+		JTable table = ComponentsBuilder.creteTable(clientes.size(), 5, columnNames);
+				
+		int i = 0;
 		for(TransferCliente t: clientes) {
 			table.setValueAt(t.getID(), i, 0);
 			table.setValueAt(t.getNombre(), i, 1);
@@ -67,9 +62,7 @@ public class VMostrarTodosLosClientes extends JFrame implements IGUI {
 			table.setValueAt(t.getActivo() ? "SI" : "NO", i, 4);
 			i++;
 		}
-	
-		table.setDefaultEditor(Object.class, null);
-		
+			
 		JScrollPane scroll = new JScrollPane(table);
 		scroll.setBounds(50, 115, 900, 288);
 		this.add(scroll);

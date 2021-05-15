@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.producto.TransferCalcetines;
@@ -51,20 +52,11 @@ public class VMostrarTodosLosProductos extends JFrame implements IGUI{
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(productos.size() + 1, 11, 50, 115, 900, 288);
-		table.setValueAt("ID", 0, 0);	
-		table.setValueAt("Nombre", 0, 1);		
-		table.setValueAt("Tipo", 0, 2);		
-		table.setValueAt("Stock", 0, 3);		
-		table.setValueAt("Precio", 0, 4);
-		table.setValueAt("Talla", 0, 5);
-		table.setValueAt("Color", 0, 6);
-		table.setValueAt("Tejido/Tipo", 0, 7);
-		table.setValueAt("Marca", 0, 8);
-		table.setValueAt("Almacen", 0, 9);
-		table.setValueAt("Activo", 0, 10);
-
-		int i = 1;
+		String[] columnNames = {"ID", "Nombre", "Tipo", "Stock", "Precio", "Talla", "Color", "Tejido/Tipo", "Marca", "Almacen", "Activo"};
+		
+		JTable table = ComponentsBuilder.creteTable(productos.size(), 11, columnNames);
+		
+		int i = 0;
 		for(TransferProducto t: productos) {
 			table.setValueAt(t.getID(), i, 0);
 			table.setValueAt(t.getNombre(), i, 1);
@@ -80,9 +72,9 @@ public class VMostrarTodosLosProductos extends JFrame implements IGUI{
 			i++;
 		}
 	
-		table.setDefaultEditor(Object.class, null);
-
-		this.add(table);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 288);
+		this.add(scroll);
 	}
 
 	

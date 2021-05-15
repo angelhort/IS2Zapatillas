@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.marca.TransferMarca;
@@ -48,21 +49,16 @@ public class VMostrarUnaMarca extends JFrame implements IGUI{
 
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(2, 3, 50, 115, 900, 32);
+		String[] columnNames = {"ID", "Nombre", "Activo"};
+		JTable table = ComponentsBuilder.creteTable(1, 3, columnNames);
 		
-		table.setValueAt("ID", 0, 0);
-		table.setValueAt(marca.getID(), 1, 0);
+		table.setValueAt(marca.getID(), 0, 0);
+		table.setValueAt(marca.getNombre(), 0, 1);
+		table.setValueAt(marca.getActivo() ? "SI" : "NO", 0, 2);
 		
-		table.setValueAt("Nombre", 0, 1);
-		table.setValueAt(marca.getNombre(), 1, 1);
-		
-		table.setValueAt("Activo", 0, 2);
-		table.setValueAt(marca.getActivo() ? "SI" : "NO", 1, 2);
-		
-		table.setDefaultEditor(Object.class, null);
-		
-		this.add(table);
-		
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 39);
+		this.add(scroll);
 	}
 	
 	@Override

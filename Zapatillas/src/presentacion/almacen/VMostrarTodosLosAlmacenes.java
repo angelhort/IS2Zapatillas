@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import negocio.almacen.TransferAlmacen;
@@ -49,14 +50,10 @@ public class VMostrarTodosLosAlmacenes extends JFrame implements IGUI{
 		
 		atrasButton.addActionListener(lAtras);
 		
-		JTable table = ComponentsBuilder.creteTable(almacenes.size() + 1, 5, 50, 115, 900, 288);
-		table.setValueAt("ID", 0, 0);	
-		table.setValueAt("Direccion", 0, 1);		
-		table.setValueAt("Telefono", 0, 2);		
-		table.setValueAt("Capacidad", 0, 3);		
-		table.setValueAt("Activo", 0, 4);
+		String[] columnNames = {"ID", "Direccion", "Telefono", "Capacidad", "Activo"};
+		JTable table = ComponentsBuilder.creteTable(almacenes.size(), 5, columnNames);
 
-		int i = 1;
+		int i = 0;
 		for(TransferAlmacen t: almacenes) {
 			table.setValueAt(t.getID(), i, 0);
 			table.setValueAt(t.getDireccion(), i, 1);
@@ -66,9 +63,9 @@ public class VMostrarTodosLosAlmacenes extends JFrame implements IGUI{
 			i++;
 		}
 		
-		table.setDefaultEditor(Object.class, null);
-	
-		this.add(table);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(50, 115, 900, 288);
+		this.add(scroll);
 	}
 	
 	@SuppressWarnings("unchecked")
