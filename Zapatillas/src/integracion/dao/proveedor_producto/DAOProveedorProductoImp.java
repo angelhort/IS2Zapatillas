@@ -45,8 +45,27 @@ public class DAOProveedorProductoImp implements DAOProveedorProducto {
 
 	@Override
 	public int baja(TransferProveedor_producto transfer) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Suministra SET activo=? WHERE idProveedor=? AND idProducto=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			
+			statement.setBoolean(1, false);
+			statement.setInt(2, transfer.getIdProveedor());
+			statement.setInt(2, transfer.getIdProducto());
+			
+			result = statement.executeUpdate(); // Number of updated rows
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return result;
 	}
 
 	@Override
