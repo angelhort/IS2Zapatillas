@@ -71,7 +71,7 @@ public class VMostrarUnCliente extends JFrame implements IGUI{
 			initGUI((TransferCliente) datos);
 			this.setVisible(true);
 			break;
-		case Evento.ClienteKO:
+		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Mostrar Un Cliente", JOptionPane.ERROR_MESSAGE);
 			this.dispose();
 			Controller.getInstance().action(Evento.MostrarGUICliente, null);

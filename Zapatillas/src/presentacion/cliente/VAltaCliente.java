@@ -93,12 +93,17 @@ public class VAltaCliente extends JFrame implements IGUI{
 		this.setVisible(true);
 		break;
 		
-		case Evento.ClienteOK:
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El cliente ya estaba registrado y activo", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Cliente", JOptionPane.ERROR_MESSAGE);
+			break;
+		case Evento.ActivacionEntidad:
+			JOptionPane.showMessageDialog(this,"El cliente ya existia y se ha activado", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
 			JOptionPane.showMessageDialog(this,"El cliente se dio de alta con ID: " + datos, "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
-			break;
-		case Evento.ClienteKO:
-			JOptionPane.showMessageDialog(this,"El cliente ya existe o los datos fueron mal introducidos", "ERROR Alta Cliente", JOptionPane.ERROR_MESSAGE);
-			break;
 	}
 	}
 }

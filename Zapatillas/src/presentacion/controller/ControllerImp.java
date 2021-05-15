@@ -27,27 +27,27 @@ public class ControllerImp extends Controller{
 		//CLIENTE
 			case Evento.AltaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
-				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.MostrarModificarCliente:
 				TransferCliente cliente = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((cliente != null) ? Evento.MostrarModificarCliente : Evento.ClienteKO, cliente);
+				gui.actualizar((cliente != null) ? Evento.MostrarModificarCliente : Evento.EntidadSiNoExiste, cliente);
 				break;
 				
 			case Evento.BajaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
-				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
+				gui.actualizar(id , null);
 				break;	
 				
 			case Evento.ModificarCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
-				gui.actualizar((id != -1) ? Evento.ClienteOK : Evento.ClienteKO , id);
+				gui.actualizar(id , id);
 				break;
 				
 			case Evento.MostrarUnCliente: 
 				TransferCliente clienteM = SAAbstractFactory.getInstance().getSACliente().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((clienteM != null) ? Evento.MostrarUnCliente : Evento.ClienteKO, clienteM);
+				gui.actualizar((clienteM != null) ? Evento.MostrarUnCliente : Evento.EntidadSiNoExiste, clienteM);
 				break;
 				
 			case Evento.MostrarTodosLosClientes:

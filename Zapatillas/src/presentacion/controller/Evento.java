@@ -2,8 +2,12 @@ package presentacion.controller;
 
 public class Evento {
 	
-	// GENERAL DE 0-99
-	public static final int MostrarGUIPrincipal = 0;
+	// GENERAL DE -2-99
+	public static final int ClaveEntidadYaExistente = -3;
+	public static final int EntidadSiNoExiste = -2;
+	public static final int WrongDataInput = -1;
+	public static final int ActivacionEntidad = 0;
+	public static final int MostrarGUIPrincipal = 1;
 	
 	
 	// CLIENTE DE 100-199
@@ -13,8 +17,6 @@ public class Evento {
 	public static final int GUIModificarCliente = 103;
 	public static final int GUIMostrarUnCliente = 104;
 	public static final int MostrarModificarCliente = 105;
-	public static final int ClienteOK = 106;
-	public static final int ClienteKO = 107;
 	
 	public static final int AltaCliente = 110;
 	public static final int BajaCliente = 111;

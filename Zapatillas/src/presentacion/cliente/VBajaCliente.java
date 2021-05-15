@@ -79,12 +79,10 @@ public class VBajaCliente extends JFrame implements IGUI{
 		this.setVisible(true);
 		break;
 		
-		case Evento.ClienteOK:
-			JOptionPane.showMessageDialog(this,"El cliente se dio de baja", "Baja Cliente", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
 			break;
-		case Evento.ClienteKO:
-			JOptionPane.showMessageDialog(this,"El cliente no existe o ya esta dado de baja", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
-			break;
+		default: JOptionPane.showMessageDialog(this,"El cliente se dio de baja", "Baja Cliente", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 }

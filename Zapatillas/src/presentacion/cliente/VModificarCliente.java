@@ -95,14 +95,16 @@ public class VModificarCliente extends JFrame implements IGUI{
 		case Evento.MostrarModificarCliente:
 			initGUI((TransferCliente) datos);	
 			break;
-		case Evento.ClienteOK:
-			JOptionPane.showMessageDialog(this,"El cliente se modifico con exito", "Modificar Cliente", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
 			break;
-		case Evento.ClienteKO:
-			if(datos == null)
-				JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
-			else JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
 			break;
+		case Evento.ClaveEntidadYaExistente:
+			JOptionPane.showMessageDialog(this,"Ya hay un cliente registrado con ese DNI", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			break;
+		default: JOptionPane.showMessageDialog(this,"El cliente se modifico con exito", "Modificar Cliente", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
