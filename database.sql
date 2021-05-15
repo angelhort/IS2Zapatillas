@@ -11,7 +11,8 @@ DROP TABLE IF EXISTS Contiene;
 CREATE TABLE Contiene(
 	unidades INT,
 	precio DECIMAL(8, 2),
-	idProducto INT
+	idProducto INT,
+	idFactura INT
 );
 
 DROP TABLE IF EXISTS Proveedores;
@@ -109,3 +110,6 @@ ALTER TABLE Suministra
 
 ALTER TABLE Contiene
 	ADD CONSTRAINT FK1_Contiene FOREIGN KEY(idProducto) REFERENCES Productos(idProducto) ON DELETE CASCADE;
+
+ALTER TABLE Contiene
+	ADD CONSTRAINT FK2_Contiene FOREIGN KEY(idFactura) REFERENCES Facturas(idFactura) ON DELETE CASCADE;
