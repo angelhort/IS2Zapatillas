@@ -8,9 +8,9 @@ import negocio.trabajador.TransferTrabajador;
 
 public class TransferVenta {
 	
-	TransferCliente cliente;
-	TransferTrabajador trabajador;
-	List<TransferProducto> productos;
+	private TransferCliente cliente;
+	private TransferTrabajador trabajador;
+	private List<TransferProducto> productos;
 	
 	public TransferVenta(TransferCliente cliente, 
 						 TransferTrabajador trabajador, 

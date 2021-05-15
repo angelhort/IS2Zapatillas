@@ -18,8 +18,8 @@ public class TransferProducto {
 			this.color = color;
 			this.stock = stock;
 			this.almacen = almacen;
-			this.marca = marca;
-		}
+			this.marca = marca;		
+	}
 
 	public TransferProducto(int ID, int talla, double precio, String nombre, String color, 
 			int stock, int almacen, int marca, boolean activo) {
