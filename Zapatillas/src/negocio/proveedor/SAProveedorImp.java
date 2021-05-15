@@ -12,8 +12,13 @@ public class SAProveedorImp implements SAProveedor {
 	public int alta(TransferProveedor t) {
 		if(t.getDireccion().length() <= 30) 
 			if(t.getNombre().length() <= 30)
-				if(String.valueOf(t.getTelefono()).length() == 9)
-					return DAOAbstractFactory.getInstance().getDAOProveedor().alta(t);		
+				if(String.valueOf(t.getTelefono()).length() == 9) {
+					TransferProveedor proveedor = DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(t.getDireccion());
+					if(proveedor == null) 
+						return DAOAbstractFactory.getInstance().getDAOProveedor().alta(t);	
+					else if(!proveedor.getActivo()) 
+						return DAOAbstractFactory.getInstance().getDAOProveedor().activarProveedor(t.getID());
+				}
 		return -1;
 	}
 

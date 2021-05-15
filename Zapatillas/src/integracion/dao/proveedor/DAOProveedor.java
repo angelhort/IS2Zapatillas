@@ -12,4 +12,5 @@ public interface DAOProveedor {
 	public TransferProveedor getProveedor(int ID);
 	public TransferProveedor getProveedor(String direccion);
 	public List<TransferProveedor> getAllProveedores();
+	public int activarProveedor(int id);
 }

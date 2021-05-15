@@ -156,6 +156,28 @@ public class DAOProveedorImp implements DAOProveedor {
 		DatabaseConnection.killConnection(conn);
 		return proveedor;			
 	}
+	
+	@Override
+	public int activarProveedor(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Proveedores SET activo=? WHERE idProveedor=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public List<TransferProveedor> getAllProveedores() {
