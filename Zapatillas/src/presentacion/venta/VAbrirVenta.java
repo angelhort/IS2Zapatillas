@@ -33,16 +33,16 @@ public class VAbrirVenta extends JFrame implements IGUI{
 		JLabel labelVenta = ComponentsBuilder.createLabel("Abrir Venta", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelVenta);
 		
-		JLabel labelCliente = ComponentsBuilder.createLabel("ID Cliente:", 10, 100, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		JLabel labelCliente = ComponentsBuilder.createLabel("ID Cliente:", 10, 115, 120, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelCliente);
 		
-		JTextField fieldCliente = ComponentsBuilder.createTextField(80, 100, 220, 20);
+		JTextField fieldCliente = ComponentsBuilder.createTextField(140, 115, 160, 20);
 		this.add(fieldCliente);
 		
-		JLabel labelTrabajador = ComponentsBuilder.createLabel("ID Trabjador:", 10, 150, 60, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		JLabel labelTrabajador = ComponentsBuilder.createLabel("ID Trabjador:", 10, 185, 120, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelTrabajador);
 		
-		JTextField fieldTrabajador = ComponentsBuilder.createTextField(80, 150, 220, 20);
+		JTextField fieldTrabajador = ComponentsBuilder.createTextField(140, 185, 160, 20);
 		this.add(fieldTrabajador);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
@@ -53,7 +53,7 @@ public class VAbrirVenta extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VAbrirVenta.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 			}
 			
 		};
@@ -67,6 +67,7 @@ public class VAbrirVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
 				VAbrirVenta.this.dispose();
 			}
 			
@@ -78,8 +79,8 @@ public class VAbrirVenta extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIAbrirVenta:
-		this.setVisible(true);
+			case Evento.GUIAbrirVenta:
+			this.setVisible(true);
 		break;
 	}
 	}

@@ -67,6 +67,8 @@ public class GUIFactoryImp extends GUIFactory{
 		//VENTA
 		case Evento.MostrarGUIVenta: //TODO VENTA
 			return new GUIVenta();
+		case Evento.GUIAbrirVenta:
+			return new VAbrirVenta();
 		
 		//ALMACEN
 		case Evento.MostrarGUIAlmacen:
