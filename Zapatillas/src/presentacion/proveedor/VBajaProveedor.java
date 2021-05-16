@@ -79,13 +79,10 @@ public class VBajaProveedor extends JFrame implements IGUI{
 				this.setVisible(true);
 				break;
 			
-			case Evento.ProveedorOK:
-				JOptionPane.showMessageDialog(this,"El proveedor se dio de baja", "Baja Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Proveedor no existe", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
 				break;
-				
-			case Evento.ProveedorKO:
-				JOptionPane.showMessageDialog(this,"El proveedor no existe o ya esta dado de baja", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
-				break;
+			default: JOptionPane.showMessageDialog(this,"El Proveedor se dio de baja", "Baja Proveedor", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

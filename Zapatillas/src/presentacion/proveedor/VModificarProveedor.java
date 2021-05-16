@@ -98,16 +98,17 @@ public class VModificarProveedor extends JFrame implements IGUI{
 				initGUI((TransferProveedor) datos);	
 				break;
 				
-			case Evento.ProveedorOK:
-				JOptionPane.showMessageDialog(this,"El proveedor se modifico con exito", "Modificar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
 				break;
-				
-			case Evento.ProveedorKO:
-				if(datos == null)
-					JOptionPane.showMessageDialog(this,"El proveedor no existe", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
-				else 
-					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Proveedor no existe", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 				break;
+			case Evento.ClaveEntidadYaExistente:
+				JOptionPane.showMessageDialog(this,"Ya hay un Proveedor registrado con ese DNI", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				break;
+			default: JOptionPane.showMessageDialog(this,"El Proveedor se modifico con exito", "Modificar Proveedor", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

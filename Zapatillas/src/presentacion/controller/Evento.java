@@ -91,10 +91,7 @@ public class Evento {
 	public static final int GUIBajaProveedor = 602;
 	public static final int GUIModificarProveedor = 603;
 	public static final int GUIMostrarUnProveedor = 604;
-	public static final int MostrarModificarProveedor = 605;
-	public static final int ProveedorOK = 606;
-	public static final int ProveedorKO = 607;
-	
+	public static final int MostrarModificarProveedor = 605;	
 	
 	public static final int AltaProveedor = 610;
 	public static final int BajaProveedor = 611;

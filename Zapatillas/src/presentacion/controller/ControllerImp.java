@@ -132,16 +132,17 @@ public class ControllerImp extends Controller{
 		//PROVEEDOR
 			case Evento.AltaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);
-				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
+				gui.actualizar(id, id);
 				break;
 			
 			case Evento.BajaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
-				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
+				gui.actualizar(id, null);
 				break;
 				
 			case Evento.MostrarUnProveedor:
-				gui.actualizar(Evento.MostrarUnProveedor, SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos)));
+				TransferProveedor proveedor = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((proveedor != null) ? Evento.MostrarUnAlmacen : Evento.EntidadSiNoExiste, proveedor);
 				break;
 				
 			case Evento.MostrarTodosLosProveedores:
@@ -149,13 +150,13 @@ public class ControllerImp extends Controller{
 				break;
 				
 			case Evento.MostrarModificarProveedor:
-				TransferProveedor proveedor = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.MostrarModificarProveedor, proveedor);
+				TransferProveedor proveedorM = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((proveedorM != null) ? Evento.MostrarModificarAlmacen : Evento.EntidadSiNoExiste, proveedorM);
 				break;
 				
 			case Evento.ModificarProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().modificar((TransferProveedor) datos);
-				gui.actualizar((id != -1) ? Evento.ProveedorOK : Evento.ProveedorKO, id);
+				gui.actualizar(id, id);
 				break;
 				
 		//ALMACEN

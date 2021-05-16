@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -70,6 +71,12 @@ public class VMostrarUnProveedor extends JFrame implements IGUI{
 			initGUI((TransferProveedor) datos);
 			this.setVisible(true);
 			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Proveedor no existe", "ERROR Mostrar Un Proveedor", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
+			break;
+		
 		}
 	}
 

@@ -18,6 +18,7 @@ public class SAProveedorImp implements SAProveedor {
 						return DAOAbstractFactory.getInstance().getDAOProveedor().alta(t);	
 					else if(!proveedor.getActivo()) 
 						return DAOAbstractFactory.getInstance().getDAOProveedor().activarProveedor(t.getID());
+					else return -2;
 				}
 		return -1;
 	}
@@ -27,7 +28,7 @@ public class SAProveedorImp implements SAProveedor {
 		if(DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(id) != null) {
 			return (DAOAbstractFactory.getInstance().getDAOProveedor().baja(id));
 		}
-		return -1;
+		return -2;
 	}
 
 	@Override
@@ -39,6 +40,7 @@ public class SAProveedorImp implements SAProveedor {
 					if(proveedor != null) {
 						if(proveedor.getID() == t.getID())
 							DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);
+						else return -3;
 					}
 					else DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);					
 				}

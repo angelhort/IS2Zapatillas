@@ -95,13 +95,17 @@ public class VAltaProveedor extends JFrame implements IGUI{
 			this.setVisible(true);
 			break;
 		
-		case Evento.ProveedorOK:
-			JOptionPane.showMessageDialog(this,"El proveedor se dio de alta con ID: " + datos, "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Proveedor ya estaba registrado y activo", "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
 			break;
-			
-		case Evento.ProveedorKO:
-			JOptionPane.showMessageDialog(this,"El proveedor ya existe o los datos fueron mal introducidos", "ERROR Alta Proveedor", JOptionPane.ERROR_MESSAGE);
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Proveedor", JOptionPane.ERROR_MESSAGE);
 			break;
+		case Evento.ActivacionEntidad:
+			JOptionPane.showMessageDialog(this,"El Proveedor ya existia y se ha activado", "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
+			JOptionPane.showMessageDialog(this,"El Proveedor se dio de alta con ID: " + datos, "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 }
