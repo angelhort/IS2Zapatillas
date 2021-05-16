@@ -76,9 +76,14 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.AltaAlmacen, new TransferAlmacen(Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText()));
+				try {
+					Controller.getInstance().action(Evento.AltaAlmacen, new TransferAlmacen(Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText()));
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Telefono almacen tiene que ser un numero entero", "ERROR Alta Almacen", JOptionPane.ERROR_MESSAGE);
+				}
 				VAltaAlmacen.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);					
 			}
 			
 		};

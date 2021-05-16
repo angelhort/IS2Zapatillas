@@ -75,9 +75,14 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Controller.getInstance().action(Evento.AltaTrabajador, new TransferTrabajador(Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText()));					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Telefono trabajador tiene que ser un numero entero", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
+				}
 				VAltaTrabajador.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
-				Controller.getInstance().action(Evento.AltaTrabajador, new TransferTrabajador(Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText()));
 			}
 			
 		};

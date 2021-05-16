@@ -79,7 +79,12 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), almacen.getActivo()));
+				try {
+					Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), almacen.getActivo()));					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Telefono almacen tiene que ser un numero entero", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				}
 				VModificarAlmacen.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}

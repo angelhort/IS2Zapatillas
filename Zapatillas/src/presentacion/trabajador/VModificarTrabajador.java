@@ -79,8 +79,13 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Controller.getInstance().action(Evento.ModificarTrabajador, new TransferTrabajador(trabajador.getID(), Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText(), trabajador.getActivo()));					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Telefono trabajador tiene que ser un numero entero", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+				}
 				VModificarTrabajador.this.dispose();
-				Controller.getInstance().action(Evento.ModificarTrabajador, new TransferTrabajador(trabajador.getID(), Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText(), trabajador.getActivo()));
 				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			}
 			

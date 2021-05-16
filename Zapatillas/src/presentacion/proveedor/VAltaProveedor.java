@@ -75,10 +75,15 @@ public class VAltaProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.AltaProveedor, new TransferProveedor(
-																		Integer.parseInt(fieldTelef.getText()),
-																		fieldDireccion.getText(), 
-																		fieldNombre.getText()));
+				try {
+					Controller.getInstance().action(Evento.AltaProveedor, new TransferProveedor(
+							Integer.parseInt(fieldTelef.getText()),
+							fieldDireccion.getText(), 
+							fieldNombre.getText()));					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Telefono proveedor tiene que ser un numero entero", "ERROR Alta proveedor", JOptionPane.ERROR_MESSAGE);
+				}
 				VAltaProveedor.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 			}

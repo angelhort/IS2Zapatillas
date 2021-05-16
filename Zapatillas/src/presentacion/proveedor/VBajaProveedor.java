@@ -62,7 +62,12 @@ public class VBajaProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.BajaProveedor, fieldID.getText());
+				try {
+					Controller.getInstance().action(Evento.BajaProveedor, fieldID.getText());					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID Proveedor tiene que ser un numero entero", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
+				}
 				VBajaProveedor.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 			}

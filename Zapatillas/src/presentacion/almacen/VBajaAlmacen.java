@@ -62,7 +62,12 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.BajaAlmacen, fieldID.getText());
+				try {
+					Controller.getInstance().action(Evento.BajaAlmacen, fieldID.getText());					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID almacen tiene que ser un numero entero", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
+				}
 				VBajaAlmacen.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}
