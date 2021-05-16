@@ -57,27 +57,27 @@ public class ControllerImp extends Controller{
 		//MARCA
 			case Evento.AltaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().alta((TransferMarca) datos);
-				gui.actualizar((id != -1) ? Evento.MarcaOK : Evento.MarcaKO , id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.BajaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().borrar(Integer.parseInt((String) datos));
-				gui.actualizar((id != -1) ? Evento.MarcaOK : Evento.MarcaKO , id);
+				gui.actualizar(id, null);
 				break;
 				
 			case Evento.MostrarModificarMarca:
 				TransferMarca marca = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.MostrarModificarMarca, marca);
+				gui.actualizar((marca != null) ? Evento.MostrarModificarCliente : Evento.EntidadSiNoExiste, marca);
 				break;
 				
 			case Evento.ModificarMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().modificar((TransferMarca) datos);
-				gui.actualizar((id != -1) ? Evento.MarcaOK : Evento.MarcaKO , id);
+				gui.actualizar(id , id);
 				break;
 				
 			case Evento.MostrarUnaMarca:
 				TransferMarca marcaM = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((marcaM != null) ? Evento.MostrarUnaMarca : Evento.MarcaKO, marcaM);
+				gui.actualizar((marcaM != null) ? Evento.MostrarUnCliente : Evento.EntidadSiNoExiste, marcaM);
 				break;
 				
 			case Evento.MostrarTodasLasMarcas:

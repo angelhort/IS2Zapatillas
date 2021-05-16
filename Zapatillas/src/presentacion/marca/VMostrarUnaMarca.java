@@ -69,11 +69,12 @@ public class VMostrarUnaMarca extends JFrame implements IGUI{
 				this.setVisible(true);
 				break;
 				
-			case Evento.MarcaKO:
-				JOptionPane.showMessageDialog(this,"La marca no existe", "ERROR Mostrar Una Marca", JOptionPane.ERROR_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Marca no existe", "ERROR Mostrar Un Marca", JOptionPane.ERROR_MESSAGE);
 				this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				break;
+			
 		}
 	}
 

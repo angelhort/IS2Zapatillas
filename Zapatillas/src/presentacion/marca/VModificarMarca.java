@@ -81,16 +81,17 @@ public class VModificarMarca extends JFrame implements IGUI{
 				initGUI((TransferMarca) datos);	
 				break;
 				
-			case Evento.MarcaOK:
-				JOptionPane.showMessageDialog(this,"La marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
 				break;
-				
-			case Evento.MarcaKO:
-				if(datos == null)
-					JOptionPane.showMessageDialog(this,"La marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
-				else 
-					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				break;
+			case Evento.ClaveEntidadYaExistente:
+				JOptionPane.showMessageDialog(this,"Ya hay un Marca registrado con ese DNI", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				break;
+			default: JOptionPane.showMessageDialog(this,"El Marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

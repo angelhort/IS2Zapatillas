@@ -80,13 +80,17 @@ public class VAltaMarca extends JFrame implements IGUI{
 				this.setVisible(true);
 				break;
 			
-			case Evento.MarcaOK:
-				JOptionPane.showMessageDialog(this,"La marca se dio de alta con ID: " + datos, "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Marca ya estaba registrado y activo", "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
 				break;
-				
-			case Evento.MarcaKO:
-				JOptionPane.showMessageDialog(this,"La marca ya existe o los datos fueron mal introducidos", "ERROR Alta Marca", JOptionPane.ERROR_MESSAGE);
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Marca", JOptionPane.ERROR_MESSAGE);
 				break;
+			case Evento.ActivacionEntidad:
+				JOptionPane.showMessageDialog(this,"El Marca ya existia y se ha activado", "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+				break;
+			default:
+				JOptionPane.showMessageDialog(this,"El Marca se dio de alta con ID: " + datos, "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

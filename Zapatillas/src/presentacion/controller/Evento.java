@@ -111,8 +111,6 @@ public class Evento {
 	public static final int GUIModificarMarca = 703;
 	public static final int GUIMostrarUnaMarca = 704;
 	public static final int MostrarModificarMarca = 705;
-	public static final int MarcaOK = 706;
-	public static final int MarcaKO = 707;
 	
 	public static final int AltaMarca = 710;
 	public static final int BajaMarca = 711;
