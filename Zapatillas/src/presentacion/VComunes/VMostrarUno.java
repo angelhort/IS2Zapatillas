@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -81,27 +82,33 @@ public class VMostrarUno extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				switch(entidad) {
-				case "Cliente": Controller.getInstance().action(Evento.MostrarUnCliente, fieldID.getText());
-				break;
-				
-				case "Proveedor": Controller.getInstance().action(Evento.MostrarUnProveedor, fieldID.getText());
-				break;
-				
-				case "Marca": Controller.getInstance().action(Evento.MostrarUnaMarca, fieldID.getText());
-				break;
-				
-				case "Trabajador": Controller.getInstance().action(Evento.MostrarUnTrabajador, fieldID.getText());
-				break;
-				
-				case "Almacen": Controller.getInstance().action(Evento.MostrarUnAlmacen, fieldID.getText());
-				break;
-				
-				case "Producto": Controller.getInstance().action(Evento.MostrarUnProducto, fieldID.getText());
-				break;
-				
-				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
-				
+				try {
+					switch(entidad) {
+					case "Cliente": Controller.getInstance().action(Evento.MostrarUnCliente, fieldID.getText());
+					break;
+					
+					case "Proveedor": Controller.getInstance().action(Evento.MostrarUnProveedor, fieldID.getText());
+					break;
+					
+					case "Marca": Controller.getInstance().action(Evento.MostrarUnaMarca, fieldID.getText());
+					break;
+					
+					case "Trabajador": Controller.getInstance().action(Evento.MostrarUnTrabajador, fieldID.getText());
+					break;
+					
+					case "Almacen": Controller.getInstance().action(Evento.MostrarUnAlmacen, fieldID.getText());
+					break;
+					
+					case "Producto": Controller.getInstance().action(Evento.MostrarUnProducto, fieldID.getText());
+					break;
+					
+					default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
+					
+					}				
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID " + entidad + " tiene que ser un numero entero", "ERROR Mostrar un " + entidad,JOptionPane.ERROR_MESSAGE);
+					Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());
 				}
 				VMostrarUno.this.dispose();
 			}

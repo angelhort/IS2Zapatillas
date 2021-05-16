@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import presentacion.controller.Controller;
@@ -81,22 +82,28 @@ public class VModificar extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				switch(entidad) {
-				case "Cliente": Controller.getInstance().action(Evento.MostrarModificarCliente, fieldID.getText());
-				break;
-				case "Almacen": Controller.getInstance().action(Evento.MostrarModificarAlmacen, fieldID.getText());
-				break;
-				case "Trabajador": Controller.getInstance().action(Evento.MostrarModificarTrabajador, fieldID.getText());
-				break;
-				case "Marca": Controller.getInstance().action(Evento.MostrarModificarMarca, fieldID.getText());
-				break;
-				case "Producto": Controller.getInstance().action(0, fieldID.getText());
-				break;
-				case "Proveedor": Controller.getInstance().action(Evento.MostrarModificarProveedor, fieldID.getText());
-				break;
-				
-				default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());			
-				
+				try {				
+					switch(entidad) {
+					case "Cliente": Controller.getInstance().action(Evento.MostrarModificarCliente, fieldID.getText());
+					break;
+					case "Almacen": Controller.getInstance().action(Evento.MostrarModificarAlmacen, fieldID.getText());
+					break;
+					case "Trabajador": Controller.getInstance().action(Evento.MostrarModificarTrabajador, fieldID.getText());
+					break;
+					case "Marca": Controller.getInstance().action(Evento.MostrarModificarMarca, fieldID.getText());
+					break;
+					case "Producto": Controller.getInstance().action(0, fieldID.getText());
+					break;
+					case "Proveedor": Controller.getInstance().action(Evento.MostrarModificarProveedor, fieldID.getText());
+					break;
+					
+					default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());			
+					
+					}
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID " + entidad + " tiene que ser un numero entero", "ERROR Modificar " + entidad,JOptionPane.ERROR_MESSAGE);
+					Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());
 				}
 				VModificar.this.dispose();
 			}

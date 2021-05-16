@@ -62,7 +62,13 @@ public class VBajaCliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.BajaCliente, fieldID.getText());
+				try {
+					Controller.getInstance().action(Evento.BajaCliente, fieldID.getText());
+					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID cliente tiene que ser un numero entero", "ERROR Baja cliente", JOptionPane.ERROR_MESSAGE);
+				}
 				VBajaCliente.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
