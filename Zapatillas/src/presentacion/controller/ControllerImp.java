@@ -133,6 +133,10 @@ public class ControllerImp extends Controller{
 				TransferProducto producto = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
 				gui.actualizar((producto != null) ? Evento.MostrarModificarProducto : Evento.EntidadSiNoExiste, producto);
 				break;
+			case Evento.ModificarProducto:
+				id = SAAbstractFactory.getInstance().getSAProducto().modificar((TransferProducto) datos);
+				gui.actualizar(id, id);
+				break;
 			
 		//PROVEEDOR
 			case Evento.AltaProveedor:

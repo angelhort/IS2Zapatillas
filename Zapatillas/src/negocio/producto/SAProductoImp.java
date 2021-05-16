@@ -38,7 +38,11 @@ public class SAProductoImp implements SAProducto{
 
 	@Override
 	public int modificar(TransferProducto t) {
-		return 0;
+		if(t.getClass() == TransferZapatillas.class)
+			return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferZapatillas) t);
+		else if(t.getClass() == TransferCalcetines.class)
+			return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferCalcetines) t);
+		return -1;
 	}
 
 	@Override

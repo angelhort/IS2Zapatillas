@@ -139,7 +139,22 @@ public class VModificarProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(producto.toString() == "zapatillas") {
+					Controller.getInstance().action(Evento.ModificarProducto, new TransferZapatillas(Integer.parseInt((String) comboTalla.getSelectedItem()),
+							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+							Integer.parseInt(fieldMarca.getText())));
+					VModificarProducto.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				}
+				else if(producto.toString() == "calcetines") {
+					Controller.getInstance().action(Evento.ModificarProducto, new TransferCalcetines(Integer.parseInt((String) comboTalla.getSelectedItem()),
+							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
+							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+							Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));
+					VModificarProducto.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				}
 			}
 			
 		};
