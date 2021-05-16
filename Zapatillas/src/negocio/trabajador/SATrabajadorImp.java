@@ -3,7 +3,6 @@ package negocio.trabajador;
 import java.util.List;
 
 import integracion.dao.DAOFactory.DAOAbstractFactory;
-import negocio.cliente.TransferCliente;
 
 public class SATrabajadorImp implements SATrabajador{
 
@@ -24,6 +23,7 @@ public class SATrabajadorImp implements SATrabajador{
 							return DAOAbstractFactory.getInstance().getDAOTrabajador().alta(t);
 						else if(!trabajador.getActivo())
 							return DAOAbstractFactory.getInstance().getDAOTrabajador().activarTrabajador(trabajador.getID());
+						else return -2;
 					}
 				}
 		}
@@ -36,7 +36,7 @@ public class SATrabajadorImp implements SATrabajador{
 		if(DAOAbstractFactory.getInstance().getDAOTrabajador().getTrabajador(id) != null) {
 			return DAOAbstractFactory.getInstance().getDAOTrabajador().baja(id);
 		}
-		return -1;
+		return -2;
 		
 	}
 
@@ -48,14 +48,15 @@ public class SATrabajadorImp implements SATrabajador{
 					TransferTrabajador trabajador = DAOAbstractFactory.getInstance().getDAOTrabajador().getTrabajador(t.getDNI());
 					if(trabajador != null) {
 						if(trabajador.getID() == t.getID())
-							return (DAOAbstractFactory.getInstance().getDAOTrabajador().modificar(t));					
+							return (DAOAbstractFactory.getInstance().getDAOTrabajador().modificar(t));	
+						else return -3;
 					}
 					else return (DAOAbstractFactory.getInstance().getDAOTrabajador().modificar(t));		
 				}
 			}
 			
 		}
-		return 0;
+		return -1;
 	}
 
 	@Override

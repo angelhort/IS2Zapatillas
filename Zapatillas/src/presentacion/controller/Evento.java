@@ -33,8 +33,6 @@ public class Evento {
 	public static final int GUIModificarTrabajador = 203;
 	public static final int GUIMostrarUnTrabajador = 204;
 	public static final int MostrarModificarTrabajador = 205;
-	public static final int TrabajadorOK = 206;
-	public static final int TrabajadorKO = 207;
 	
 	public static final int AltaTrabajador = 210;
 	public static final int BajaTrabajador = 211;

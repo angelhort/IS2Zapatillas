@@ -95,14 +95,17 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 		case Evento.MostrarModificarTrabajador:
 			initGUI((TransferTrabajador) datos);	
 			break;
-		case Evento.TrabajadorOK:
-			JOptionPane.showMessageDialog(this,"El trabajador se modifico con exito", "Modificar Trabajador", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
 			break;
-		case Evento.TrabajadorKO:
-			if(datos == null)
-				JOptionPane.showMessageDialog(this,"El trabajador no existe", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
-			else JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			break;
+		case Evento.ClaveEntidadYaExistente:
+			JOptionPane.showMessageDialog(this,"Ya hay un Trabajador registrado con ese DNI", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			break;
+		default: JOptionPane.showMessageDialog(this,"El Trabajador se modifico con exito", "Modificar Trabajador", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

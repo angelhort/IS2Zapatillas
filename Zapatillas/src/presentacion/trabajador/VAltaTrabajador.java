@@ -92,12 +92,17 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 		this.setVisible(true);
 		break;
 		
-		case Evento.TrabajadorOK:
-			JOptionPane.showMessageDialog(this,"El trabajador se dio de alta con ID: " + datos, "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Trabajador ya estaba registrado y activo", "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
 			break;
-		case Evento.TrabajadorKO:
-			JOptionPane.showMessageDialog(this,"El trabajador ya existe o los datos fueron mal introducidos", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
 			break;
+		case Evento.ActivacionEntidad:
+			JOptionPane.showMessageDialog(this,"El Trabajador ya existia y se ha activado", "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
+			JOptionPane.showMessageDialog(this,"El Trabajador se dio de alta con ID: " + datos, "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 }

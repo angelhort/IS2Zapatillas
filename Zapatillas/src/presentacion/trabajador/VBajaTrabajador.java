@@ -79,12 +79,10 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 		this.setVisible(true);
 		break;
 		
-		case Evento.TrabajadorOK:
-			JOptionPane.showMessageDialog(this,"El trabajador se dio de baja", "Baja Trabajador", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
 			break;
-		case Evento.TrabajadorKO:
-			JOptionPane.showMessageDialog(this,"El trabajador no existe o ya esta dado de baja", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
-			break;
+		default: JOptionPane.showMessageDialog(this,"El Trabajador se dio de baja", "Baja Trabajador", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 }

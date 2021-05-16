@@ -67,7 +67,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarModificarMarca:
 				TransferMarca marca = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((marca != null) ? Evento.MostrarModificarCliente : Evento.EntidadSiNoExiste, marca);
+				gui.actualizar((marca != null) ? Evento.MostrarModificarMarca : Evento.EntidadSiNoExiste, marca);
 				break;
 				
 			case Evento.ModificarMarca:
@@ -77,7 +77,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnaMarca:
 				TransferMarca marcaM = SAAbstractFactory.getInstance().getSAMarca().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((marcaM != null) ? Evento.MostrarUnCliente : Evento.EntidadSiNoExiste, marcaM);
+				gui.actualizar((marcaM != null) ? Evento.MostrarUnaMarca : Evento.EntidadSiNoExiste, marcaM);
 				break;
 				
 			case Evento.MostrarTodasLasMarcas:
@@ -87,12 +87,12 @@ public class ControllerImp extends Controller{
 		//TRABAJADOR
 			case Evento.AltaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().alta((TransferTrabajador) datos);
-				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.BajaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().borrar(Integer.parseInt((String) datos));
-				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
+				gui.actualizar(id, null);
 				break;
 				
 			case Evento.MostrarTodosLosTrabajadores:
@@ -101,16 +101,17 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarModificarTrabajador:
 				TransferTrabajador trabajador = SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.MostrarModificarTrabajador, trabajador);
+				gui.actualizar((trabajador != null) ? Evento.MostrarModificarTrabajador : Evento.EntidadSiNoExiste, trabajador);
 				break;
 				
 			case Evento.ModificarTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().modificar((TransferTrabajador) datos);
-				gui.actualizar((id != -1) ? Evento.TrabajadorOK : Evento.TrabajadorKO, id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.MostrarUnTrabajador:
-				gui.actualizar(Evento.MostrarUnTrabajador, SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos)));
+				TransferTrabajador trabajadorM = SAAbstractFactory.getInstance().getSATrabajador().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((trabajadorM != null) ? Evento.MostrarUnTrabajador : Evento.EntidadSiNoExiste, trabajadorM);
 				break;
 				
 		//PRODUCTO
@@ -142,7 +143,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarUnProveedor:
 				TransferProveedor proveedor = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((proveedor != null) ? Evento.MostrarUnAlmacen : Evento.EntidadSiNoExiste, proveedor);
+				gui.actualizar((proveedor != null) ? Evento.MostrarUnProveedor : Evento.EntidadSiNoExiste, proveedor);
 				break;
 				
 			case Evento.MostrarTodosLosProveedores:
@@ -151,7 +152,7 @@ public class ControllerImp extends Controller{
 				
 			case Evento.MostrarModificarProveedor:
 				TransferProveedor proveedorM = SAAbstractFactory.getInstance().getSAProveedor().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((proveedorM != null) ? Evento.MostrarModificarAlmacen : Evento.EntidadSiNoExiste, proveedorM);
+				gui.actualizar((proveedorM != null) ? Evento.MostrarModificarProveedor : Evento.EntidadSiNoExiste, proveedorM);
 				break;
 				
 			case Evento.ModificarProveedor:

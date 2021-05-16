@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -70,6 +71,11 @@ public class VMostrarUnTrabajador extends JFrame implements IGUI{
 			initGUI((TransferTrabajador) datos);
 			this.setVisible(true);
 			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Mostrar Un Trabajador", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
+			break;	
 		}
 	}
 
