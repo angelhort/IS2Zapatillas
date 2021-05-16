@@ -39,10 +39,10 @@ public class SAProveedorImp implements SAProveedor {
 					TransferProveedor proveedor = DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(t.getDireccion());
 					if(proveedor != null) {
 						if(proveedor.getID() == t.getID())
-							DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);
+							return DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);
 						else return -3;
 					}
-					else DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);					
+					else return DAOAbstractFactory.getInstance().getDAOProveedor().modificar(t);					
 				}
 					
 		return -1;
