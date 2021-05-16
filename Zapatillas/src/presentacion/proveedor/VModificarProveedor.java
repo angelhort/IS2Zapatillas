@@ -81,7 +81,7 @@ public class VModificarProveedor extends JFrame implements IGUI{
 				Controller.getInstance().action(Evento.ModificarProveedor, new TransferProveedor(proveedor.getID(),
 																		Integer.parseInt(fieldTelef.getText()),
 																		fieldDireccion.getText(), 
-																		fieldNombre.getText(), true));
+																		fieldNombre.getText(), proveedor.getActivo()));
 				VModificarProveedor.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 			}

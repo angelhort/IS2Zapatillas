@@ -79,7 +79,7 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), true));
+				Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), almacen.getActivo()));
 				VModificarAlmacen.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 			}

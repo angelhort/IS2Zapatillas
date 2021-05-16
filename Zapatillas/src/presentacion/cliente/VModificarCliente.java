@@ -81,7 +81,7 @@ public class VModificarCliente extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				VModificarCliente.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUICliente, null);
-				Controller.getInstance().action(Evento.ModificarCliente,  new TransferCliente(cliente.getID(), fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText(), true));
+				Controller.getInstance().action(Evento.ModificarCliente,  new TransferCliente(cliente.getID(), fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText(), cliente.getActivo()));
 			}
 			
 		};
