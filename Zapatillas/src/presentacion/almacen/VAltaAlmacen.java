@@ -93,13 +93,17 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 				this.setVisible(true);
 				break;
 			
-			case Evento.AlmacenOK:
-				JOptionPane.showMessageDialog(this,"El almacén se dio de alta con ID: " + datos, "Alta Almacén", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El almacen ya estaba registrado y activo", "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
 				break;
-				
-			case Evento.AlmacenKO:
-				JOptionPane.showMessageDialog(this,"El almacén ya existe o los datos fueron mal introducidos", "ERROR Alta Almacén", JOptionPane.ERROR_MESSAGE);
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Almacen", JOptionPane.ERROR_MESSAGE);
 				break;
+			case Evento.ActivacionEntidad:
+				JOptionPane.showMessageDialog(this,"El almacen ya existia y se ha activado", "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
+				break;
+			default:
+				JOptionPane.showMessageDialog(this,"El almacen se dio de alta con ID: " + datos, "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

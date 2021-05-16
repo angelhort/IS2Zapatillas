@@ -100,6 +100,7 @@ public class VModificarCliente extends JFrame implements IGUI{
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			break;
 		case Evento.ClaveEntidadYaExistente:
 			JOptionPane.showMessageDialog(this,"Ya hay un cliente registrado con ese DNI", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);

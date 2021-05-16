@@ -161,7 +161,7 @@ public class ControllerImp extends Controller{
 		//ALMACEN
 			case Evento.AltaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().alta((TransferAlmacen) datos);
-				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.MostrarTodosLosAlmacenes:
@@ -170,21 +170,22 @@ public class ControllerImp extends Controller{
 				
 			case Evento.BajaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().borrar(Integer.parseInt((String) datos));
-				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
+				gui.actualizar(id, null);
 				break;
 				
 			case Evento.MostrarModificarAlmacen:
 				TransferAlmacen almacen = SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar(Evento.MostrarModificarAlmacen, almacen);
+				gui.actualizar((almacen != null) ? Evento.MostrarModificarAlmacen : Evento.EntidadSiNoExiste, almacen);
 				break;
 				
 			case Evento.ModificarAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().modificar((TransferAlmacen) datos);
-				gui.actualizar((id != -1) ? Evento.AlmacenOK : Evento.AlmacenKO, id);
+				gui.actualizar(id, id);
 				break;
 				
 			case Evento.MostrarUnAlmacen:
-				gui.actualizar(Evento.MostrarUnAlmacen, SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos)));
+				TransferAlmacen almacenMostrar = SAAbstractFactory.getInstance().getSAAlmacen().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((almacenMostrar != null) ? Evento.MostrarUnAlmacen : Evento.EntidadSiNoExiste, almacenMostrar);
 				break;
 				
 			//PROVEEDOR-PRODUCTO

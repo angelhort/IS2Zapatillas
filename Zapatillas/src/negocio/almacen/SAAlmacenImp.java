@@ -14,6 +14,7 @@ public class SAAlmacenImp implements SAAlmacen{
 				if(almacen == null)
 					return DAOAbstractFactory.getInstance().getDAOAlmacen().alta(t);
 				else if (!almacen.getActivo()) return DAOAbstractFactory.getInstance().getDAOAlmacen().activarAlmacen(almacen.getID());
+				else return -2;
 			}
 		
 		return -1;
@@ -23,7 +24,7 @@ public class SAAlmacenImp implements SAAlmacen{
 	public int borrar(int id) {
 		if(DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(id) != null)
 			return DAOAbstractFactory.getInstance().getDAOAlmacen().baja(id);
-		else return -1;
+		else return -2;
 	}
 
 	@Override
@@ -33,7 +34,8 @@ public class SAAlmacenImp implements SAAlmacen{
 				TransferAlmacen almacen = DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getDireccion());
 				if(almacen != null) {
 					if(almacen.getID() == t.getID())
-						return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);				
+						return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);	
+					else return -3;
 				}
 				else return DAOAbstractFactory.getInstance().getDAOAlmacen().modificar(t);
 			}

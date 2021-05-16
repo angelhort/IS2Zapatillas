@@ -96,16 +96,17 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 				initGUI((TransferAlmacen) datos);	
 				break;
 				
-			case Evento.AlmacenOK:
-				JOptionPane.showMessageDialog(this,"El almacén se modifico con exito", "Modificar Almacén", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
 				break;
-				
-			case Evento.AlmacenKO:
-				if(datos == null)
-					JOptionPane.showMessageDialog(this,"El almacén no existe", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
-				else 
-					JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Almacén", JOptionPane.ERROR_MESSAGE);
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Almacen no existe", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				break;
+			case Evento.ClaveEntidadYaExistente:
+				JOptionPane.showMessageDialog(this,"Ya hay un Almacen registrado con ese DNI", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				break;
+			default: JOptionPane.showMessageDialog(this,"El Almacen se modifico con exito", "Modificar Almacen", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

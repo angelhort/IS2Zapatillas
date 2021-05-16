@@ -58,8 +58,6 @@ public class Evento {
 	public static final int GUIModificarAlmacen = 403;
 	public static final int GUIMostrarUnAlmacen = 404;
 	public static final int MostrarModificarAlmacen = 405;
-	public static final int AlmacenOK = 406;
-	public static final int AlmacenKO = 407;
 	
 	public static final int AltaAlmacen = 410;
 	public static final int BajaAlmacen = 411;
