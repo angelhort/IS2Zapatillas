@@ -104,7 +104,7 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				break;
 			case Evento.ClaveEntidadYaExistente:
-				JOptionPane.showMessageDialog(this,"Ya hay un Almacen registrado con ese DNI", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this,"Ya hay un Almacen registrado con esa direccion", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
 				break;
 			default: JOptionPane.showMessageDialog(this,"El Almacen se modifico con exito", "Modificar Almacen", JOptionPane.INFORMATION_MESSAGE);
 		}

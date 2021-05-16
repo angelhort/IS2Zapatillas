@@ -106,7 +106,7 @@ public class VModificarProveedor extends JFrame implements IGUI{
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 				break;
 			case Evento.ClaveEntidadYaExistente:
-				JOptionPane.showMessageDialog(this,"Ya hay un Proveedor registrado con ese DNI", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this,"Ya hay un Proveedor registrado con esa direccion", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
 				break;
 			default: JOptionPane.showMessageDialog(this,"El Proveedor se modifico con exito", "Modificar Proveedor", JOptionPane.INFORMATION_MESSAGE);
 		}

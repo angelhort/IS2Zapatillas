@@ -98,7 +98,7 @@ public class DAOTrabajadorImp implements DAOTrabajador{
 	@Override
 	public int activarTrabajador(int id) {
 		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Trabajador SET activo=? WHERE idTrabajador=?";
+		String insert = "UPDATE Trabajadores SET activo=? WHERE idTrabajador=?";
 		int result = -1;
 		
 		try {

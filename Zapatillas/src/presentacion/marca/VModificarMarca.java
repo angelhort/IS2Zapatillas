@@ -89,7 +89,7 @@ public class VModificarMarca extends JFrame implements IGUI{
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				break;
 			case Evento.ClaveEntidadYaExistente:
-				JOptionPane.showMessageDialog(this,"Ya hay un Marca registrado con ese DNI", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this,"Ya hay un Marca registrada con ese nombre", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
 				break;
 			default: JOptionPane.showMessageDialog(this,"El Marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
 		}
