@@ -20,4 +20,9 @@ public class TransferCalcetines extends TransferProducto{
 	public String getTejido() {
 		return tejido;
 	}
+	
+	@Override
+	public String toString() {
+		return "calcetines";
+	}
 }

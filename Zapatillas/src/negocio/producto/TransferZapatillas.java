@@ -20,4 +20,9 @@ public class TransferZapatillas extends TransferProducto{
 	public String getTipo() {
 		return tipo;
 	}
+	
+	@Override
+	public String toString() {
+		return "zapatillas";
+	}
 }

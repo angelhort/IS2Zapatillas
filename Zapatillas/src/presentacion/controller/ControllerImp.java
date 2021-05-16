@@ -129,6 +129,10 @@ public class ControllerImp extends Controller{
 			case Evento.MostrarUnProducto:
 				gui.actualizar(Evento.MostrarUnProducto, SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos)));
 				break;
+			case Evento.MostrarModificarProducto:
+				TransferProducto producto = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((producto != null) ? Evento.MostrarModificarProducto : Evento.EntidadSiNoExiste, producto);
+				break;
 			
 		//PROVEEDOR
 			case Evento.AltaProveedor:
