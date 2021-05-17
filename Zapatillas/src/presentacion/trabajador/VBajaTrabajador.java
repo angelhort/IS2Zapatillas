@@ -64,12 +64,12 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Controller.getInstance().action(Evento.BajaTrabajador, fieldID.getText());					
+					VBajaTrabajador.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID Trabajador tiene que ser un numero entero", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
 				}
-				VBajaTrabajador.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 			}
 			
 		};

@@ -64,12 +64,12 @@ public class VBajaMarca extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Controller.getInstance().action(Evento.BajaMarca, fieldID.getText());					
+					VBajaMarca.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID marca tiene que ser un numero entero", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
 				}
-				VBajaMarca.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
 		};

@@ -83,12 +83,12 @@ public class VModificarProveedor extends JFrame implements IGUI{
 							Integer.parseInt(fieldTelef.getText()),
 							fieldDireccion.getText(), 
 							fieldNombre.getText(), proveedor.getActivo()));					
+					VModificarProveedor.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono proveedor tiene que ser un numero entero", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
 				}
-				VModificarProveedor.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 			}
 			
 		};

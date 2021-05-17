@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.proveedor_producto.TransferProveedor_producto;
@@ -73,10 +74,15 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
-						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Double.parseDouble(fieldPrecio.getText())));
-				VAniadirProveedor.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
+				try {
+					Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
+							Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Double.parseDouble(fieldPrecio.getText())));
+					VAniadirProveedor.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Los IDs deben ser numeros enteros y el precio decimal", "ERROR Añadir Proveedor a Producto", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		};
