@@ -33,17 +33,23 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 		JLabel label = ComponentsBuilder.createLabel("<html>Aniadir proveedor<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 25));
 		this.add(label);
 
-		JLabel labelIDProducto = ComponentsBuilder.createLabel("ID Producto:", 10, 120, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		JLabel labelIDProducto = ComponentsBuilder.createLabel("ID Producto:", 10, 100, 100, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelIDProducto);
 		
-		JTextField fieldIDProducto = ComponentsBuilder.createTextField(100, 122, 200, 20);
+		JTextField fieldIDProducto = ComponentsBuilder.createTextField(120, 100, 180, 20);
 		this.add(fieldIDProducto);
 		
-		JLabel labelIDProveedor = ComponentsBuilder.createLabel("ID Proveedor:", 10, 180, 80, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		JLabel labelIDProveedor = ComponentsBuilder.createLabel("ID Proveedor:", 10, 150, 100, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
 		this.add(labelIDProveedor);
 		
-		JTextField fieldIDProveedor = ComponentsBuilder.createTextField(100, 182, 200, 20);
+		JTextField fieldIDProveedor = ComponentsBuilder.createTextField(120, 150, 180, 20);
 		this.add(fieldIDProveedor);
+		
+		JLabel labelPrecio = ComponentsBuilder.createLabel("Precio Suministro:", 10, 200, 120, 20, Color.BLACK, new Font("Serif", Font.PLAIN, 14));
+		this.add(labelPrecio);
+		
+		JTextField fieldPrecio = ComponentsBuilder.createTextField(140, 200, 160, 20);
+		this.add(fieldPrecio);
 		
 		JButton atrasButton = ComponentsBuilder.createBackButtonSmall();
 		this.add(atrasButton);
@@ -68,7 +74,7 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
-						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText())));
+						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Double.parseDouble(fieldPrecio.getText())));
 				VAniadirProveedor.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}

@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
@@ -64,14 +65,22 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 		
 		buttoneliminar1.addActionListener(leliminar1);
 		
-		JButton buttoneliminarTodos = ComponentsBuilder.createButton("<html>Eliminar proveedores<br>de producto</html>", 715, 200, 185, 100, new Font("Serif", Font.PLAIN, 17));
+		JButton buttoneliminarTodos = ComponentsBuilder.createButton("<html>Mostrar productos<br>de proveedor</html>", 715, 200, 185, 100, new Font("Serif", Font.PLAIN, 17));
 		this.add(buttoneliminarTodos);
 		
 		ActionListener lEliminarTodos = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIProveedorProducto.this.dispose();
+				try {
+					String n = (String) JOptionPane.showInputDialog(GUIProveedorProducto.this, "ID Proveedor:",
+							"Productos de un Proveedor", JOptionPane.PLAIN_MESSAGE, null, null, "");
+					Controller.getInstance().action(Evento.MostrarProductosProveedor, n);					
+					GUIProveedorProducto.this.dispose();
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID proveedor tiene que ser un numero entero", "ERROR ID Proveedor", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		};

@@ -205,6 +205,9 @@ public class ControllerImp extends Controller{
 			case Evento.EliminarProveedor:
 				SAAbstractFactory.getInstance().getSAProductoProveedor().eliminarProveedor((TransferProveedor_producto) datos);
 				break;
+			case Evento.MostrarProductosProveedor:
+				gui.actualizar(Evento.MostrarProductosProveedor, SAAbstractFactory.getInstance().getSAProductoProveedor().getProveedor_producto(Integer.parseInt((String) datos)));
+				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
 		}
