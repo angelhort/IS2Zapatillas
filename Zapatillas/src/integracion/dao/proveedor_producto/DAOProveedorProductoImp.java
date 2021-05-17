@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import integracion.connection.DatabaseConnection;
-import negocio.producto.TransferCalcetines;
 import negocio.producto.TransferProducto;
-import negocio.producto.TransferZapatillas;
 import negocio.proveedor_producto.TransferProveedor_producto;
 
 public class DAOProveedorProductoImp implements DAOProveedorProducto {
