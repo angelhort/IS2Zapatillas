@@ -33,6 +33,12 @@ public class TransferProducto {
 			this.marca = marca;
 			this.activo = activo;
 	}
+	
+	public TransferProducto(int ID, String nombre, double precio) {
+		this.ID = ID;
+		this.precio = precio;
+		this.nombre = nombre;
+	}
 
 // GETTERS
 	public int getID() {

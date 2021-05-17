@@ -2,11 +2,16 @@ package integracion.dao.proveedor_producto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import integracion.connection.DatabaseConnection;
+import negocio.producto.TransferCalcetines;
 import negocio.producto.TransferProducto;
+import negocio.producto.TransferZapatillas;
 import negocio.proveedor_producto.TransferProveedor_producto;
 
 public class DAOProveedorProductoImp implements DAOProveedorProducto {
@@ -62,8 +67,32 @@ public class DAOProveedorProductoImp implements DAOProveedorProducto {
 
 	@Override
 	public List<TransferProducto> getProveedor_producto(int idProveedor) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT P.idProducto, P.nombre, S.precioSuministro "
+									+ "FROM Suministra as S, Productos as P "
+									+ "WHERE S.idProducto = P.idProducto AND S.idProveedor = %s", idProveedor);
+		
+		List<TransferProducto> productos = new ArrayList<>();
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next()) {
+				productos.add(new TransferProducto(resultSet.getInt("P.idProducto"),
+													   resultSet.getString("P.nombre"),
+													   resultSet.getDouble("S.precioSuministro")));
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return productos;
 	}
 
 }
