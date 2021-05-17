@@ -15,7 +15,7 @@ import negocio.almacen.TransferAlmacen;
 
 public class TestDAOAlmacen {
 	public static final TransferAlmacen almacen1 = new TransferAlmacen(678987654, 234, "Calle Mayor 1");
-	public static final TransferAlmacen almacen2 = new TransferAlmacen(678987654, 234, "Calle Mayor 1");
+	public static final TransferAlmacen almacen2 = new TransferAlmacen(387847532, 543, "Calle Luna 3");
 
 	@Test
 	public void alta() {
