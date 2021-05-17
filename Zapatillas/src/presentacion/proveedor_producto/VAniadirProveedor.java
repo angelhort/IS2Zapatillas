@@ -74,7 +74,7 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
-						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Integer.parseInt(fieldPrecio.getText())));
+						Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Double.parseDouble(fieldPrecio.getText())));
 				VAniadirProveedor.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			}
