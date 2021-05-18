@@ -15,4 +15,5 @@ public interface DAOProducto {
 	public TransferProducto getProducto(int ID);
 	public TransferProducto getProducto(String nombre);
 	public List<TransferProducto> getAllProductos();
+	public int activarProducto(int id);
 }

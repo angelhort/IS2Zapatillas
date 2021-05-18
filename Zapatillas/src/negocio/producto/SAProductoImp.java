@@ -17,10 +17,16 @@ public class SAProductoImp implements SAProducto{
 			if(sT.nextToken().length() <= 8 && sT.nextToken().length() <= 2) {
 				if(DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getMarca()) != null) {
 					if(DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getAlmacen()) != null) {
-						if(t.getClass() == TransferZapatillas.class)
-							return DAOAbstractFactory.getInstance().getDAOProducto().alta((TransferZapatillas) t);
-						else if(t.getClass() == TransferCalcetines.class)
-							return DAOAbstractFactory.getInstance().getDAOProducto().alta((TransferCalcetines) t);						
+						TransferProducto producto = DAOAbstractFactory.getInstance().getDAOProducto().getProducto(t.getNombre());
+						if(producto == null) {
+							if(t.getClass() == TransferZapatillas.class)
+								return DAOAbstractFactory.getInstance().getDAOProducto().alta((TransferZapatillas) t);
+							else if(t.getClass() == TransferCalcetines.class)
+								return DAOAbstractFactory.getInstance().getDAOProducto().alta((TransferCalcetines) t);													
+						}else if(!producto.getActivo()){
+							return DAOAbstractFactory.getInstance().getDAOProducto().activarProducto(producto.getID());
+						}
+						else return -2;
 					}
 				}
 				
@@ -33,15 +39,39 @@ public class SAProductoImp implements SAProducto{
 	public int borrar(int id) {
 		if(DAOAbstractFactory.getInstance().getDAOProducto().getProducto(id) != null)
 			return DAOAbstractFactory.getInstance().getDAOProducto().bajaProducto(id);
-		else return -1;
+		else return -2;
 	}
 
 	@Override
 	public int modificar(TransferProducto t) {
-		if(t.getClass() == TransferZapatillas.class)
-			return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferZapatillas) t);
-		else if(t.getClass() == TransferCalcetines.class)
-			return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferCalcetines) t);
+		if(t.getNombre().length() <= 35) {
+			String stringAux = String.valueOf(t.getPrecio());
+			StringTokenizer sT = new StringTokenizer(stringAux, ".");
+			
+			if(sT.nextToken().length() <= 8 && sT.nextToken().length() <= 2) {
+				if(DAOAbstractFactory.getInstance().getDAOMarca().getMarca(t.getMarca()) != null) {
+					if(DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(t.getAlmacen()) != null) {
+						TransferProducto producto = DAOAbstractFactory.getInstance().getDAOProducto().getProducto(t.getNombre());
+						if(producto != null) {
+							if(producto.getID() == t.getID()) {
+								if(t.getClass() == TransferZapatillas.class)
+									return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferZapatillas) t);
+								else if(t.getClass() == TransferCalcetines.class)
+									return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferCalcetines) t);
+							}
+							else return -3;
+						}
+						else {						
+							if(t.getClass() == TransferZapatillas.class)
+								return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferZapatillas) t);
+							else if(t.getClass() == TransferCalcetines.class)
+								return DAOAbstractFactory.getInstance().getDAOProducto().modificar((TransferCalcetines) t);										
+						}
+					}
+				
+				}
+			}
+		}
 		return -1;
 	}
 

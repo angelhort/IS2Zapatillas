@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -78,6 +79,11 @@ public class VMostrarUnProducto extends JFrame implements IGUI{
 		case Evento.MostrarUnProducto:
 			initGUI((TransferProducto) datos);
 			this.setVisible(true);
+			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El producto no existe", "ERROR Mostrar un producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			break;
 		}
 	}

@@ -117,21 +117,22 @@ public class ControllerImp extends Controller{
 		//PRODUCTO
 			case Evento.AltaProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().alta((TransferProducto) datos);
-				//TODO MENSAJE EXITO O ERROR
+				gui.actualizar(id, id);
 				break;
 			case Evento.MostrarTodosLosProductos:
 				gui.actualizar(Evento.MostrarTodosLosProductos, SAAbstractFactory.getInstance().getSAProducto().mostrarTodos());
 				break;
 			case Evento.BajaProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().borrar(Integer.parseInt((String)datos));
-				//TODO MENSAJE EXITO O ERROR
+				gui.actualizar(id, null);
 				break;
 			case Evento.MostrarUnProducto:
-				gui.actualizar(Evento.MostrarUnProducto, SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos)));
+				TransferProducto producto = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((producto != null) ? Evento.MostrarUnProveedor : Evento.EntidadSiNoExiste, producto);
 				break;
 			case Evento.MostrarModificarProducto:
-				TransferProducto producto = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
-				gui.actualizar((producto != null) ? Evento.MostrarModificarProducto : Evento.EntidadSiNoExiste, producto);
+				TransferProducto productoM = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
+				gui.actualizar((productoM != null) ? Evento.MostrarModificarProducto : Evento.EntidadSiNoExiste, productoM);
 				break;
 			case Evento.ModificarProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().modificar((TransferProducto) datos);

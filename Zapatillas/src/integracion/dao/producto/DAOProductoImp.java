@@ -233,7 +233,7 @@ public class DAOProductoImp implements DAOProducto{
 	@Override
 	public TransferProducto getProducto(String nombre) {
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Productos WHERE nombre = %d", nombre);
+		String query = String.format("SELECT * FROM Productos WHERE nombre = \"%s\"", nombre);
 		
 		TransferProducto producto = null;
 
@@ -277,6 +277,27 @@ public class DAOProductoImp implements DAOProducto{
 		return producto;
 	}
 	
+	@Override
+	public int activarProducto(int id) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Productos SET activo=? WHERE idProducto=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setBoolean(1, true);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return result != -1? 0 : result;
+	}
 
 	@Override
 	public List<TransferProducto> getAllProductos() {

@@ -168,6 +168,18 @@ public class VAltaProducto extends JFrame implements IGUI{
 			else if(n == JOptionPane.NO_OPTION) initGUI("Calcetines");
 			else Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 			break;
+			
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El producto ya estaba registrado y activo", "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case Evento.WrongDataInput:
+			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
+			break;
+		case Evento.ActivacionEntidad:
+			JOptionPane.showMessageDialog(this,"El Producto ya existia y se ha activado", "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
+			JOptionPane.showMessageDialog(this,"El Producto se dio de alta con ID: " + datos, "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
