@@ -13,8 +13,6 @@ import negocio.producto.TransferCalcetines;
 import negocio.producto.TransferProducto;
 import negocio.producto.TransferZapatillas;
 
-// TODO: idAlmacen e idMarca no está bien 
-
 public class DAOProductoImp implements DAOProducto{
 
 	@Override
@@ -117,52 +115,6 @@ public class DAOProductoImp implements DAOProducto{
 		return result;
 	}
 
-	/*@Override
-	public int bajaZapatillas(int ID) {
-		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Productos SET activo=? WHERE idProducto=?";
-		int result = -1;
-		
-		try {
-			PreparedStatement statement = conn.prepareStatement(insert);
-			
-			statement.setBoolean(1, false);
-			statement.setInt(2, ID);
-			
-			result = statement.executeUpdate(); // Number of updated rows
-			
-			statement.close();
-			conn.close();
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		
-		return result;
-	}
-
-	
-	@Override
-	public int bajaCalcetines(int ID) {
-		Connection conn = DatabaseConnection.getConnection();
-		String insert = "UPDATE Productos SET activo=? WHERE idProductos=?";
-		int result = -1;
-		
-		try {
-			PreparedStatement statement = conn.prepareStatement(insert);
-			
-			statement.setBoolean(1, false);
-			statement.setInt(2, ID);
-			
-			result = statement.executeUpdate(); // Number of updated rows
-			
-			statement.close();
-			conn.close();
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		
-		return result;
-	}*/
 
 	@Override
 	public int modificar(TransferZapatillas transfer) {
@@ -277,62 +229,41 @@ public class DAOProductoImp implements DAOProducto{
 		return producto;
 	}
 	
-	/*@Override
-	public TransferZapatillas getZapatillas(int ID) {
-		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Productos WHERE idProducto = %d", ID);
-		
-		TransferZapatillas zapatilla = null;
-
-		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-			
-			if (resultSet.next()) {
-				zapatilla = new TransferZapatillas(resultSet.getInt("idZapatillas"),
-												   resultSet.getInt("talla"),
-												   resultSet.getDouble("precio"),
-												   resultSet.getString("nombre"),
-												   resultSet.getString("color"),
-												   resultSet.getString("tipo"),
-												   resultSet.getInt("stock"),
-												   resultSet.getInt("idAlmacen"),
-												   resultSet.getInt("idMarca"),
-												   resultSet.getBoolean("activo"));
-			}
-			
-			resultSet.close();
-			statement.close();
-			conn.close();
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		
-		return zapatilla;
-	}
-
+	
 	@Override
-	public TransferCalcetines getCalcetines(int ID) {
+	public TransferProducto getProducto(String nombre) {
 		Connection conn = DatabaseConnection.getConnection();
-		String query = String.format("SELECT * FROM Productos WHERE idProducto = %d", ID);
+		String query = String.format("SELECT * FROM Productos WHERE nombre = %d", nombre);
 		
-		TransferCalcetines calcetin = null;
+		TransferProducto producto = null;
 
 		try {
 			Statement statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			
 			if (resultSet.next()) {
-				calcetin = new TransferCalcetines(resultSet.getInt("idCalcetines"),
-												   resultSet.getInt("talla"),
-												   resultSet.getDouble("precio"),
-												   resultSet.getString("nombre"),
-												   resultSet.getString("color"),
-												   resultSet.getString("tejido"),
-												   resultSet.getInt("stock"),
-												   resultSet.getInt("idAlmacen"),
-												   resultSet.getInt("idMarca"),
-												   resultSet.getBoolean("activo"));
+				if (resultSet.getInt("tipoProducto") == 0) 
+					producto = new TransferZapatillas(resultSet.getInt("idProducto"),
+														   resultSet.getInt("talla"),
+														   resultSet.getDouble("precio"),
+														   resultSet.getString("nombre"),
+														   resultSet.getString("color"),
+														   resultSet.getString("tipo"),
+														   resultSet.getInt("stock"),
+														   resultSet.getInt("idAlmacen"),
+														   resultSet.getInt("idMarca"),
+														   resultSet.getBoolean("activo"));
+				else
+					producto = new TransferCalcetines(resultSet.getInt("idProducto"),
+														   resultSet.getInt("talla"),
+														   resultSet.getDouble("precio"),
+														   resultSet.getString("nombre"),
+														   resultSet.getString("color"),
+														   resultSet.getString("tejido"),
+														   resultSet.getInt("stock"),
+														   resultSet.getInt("idAlmacen"),
+														   resultSet.getInt("idMarca"),
+														   resultSet.getBoolean("activo"));
 			}
 			
 			resultSet.close();
@@ -342,8 +273,9 @@ public class DAOProductoImp implements DAOProducto{
 			ex.printStackTrace();
 		}
 		
-		return calcetin;
-	}*/
+		DatabaseConnection.killConnection(conn);
+		return producto;
+	}
 	
 
 	@Override
@@ -393,73 +325,4 @@ public class DAOProductoImp implements DAOProducto{
 		return productos;
 	}
 	
-	/*
-	@Override
-	public List<TransferZapatillas> getAllZapatillas() {
-		Connection conn = DatabaseConnection.getConnection();
-		String query = "SELECT * FROM Zapatillas";
-		
-		List<TransferZapatillas> zapatillas = new ArrayList<>();
-
-		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-			
-			while (resultSet.next()) {
-				zapatillas.add(new TransferZapatillas(resultSet.getInt("idZapatillas"),
-												   resultSet.getInt("talla"),
-												   resultSet.getDouble("precio"),
-												   resultSet.getString("nombre"),
-												   resultSet.getString("color"),
-												   resultSet.getString("tipo"),
-												   resultSet.getInt("stock"),
-												   resultSet.getInt("idAlmacen"),
-												   resultSet.getInt("idMarca"),
-												   resultSet.getBoolean("activo")));
-			}
-			
-			resultSet.close();
-			statement.close();
-			conn.close();
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		
-		return zapatillas;
-	}
-
-	@Override
-	public List<TransferCalcetines> getAllCalcetines() {
-		Connection conn = DatabaseConnection.getConnection();
-		String query = "SELECT * FROM Calcetines";
-		
-		List<TransferCalcetines> calcetines = new ArrayList<>();
-
-		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery(query);
-			
-			while (resultSet.next()) {
-				calcetines.add(new TransferCalcetines(resultSet.getInt("idZapatillas"),
-												   resultSet.getInt("talla"),
-												   resultSet.getDouble("precio"),
-												   resultSet.getString("nombre"),
-												   resultSet.getString("color"),
-												   resultSet.getString("tejido"),
-												   resultSet.getInt("stock"),
-												   resultSet.getInt("idAlmacen"),
-												   resultSet.getInt("idMarca"),
-												   resultSet.getBoolean("activo")));
-			}
-			
-			resultSet.close();
-			statement.close();
-			conn.close();
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		
-		return calcetines;
-	}*/
-
 }
