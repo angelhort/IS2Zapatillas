@@ -7,6 +7,10 @@ public class TransferCliente {
 	private String DNI;
 	private int ID;
 	
+	public TransferCliente (int id) {
+		this.ID = id;
+	}
+	
 	public TransferCliente(String nombre, boolean socio, String DNI) {
 		this.nombre = nombre;
 		this.socio = socio;

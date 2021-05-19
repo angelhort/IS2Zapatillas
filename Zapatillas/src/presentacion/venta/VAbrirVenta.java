@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.cliente.TransferCliente;
+import negocio.trabajador.TransferTrabajador;
+import negocio.venta.TOAVenta;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -67,7 +70,8 @@ public class VAbrirVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
+				Controller.getInstance().action(Evento.MostrarGUIVenta, new TOAVenta(new TransferCliente(Integer.parseInt(fieldCliente.getText())), 
+						new TransferTrabajador(Integer.parseInt(fieldTrabajador.getText()))));
 				VAbrirVenta.this.dispose();
 			}
 			

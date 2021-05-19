@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import negocio.cliente.TransferCliente;
-import negocio.producto.TransferProducto;
 import negocio.trabajador.TransferTrabajador;
 
 public class TOAVenta {
 	
 	private TransferCliente cliente;
 	private TransferTrabajador trabajador;
-	private List<TransferProducto> productos;
+	private List<TProductoEnFactura> productos;
 	
 	public TOAVenta(TransferCliente cliente, 
 						 TransferTrabajador trabajador) {
@@ -20,7 +19,7 @@ public class TOAVenta {
 		this.productos = new ArrayList<>();
 	}
 	
-	public void addProduct(TransferProducto producto) {
+	public void addProduct(TProductoEnFactura producto) {
 		productos.add(producto);
 	}
 	
@@ -32,7 +31,8 @@ public class TOAVenta {
 		return trabajador;
 	}
 	
-	public List<TransferProducto> getProductos() {
+	public List<TProductoEnFactura> getProductos() {
 		return productos;
 	}
+	
 }

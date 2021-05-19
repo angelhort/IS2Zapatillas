@@ -8,6 +8,10 @@ public class TransferTrabajador {
 	private String nombre;
 	private boolean activo;
 	
+	public TransferTrabajador(int ID) {
+		this.ID = ID;
+	}
+	
 	public TransferTrabajador(int telefono, String DNI, String nombre) {
 		this.telefono = telefono;
 		this.DNI = DNI;
