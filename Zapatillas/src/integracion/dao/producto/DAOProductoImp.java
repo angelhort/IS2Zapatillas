@@ -181,6 +181,33 @@ public class DAOProductoImp implements DAOProducto{
 		DatabaseConnection.killConnection(conn);
 		return result;
 	}
+	
+	
+	@Override
+	public double getPrecioProducto(int ID) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT precio FROM Productos WHERE idProducto = %d", ID);
+		
+		double price = -1;
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			if (resultSet.next())
+				price = resultSet.getInt("precio");
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return price;
+	}
+	
 
 	@Override
 	public TransferProducto getProducto(int ID) {
