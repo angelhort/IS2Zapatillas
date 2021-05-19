@@ -129,25 +129,27 @@ public class VAltaProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(tipoProducto == "Zapatillas") {
-					
-					Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas(Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
-							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
-							Integer.parseInt(fieldMarca.getText())));
+				try {
+					if(tipoProducto == "Zapatillas") {
+						
+						Controller.getInstance().action(Evento.AltaProducto, new TransferZapatillas(Integer.parseInt((String) comboTalla.getSelectedItem()),
+								Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+								(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+								Integer.parseInt(fieldMarca.getText())));						
+					}
+					else if(tipoProducto == "Calcetines") {
+						
+						Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines(Integer.parseInt((String) comboTalla.getSelectedItem()),
+								Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
+								, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+								Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));
+					}
 					
 					VAltaProducto.this.dispose();
 					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 				}
-				else if(tipoProducto == "Calcetines") {
-					
-					Controller.getInstance().action(Evento.AltaProducto, new TransferCalcetines(Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem()
-							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
-							Integer.parseInt(fieldMarca.getText()), (String) comboTejido.getSelectedItem()));
-					
-					VAltaProducto.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "<html>Stock e IDs tienen que ser un numeros enteros,<br>el precio un numero con 2 decimales</html>", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			

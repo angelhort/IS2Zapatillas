@@ -105,12 +105,11 @@ public class VMostrarUno extends JFrame implements IGUI{
 					default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);			
 					
 					}				
+					VMostrarUno.this.dispose();
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID " + entidad + " tiene que ser un numero entero", "ERROR Mostrar un " + entidad,JOptionPane.ERROR_MESSAGE);
-					Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());
 				}
-				VMostrarUno.this.dispose();
 			}
 			
 		};

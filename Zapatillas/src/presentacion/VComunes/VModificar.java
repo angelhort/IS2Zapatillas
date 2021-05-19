@@ -100,12 +100,11 @@ public class VModificar extends JFrame implements IGUI{
 					default : Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());			
 					
 					}
+					VModificar.this.dispose();
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID " + entidad + " tiene que ser un numero entero", "ERROR Modificar " + entidad,JOptionPane.ERROR_MESSAGE);
-					Controller.getInstance().action(Evento.MostrarGUIPrincipal, fieldID.getText());
 				}
-				VModificar.this.dispose();
 			}
 			
 		};

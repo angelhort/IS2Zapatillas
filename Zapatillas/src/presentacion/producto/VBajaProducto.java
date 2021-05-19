@@ -62,9 +62,14 @@ public class VBajaProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.BajaProducto, fieldID.getText());
-				VBajaProducto.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				try {
+					Controller.getInstance().action(Evento.BajaProducto, fieldID.getText());
+					VBajaProducto.this.dispose();
+					Controller.getInstance().action(Evento.MostrarGUIProducto, null);					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "ID producto tiene que ser un numero entero", "ERROR Baja Producto", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		};

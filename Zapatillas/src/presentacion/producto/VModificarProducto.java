@@ -139,21 +139,25 @@ public class VModificarProducto extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(producto.toString() == "zapatillas") {
-					Controller.getInstance().action(Evento.ModificarProducto, new TransferZapatillas(producto.getID(), Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
-							(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
-							Integer.parseInt(fieldMarca.getText()), producto.getActivo()));
+				try {
+					if(producto.toString() == "zapatillas") {
+						Controller.getInstance().action(Evento.ModificarProducto, new TransferZapatillas(producto.getID(), Integer.parseInt((String) comboTalla.getSelectedItem()),
+								Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), 
+								(String) comboTipo.getSelectedItem(), Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+								Integer.parseInt(fieldMarca.getText()), producto.getActivo()));
+					}
+					else if(producto.toString() == "calcetines") {
+						Controller.getInstance().action(Evento.ModificarProducto, new TransferCalcetines(producto.getID(), Integer.parseInt((String) comboTalla.getSelectedItem()),
+								Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), (String) comboTejido.getSelectedItem()
+								, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
+								Integer.parseInt(fieldMarca.getText()), producto.getActivo()));
+					}
+					
 					VModificarProducto.this.dispose();
 					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 				}
-				else if(producto.toString() == "calcetines") {
-					Controller.getInstance().action(Evento.ModificarProducto, new TransferCalcetines(producto.getID(), Integer.parseInt((String) comboTalla.getSelectedItem()),
-							Double.parseDouble(fieldPrecio.getText()), fieldNombre.getText(), (String) comboColor.getSelectedItem(), (String) comboTejido.getSelectedItem()
-							, Integer.parseInt(fieldStock.getText()), Integer.parseInt(fieldAlmacen.getText()),
-							Integer.parseInt(fieldMarca.getText()), producto.getActivo()));
-					VModificarProducto.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "<html>Stock e IDs tienen que ser un numeros enteros,<br>el precio un numero con 2 decimales</html>", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			
