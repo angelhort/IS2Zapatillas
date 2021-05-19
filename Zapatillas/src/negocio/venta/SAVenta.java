@@ -1,6 +1,4 @@
-package integracion.dao.venta;
-
-import negocio.venta.TransferVenta;
+package negocio.venta;
 
 public interface SAVenta {
 	public int altaVenta(TransferVenta venta);

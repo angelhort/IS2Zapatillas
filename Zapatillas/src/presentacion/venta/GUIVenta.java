@@ -78,7 +78,7 @@ public class GUIVenta extends JFrame implements IGUI{
 						}
 					}
 					if(!alreadyInList) venta.addProduct(new TProductoEnFactura(new TransferProducto(id), 
-							Integer.parseInt((String)spinnerUnidades.getValue())));
+							(int)spinnerUnidades.getValue()));
 				}
 				
 				idAniadir.setText("");
@@ -108,7 +108,7 @@ public class GUIVenta extends JFrame implements IGUI{
 						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
 				
 				if (n==JOptionPane.YES_OPTION) {
-					if(!venta.removeProduct(Integer.parseInt(idEliminar.getText())));
+					if(!venta.removeProduct(Integer.parseInt(idEliminar.getText())))
 						JOptionPane.showMessageDialog(null, "El producto no se encuentra en el carrito"
 								, "ERROR Eliminar del carrito", JOptionPane.ERROR_MESSAGE);
 				}

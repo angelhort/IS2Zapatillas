@@ -7,6 +7,7 @@ import integracion.dao.producto.DAOProducto;
 import integracion.dao.proveedor.DAOProveedor;
 import integracion.dao.proveedor_producto.DAOProveedorProducto;
 import integracion.dao.trabajador.DAOTrabajador;
+import integracion.dao.venta.DAOVenta;
 
 public abstract class DAOAbstractFactory {
 	private static DAOAbstractFactory instance;
@@ -23,4 +24,5 @@ public abstract class DAOAbstractFactory {
 	public abstract DAOAlmacen getDAOAlmacen();
 	public abstract DAOProducto getDAOProducto();
 	public abstract DAOProveedorProducto getDAOProveedorProducto();
+	public abstract DAOVenta getDAOVenta();
 }

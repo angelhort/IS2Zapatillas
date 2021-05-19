@@ -1,6 +1,5 @@
 package negocio.FactoriaSA;
 
-import integracion.dao.venta.SAVenta;
 import negocio.almacen.SAAlmacen;
 import negocio.cliente.SACliente;
 import negocio.marca.SAMarca;
@@ -8,6 +7,7 @@ import negocio.producto.SAProducto;
 import negocio.proveedor.SAProveedor;
 import negocio.proveedor_producto.SAProductoProveedor;
 import negocio.trabajador.SATrabajador;
+import negocio.venta.SAVenta;
 
 public abstract class SAAbstractFactory {
 	

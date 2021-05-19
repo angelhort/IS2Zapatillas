@@ -1,7 +1,5 @@
 package negocio.FactoriaSA;
 
-import integracion.dao.venta.SAVenta;
-import integracion.dao.venta.SAVentaImp;
 import negocio.almacen.SAAlmacen;
 import negocio.almacen.SAAlmacenImp;
 import negocio.cliente.SACliente;
@@ -16,6 +14,8 @@ import negocio.proveedor_producto.SAProductoProveedor;
 import negocio.proveedor_producto.SAProductoProveedorImp;
 import negocio.trabajador.SATrabajador;
 import negocio.trabajador.SATrabajadorImp;
+import negocio.venta.SAVenta;
+import negocio.venta.SAVentaImp;
 
 public class SAFactoryImp  extends SAAbstractFactory {
 

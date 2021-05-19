@@ -11,7 +11,7 @@ public class TransferVenta {
 	private TransferCliente cliente;
 	private TransferTrabajador trabajador;
 	private List<TProductoEnFactura> productos;
-	private int precioTotal;
+	private double precioTotal;
 	
 	public TransferVenta(TransferCliente cliente, 
 						 TransferTrabajador trabajador) {
@@ -49,11 +49,13 @@ public class TransferVenta {
 		return productos;
 	}
 	
-	public void setPrecioTotal(int precioTotal) {
-		this.precioTotal = precioTotal;
+	public void setPrecioTotal() {
+		for(TProductoEnFactura p : productos) {
+			precioTotal += p.getPrecio();
+		}
 	}
 	
-	public int getPrecioTotal() {
+	public double getPrecioTotal() {
 		return precioTotal;
 	}
 }

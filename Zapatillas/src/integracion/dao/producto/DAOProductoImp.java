@@ -195,7 +195,7 @@ public class DAOProductoImp implements DAOProducto{
 			ResultSet resultSet = statement.executeQuery(query);
 			
 			if (resultSet.next())
-				price = resultSet.getInt("precio");
+				price = resultSet.getDouble("precio");
 			
 			resultSet.close();
 			statement.close();

@@ -8,6 +8,7 @@ import negocio.producto.TransferProducto;
 import negocio.proveedor.TransferProveedor;
 import negocio.proveedor_producto.TransferProveedor_producto;
 import negocio.trabajador.TransferTrabajador;
+import negocio.venta.TransferVenta;
 import presentacion.factoryGUI.GUIFactory;
 import presentacion.vista.IGUI;
 
@@ -208,6 +209,11 @@ public class ControllerImp extends Controller{
 				break;
 			case Evento.MostrarProductosProveedor:
 				gui.actualizar(Evento.MostrarProductosProveedor, SAAbstractFactory.getInstance().getSAProductoProveedor().getProveedor_producto(Integer.parseInt((String) datos)));
+				break;
+				
+		//VENTA
+			case Evento.CerrarVenta:
+				SAAbstractFactory.getInstance().getSAVenta().altaVenta((TransferVenta) datos);
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
