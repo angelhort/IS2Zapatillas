@@ -78,7 +78,7 @@ public class GUIVenta extends JFrame implements IGUI{
 						}
 					}
 					if(!alreadyInList) venta.addProduct(new TProductoEnFactura(new TransferProducto(id), 
-							Integer.parseInt((String)spinnerUnidades.getValue())));
+							(int)spinnerUnidades.getValue()));
 				}
 				
 				idAniadir.setText("");

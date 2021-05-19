@@ -13,7 +13,7 @@ public class TProductoEnFactura {
 		this.unidades = unidades;
 	}
 	
-	public void setPrecio(int precioUnidad) {
+	public void setPrecio(double precioUnidad) {
 		this.precio = precioUnidad * unidades;
 	}
 	
