@@ -17,6 +17,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import negocio.producto.TransferProducto;
+import negocio.venta.TProductoEnFactura;
 import negocio.venta.TransferVenta;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
@@ -50,7 +52,9 @@ public class GUIVenta extends JFrame implements IGUI{
 		idAniadir.setPreferredSize(new Dimension(50,20));
 		panelAniadir.add(idAniadir);
 		
+		panelAniadir.add(new JLabel("Unidades: "));
 		JSpinner spinnerUnidades = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
+		spinnerUnidades.setPreferredSize(new Dimension(40, 20));
 		panelAniadir.add(spinnerUnidades);
 		
 		ActionListener lAniadir = new ActionListener() {
@@ -62,8 +66,23 @@ public class GUIVenta extends JFrame implements IGUI{
 						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
 				
 				if (n==JOptionPane.YES_OPTION) {
+					boolean alreadyInList = false;
+					int id = Integer.parseInt(idAniadir.getText());
 					
+					for(TProductoEnFactura p : venta.getProductos()) {
+						
+						if(p.isEqual(id)) {
+							alreadyInList = true;
+							p.addUnidades(Integer.parseInt((String)spinnerUnidades.getValue()));
+							break;
+						}
+					}
+					if(!alreadyInList) venta.addProduct(new TProductoEnFactura(new TransferProducto(id), 
+							Integer.parseInt((String)spinnerUnidades.getValue())));
 				}
+				
+				idAniadir.setText("");
+				spinnerUnidades.setValue(1);
 			}
 			
 		};
@@ -73,11 +92,27 @@ public class GUIVenta extends JFrame implements IGUI{
 		JButton buttoneliminar = ComponentsBuilder.createButton("<html>Eliminar producto<br>de venta</html>", 407, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttoneliminar);
 		
+		JPanel panelEliminar = new JPanel();
+		panelEliminar.add(new JLabel("ID Producto: "));
+		
+		JTextField idEliminar = new JTextField();
+		idEliminar.setPreferredSize(new Dimension(50,20));
+		panelEliminar.add(idEliminar);
+		
 		ActionListener leliminar = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String[] options = {"ELIMINAR","CANCELAR"};
+				int n = JOptionPane.showOptionDialog(GUIVenta.this, panelEliminar, "Eliminar producto",
+						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
 				
+				if (n==JOptionPane.YES_OPTION) {
+					if(!venta.removeProduct(Integer.parseInt(idEliminar.getText())));
+						JOptionPane.showMessageDialog(null, "El producto no se encuentra en el carrito"
+								, "ERROR Eliminar del carrito", JOptionPane.ERROR_MESSAGE);
+				}
+				idEliminar.setText("");
 			}
 			
 		};
@@ -91,7 +126,9 @@ public class GUIVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Controller.getInstance().action(Evento.CerrarVenta, venta);
 				GUIVenta.this.dispose();
+				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
 			}
 			
 		};

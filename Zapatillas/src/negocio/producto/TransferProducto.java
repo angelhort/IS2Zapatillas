@@ -11,6 +11,10 @@ public class TransferProducto {
 	private int marca;
 	private boolean activo;
 	
+	public TransferProducto(int id) {
+		this.ID = id;
+	}
+	
 	public TransferProducto(int talla, double precio, String nombre, String color, int stock, int almacen, int marca) {
 			this.talla = talla;
 			this.precio = precio;

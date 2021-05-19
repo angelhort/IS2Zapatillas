@@ -1,5 +1,6 @@
 package negocio.FactoriaSA;
 
+import integracion.dao.venta.SAVenta;
 import negocio.almacen.SAAlmacen;
 import negocio.cliente.SACliente;
 import negocio.marca.SAMarca;
@@ -24,4 +25,5 @@ public abstract class SAAbstractFactory {
 	public abstract SAAlmacen getSAAlmacen();
 	public abstract SAProducto getSAProducto();
 	public abstract SAProductoProveedor getSAProductoProveedor();
+	public abstract SAVenta getSAVenta();
 }

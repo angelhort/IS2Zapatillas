@@ -24,6 +24,19 @@ public class TransferVenta {
 		productos.add(producto);
 	}
 	
+	public boolean removeProduct(int id) {
+		int i = 0;
+		for(TProductoEnFactura p : productos) {
+			if(p.isEqual(id)) {
+				productos.remove(i);
+				return true;
+			}
+			i++;
+		}
+		
+		return false;
+	}
+	
 	public TransferCliente getCliente() {
 		return cliente;
 	}

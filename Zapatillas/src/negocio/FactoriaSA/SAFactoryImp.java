@@ -1,5 +1,7 @@
 package negocio.FactoriaSA;
 
+import integracion.dao.venta.SAVenta;
+import integracion.dao.venta.SAVentaImp;
 import negocio.almacen.SAAlmacen;
 import negocio.almacen.SAAlmacenImp;
 import negocio.cliente.SACliente;
@@ -50,5 +52,10 @@ public class SAFactoryImp  extends SAAbstractFactory {
 	@Override
 	public SAProductoProveedor getSAProductoProveedor() {
 		return new SAProductoProveedorImp();
+	}
+
+	@Override
+	public SAVenta getSAVenta() {
+		return new SAVentaImp();
 	}
 }

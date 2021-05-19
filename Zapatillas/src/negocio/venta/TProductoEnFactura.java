@@ -32,4 +32,8 @@ public class TProductoEnFactura {
 	public double getPrecio() {
 		return precio;
 	}
+	
+	public boolean isEqual(int id) {
+		return producto.getID() == id;
+	}
 }
