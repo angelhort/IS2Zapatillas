@@ -1,6 +1,8 @@
 package presentacion.venta;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import negocio.venta.TransferVenta;
 import presentacion.controller.Controller;
 import presentacion.controller.Evento;
 import presentacion.vista.ComponentsBuilder;
@@ -26,21 +31,36 @@ public class GUIVenta extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 		
-	private void initGUI() {
+	private void initGUI(TransferVenta venta) {
 		JLabel label = ComponentsBuilder.createLabel("Venta", 250, 30, 500, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(label);
 		
 		JButton buttonAniadir = ComponentsBuilder.createButton("<html>Añadir producto<br>a venta</html>", 100, 200, 185, 100, new Font("Serif", Font.PLAIN, 18));
 		this.add(buttonAniadir);
 		
+		JPanel panelAniadir = new JPanel(); 
+		panelAniadir.setLayout(new FlowLayout());
+		panelAniadir.add(new JLabel("ID Producto: "));
+		
+		JTextField idAniadir = new JTextField();
+		idAniadir.setPreferredSize(new Dimension(50,20));
+		panelAniadir.add(idAniadir);
+		
+		
+		
 		ActionListener lAniadir = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIVenta.this.dispose();
+				String[] options = {"AÑADIR","CANCELAR"};
+				int n = JOptionPane.showOptionDialog(GUIVenta.this, panelAniadir, "Añadir producto",
+						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
+				
+				if (n==JOptionPane.YES_OPTION) {
+					
+				}
 			}
 			
 		};
@@ -54,7 +74,7 @@ public class GUIVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIVenta.this.dispose();
+				
 			}
 			
 		};
@@ -100,6 +120,7 @@ public class GUIVenta extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 			case Evento.MostrarGUIVenta:
+			initGUI((TransferVenta) datos);
 			this.setVisible(true);
 			break;
 		}

@@ -1,8 +1,8 @@
 package integracion.dao.venta;
 
-import negocio.venta.TOAVenta;
+import negocio.venta.TransferVenta;
 
 public interface DAOVenta {
-	public int alta(TOAVenta transfer);
-	public TOAVenta getVenta(String DNI);
+	public int alta(TransferVenta transfer);
+	public TransferVenta getVenta(String DNI);
 }

@@ -199,7 +199,7 @@ public class ControllerImp extends Controller{
 				gui.actualizar((almacenMostrar != null) ? Evento.MostrarUnAlmacen : Evento.EntidadSiNoExiste, almacenMostrar);
 				break;
 				
-			//PROVEEDOR-PRODUCTO
+		//PROVEEDOR-PRODUCTO
 			case Evento.AniadirProveedor:
 				SAAbstractFactory.getInstance().getSAProductoProveedor().aniadirProveedor((TransferProveedor_producto) datos);
 				break;

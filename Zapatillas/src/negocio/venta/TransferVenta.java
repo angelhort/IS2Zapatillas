@@ -6,13 +6,13 @@ import java.util.List;
 import negocio.cliente.TransferCliente;
 import negocio.trabajador.TransferTrabajador;
 
-public class TOAVenta {
+public class TransferVenta {
 	
 	private TransferCliente cliente;
 	private TransferTrabajador trabajador;
 	private List<TProductoEnFactura> productos;
 	
-	public TOAVenta(TransferCliente cliente, 
+	public TransferVenta(TransferCliente cliente, 
 						 TransferTrabajador trabajador) {
 		this.cliente = cliente;
 		this.trabajador = trabajador;
