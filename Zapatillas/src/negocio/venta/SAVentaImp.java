@@ -1,8 +1,6 @@
-package integracion.dao.venta;
+package negocio.venta;
 
 import integracion.dao.DAOFactory.DAOAbstractFactory;
-import negocio.venta.TProductoEnFactura;
-import negocio.venta.TransferVenta;
 
 public class SAVentaImp implements SAVenta{
 
