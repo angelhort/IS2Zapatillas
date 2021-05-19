@@ -13,7 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 import negocio.venta.TransferVenta;
 import presentacion.controller.Controller;
@@ -48,7 +50,8 @@ public class GUIVenta extends JFrame implements IGUI{
 		idAniadir.setPreferredSize(new Dimension(50,20));
 		panelAniadir.add(idAniadir);
 		
-		
+		JSpinner spinnerUnidades = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
+		panelAniadir.add(spinnerUnidades);
 		
 		ActionListener lAniadir = new ActionListener() {
 
