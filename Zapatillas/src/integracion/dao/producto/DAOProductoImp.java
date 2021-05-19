@@ -372,5 +372,27 @@ public class DAOProductoImp implements DAOProducto{
 		DatabaseConnection.killConnection(conn);
 		return productos;
 	}
+
+	@Override
+	public int restarStock(int id, int cantidad) {
+		Connection conn = DatabaseConnection.getConnection();
+		String insert = "UPDATE Productos SET stock=stock - ? WHERE idProducto=?";
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(insert);
+			statement.setInt(1, cantidad);
+			statement.setInt(2, id);
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return result;
+	}
 	
 }

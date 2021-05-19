@@ -13,9 +13,6 @@ public class DAOVentaImp implements DAOVenta {
 
 	@Override
 	public int alta(TransferVenta transfer) {
-		// crear factura
-		// id factura de la anterior
-		// por cada producto un insert en contiene
 		Connection conn = DatabaseConnection.getConnection();
 		
 		String insertFacturas = "INSERT INTO Facturas(precioTotal, idTrabajador, idCliente) VALUES (?, ?, ?)";
