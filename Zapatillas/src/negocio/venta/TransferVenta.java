@@ -12,12 +12,21 @@ public class TransferVenta {
 	private TransferTrabajador trabajador;
 	private List<TProductoEnFactura> productos;
 	private double precioTotal;
+	private String fecha;
 	
 	public TransferVenta(TransferCliente cliente, 
 						 TransferTrabajador trabajador) {
 		this.cliente = cliente;
 		this.trabajador = trabajador;
 		this.productos = new ArrayList<>();
+	}
+	
+	public TransferVenta(TransferCliente cliente, 
+			 TransferTrabajador trabajador, String fecha) {
+			this.cliente = cliente;
+			this.trabajador = trabajador;
+			this.fecha = fecha;
+			this.productos = new ArrayList<>();
 	}
 	
 	public void addProduct(TProductoEnFactura producto) {
@@ -53,6 +62,10 @@ public class TransferVenta {
 		for(TProductoEnFactura p : productos) {
 			precioTotal += p.getPrecio();
 		}
+	}
+	
+	public String getFecha() {
+		return fecha;
 	}
 	
 	public double getPrecioTotal() {

@@ -126,6 +126,7 @@ public class GUIVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(venta.getProductos().size() > 0)
 				Controller.getInstance().action(Evento.CerrarVenta, venta);
 				GUIVenta.this.dispose();
 				Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);
