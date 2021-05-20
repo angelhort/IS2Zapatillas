@@ -43,6 +43,7 @@ public class ComponentsBuilder {
         button.setContentAreaFilled(false); 
         button.setFocusPainted(false); 
         button.setOpaque(false);
+        button.setToolTipText("Atras");
 		return button;
 	}
 	
@@ -54,6 +55,19 @@ public class ComponentsBuilder {
         button.setContentAreaFilled(false); 
         button.setFocusPainted(false); 
         button.setOpaque(false);
+        button.setToolTipText("Atras");
+		return button;
+	}
+	
+	public static JButton createCarritoButton() {
+		JButton button = new JButton();
+		button.setBounds(900, 25, 60, 60);
+		button.setIcon(new ImageIcon("resources/carrito.png"));
+		button.setBorderPainted(false); 
+        button.setContentAreaFilled(false); 
+        button.setFocusPainted(false); 
+        button.setOpaque(false);
+        button.setToolTipText("Mostrar carrito");
 		return button;
 	}
 

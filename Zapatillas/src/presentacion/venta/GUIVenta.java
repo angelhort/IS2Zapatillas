@@ -154,6 +154,21 @@ public class GUIVenta extends JFrame implements IGUI{
 		};
 		
 		atrasButton.addActionListener(lAtras);
+		
+		JButton carritoButton = ComponentsBuilder.createCarritoButton();
+		this.add(carritoButton);
+		
+		ActionListener lCarrito = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Controller.getInstance().action(Evento.MostrarCarrito, venta);
+				GUIVenta.this.dispose();
+			}
+			
+		};
+		
+		carritoButton.addActionListener(lCarrito);
 	}
 
 	@Override
