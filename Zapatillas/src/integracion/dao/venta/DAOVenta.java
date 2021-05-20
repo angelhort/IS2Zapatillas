@@ -4,5 +4,5 @@ import negocio.venta.TransferVenta;
 
 public interface DAOVenta {
 	public int alta(TransferVenta transfer);
-	public TransferVenta getVenta(String DNI);
+	public TransferVenta getVenta(int ID);
 }

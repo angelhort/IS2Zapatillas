@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import integracion.connection.DatabaseConnection;
+import negocio.cliente.TransferCliente;
+import negocio.producto.TransferProducto;
+import negocio.trabajador.TransferTrabajador;
 import negocio.venta.TProductoEnFactura;
 import negocio.venta.TransferVenta;
 
@@ -57,9 +61,40 @@ public class DAOVentaImp implements DAOVenta {
 	}
 
 	@Override
-	public TransferVenta getVenta(String DNI) {
-		// TODO Auto-generated method stub
-		return null;
+	public TransferVenta getVenta(int ID) {
+		Connection conn = DatabaseConnection.getConnection();
+		String queryFactura = String.format("SELECT * FROM Facturas WHERE idFactura = %d", ID);
+		String queryProductos = String.format("SELECT * FROM Contiene WHERE idFactura = %d", ID);
+		
+		TransferVenta venta = null;
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(queryFactura);
+			
+			if (resultSet.next()) {
+				venta = new TransferVenta(new TransferCliente(resultSet.getInt("idCliente")),
+										  new TransferTrabajador(resultSet.getInt("idTrabajador")),
+											resultSet.getTimestamp("fecha").toString());
+			}
+			
+			resultSet = statement.executeQuery(queryProductos);
+			
+			while (resultSet.next()) {
+				TProductoEnFactura p = new TProductoEnFactura(new TransferProducto(resultSet.getInt("idProducto")),
+															  resultSet.getInt("unidades"));
+				venta.addProduct(p);
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return venta;
 	}
 
 }
