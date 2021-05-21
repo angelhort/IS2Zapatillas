@@ -29,4 +29,9 @@ public class SAVentaImp implements SAVenta{
 		return -1;
 	}
 
+	@Override
+	public TransferVenta getVenta(int id) {
+		return DAOAbstractFactory.getInstance().getDAOVenta().getVenta(id);
+	}
+
 }

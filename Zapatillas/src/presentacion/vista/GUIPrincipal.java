@@ -83,7 +83,7 @@ public class GUIPrincipal extends JFrame implements IGUI{
 				else if(n == JOptionPane.NO_OPTION) {
 					String idVenta = (String) JOptionPane.showInputDialog(GUIPrincipal.this, "ID Venta:",
 							"Mostrar una venta", JOptionPane.PLAIN_MESSAGE, null, null, "");
-					Controller.getInstance().action(Evento.MostrarProductosProveedor, idVenta);					
+					Controller.getInstance().action(Evento.MostrarVenta, idVenta);					
 					GUIPrincipal.this.dispose();
 				}
 			}

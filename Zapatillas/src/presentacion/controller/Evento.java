@@ -47,6 +47,7 @@ public class Evento {
 	public static final int GUIAbrirVenta = 301;
 	public static final int CerrarVenta = 302;
 	public static final int MostrarCarrito = 303;
+	public static final int MostrarVenta = 304;
 	
 	
 	// ALMACEN DE 400-499
