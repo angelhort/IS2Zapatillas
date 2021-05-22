@@ -17,6 +17,10 @@ public class TProductoEnFactura {
 		this.precio = precioUnidad * unidades;
 	}
 	
+	public void setPrecioCalculado(double precio) {
+		this.precio = precio;
+	}
+	
 	public void addUnidades(int unidades) {
 		this.unidades += unidades;
 	}

@@ -83,8 +83,11 @@ public class DAOVentaImp implements DAOVenta {
 			while (resultSet.next()) {
 				TProductoEnFactura p = new TProductoEnFactura(new TransferProducto(resultSet.getInt("idProducto")),
 															  resultSet.getInt("unidades"));
+				p.setPrecioCalculado(resultSet.getDouble("precio"));
 				venta.addProduct(p);
 			}
+			
+			venta.setPrecioTotal();
 			
 			resultSet.close();
 			statement.close();

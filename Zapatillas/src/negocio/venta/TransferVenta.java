@@ -62,6 +62,7 @@ public class TransferVenta {
 		for(TProductoEnFactura p : productos) {
 			precioTotal += p.getPrecio();
 		}
+		precioTotal = Math.round(precioTotal * 100)/100;
 	}
 	
 	public String getFecha() {
