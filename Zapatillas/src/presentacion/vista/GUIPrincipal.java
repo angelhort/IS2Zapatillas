@@ -81,10 +81,15 @@ public class GUIPrincipal extends JFrame implements IGUI{
 					GUIPrincipal.this.dispose();					
 				}
 				else if(n == JOptionPane.NO_OPTION) {
-					String idVenta = (String) JOptionPane.showInputDialog(GUIPrincipal.this, "ID Venta:",
-							"Mostrar una venta", JOptionPane.PLAIN_MESSAGE, null, null, "");
-					Controller.getInstance().action(Evento.MostrarVenta, idVenta);					
-					GUIPrincipal.this.dispose();
+					try {
+						String idVenta = (String) JOptionPane.showInputDialog(GUIPrincipal.this, "ID Venta:",
+								"Mostrar una venta", JOptionPane.PLAIN_MESSAGE, null, null, "");
+						Controller.getInstance().action(Evento.MostrarVenta, idVenta);					
+						GUIPrincipal.this.dispose();						
+					}
+					catch(NumberFormatException ex) {
+						JOptionPane.showMessageDialog(null, "ID venta tiene que ser un numero entero", "ERROR Mostrar venta", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			

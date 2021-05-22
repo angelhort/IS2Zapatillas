@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import negocio.cliente.TransferCliente;
@@ -70,9 +71,14 @@ public class VAbrirVenta extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controller.getInstance().action(Evento.MostrarGUIVenta, new TransferVenta(new TransferCliente(Integer.parseInt(fieldCliente.getText())), 
-						new TransferTrabajador(Integer.parseInt(fieldTrabajador.getText()))));
-				VAbrirVenta.this.dispose();
+				try {
+					Controller.getInstance().action(Evento.MostrarGUIVenta, new TransferVenta(new TransferCliente(Integer.parseInt(fieldCliente.getText())), 
+							new TransferTrabajador(Integer.parseInt(fieldTrabajador.getText()))));
+					VAbrirVenta.this.dispose();					
+				}
+				catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Los IDs tienen que ser numeros enteros", "ERROR Abrir Venta", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		};

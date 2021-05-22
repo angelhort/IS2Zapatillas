@@ -66,19 +66,24 @@ public class GUIVenta extends JFrame implements IGUI{
 						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
 				
 				if (n==JOptionPane.YES_OPTION) {
-					boolean alreadyInList = false;
-					int id = Integer.parseInt(idAniadir.getText());
-					
-					for(TProductoEnFactura p : venta.getProductos()) {
+					try {
+						boolean alreadyInList = false;
+						int id = Integer.parseInt(idAniadir.getText());
 						
-						if(p.isEqual(id)) {
-							alreadyInList = true;
-							p.addUnidades(Integer.parseInt((String)spinnerUnidades.getValue()));
-							break;
+						for(TProductoEnFactura p : venta.getProductos()) {
+							
+							if(p.isEqual(id)) {
+								alreadyInList = true;
+								p.addUnidades(Integer.parseInt((String)spinnerUnidades.getValue()));
+								break;
+							}
 						}
+						if(!alreadyInList) venta.addProduct(new TProductoEnFactura(new TransferProducto(id), 
+								(int)spinnerUnidades.getValue()));						
 					}
-					if(!alreadyInList) venta.addProduct(new TProductoEnFactura(new TransferProducto(id), 
-							(int)spinnerUnidades.getValue()));
+					catch(NumberFormatException ex) {
+						JOptionPane.showMessageDialog(null, "ID producto tiene que ser un numero entero", "ERROR Añadir al carrito", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 				
 				idAniadir.setText("");
@@ -108,9 +113,14 @@ public class GUIVenta extends JFrame implements IGUI{
 						JOptionPane.YES_NO_OPTION, JOptionPane.NO_OPTION, null, options, options[1]);
 				
 				if (n==JOptionPane.YES_OPTION) {
-					if(!venta.removeProduct(Integer.parseInt(idEliminar.getText())))
-						JOptionPane.showMessageDialog(null, "El producto no se encuentra en el carrito"
-								, "ERROR Eliminar del carrito", JOptionPane.ERROR_MESSAGE);
+					try {
+						if(!venta.removeProduct(Integer.parseInt(idEliminar.getText())))
+							JOptionPane.showMessageDialog(null, "El producto no se encuentra en el carrito"
+									, "ERROR Eliminar del carrito", JOptionPane.ERROR_MESSAGE);						
+					}
+					catch(NumberFormatException ex) {
+						JOptionPane.showMessageDialog(null, "ID producto tiene que ser un numero entero", "ERROR Eliminar del Carrito", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 				idEliminar.setText("");
 			}
