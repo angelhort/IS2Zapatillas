@@ -158,7 +158,7 @@ public class GUIVenta extends JFrame implements IGUI{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String[] options = {"Salir","Cancelar"};
-				int n = JOptionPane.showOptionDialog(null,"¿Desea salir de la venta? Se perderan los datos", "Atrás",
+				int n = JOptionPane.showOptionDialog(null,"¿Desea salir de la venta? Se perderan los datos del carrito", "Atrás",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 				
 				if (n==JOptionPane.YES_OPTION) {
@@ -194,6 +194,17 @@ public class GUIVenta extends JFrame implements IGUI{
 			initGUI((TransferVenta) datos);
 			this.setVisible(true);
 			break;
+			
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El cliente, el trabajador o algun producto no existe en la BD", "ERROR Cerrar Venta", JOptionPane.ERROR_MESSAGE);
+				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
+			break;
+			
+			case Evento.OutOfStock:
+				JOptionPane.showMessageDialog(this,"No hay suficiente stock para uno o mas productos", "ERROR Cerrar Venta", JOptionPane.ERROR_MESSAGE);
+			break;
+			
+			default: JOptionPane.showMessageDialog(this,"La factura se dio de alta con ID: " + datos, "Cerrar Venta", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

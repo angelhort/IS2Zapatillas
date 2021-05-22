@@ -12,21 +12,23 @@ public class SAVentaImp implements SAVenta{
 				
 				for(TProductoEnFactura p : venta.getProductos()) {
 					TransferProducto producto = DAOAbstractFactory.getInstance().getDAOProducto().getProducto(p.getProducto().getID());
-					if(producto == null) return -1;
+					if(producto == null) return -2;
 					if(producto.getStock() >= p.getUnidades()) {
-						DAOAbstractFactory.getInstance().getDAOProducto().restarStock(p.getProducto().getID(), p.getUnidades());
 						double precioUnidad = DAOAbstractFactory.getInstance().getDAOProducto().getPrecioProducto(p.getProducto().getID());
 						p.setPrecio(precioUnidad);						
 					}
-					else return -1;
+					else return -4;
 				}
+				
+				for(TProductoEnFactura p : venta.getProductos()) 
+					DAOAbstractFactory.getInstance().getDAOProducto().restarStock(p.getProducto().getID(), p.getUnidades());
 				
 				venta.setPrecioTotal();
 				
 				return DAOAbstractFactory.getInstance().getDAOVenta().alta(venta);							
 			}
 		}
-		return -1;
+		return -2;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package presentacion.controller;
 public class Evento {
 	
 	// GENERAL DE -2-99
+	public static final int OutOfStock = -4;
 	public static final int ClaveEntidadYaExistente = -3;
 	public static final int EntidadSiNoExiste = -2;
 	public static final int WrongDataInput = -1;

@@ -218,10 +218,12 @@ public class ControllerImp extends Controller{
 				
 		//VENTA
 			case Evento.CerrarVenta:
-				SAAbstractFactory.getInstance().getSAVenta().altaVenta((TransferVenta) datos);
+				id = SAAbstractFactory.getInstance().getSAVenta().altaVenta((TransferVenta) datos);
+				gui.actualizar(id, id);
 				break;
 			case Evento.MostrarVenta:
-				gui.actualizar(Evento.MostrarVenta, SAAbstractFactory.getInstance().getSAVenta().getVenta(Integer.parseInt((String)datos)));
+				TransferVenta venta = SAAbstractFactory.getInstance().getSAVenta().getVenta(Integer.parseInt((String)datos));
+				gui.actualizar(venta == null? Evento.EntidadSiNoExiste : Evento.MostrarVenta, venta);
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
