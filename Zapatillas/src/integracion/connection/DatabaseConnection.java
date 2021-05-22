@@ -27,6 +27,28 @@ public class DatabaseConnection {
 		return null;
 	}
 	
+	public static int dropRegisterWithID(String sql, int ID) {
+		Connection conn = getConnection();
+		int result = -1;
+		
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			
+			statement.setInt(1, ID);
+			
+			result = statement.executeUpdate();
+			
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		killConnection(conn);
+		
+		return result;
+	}
+	
 	public static void killConnection(Connection conn) {
 		try {
 			conn.close();

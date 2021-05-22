@@ -6,61 +6,92 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import negocio.almacen.SAAlmacen;
+import integracion.connection.DatabaseConnection;
 import negocio.almacen.SAAlmacenImp;
 import negocio.almacen.TransferAlmacen;
 
 public class TestSAAlmacen {
-	public static final TransferAlmacen almacen1 = new TransferAlmacen(665768765, 65, "Calle estrellas 1");
-	public static final TransferAlmacen almacen2 = new TransferAlmacen(654447532, 76, "Calle pluton 3");
 	
-	private int idAlmacen1;
-	private int idAlmacen2;
-	private SAAlmacenImp saAlmacen;
-	
-	@Before
-	public void setUp() {
-		saAlmacen = new SAAlmacenImp();
+	private SAAlmacenImp saAlmacen = new SAAlmacenImp();
+	private TransferAlmacen transferAlmacen = new TransferAlmacen(666777888, 23, "Calle test");
+		
+	@Test
+	public void altaOK() {		
+		int id = saAlmacen.alta(transferAlmacen);
 
-		idAlmacen1 = saAlmacen.alta(almacen1);
-		idAlmacen2 = saAlmacen.alta(almacen2);
-	}
-	
-	@Test
-	public void alta() {		
-		assertTrue(String.format("Se ha devuelto %d" , idAlmacen1 ), idAlmacen1 >= 1);
-	}
-	
-	@Test
-	public void borrar() {		
-		int idBaja = saAlmacen.borrar(idAlmacen1);
+		assertTrue(String.format("Se esperaba 0 y se encontró %s", id), id >= 1);
 		
-		assertEquals(String.format("Se esperaba 1 como salida y se encontro %d", idBaja), 1, idBaja);
+		deleteRegister(id);
 	}
 	
 	@Test
-	public void modificar() {		
-		TransferAlmacen almacenModificado = new TransferAlmacen(idAlmacen2, 655433745, 456,"Calle luces 2", true);
-		int modificar = saAlmacen.modificar(almacenModificado);
+	public void altaFail() {
+		TransferAlmacen t1 = new TransferAlmacen(0, 23, "Calle test");
 		
-		assertEquals(String.format("Se esperaba un 1 como salida y se encontro %d", modificar), 1, modificar);
+		int id1 = saAlmacen.alta(t1);
+		
+		assertEquals(String.format("Se esperaba -1 y se encontró %s", id1), -1, id1);	
 	}
 	
 	@Test
-	public void mostrarUno() {		
-		TransferAlmacen almacen = saAlmacen.mostrarUno(idAlmacen2);
+	public void borrarOK() {
+		int id = saAlmacen.alta(transferAlmacen);
+
+		int idBaja = saAlmacen.borrar(id);
 		
-		areEqual(almacen2, almacen);
+		assertEquals(String.format("Se esperaba 1 y se encontró %s", idBaja), 1, idBaja);
+		
+		deleteRegister(id);
+	}
+	
+	@Test
+	public void borrarFail() {
+		int idBaja = saAlmacen.borrar(-1);
+		
+		assertEquals(String.format("Se esperaba -2 y se encontró %s", idBaja), -2, idBaja);	
+	}
+	
+	@Test
+	public void modificarOK() {
+		int id = saAlmacen.alta(transferAlmacen);
+
+		TransferAlmacen t1 = new TransferAlmacen(id, 111222333, 32, "Calle Otra", true);
+		int idModificar = saAlmacen.modificar(t1);
+		
+		assertEquals(String.format("Se esperaba 1 y se encontró %s", idModificar), 1, idModificar);	
+	
+		deleteRegister(id);
+	}
+	
+	@Test
+	public void modificarFail() {
+		TransferAlmacen t1 = new TransferAlmacen(-1, 111222333, 32, "Calle Otra", true);
+		int idModificar = saAlmacen.modificar(t1);
+		
+		assertEquals(String.format("Se esperaba 0 y se encontró %s", idModificar), 0, idModificar);	
+	}
+	
+	@Test
+	public void mostrarUno() {
+		int id = saAlmacen.alta(transferAlmacen);
+		
+		TransferAlmacen t2 = saAlmacen.mostrarUno(id);
+		areEqual(transferAlmacen, t2);
+		
+		deleteRegister(id);
 	}
 	
 	@Test
 	public void mostrarTodos() {		
+		int id = saAlmacen.alta(transferAlmacen);
+		
 		List<TransferAlmacen> almacenes = saAlmacen.mostrarTodos();
 		
 		assertNotNull(almacenes);
+		
+		deleteRegister(id);
 	}
 	
 	private void areEqual(TransferAlmacen a1, TransferAlmacen a2) {
@@ -69,5 +100,8 @@ public class TestSAAlmacen {
 		assertEquals(a1.getDireccion(), a2.getDireccion());
 	}
 	
-	
+	private void deleteRegister(int ID) {
+		String sql = "DELETE FROM Almacen WHERE idAlmacen=?";
+		DatabaseConnection.dropRegisterWithID(sql, ID);
+	}
 }
