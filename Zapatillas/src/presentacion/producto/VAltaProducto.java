@@ -63,12 +63,13 @@ public class VAltaProducto extends JFrame implements IGUI{
 		this.add(labelColor);
 		
 		@SuppressWarnings("serial")
-		ArrayList<String> talla = new ArrayList<String>() {{add("40"); add("41"); add("42");}};
+		ArrayList<String> talla = new ArrayList<String>() {{add("34"); add("35"); add("36"); add("37"); add("38"); add("39"); add("40");
+															add("41"); add("42"); add("43"); add("44"); add("45");}};
 		JComboBox<String> comboTalla = ComponentsBuilder.createComboBox(talla, 200, 152, 100, 20);
 		this.add(comboTalla);
 		
 		@SuppressWarnings("serial")
-		ArrayList<String> colors = new ArrayList<String>() {{add("Azul"); add("Rojo"); add("Verde");}};
+		ArrayList<String> colors = new ArrayList<String>() {{add("Negro"); add("Blanco"); add("Morado");add("Azul"); add("Rojo"); add("Verde");add("Amarillo"); add("Naranja"); add("Gris");}};
 		JComboBox<String> comboColor = ComponentsBuilder.createComboBox(colors, 200, 202, 100, 20);
 		this.add(comboColor);
 		
