@@ -97,6 +97,10 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 			initGUI();
 			this.setVisible(true);
 			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El producto o el proveedor no esta registrado en la BD", "ERROR Añadir proveedor a producto", JOptionPane.ERROR_MESSAGE);
+			break;
+		default: JOptionPane.showMessageDialog(this,"La relacion se añadio con exito", "Añadir proveedor a producto", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }

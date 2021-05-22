@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -73,6 +74,10 @@ public class VProductosProveedor extends JFrame implements IGUI{
 		case Evento.MostrarProductosProveedor:
 			initGUI((List<TransferProducto>) datos);
 			this.setVisible(true);
+			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El proveedor no esta registrado en la BD", "ERROR Mostrar productos proveedor", JOptionPane.ERROR_MESSAGE);
+			Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			break;
 		}
 	}

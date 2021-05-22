@@ -162,7 +162,9 @@ public class GUIFactoryImp extends GUIFactory{
 		case Evento.MostrarGUIProveedorProducto:
 			return new GUIProveedorProducto();
 		case Evento.GUIAniadirProveedor:
+		case Evento.AniadirProveedor:
 			return new VAniadirProveedor();
+		case Evento.EliminarProveedor:
 		case Evento.GUIEliminarProveedor:
 			return new VEliminarProveedor();
 		case Evento.MostrarProductosProveedor:

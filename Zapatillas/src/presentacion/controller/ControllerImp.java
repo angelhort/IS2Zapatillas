@@ -1,5 +1,7 @@
 package presentacion.controller;
 
+import java.util.List;
+
 import negocio.FactoriaSA.SAAbstractFactory;
 import negocio.almacen.TransferAlmacen;
 import negocio.cliente.TransferCliente;
@@ -202,13 +204,16 @@ public class ControllerImp extends Controller{
 				
 		//PROVEEDOR-PRODUCTO
 			case Evento.AniadirProveedor:
-				SAAbstractFactory.getInstance().getSAProductoProveedor().aniadirProveedor((TransferProveedor_producto) datos);
+				id = SAAbstractFactory.getInstance().getSAProductoProveedor().aniadirProveedor((TransferProveedor_producto) datos);
+				gui.actualizar(id, id);
 				break;
 			case Evento.EliminarProveedor:
-				SAAbstractFactory.getInstance().getSAProductoProveedor().eliminarProveedor((TransferProveedor_producto) datos);
+				id = SAAbstractFactory.getInstance().getSAProductoProveedor().eliminarProveedor((TransferProveedor_producto) datos);
+				gui.actualizar(id, id);
 				break;
 			case Evento.MostrarProductosProveedor:
-				gui.actualizar(Evento.MostrarProductosProveedor, SAAbstractFactory.getInstance().getSAProductoProveedor().getProveedor_producto(Integer.parseInt((String) datos)));
+				List<TransferProducto> provProd =  SAAbstractFactory.getInstance().getSAProductoProveedor().getProveedor_producto(Integer.parseInt((String) datos));
+				gui.actualizar(provProd == null? Evento.EntidadSiNoExiste : Evento.MostrarProductosProveedor, provProd);
 				break;
 				
 		//VENTA

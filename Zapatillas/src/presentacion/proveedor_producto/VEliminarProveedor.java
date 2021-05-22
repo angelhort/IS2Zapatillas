@@ -91,6 +91,10 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 			initGUI();
 			this.setVisible(true);
 			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El producto o el proveedor no esta registrado en la BD", "ERROR Eliminar proveedor a producto", JOptionPane.ERROR_MESSAGE);
+			break;
+		default: JOptionPane.showMessageDialog(this,"La relacion se elimino con exito", "Eliminar proveedor a producto", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
