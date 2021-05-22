@@ -216,7 +216,7 @@ public class ControllerImp extends Controller{
 				SAAbstractFactory.getInstance().getSAVenta().altaVenta((TransferVenta) datos);
 				break;
 			case Evento.MostrarVenta:
-				gui.actualizar(Evento.MostrarVenta, SAAbstractFactory.getInstance().getSAVenta().getVenta((int)datos));
+				gui.actualizar(Evento.MostrarVenta, SAAbstractFactory.getInstance().getSAVenta().getVenta(Integer.parseInt((String)datos)));
 				break;
 				
 			default: if(gui != null) gui.actualizar(evento, datos);
