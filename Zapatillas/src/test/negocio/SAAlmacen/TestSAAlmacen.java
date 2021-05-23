@@ -21,7 +21,7 @@ public class TestSAAlmacen {
 	public void altaOK() {		
 		int id = saAlmacen.alta(transferAlmacen);
 
-		assertTrue(String.format("Se esperaba 0 y se encontró %s", id), id >= 1);
+		assertTrue(String.format("Se esperaba >0 y se encontró %s", id), id >= 1);
 		
 		deleteRegister(id);
 	}
