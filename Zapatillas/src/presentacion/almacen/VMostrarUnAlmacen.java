@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -70,7 +71,14 @@ public class VMostrarUnAlmacen extends JFrame implements IGUI{
 			initGUI((TransferAlmacen) datos);
 			this.setVisible(true);
 			break;
+		case Evento.EntidadSiNoExiste:
+			JOptionPane.showMessageDialog(this,"El almacen no existe", "ERROR Mostrar Un Almacen", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+			break;
+		
 		}
+		
 	}
 
 
