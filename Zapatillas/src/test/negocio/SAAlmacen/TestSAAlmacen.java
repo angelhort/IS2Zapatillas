@@ -68,9 +68,14 @@ public class TestSAAlmacen {
 	@Test
 	public void modificarFail() {
 		TransferAlmacen t1 = new TransferAlmacen(-1, 111222333, 32, "Calle Otra", true);
-		int idModificar = saAlmacen.modificar(t1);
+		int idModificar1 = saAlmacen.modificar(t1);
 		
-		assertEquals(String.format("Se esperaba 0 y se encontró %s", idModificar), 0, idModificar);	
+		assertEquals(String.format("Se esperaba 0 y se encontró %s", idModificar1), 0, idModificar1);
+		
+		TransferAlmacen t2 = new TransferAlmacen(-1, 0, 32, "Calle Otra", true);
+		int idModificar2 = saAlmacen.modificar(t2);
+		
+		assertEquals(String.format("Se esperaba -1 y se encontró %s", idModificar2), -1, idModificar2);	
 	}
 	
 	@Test
