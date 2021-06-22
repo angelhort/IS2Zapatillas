@@ -7,9 +7,12 @@ public class DatabaseConnection {
 	//public static final String DB_URL = "jdbc:mysql://db4free.net/zapatillas";
 	//public static final String USERNAME = "zapatillas";
 	//public static final String PASSWORD = "zapatillas";
-	public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11413968";
-	public static final String USERNAME = "sql11413968";
-	public static final String PASSWORD = "jQAb62VXga";
+	//public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11413968";
+	//public static final String USERNAME = "sql11413968";
+	//public static final String PASSWORD = "jQAb62VXga";
+	public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11420824";
+	public static final String USERNAME = "sql11420824";
+	public static final String PASSWORD = "MbRZwiJqUI";
 	
 	public DatabaseConnection() {
 		// Empty

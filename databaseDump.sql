@@ -1,8 +1,7 @@
-CREATE DATABASE  IF NOT EXISTS `sql11413968` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `sql11413968`;
+
 -- MySQL dump 10.13  Distrib 8.0.16, for macos10.14 (x86_64)
 --
--- Host: sql11.freemysqlhosting.net    Database: sql11413968
+-- Host: sql11.freemysqlhosting.net    Database: sql11420824
 -- ------------------------------------------------------
 -- Server version	5.5.62-0ubuntu0.14.04.1
 
