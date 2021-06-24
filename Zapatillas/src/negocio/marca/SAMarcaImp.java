@@ -3,6 +3,7 @@ package negocio.marca;
 import java.util.List;
 
 import integracion.dao.DAOFactory.DAOAbstractFactory;
+import negocio.producto.TransferProducto;
 
 public class SAMarcaImp implements SAMarca{
 
@@ -19,8 +20,14 @@ public class SAMarcaImp implements SAMarca{
 
 	@Override
 	public int borrar(int id) {
+		List<TransferProducto> productos = DAOAbstractFactory.getInstance().getDAOProducto().getProductosMarca(id);
+		
+		for(TransferProducto p : productos) {
+			if(p.getActivo()) return -5;
+		}
+		
 		if ( DAOAbstractFactory.getInstance().getDAOMarca().getMarca(id) != null)
-		return DAOAbstractFactory.getInstance().getDAOMarca().baja(id);
+			return DAOAbstractFactory.getInstance().getDAOMarca().baja(id);
 		else return -2;
 	}
 

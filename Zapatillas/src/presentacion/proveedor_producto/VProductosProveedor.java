@@ -76,7 +76,7 @@ public class VProductosProveedor extends JFrame implements IGUI{
 			this.setVisible(true);
 			break;
 		case Evento.EntidadSiNoExiste:
-			JOptionPane.showMessageDialog(this,"El proveedor no esta registrado en la BD", "ERROR Mostrar productos proveedor", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"El proveedor no esta registrado en la BD o esta inactivo", "ERROR Mostrar productos proveedor", JOptionPane.ERROR_MESSAGE);
 			Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);
 			break;
 		}

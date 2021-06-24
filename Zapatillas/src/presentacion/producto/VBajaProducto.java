@@ -87,6 +87,11 @@ public class VBajaProducto extends JFrame implements IGUI{
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El producto no existe", "ERROR Baja Producto", JOptionPane.ERROR_MESSAGE);
 			break;
+		
+		case Evento.EntidadesAsociadas:
+			JOptionPane.showMessageDialog(this,"El producto tiene proveedores asociados", "ERROR Baja Producto", JOptionPane.ERROR_MESSAGE);
+			break;
+			
 		default: JOptionPane.showMessageDialog(this,"El producto se dio de baja", "Baja Producto", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}

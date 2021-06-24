@@ -7,6 +7,7 @@ public class TransferProveedor {
 	private String direccion;
 	private String nombre;
 	private boolean activo;
+	private double precioSuministro;
 	
 	public TransferProveedor(int telefono, String direccion, String nombre) {
 		this.telefono = telefono;
@@ -20,6 +21,10 @@ public class TransferProveedor {
 		this.direccion = direccion;
 		this.nombre = nombre;
 		this.activo = activo;
+	}
+	
+	public TransferProveedor(int ID, String nombre, double precioSuministro) {
+		
 	}
 	
 	// GETTERS
@@ -41,5 +46,9 @@ public class TransferProveedor {
 	
 	public boolean getActivo() {
 		return activo;
+	}
+	
+	public double getPrecioSuministro() {
+		return precioSuministro;
 	}
 }

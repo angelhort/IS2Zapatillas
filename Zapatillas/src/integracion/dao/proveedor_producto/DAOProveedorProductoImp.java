@@ -10,6 +10,7 @@ import java.util.List;
 
 import integracion.connection.DatabaseConnection;
 import negocio.producto.TransferProducto;
+import negocio.proveedor.TransferProveedor;
 import negocio.proveedor_producto.TransferProveedor_producto;
 
 public class DAOProveedorProductoImp implements DAOProveedorProducto {
@@ -64,7 +65,7 @@ public class DAOProveedorProductoImp implements DAOProveedorProducto {
 	}
 
 	@Override
-	public List<TransferProducto> getProveedor_producto(int idProveedor) {
+	public List<TransferProducto> getProductosFromProveedor(int idProveedor) {
 		Connection conn = DatabaseConnection.getConnection();
 		String query = String.format("SELECT P.idProducto, P.nombre, S.precioSuministro "
 									+ "FROM Suministra as S, Productos as P "
@@ -91,6 +92,36 @@ public class DAOProveedorProductoImp implements DAOProveedorProducto {
 		
 		DatabaseConnection.killConnection(conn);
 		return productos;
+	}
+
+	@Override
+	public List<TransferProveedor> getProveedoresFromProducto(int idProducto) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT P.idProveedor, P.nombre, S.precioSuministro "
+									+ "FROM Suministra as S, Proveedores as P "
+									+ "WHERE S.idProveedor = P.idProveedor AND S.idProducto = %s", idProducto);
+		
+		List<TransferProveedor> proveedores = new ArrayList<>();
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next()) {
+				proveedores.add(new TransferProveedor(resultSet.getInt("P.idProveedor"),
+													   resultSet.getString("P.nombre"),
+													   resultSet.getDouble("S.precioSuministro")));
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return proveedores;
 	}
 
 }

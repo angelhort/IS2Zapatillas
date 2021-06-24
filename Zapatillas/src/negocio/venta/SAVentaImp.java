@@ -1,19 +1,22 @@
 package negocio.venta;
 
 import integracion.dao.DAOFactory.DAOAbstractFactory;
+import negocio.cliente.TransferCliente;
 import negocio.producto.TransferProducto;
+import negocio.trabajador.TransferTrabajador;
 
 public class SAVentaImp implements SAVenta{
 
 	@Override
 	public int altaVenta(TransferVenta venta) {
-		if(DAOAbstractFactory.getInstance().getDAOCliente().getCliente(venta.getCliente().getID()) != null) {
-			if(DAOAbstractFactory.getInstance().getDAOTrabajador().getTrabajador(venta.getTrabajador().getID()) != null) {
-				
+		TransferCliente cliente = DAOAbstractFactory.getInstance().getDAOCliente().getCliente(venta.getCliente().getID());
+		if(cliente != null && cliente.getActivo()) {
+			TransferTrabajador trabajador = DAOAbstractFactory.getInstance().getDAOTrabajador().getTrabajador(venta.getTrabajador().getID());
+			if(trabajador != null && trabajador.getActivo()) {			
 				for(TProductoEnFactura p : venta.getProductos()) {
 					TransferProducto producto = DAOAbstractFactory.getInstance().getDAOProducto().getProducto(p.getProducto().getID());
 					if(producto == null) return -2;
-					if(producto.getStock() >= p.getUnidades()) {
+					if(producto.getStock() >= p.getUnidades() && producto.getActivo()) {
 						double precioUnidad = DAOAbstractFactory.getInstance().getDAOProducto().getPrecioProducto(p.getProducto().getID());
 						p.setPrecio(precioUnidad);						
 					}

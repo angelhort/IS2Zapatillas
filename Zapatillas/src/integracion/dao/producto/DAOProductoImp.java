@@ -441,5 +441,52 @@ public class DAOProductoImp implements DAOProducto{
 		DatabaseConnection.killConnection(conn);
 		return productos;
 	}
+
+	@Override
+	public List<TransferProducto> getProductosMarca(int idMarca) {
+		Connection conn = DatabaseConnection.getConnection();
+		String query = String.format("SELECT * FROM Productos WHERE idMarca = %d", idMarca);
+		
+		List<TransferProducto> productos = new ArrayList<>();
+
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next()) {
+				if (resultSet.getInt("tipoProducto") == 0) 
+					productos.add(new TransferZapatillas(resultSet.getInt("idProducto"),
+														   resultSet.getInt("talla"),
+														   resultSet.getDouble("precio"),
+														   resultSet.getString("nombre"),
+														   resultSet.getString("color"),
+														   resultSet.getString("tipo"),
+														   resultSet.getInt("stock"),
+														   resultSet.getInt("idAlmacen"),
+														   resultSet.getInt("idMarca"),
+														   resultSet.getBoolean("activo")));
+				else
+					productos.add(new TransferCalcetines(resultSet.getInt("idProducto"),
+														   resultSet.getInt("talla"),
+														   resultSet.getDouble("precio"),
+														   resultSet.getString("nombre"),
+														   resultSet.getString("color"),
+														   resultSet.getString("tejido"),
+														   resultSet.getInt("stock"),
+														   resultSet.getInt("idAlmacen"),
+														   resultSet.getInt("idMarca"),
+														   resultSet.getBoolean("activo")));
+			}
+			
+			resultSet.close();
+			statement.close();
+			conn.close();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		DatabaseConnection.killConnection(conn);
+		return productos;
+	}
 	
 }

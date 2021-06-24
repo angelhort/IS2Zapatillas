@@ -85,9 +85,12 @@ public class VBajaMarca extends JFrame implements IGUI{
 			break;
 		
 		case Evento.EntidadSiNoExiste:
-			JOptionPane.showMessageDialog(this,"El Marca no existe", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"La Marca no existe", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
 			break;
-		default: JOptionPane.showMessageDialog(this,"El Marca se dio de baja", "Baja Marca", JOptionPane.INFORMATION_MESSAGE);
+		case Evento.EntidadesAsociadas:
+			JOptionPane.showMessageDialog(this,"La Marca tiene productos asociados", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
+			break;
+		default: JOptionPane.showMessageDialog(this,"La Marca se dio de baja", "Baja Marca", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 }
