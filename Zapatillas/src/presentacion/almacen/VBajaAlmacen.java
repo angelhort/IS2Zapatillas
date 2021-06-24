@@ -87,6 +87,9 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El almacen no existe", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
 				break;
+			case Evento.EntidadesAsociadas:
+				JOptionPane.showMessageDialog(this,"El almacen tiene productos activos", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
+				break;
 			default: JOptionPane.showMessageDialog(this,"El almacen se dio de baja", "Baja Almacen", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}

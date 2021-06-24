@@ -18,4 +18,5 @@ public interface DAOProducto {
 	public List<TransferProducto> getAllProductos();
 	public int activarProducto(int id);
 	public int restarStock(int id, int cantidad);
+	public List<TransferProducto> getProductosAlmacen(int idAlmacen);
 }

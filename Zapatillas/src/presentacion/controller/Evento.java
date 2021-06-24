@@ -3,6 +3,7 @@ package presentacion.controller;
 public class Evento {
 	
 	// GENERAL DE -2-99
+	public static final int EntidadesAsociadas = -5; //No se ha podido dar de baja una entidad porque tiene otras asociadas que estan activas
 	public static final int OutOfStock = -4;
 	public static final int ClaveEntidadYaExistente = -3;
 	public static final int EntidadSiNoExiste = -2;

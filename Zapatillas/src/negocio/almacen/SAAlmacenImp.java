@@ -3,6 +3,7 @@ package negocio.almacen;
 import java.util.List;
 
 import integracion.dao.DAOFactory.DAOAbstractFactory;
+import negocio.producto.TransferProducto;
 
 public class SAAlmacenImp implements SAAlmacen{
 
@@ -22,9 +23,15 @@ public class SAAlmacenImp implements SAAlmacen{
 
 	@Override
 	public int borrar(int id) {
+		List<TransferProducto> productos = DAOAbstractFactory.getInstance().getDAOProducto().getProductosAlmacen(id);
+		
+		for(TransferProducto p : productos) {
+			if(p.getActivo()) return -5;
+		}
+		
 		if(DAOAbstractFactory.getInstance().getDAOAlmacen().getAlmacen(id) != null)
 			return DAOAbstractFactory.getInstance().getDAOAlmacen().baja(id);
-		else return -2;
+		else return -2;			
 	}
 
 	@Override
