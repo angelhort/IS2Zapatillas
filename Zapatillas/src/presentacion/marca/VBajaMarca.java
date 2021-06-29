@@ -27,10 +27,9 @@ public class VBajaMarca extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelMarca = ComponentsBuilder.createLabel("Baja Marca", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelMarca);
 		
@@ -65,7 +64,6 @@ public class VBajaMarca extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.BajaMarca, fieldID.getText());					
 					VBajaMarca.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID marca tiene que ser un numero entero", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
@@ -81,16 +79,20 @@ public class VBajaMarca extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 		case Evento.GUIBajaMarca:
+			initGUI();
 			this.setVisible(true);
 			break;
 		
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"La Marca no existe", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.EntidadesAsociadas:
 			JOptionPane.showMessageDialog(this,"La Marca tiene productos asociados", "ERROR Baja Marca", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"La Marca se dio de baja", "Baja Marca", JOptionPane.INFORMATION_MESSAGE);
+		this.dispose();
 	}
 	}
 }

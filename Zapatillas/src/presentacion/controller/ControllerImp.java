@@ -16,10 +16,6 @@ import presentacion.vista.IGUI;
 
 public class ControllerImp extends Controller{
 		
-	public ControllerImp() {
-		
-	}
-
 	@Override
 	public void action(int evento, Object datos) {
 		
@@ -43,6 +39,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().borrar(Integer.parseInt((String) datos));
 				gui.actualizar(id , null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUICliente);
+				gui.actualizar(Evento.MostrarGUICliente, null);
 				break;	
 				
 			case Evento.ModificarCliente:
@@ -70,6 +68,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().borrar(Integer.parseInt((String) datos));
 				gui.actualizar(id, null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIMarca);
+				gui.actualizar(Evento.MostrarGUIMarca, null);
 				break;
 				
 			case Evento.MostrarModificarMarca:
@@ -102,6 +102,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().borrar(Integer.parseInt((String) datos));
 				gui.actualizar(id, null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUITrabajador);
+				gui.actualizar(Evento.MostrarGUITrabajador, null);
 				break;
 				
 			case Evento.MostrarTodosLosTrabajadores:
@@ -136,6 +138,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().borrar(Integer.parseInt((String)datos));
 				gui.actualizar(id, null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProducto);
+				gui.actualizar(Evento.MostrarGUIProducto, null);
 				break;
 			case Evento.MostrarUnProducto:
 				TransferProducto producto = SAAbstractFactory.getInstance().getSAProducto().mostrarUno(Integer.parseInt((String) datos));
@@ -161,6 +165,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().borrar(Integer.parseInt((String) datos));
 				gui.actualizar(id, null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProveedor);
+				gui.actualizar(Evento.MostrarGUIProveedor, null);
 				break;
 				
 			case Evento.MostrarUnProveedor:
@@ -197,6 +203,8 @@ public class ControllerImp extends Controller{
 			case Evento.BajaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().borrar(Integer.parseInt((String) datos));
 				gui.actualizar(id, null);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIAlmacen);
+				gui.actualizar(Evento.MostrarGUIAlmacen, null);
 				break;
 				
 			case Evento.MostrarModificarAlmacen:

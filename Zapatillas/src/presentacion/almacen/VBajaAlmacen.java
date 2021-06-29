@@ -27,10 +27,9 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelAlmacen = ComponentsBuilder.createLabel("Baja Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelAlmacen);
 		
@@ -65,7 +64,6 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.BajaAlmacen, fieldID.getText());					
 					VBajaAlmacen.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID almacen tiene que ser un numero entero", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
@@ -81,16 +79,20 @@ public class VBajaAlmacen extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 			case Evento.GUIBajaAlmacen:
+				initGUI();
 				this.setVisible(true);
 				break;
 			
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El almacen no existe", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.EntidadesAsociadas:
 				JOptionPane.showMessageDialog(this,"El almacen tiene productos activos", "ERROR Baja Almacen", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			default: JOptionPane.showMessageDialog(this,"El almacen se dio de baja", "Baja Almacen", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

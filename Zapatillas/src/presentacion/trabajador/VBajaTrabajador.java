@@ -27,10 +27,9 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelTrabajador = ComponentsBuilder.createLabel("Baja Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 26));
 		this.add(labelTrabajador);
 		
@@ -65,7 +64,6 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.BajaTrabajador, fieldID.getText());					
 					VBajaTrabajador.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID Trabajador tiene que ser un numero entero", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
@@ -80,14 +78,17 @@ public class VBajaTrabajador extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIBajaTrabajador:
-		this.setVisible(true);
-		break;
-		
-		case Evento.EntidadSiNoExiste:
-			JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
+			case Evento.GUIBajaTrabajador:
+				initGUI();
+				this.setVisible(true);
 			break;
-		default: JOptionPane.showMessageDialog(this,"El Trabajador se dio de baja", "Baja Trabajador", JOptionPane.INFORMATION_MESSAGE);
-	}
+			
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Baja Trabajador", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
+				break;
+			default: JOptionPane.showMessageDialog(this,"El Trabajador se dio de baja", "Baja Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
+		}
 	}
 }

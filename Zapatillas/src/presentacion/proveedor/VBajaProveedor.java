@@ -27,10 +27,9 @@ public class VBajaProveedor extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelProveedor = ComponentsBuilder.createLabel("Baja Proveedor", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProveedor);
 		
@@ -65,7 +64,6 @@ public class VBajaProveedor extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.BajaProveedor, fieldID.getText());					
 					VBajaProveedor.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID Proveedor tiene que ser un numero entero", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
@@ -81,18 +79,22 @@ public class VBajaProveedor extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 			case Evento.GUIBajaProveedor:
+				initGUI();
 				this.setVisible(true);
 				break;
 			
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El Proveedor no existe", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 				
 			case Evento.EntidadesAsociadas:
 				JOptionPane.showMessageDialog(this,"El Proveedor tiene productos asociados", "ERROR Baja Proveedor", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 				
 			default: JOptionPane.showMessageDialog(this,"El Proveedor se dio de baja", "Baja Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

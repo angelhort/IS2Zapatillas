@@ -27,10 +27,9 @@ public class VBajaCliente extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelCliente = ComponentsBuilder.createLabel("Baja Cliente", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelCliente);
 		
@@ -65,7 +64,6 @@ public class VBajaCliente extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.BajaCliente, fieldID.getText());
 					VBajaCliente.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUICliente, null);					
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "ID cliente tiene que ser un numero entero", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
@@ -80,14 +78,17 @@ public class VBajaCliente extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIBajaCliente:
-		this.setVisible(true);
-		break;
-		
-		case Evento.EntidadSiNoExiste:
-			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
+			case Evento.GUIBajaCliente:
+				initGUI();
+				this.setVisible(true);
 			break;
-		default: JOptionPane.showMessageDialog(this,"El cliente se dio de baja", "Baja Cliente", JOptionPane.INFORMATION_MESSAGE);
-	}
+			
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Baja Cliente", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
+				break;
+			default: JOptionPane.showMessageDialog(this,"El cliente se dio de baja", "Baja Cliente", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
+		}
 	}
 }
