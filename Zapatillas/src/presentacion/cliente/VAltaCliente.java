@@ -29,10 +29,9 @@ public class VAltaCliente extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelCliente = ComponentsBuilder.createLabel("Alta Cliente", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelCliente);
 		
@@ -78,7 +77,6 @@ public class VAltaCliente extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.AltaCliente, new TransferCliente(fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText()));
 				VAltaCliente.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 			}
 			
 		};
@@ -89,21 +87,26 @@ public class VAltaCliente extends JFrame implements IGUI{
 	@Override
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
-		case Evento.GUIAltaCliente:
-		this.setVisible(true);
-		break;
-		
-		case Evento.EntidadSiNoExiste:
-			JOptionPane.showMessageDialog(this,"El cliente ya estaba registrado y activo", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+			case Evento.GUIAltaCliente:
+				initGUI();
+				this.setVisible(true);
 			break;
-		case Evento.WrongDataInput:
-			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Cliente", JOptionPane.ERROR_MESSAGE);
-			break;
-		case Evento.ActivacionEntidad:
-			JOptionPane.showMessageDialog(this,"El cliente ya existia y se ha activado", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
-			break;
-		default:
-			JOptionPane.showMessageDialog(this,"El cliente se dio de alta con ID: " + datos, "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
-	}
+			
+			case Evento.EntidadSiNoExiste:
+				JOptionPane.showMessageDialog(this,"El cliente ya estaba registrado y activo", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
+				break;
+			case Evento.WrongDataInput:
+				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Cliente", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
+				break;
+			case Evento.ActivacionEntidad:
+				JOptionPane.showMessageDialog(this,"El cliente ya existia y se ha activado", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
+				break;
+			default:
+				JOptionPane.showMessageDialog(this,"El cliente se dio de alta con ID: " + datos, "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
+		}
 	}
 }

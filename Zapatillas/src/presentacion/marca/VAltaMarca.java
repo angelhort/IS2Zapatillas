@@ -28,10 +28,9 @@ public class VAltaMarca extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x230.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelMarca = ComponentsBuilder.createLabel("Alta Marca", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelMarca);
 		
@@ -65,7 +64,6 @@ public class VAltaMarca extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.AltaMarca, new TransferMarca(fieldNombre.getText()));
 				VAltaMarca.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
 		};
@@ -78,19 +76,24 @@ public class VAltaMarca extends JFrame implements IGUI{
 		switch(evento) {
 			case Evento.GUIAltaMarca:
 				this.setVisible(true);
+				initGUI();
 				break;
 			
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El Marca ya estaba registrado y activo", "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.WrongDataInput:
 				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Marca", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.ActivacionEntidad:
 				JOptionPane.showMessageDialog(this,"El Marca ya existia y se ha activado", "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 				break;
 			default:
 				JOptionPane.showMessageDialog(this,"El Marca se dio de alta con ID: " + datos, "Alta Marca", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 		}
 	}
 }

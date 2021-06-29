@@ -28,10 +28,9 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelTrabajador = ComponentsBuilder.createLabel("Alta Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelTrabajador);
 		
@@ -78,7 +77,6 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.AltaTrabajador, new TransferTrabajador(Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText()));					
 					VAltaTrabajador.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono trabajador tiene que ser un numero entero", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
@@ -94,20 +92,25 @@ public class VAltaTrabajador extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 		case Evento.GUIAltaTrabajador:
-		this.setVisible(true);
+			initGUI();
+			this.setVisible(true);
 		break;
 		
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El Trabajador ya estaba registrado y activo", "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Trabajador", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.ActivacionEntidad:
 			JOptionPane.showMessageDialog(this,"El Trabajador ya existia y se ha activado", "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		default:
 			JOptionPane.showMessageDialog(this,"El Trabajador se dio de alta con ID: " + datos, "Alta Trabajador", JOptionPane.INFORMATION_MESSAGE);
-	}
+			this.dispose();
+		}
 	}
 }

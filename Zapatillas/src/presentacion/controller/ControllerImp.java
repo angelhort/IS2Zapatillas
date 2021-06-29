@@ -31,6 +31,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().alta((TransferCliente)datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUICliente);
+				gui.actualizar(Evento.MostrarGUICliente, null);
 				break;
 				
 			case Evento.MostrarModificarCliente:
@@ -61,6 +63,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().alta((TransferMarca) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIMarca);
+				gui.actualizar(Evento.MostrarGUIMarca, null);
 				break;
 				
 			case Evento.BajaMarca:
@@ -91,6 +95,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().alta((TransferTrabajador) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUITrabajador);
+				gui.actualizar(Evento.MostrarGUITrabajador, null);
 				break;
 				
 			case Evento.BajaTrabajador:
@@ -121,6 +127,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().alta((TransferProducto) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProducto);
+				gui.actualizar(Evento.MostrarGUIProducto, null);
 				break;
 			case Evento.MostrarTodosLosProductos:
 				gui.actualizar(Evento.MostrarTodosLosProductos, SAAbstractFactory.getInstance().getSAProducto().mostrarTodos());
@@ -146,6 +154,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().alta((TransferProveedor)datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProveedor);
+				gui.actualizar(Evento.MostrarGUIProveedor, null);
 				break;
 			
 			case Evento.BajaProveedor:
@@ -176,6 +186,8 @@ public class ControllerImp extends Controller{
 			case Evento.AltaAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().alta((TransferAlmacen) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIAlmacen);
+				gui.actualizar(Evento.MostrarGUIAlmacen, null);
 				break;
 				
 			case Evento.MostrarTodosLosAlmacenes:

@@ -33,7 +33,7 @@ public class VAltaProducto extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(String tipoProducto) {
+	private void initGUI(String tipoProducto) {
 		this.setVisible(true);
 		JLabel labelProducto = ComponentsBuilder.createLabel("Alta " + tipoProducto, 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProducto);
@@ -147,7 +147,6 @@ public class VAltaProducto extends JFrame implements IGUI{
 					}
 					
 					VAltaProducto.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "<html>Stock e IDs tienen que ser un numeros enteros,<br>el precio un numero con 2 decimales</html>", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
@@ -174,15 +173,19 @@ public class VAltaProducto extends JFrame implements IGUI{
 			
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El producto ya estaba registrado y activo", "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.ActivacionEntidad:
 			JOptionPane.showMessageDialog(this,"El Producto ya existia y se ha activado", "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		default:
 			JOptionPane.showMessageDialog(this,"El Producto se dio de alta con ID: " + datos, "Alta Producto", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

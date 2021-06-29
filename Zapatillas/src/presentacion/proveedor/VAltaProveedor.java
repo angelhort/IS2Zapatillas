@@ -28,10 +28,9 @@ public class VAltaProveedor extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelProveedor = ComponentsBuilder.createLabel("Alta Proveedor", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProveedor);
 		
@@ -81,7 +80,6 @@ public class VAltaProveedor extends JFrame implements IGUI{
 							fieldDireccion.getText(), 
 							fieldNombre.getText()));					
 					VAltaProveedor.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono proveedor tiene que ser un numero entero", "ERROR Alta proveedor", JOptionPane.ERROR_MESSAGE);
@@ -97,20 +95,25 @@ public class VAltaProveedor extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 		case Evento.GUIAltaProveedor:
+			initGUI();
 			this.setVisible(true);
 			break;
 		
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El Proveedor ya estaba registrado y activo", "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Proveedor", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.ActivacionEntidad:
 			JOptionPane.showMessageDialog(this,"El Proveedor ya existia y se ha activado", "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 			break;
 		default:
 			JOptionPane.showMessageDialog(this,"El Proveedor se dio de alta con ID: " + datos, "Alta Proveedor", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 	}
 	}
 }

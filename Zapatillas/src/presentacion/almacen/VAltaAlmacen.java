@@ -29,10 +29,9 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/330x350.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelAlmacen = ComponentsBuilder.createLabel("Alta Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelAlmacen);
 		
@@ -79,7 +78,6 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.AltaAlmacen, new TransferAlmacen(Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText()));
 					VAltaAlmacen.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);					
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono almacen tiene que ser un numero entero", "ERROR Alta Almacen", JOptionPane.ERROR_MESSAGE);
@@ -95,20 +93,25 @@ public class VAltaAlmacen extends JFrame implements IGUI{
 	public void actualizar(int evento, Object datos) {
 		switch(evento) {
 			case Evento.GUIAltaAlmacen:
+				initGUI();
 				this.setVisible(true);
 				break;
 			
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El almacen ya estaba registrado y activo", "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.WrongDataInput:
 				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Alta Almacen", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.ActivacionEntidad:
 				JOptionPane.showMessageDialog(this,"El almacen ya existia y se ha activado", "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 				break;
 			default:
 				JOptionPane.showMessageDialog(this,"El almacen se dio de alta con ID: " + datos, "Alta Almacen", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 		}
 	}
 }
