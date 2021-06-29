@@ -31,8 +31,7 @@ public class VModificarCliente extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(TransferCliente cliente) {
-		this.setVisible(true);
+	private void initGUI(TransferCliente cliente) {
 		JLabel labelCliente = ComponentsBuilder.createLabel("Modificar Cliente", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelCliente);
 		
@@ -79,9 +78,8 @@ public class VModificarCliente extends JFrame implements IGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VModificarCliente.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUICliente, null);
 				Controller.getInstance().action(Evento.ModificarCliente,  new TransferCliente(cliente.getID(), fieldNombre.getText(), checkSocio.isSelected(), fieldDNI.getText(), cliente.getActivo()));
+				VModificarCliente.this.dispose();
 			}
 			
 		};
@@ -94,18 +92,23 @@ public class VModificarCliente extends JFrame implements IGUI{
 		switch(evento){
 		case Evento.MostrarModificarCliente:
 			initGUI((TransferCliente) datos);	
+			this.setVisible(true);
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El cliente no existe", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
 			Controller.getInstance().action(Evento.MostrarGUICliente, null);
+			this.dispose();
 			break;
 		case Evento.ClaveEntidadYaExistente:
 			JOptionPane.showMessageDialog(this,"Ya hay un cliente registrado con ese DNI", "ERROR Modificar Cliente", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"El cliente se modifico con exito", "Modificar Cliente", JOptionPane.INFORMATION_MESSAGE);
+		this.dispose();
 		}
 	}
 }

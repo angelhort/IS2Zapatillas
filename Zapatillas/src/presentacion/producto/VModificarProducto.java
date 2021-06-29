@@ -35,7 +35,6 @@ public class VModificarProducto extends JFrame implements IGUI{
 	}
 	
 	private void initGUI(TransferProducto producto) {
-		this.setVisible(true);
 		JLabel labelProducto = ComponentsBuilder.createLabel("Modificar " + producto.toString(), 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelProducto);
 		
@@ -155,7 +154,6 @@ public class VModificarProducto extends JFrame implements IGUI{
 					}
 					
 					VModificarProducto.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProducto, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "<html>Stock e IDs tienen que ser un numeros enteros,<br>el precio un numero con 2 decimales</html>", "ERROR Alta Producto", JOptionPane.ERROR_MESSAGE);
@@ -172,18 +170,23 @@ public class VModificarProducto extends JFrame implements IGUI{
 		switch(evento){
 		case Evento.MostrarModificarProducto:
 			initGUI((TransferProducto) datos);	
+			this.setVisible(true);
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El producto no existe", "ERROR Modificar Producto", JOptionPane.ERROR_MESSAGE);
 			Controller.getInstance().action(Evento.MostrarGUIProducto, null);
+			this.dispose();
 			break;
 		case Evento.ClaveEntidadYaExistente:
 			JOptionPane.showMessageDialog(this,"Ya hay un producto registrado con ese nombre", "ERROR Modificar producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"El producto se modifico con exito", "Modificar Producto", JOptionPane.INFORMATION_MESSAGE);
+		this.dispose();
 		}
 	}
 }

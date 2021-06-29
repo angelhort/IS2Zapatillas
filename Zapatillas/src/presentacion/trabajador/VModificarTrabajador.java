@@ -30,8 +30,7 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(TransferTrabajador trabajador) {
-		this.setVisible(true);
+	private void initGUI(TransferTrabajador trabajador) {
 
 		JLabel labelTrabajador = ComponentsBuilder.createLabel("Modificar Trabajador", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelTrabajador);
@@ -82,7 +81,6 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.ModificarTrabajador, new TransferTrabajador(trabajador.getID(), Integer.parseInt(fieldTelef.getText()), fieldDNI.getText(), fieldNombre.getText(), trabajador.getActivo()));					
 					VModificarTrabajador.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono trabajador tiene que ser un numero entero", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
@@ -99,18 +97,23 @@ public class VModificarTrabajador extends JFrame implements IGUI{
 		switch(evento){
 		case Evento.MostrarModificarTrabajador:
 			initGUI((TransferTrabajador) datos);	
+			this.setVisible(true);
 			break;
 		case Evento.WrongDataInput:
 			JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El Trabajador no existe", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
 			Controller.getInstance().action(Evento.MostrarGUITrabajador, null);
+			this.dispose();
 			break;
 		case Evento.ClaveEntidadYaExistente:
 			JOptionPane.showMessageDialog(this,"Ya hay un Trabajador registrado con ese DNI", "ERROR Modificar Trabajador", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"El Trabajador se modifico con exito", "Modificar Trabajador", JOptionPane.INFORMATION_MESSAGE);
+		this.dispose();
 		}
 	}
 }

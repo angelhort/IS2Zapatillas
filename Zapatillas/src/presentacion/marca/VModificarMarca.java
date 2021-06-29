@@ -30,8 +30,7 @@ public class VModificarMarca extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(TransferMarca marca) {
-		this.setVisible(true);
+	private void initGUI(TransferMarca marca) {
 		JLabel labelMarca = ComponentsBuilder.createLabel("Modificar Marca", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelMarca);
 		
@@ -66,7 +65,6 @@ public class VModificarMarca extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				Controller.getInstance().action(Evento.ModificarMarca, new TransferMarca(marca.getID(), fieldNombre.getText(), marca.getActivo()));
 				VModificarMarca.this.dispose();
-				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
 			}
 			
 		};
@@ -79,19 +77,24 @@ public class VModificarMarca extends JFrame implements IGUI{
 		switch(evento) {
 			case Evento.MostrarModificarMarca:
 				initGUI((TransferMarca) datos);	
+				this.setVisible(true);
 				break;
 				
 			case Evento.WrongDataInput:
 				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.EntidadSiNoExiste:
-				JOptionPane.showMessageDialog(this,"El Marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this,"La Marca no existe", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
 				Controller.getInstance().action(Evento.MostrarGUIMarca, null);
+				this.dispose();
 				break;
 			case Evento.ClaveEntidadYaExistente:
-				JOptionPane.showMessageDialog(this,"Ya hay un Marca registrada con ese nombre", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this,"Ya hay una Marca registrada con ese nombre", "ERROR Modificar Marca", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
-			default: JOptionPane.showMessageDialog(this,"El Marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
+			default: JOptionPane.showMessageDialog(this,"La Marca se modifico con exito", "Modificar Marca", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

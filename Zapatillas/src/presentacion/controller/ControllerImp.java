@@ -46,6 +46,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarCliente:
 				id = SAAbstractFactory.getInstance().getSACliente().modificar((TransferCliente) datos);
 				gui.actualizar(id , id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUICliente);
+				gui.actualizar(Evento.MostrarGUICliente, null);
 				break;
 				
 			case Evento.MostrarUnCliente: 
@@ -80,6 +82,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarMarca:
 				id = SAAbstractFactory.getInstance().getSAMarca().modificar((TransferMarca) datos);
 				gui.actualizar(id , id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIMarca);
+				gui.actualizar(Evento.MostrarGUIMarca, null);
 				break;
 				
 			case Evento.MostrarUnaMarca:
@@ -118,6 +122,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarTrabajador:
 				id = SAAbstractFactory.getInstance().getSATrabajador().modificar((TransferTrabajador) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUITrabajador);
+				gui.actualizar(Evento.MostrarGUITrabajador, null);
 				break;
 				
 			case Evento.MostrarUnTrabajador:
@@ -152,6 +158,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarProducto:
 				id = SAAbstractFactory.getInstance().getSAProducto().modificar((TransferProducto) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProducto);
+				gui.actualizar(Evento.MostrarGUIProducto, null);
 				break;
 			
 		//PROVEEDOR
@@ -186,6 +194,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarProveedor:
 				id = SAAbstractFactory.getInstance().getSAProveedor().modificar((TransferProveedor) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProveedor);
+				gui.actualizar(Evento.MostrarGUIProveedor, null);
 				break;
 				
 		//ALMACEN
@@ -215,6 +225,8 @@ public class ControllerImp extends Controller{
 			case Evento.ModificarAlmacen:
 				id = SAAbstractFactory.getInstance().getSAAlmacen().modificar((TransferAlmacen) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIAlmacen);
+				gui.actualizar(Evento.MostrarGUIAlmacen, null);
 				break;
 				
 			case Evento.MostrarUnAlmacen:

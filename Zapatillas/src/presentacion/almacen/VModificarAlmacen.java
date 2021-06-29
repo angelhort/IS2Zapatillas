@@ -31,8 +31,7 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(TransferAlmacen almacen) {
-		this.setVisible(true);
+	private void initGUI(TransferAlmacen almacen) {
 		JLabel labelAlmacen = ComponentsBuilder.createLabel("Alta Almacen", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelAlmacen);
 		
@@ -82,7 +81,6 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 				try {
 					Controller.getInstance().action(Evento.ModificarAlmacen, new TransferAlmacen(almacen.getID(), Integer.parseInt(fieldTelef.getText()), (int)spinnerCapacidad.getValue(), fieldDireccion.getText(), almacen.getActivo()));					
 					VModificarAlmacen.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono almacen tiene que ser un numero entero", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
@@ -99,19 +97,24 @@ public class VModificarAlmacen extends JFrame implements IGUI{
 		switch(evento){
 			case Evento.MostrarModificarAlmacen:
 				initGUI((TransferAlmacen) datos);	
+				this.setVisible(true);
 				break;
 				
 			case Evento.WrongDataInput:
 				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El Almacen no existe", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
 				Controller.getInstance().action(Evento.MostrarGUIAlmacen, null);
+				this.dispose();
 				break;
 			case Evento.ClaveEntidadYaExistente:
 				JOptionPane.showMessageDialog(this,"Ya hay un Almacen registrado con esa direccion", "ERROR Modificar Almacen", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			default: JOptionPane.showMessageDialog(this,"El Almacen se modifico con exito", "Modificar Almacen", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

@@ -30,8 +30,7 @@ public class VModificarProveedor extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI(TransferProveedor proveedor) {
-		this.setVisible(true);
+	private void initGUI(TransferProveedor proveedor) {
 		JLabel labelProveedor = ComponentsBuilder.createLabel("Modificar Proveedor", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 22));
 		this.add(labelProveedor);
 		
@@ -84,7 +83,6 @@ public class VModificarProveedor extends JFrame implements IGUI{
 							fieldDireccion.getText(), 
 							fieldNombre.getText(), proveedor.getActivo()));					
 					VModificarProveedor.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProveedor, null);	
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Telefono proveedor tiene que ser un numero entero", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
@@ -101,19 +99,24 @@ public class VModificarProveedor extends JFrame implements IGUI{
 		switch(evento){
 			case Evento.MostrarModificarProveedor:
 				initGUI((TransferProveedor) datos);	
+				this.setVisible(true);
 				break;
 				
 			case Evento.WrongDataInput:
 				JOptionPane.showMessageDialog(this,"Los datos fueron mal introducidos", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El Proveedor no existe", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
 				Controller.getInstance().action(Evento.MostrarGUIProveedor, null);
+				this.dispose();
 				break;
 			case Evento.ClaveEntidadYaExistente:
 				JOptionPane.showMessageDialog(this,"Ya hay un Proveedor registrado con esa direccion", "ERROR Modificar Proveedor", JOptionPane.ERROR_MESSAGE);
+				this.dispose();
 				break;
 			default: JOptionPane.showMessageDialog(this,"El Proveedor se modifico con exito", "Modificar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
 		}
 	}
 }
