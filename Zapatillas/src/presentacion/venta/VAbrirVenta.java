@@ -33,7 +33,7 @@ public class VAbrirVenta extends JFrame implements IGUI{
 		initGUI();
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelVenta = ComponentsBuilder.createLabel("Abrir Venta", 85, 20, 190, 50, Color.BLACK, new Font("Serif", Font.PLAIN, 30));
 		this.add(labelVenta);
 		

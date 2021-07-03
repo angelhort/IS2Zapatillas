@@ -138,8 +138,7 @@ public class GUIVenta extends JFrame implements IGUI{
 			public void actionPerformed(ActionEvent e) {
 				if(venta.getProductos().size() > 0) {
 					Controller.getInstance().action(Evento.CerrarVenta, venta);
-					GUIVenta.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIPrincipal, null);					
+					GUIVenta.this.dispose();					
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "No hay ningun producto en el carrito"
