@@ -196,7 +196,6 @@ public class GUIVenta extends JFrame implements IGUI{
 			
 			case Evento.EntidadSiNoExiste:
 				JOptionPane.showMessageDialog(this,"El cliente, el trabajador o algun producto no existe en la BD", "ERROR Cerrar Venta", JOptionPane.ERROR_MESSAGE);
-				Controller.getInstance().action(Evento.MostrarGUIVenta, null);
 			break;
 			
 			case Evento.OutOfStock:

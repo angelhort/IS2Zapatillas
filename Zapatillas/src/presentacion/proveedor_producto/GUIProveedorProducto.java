@@ -26,8 +26,6 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 		this.setContentPane(new JLabel(new ImageIcon("resources/1010x500.png")));
 		this.setLayout(null); this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		initGUI();
-		this.setVisible(true);
 	}
 	
 
@@ -105,6 +103,11 @@ public class GUIProveedorProducto extends JFrame implements IGUI{
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		
+		switch(evento) {
+		case Evento.MostrarGUIProveedorProducto:
+			initGUI();
+			this.setVisible(true);
+			break;
+		}
 	}
 }

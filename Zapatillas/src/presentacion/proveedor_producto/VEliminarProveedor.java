@@ -30,7 +30,7 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel labelTrabajador = ComponentsBuilder.createLabel("<html>Eliminar proveedor<br>de producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 24));
 		this.add(labelTrabajador);
 		
@@ -72,7 +72,6 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 					Controller.getInstance().action(Evento.EliminarProveedor, new TransferProveedor_producto(
 							Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText())));
 					VEliminarProveedor.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);					
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Los IDs deben ser numeros enteros", "ERROR Eliminar Proveedor de producto", JOptionPane.ERROR_MESSAGE);
@@ -93,8 +92,10 @@ public class VEliminarProveedor extends JFrame implements IGUI{
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El producto o el proveedor no esta registrado en la BD", "ERROR Eliminar proveedor a producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"La relacion se elimino con exito", "Eliminar proveedor a producto", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
 		}
 	}
 }

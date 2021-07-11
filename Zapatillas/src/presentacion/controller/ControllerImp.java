@@ -238,10 +238,14 @@ public class ControllerImp extends Controller{
 			case Evento.AniadirProveedor:
 				id = SAAbstractFactory.getInstance().getSAProductoProveedor().aniadirProveedor((TransferProveedor_producto) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProveedorProducto);
+				gui.actualizar(Evento.MostrarGUIProveedorProducto, null);
 				break;
 			case Evento.EliminarProveedor:
 				id = SAAbstractFactory.getInstance().getSAProductoProveedor().eliminarProveedor((TransferProveedor_producto) datos);
 				gui.actualizar(id, id);
+				gui = GUIFactory.getInstance().getFrame(Evento.MostrarGUIProveedorProducto);
+				gui.actualizar(Evento.MostrarGUIProveedorProducto, null);
 				break;
 			case Evento.MostrarProductosProveedor:
 				List<TransferProducto> provProd =  SAAbstractFactory.getInstance().getSAProductoProveedor().getProveedor_producto(Integer.parseInt((String) datos));

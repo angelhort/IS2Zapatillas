@@ -30,7 +30,7 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initGUI() {
+	private void initGUI() {
 		JLabel label = ComponentsBuilder.createLabel("<html>Aniadir proveedor<br>a producto</html>", 85, 20, 190, 70, Color.BLACK, new Font("Serif", Font.PLAIN, 25));
 		this.add(label);
 
@@ -78,7 +78,6 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 					Controller.getInstance().action(Evento.AniadirProveedor, new TransferProveedor_producto(
 							Integer.parseInt(fieldIDProveedor.getText()), Integer.parseInt(fieldIDProducto.getText()), Double.parseDouble(fieldPrecio.getText())));
 					VAniadirProveedor.this.dispose();
-					Controller.getInstance().action(Evento.MostrarGUIProveedorProducto, null);					
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Los IDs deben ser numeros enteros y el precio decimal", "ERROR Añadir Proveedor a Producto", JOptionPane.ERROR_MESSAGE);
@@ -99,8 +98,10 @@ public class VAniadirProveedor extends JFrame implements IGUI{
 			break;
 		case Evento.EntidadSiNoExiste:
 			JOptionPane.showMessageDialog(this,"El producto o el proveedor no esta registrado en la BD o esta inactivo", "ERROR Añadir proveedor a producto", JOptionPane.ERROR_MESSAGE);
+			this.dispose();
 			break;
 		default: JOptionPane.showMessageDialog(this,"La relacion se añadio con exito", "Añadir proveedor a producto", JOptionPane.INFORMATION_MESSAGE);
+		this.dispose();
 		}
 	}
 }
