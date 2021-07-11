@@ -10,9 +10,13 @@ public class DatabaseConnection {
 	//public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11413968";
 	//public static final String USERNAME = "sql11413968";
 	//public static final String PASSWORD = "jQAb62VXga";
-	public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11422479";
-	public static final String USERNAME = "sql11422479";
-	public static final String PASSWORD = "WtYADF47LH";
+	//public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11422479";
+	//public static final String USERNAME = "sql11422479";
+	//public static final String PASSWORD = "WtYADF47LH";
+	public static final String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11424123";
+	public static final String USERNAME = "sql11424123";
+	public static final String PASSWORD = "R4Bg6b9BNV";
+	
 	
 	public DatabaseConnection() {
 		// Empty
