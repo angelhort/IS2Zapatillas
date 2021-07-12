@@ -25,9 +25,10 @@ public class SAProveedorImp implements SAProveedor {
 
 	@Override
 	public int borrar(int id) {
-		if(DAOAbstractFactory.getInstance().getDAOProveedorProducto().getProductosFromProveedor(id) == null) {
-			if(DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(id) != null) 
-				return (DAOAbstractFactory.getInstance().getDAOProveedor().baja(id));
+		if(DAOAbstractFactory.getInstance().getDAOProveedorProducto().getProductosFromProveedor(id).isEmpty()) {
+			if(DAOAbstractFactory.getInstance().getDAOProveedor().getProveedor(id) != null) {
+				return (DAOAbstractFactory.getInstance().getDAOProveedor().baja(id));				
+			}
 			else return -2;		
 		}
 		

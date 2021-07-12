@@ -41,7 +41,7 @@ public class SAProductoImp implements SAProducto{
 
 	@Override
 	public int borrar(int id) {
-		if(DAOAbstractFactory.getInstance().getDAOProveedorProducto().getProveedoresFromProducto(id) == null) {
+		if(DAOAbstractFactory.getInstance().getDAOProveedorProducto().getProveedoresFromProducto(id).isEmpty()) {
 			if(DAOAbstractFactory.getInstance().getDAOProducto().getProducto(id) != null)
 				return DAOAbstractFactory.getInstance().getDAOProducto().bajaProducto(id);			
 			else return -2;

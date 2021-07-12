@@ -89,7 +89,6 @@ public class DAOProveedorProductoImp implements DAOProveedorProducto {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
 		DatabaseConnection.killConnection(conn);
 		return productos;
 	}
